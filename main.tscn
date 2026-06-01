@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://dv21jyyfqh0lf"]
+
+[ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/background.jpg" id="1_ig7tw"]
+[ext_resource type="Shader" uid="uid://crjtha6ikpwm5" path="res://shaders/VignetteShader.gdshader" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c8fv4r2jxpgw5" path="res://entities/enemy.tscn" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="2_272bh"]
+[ext_resource type="PackedScene" uid="uid://c6q48vqnrxi8p" path="res://entities/tool_card.tscn" id="4_7mycd"]
+[ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_5vw27"]
+[ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ccgybac60bnaq" path="res://entities/action_card.tscn" id="6_7mycd"]
+
+[sub_resource type="Environment" id="Environment_ig7tw"]
+adjustment_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
+shader = ExtResource("2_0xm2m")
+shader_parameter/vignette_intensity = 0.2
+shader_parameter/vignette_opacity = 0.42400002014
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
+bg_color = Color(0.99607843, 0.22352941, 0.10980392, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dg77c"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycdy4"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qg"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[node name="Main" type="Node3D" unique_id=1469190635]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1200057228]
+environment = SubResource("Environment_ig7tw")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=342584449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0819259)
+
+[node name="Background" type="Sprite3D" parent="." unique_id=893584169]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 1.467, 0, 0, -1)
+texture = ExtResource("1_ig7tw")
+script = ExtResource("2_272bh")
+
+[node name="Enemy" parent="." unique_id=1580643266 instance=ExtResource("2_1bvp3")]
+
+[node name="UI" type="Control" parent="." unique_id=1036917726]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shaders" type="Node" parent="UI" unique_id=1936451472]
+
+[node name="Vignette" type="ColorRect" parent="UI/Shaders" unique_id=589251229]
+material = SubResource("ShaderMaterial_0xm2m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MainContainer" type="Control" parent="UI" unique_id=677201164]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerNameLabel" type="Label" parent="UI/MainContainer" unique_id=974739906]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 54.0
+offset_right = 245.0
+offset_bottom = 89.0
+text = "Sasser the Knight"
+label_settings = ExtResource("5_5vw27")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="UI/MainContainer" unique_id=1775980128]
+layout_mode = 1
+offset_left = 26.0
+offset_top = 22.0
+offset_right = 381.0
+offset_bottom = 47.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_5vw27")
+value = 38.38
+show_percentage = false
+
+[node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -168.0
+offset_right = 467.0
+offset_bottom = 132.0
+grow_vertical = 0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
+material = SubResource("ShaderMaterial_kek77")
+layout_mode = 2
+
+[node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
+material = SubResource("ShaderMaterial_4c57u")
+layout_mode = 2
+
+[node name="ActionsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1337520060]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -664.0
+offset_top = -169.0
+offset_bottom = 131.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = -80
+alignment = 1
+
+[node name="ActionCard" parent="UI/MainContainer/ActionsList" unique_id=2104390372 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_efxa6")
+layout_mode = 2
+
+[node name="ActionCard2" parent="UI/MainContainer/ActionsList" unique_id=2112204199 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_dg77c")
+layout_mode = 2
+
+[node name="ActionCard3" parent="UI/MainContainer/ActionsList" unique_id=1321650088 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_ycdy4")
+layout_mode = 2
+
+[node name="ActionCard4" parent="UI/MainContainer/ActionsList" unique_id=1307624022 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_w48qg")
+layout_mode = 2

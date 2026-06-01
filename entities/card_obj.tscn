@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://btkkbgx47p5rm"]
+
+[ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="1_ra4ii"]
+[ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="2_nlkk3"]
+[ext_resource type="Texture2D" uid="uid://d3xb0g0bgn6tk" path="res://res/card_back.png" id="2_obpk5"]
+[ext_resource type="Script" uid="uid://ccp1kor2ynh8w" path="res://scripts/models/card_objects/card_obj.gd" id="3_oy8i5"]
+[ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="4_nlkk3"]
+[ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_h3ehx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkk3"]
+resource_local_to_scene = true
+shader = ExtResource("1_ra4ii")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3ehx"]
+atlas = ExtResource("4_nlkk3")
+region = Rect2(1792, 256, 237, 256)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nlkk3"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="CardObj" type="SubViewportContainer" unique_id=789441108]
+material = SubResource("ShaderMaterial_nlkk3")
+offset_right = 216.0
+offset_bottom = 300.0
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("2_nlkk3")
+script = ExtResource("3_oy8i5")
+focus_tween_speed = 0.12
+focus_scale = 1.1
+fauxShifted = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1994013633]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(226, 300)
+render_target_update_mode = 4
+
+[node name="CardBack" type="TextureRect" parent="SubViewport" unique_id=1733591081]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.9411774
+offset_right = 4.9411774
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nlkk3")
+texture = ExtResource("2_obpk5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/CardBack" unique_id=1598253765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CardBack/MarginContainer" unique_id=752301886]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=1601413309]
+layout_mode = 2
+text = "Title Text"
+label_settings = ExtResource("5_h3ehx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IconRect" type="TextureRect" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=881828344]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+texture = SubResource("AtlasTexture_h3ehx")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DescLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=1825582841]
+layout_mode = 2
+size_flags_vertical = 3
+text = "BlaBlaBlaBla"
+label_settings = SubResource("LabelSettings_nlkk3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c6q48vqnrxi8p"]
+
+[ext_resource type="PackedScene" uid="uid://btkkbgx47p5rm" path="res://entities/card_obj.tscn" id="1_g0q5f"]
+[ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="2_670yt"]
+[ext_resource type="Script" uid="uid://cecarh81oxns5" path="res://scripts/models/card_objects/tool.gd" id="3_nhk73"]
+[ext_resource type="Shader" uid="uid://bllcgaou8xt30" path="res://shaders/ReplaceColor.gdshader" id="4_o07si"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fh16f"]
+resource_local_to_scene = true
+shader = ExtResource("2_670yt")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbc4y"]
+resource_local_to_scene = true
+shader = ExtResource("4_o07si")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[node name="ToolCard" unique_id=789441108 instance=ExtResource("1_g0q5f")]
+material = SubResource("ShaderMaterial_fh16f")
+script = ExtResource("3_nhk73")
+focus_tween_speed = 0.2
+focus_scale = 1.2
+fauxShifted = false
+
+[node name="IconRect" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(752301886) index="1" unique_id=881828344]
+material = SubResource("ShaderMaterial_mbc4y")
