@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://51eutumha5c5"]
+
+[ext_resource type="Script" uid="uid://yaofear3k2rp" path="res://scripts/models/data/status_eff_data.gd" id="1_7pnc0"]
+
+[node name="StatusEffData" type="Node" unique_id=1231074189]
+script = ExtResource("1_7pnc0")

@@ -8,6 +8,8 @@
 [ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_5vw27"]
 [ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ccgybac60bnaq" path="res://entities/action_card.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://ctvalpjglsupf" path="res://addons/tnowe_extra_controls/elements/radial_container.gd" id="8_4c57u"]
+[ext_resource type="Script" uid="uid://c3wh10qjm5gsy" path="res://addons/tnowe_extra_controls/elements/radial_container_theme.gd" id="9_efxa6"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 adjustment_enabled = true
@@ -25,36 +27,6 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dg77c"]
 resource_local_to_scene = true
@@ -76,7 +48,55 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qg"]
+[sub_resource type="Resource" id="Resource_w48qg"]
+script = ExtResource("9_efxa6")
+radius_factor_outer = 1.46
+radius_factor_inner = 0.0
+item_radius_factor = 1.0
+color = Color(1, 1, 1, 0)
+metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cqfq"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yaehf"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_074og"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -163,40 +183,73 @@ theme_override_constants/separation = 15
 alignment = 1
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_kek77")
+material = SubResource("ShaderMaterial_dg77c")
 layout_mode = 2
+mouse_filter = 1
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_4c57u")
+material = SubResource("ShaderMaterial_ycdy4")
 layout_mode = 2
+mouse_filter = 1
 
-[node name="ActionsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1337520060]
+[node name="RadialContainer" type="Container" parent="UI/MainContainer" unique_id=100635735]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -664.0
-offset_top = -169.0
-offset_bottom = 131.0
+offset_left = -681.0
+offset_top = -73.0
+offset_right = 105.00012
+offset_bottom = 187.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_constants/separation = -80
-alignment = 1
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("8_4c57u")
+sector_points = 4
+radial_theme = SubResource("Resource_w48qg")
+radial_theme_per_behaviour = 1
+metadata/_custom_type_script = "uid://ctvalpjglsupf"
 
-[node name="ActionCard" parent="UI/MainContainer/ActionsList" unique_id=2104390372 instance=ExtResource("6_7mycd")]
+[node name="Control" type="Control" parent="UI/MainContainer/RadialContainer" unique_id=1820622946]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="UI/MainContainer/RadialContainer" unique_id=1468836543]
+layout_mode = 2
+
+[node name="Control6" type="Control" parent="UI/MainContainer/RadialContainer" unique_id=661105511]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="UI/MainContainer/RadialContainer" unique_id=1906715732]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="UI/MainContainer/RadialContainer" unique_id=2100818964]
+layout_mode = 2
+
+[node name="ActionCard2" parent="UI/MainContainer/RadialContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_2cqfq")
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ActionCard3" parent="UI/MainContainer/RadialContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_yaehf")
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ActionCard4" parent="UI/MainContainer/RadialContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_074og")
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ActionCard5" parent="UI/MainContainer/RadialContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_4c57u")
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ActionCard6" parent="UI/MainContainer/RadialContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_efxa6")
 layout_mode = 2
+mouse_filter = 1
 
-[node name="ActionCard2" parent="UI/MainContainer/ActionsList" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_dg77c")
-layout_mode = 2
-
-[node name="ActionCard3" parent="UI/MainContainer/ActionsList" unique_id=1321650088 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_ycdy4")
-layout_mode = 2
-
-[node name="ActionCard4" parent="UI/MainContainer/ActionsList" unique_id=1307624022 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_w48qg")
-layout_mode = 2
+[connection signal="sort_children" from="UI/MainContainer/RadialContainer" to="UI/MainContainer/RadialContainer" method="_on_sort_children"]

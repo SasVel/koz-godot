@@ -4,6 +4,67 @@ var path_to_palette : String = "res://data"
 var path_to_palette_user : String = "user://data"
 var palette_name = "palette.json"
 
+## Enums 
+enum CardTypes {
+	GENERIC,
+	ACTION,
+	TOOL
+}
+
+enum Generic {
+	ATTACK,  
+	DEFEND,  
+}
+
+enum Actions {
+	RIPOSTE, 
+	LANGORT, 
+	SURPRISE_SAND, 
+	FEINT, 
+	END_THEM_RIGHTLY, 
+	PARRY, 
+	PANIC, 
+	ALBERT, 
+}
+
+enum Weapons {
+	HALBERD, 
+	SWORD, 
+	MESSAR, 
+	BASTARD_SWORD, 
+	DAGGER, 
+	MACE, 
+}
+
+enum Shields {
+	SHIELD, 
+	BUCKLER, 
+}
+
+enum StatusEffects {
+	ADD_DMG, 
+	REM_DMG, 
+	ADD_BLOCK, 
+	REM_BLOCK, 
+	CHANGE_PHASE_ATK, 
+	CHANGE_PHASE_DEF, 
+	STUN, 
+}
+
+enum Enemies {
+	SLIME, 
+	SKELLY, 
+	SHROOM, 
+	GOBLIN, 
+}
+
+enum UnitTrackingVars {
+	DAMAGE_DEALT, 
+	DAMAGE_TAKEN, 
+	BLOCK_GAINED, 
+	TEMPO_GAINED, 
+	STUN_APPLIED, 
+}
 enum StatTypes {
 	Health,
 	Block,

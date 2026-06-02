@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="1_ra4ii"]
 [ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="2_nlkk3"]
 [ext_resource type="Texture2D" uid="uid://d3xb0g0bgn6tk" path="res://res/card_back.png" id="2_obpk5"]
-[ext_resource type="Script" uid="uid://ccp1kor2ynh8w" path="res://scripts/models/card_objects/card_obj.gd" id="3_oy8i5"]
+[ext_resource type="Script" uid="uid://ccp1kor2ynh8w" path="res://scripts/models/cards/card_obj.gd" id="3_oy8i5"]
 [ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="4_nlkk3"]
 [ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_h3ehx"]
 
@@ -31,9 +31,10 @@ offset_right = 216.0
 offset_bottom = 300.0
 scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 0
 theme = ExtResource("2_nlkk3")
 script = ExtResource("3_oy8i5")
-focus_tween_speed = 0.12
+focus_tween_speed = 0.1
 focus_scale = 1.1
 fauxShifted = true
 
