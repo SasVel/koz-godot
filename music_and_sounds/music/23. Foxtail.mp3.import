@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyj6odhha1jp8"
+path="res://.godot/imported/23. Foxtail.mp3-11394e7eeb2357a9f111f1aadff4a421.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/music/23. Foxtail.mp3"
+dest_files=["res://.godot/imported/23. Foxtail.mp3-11394e7eeb2357a9f111f1aadff4a421.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

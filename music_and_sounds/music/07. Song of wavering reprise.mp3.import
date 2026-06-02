@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://exwxtrr0f258"
+path="res://.godot/imported/07. Song of wavering reprise.mp3-28853f5197694a2ff6c20117cf575ea7.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/music/07. Song of wavering reprise.mp3"
+dest_files=["res://.godot/imported/07. Song of wavering reprise.mp3-28853f5197694a2ff6c20117cf575ea7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
