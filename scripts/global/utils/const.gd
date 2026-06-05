@@ -8,7 +8,8 @@ var palette_name = "palette.json"
 enum CardTypes {
 	GENERIC,
 	ACTION,
-	TOOL
+	WEAPON,
+	SHIELD,
 }
 
 enum Generic {

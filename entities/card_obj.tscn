@@ -71,11 +71,13 @@ theme_override_constants/margin_bottom = 22
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=1601413309]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Title Text"
+text = "END THEM RIGHTLY"
 label_settings = ExtResource("5_h3ehx")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="IconRect" type="TextureRect" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=881828344]
 unique_name_in_owner = true
@@ -86,6 +88,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="DescLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=1825582841]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "BlaBlaBlaBla"

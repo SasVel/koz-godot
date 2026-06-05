@@ -367,4 +367,5 @@ func _on_sort_children() -> void:
 		child.rotation = 0.0
 		var rot = rot_pos.angle_to_point(child.global_position) + PI / 2
 		child.rotation = rot
+		if Engine.is_editor_hint(): return
 		child.set_defaults()

@@ -1,8 +1,11 @@
-extends Sprite3D
+extends Node
 class_name Entity
 
 @export var defaultStats : StatBlock
 var stats : StatBlock
+
+@export var card_hand_size : int = 4
+@export var card_deck_size : int = 10
 
 var cards_hand : Array[CardData]
 var cards_deck : Array[CardData]
@@ -13,8 +16,8 @@ signal status_effects_changed(status_effects)
 
 func _ready() -> void:
 	stats = defaultStats.duplicate()
-#region Hand
 
+#region Hand
 func add_action_hand(action : Action):
 	self.cards_hand.append(action)
 	hand_changed.emit(cards_hand)
@@ -22,7 +25,8 @@ func add_action_hand(action : Action):
 func add_actions_hand(actions : Array):
 	for action in actions:
 		self.cards_hand.append(action)
-		hand_changed.emit(cards_hand)
+		action.config_source(self)
+	hand_changed.emit(cards_hand)
 
 func get_rand_actions_deck(num):
 	var cards = []
@@ -32,15 +36,16 @@ func get_rand_actions_deck(num):
 		cards.append(drawn_card)    
 	return cards
 
+func draw_hand():
+	add_actions_hand(get_rand_actions_deck(card_hand_size))
+
 func replace_action_hand(action_to_replace, action_to_be_replaced):
-	var cardIdx = 0
-	#try:
-	#cardIdx = self.cards_hand.index(action_to_be_replaced)
-	#except:
-	return
+	var cardIdx = self.cards_hand.find(action_to_be_replaced)
+	if cardIdx == -1:
+		return
+
 	self.cards_hand.erase(cardIdx)
 	self.cards_hand.insert(cardIdx, action_to_replace)
-
 	hand_changed.emit(cards_hand)
 
 func pop_next_actions_deck(num):

@@ -7,6 +7,31 @@ var focus_card_pos_y = self.position.y - (self.size.y / 2)
 @onready var default_pos = self.position
 @onready var default_rot = self.rotation
 
+@onready var data : CardData
+
+func config(data_ : CardData):
+	data = data_
+	var image : Texture2D
+	var title_text : String
+	match data.type:
+		Const.CardTypes.ACTION:
+			title_text = Const.Actions.keys()[data.actionType]
+			image = ObjManager.get_action_sprite(data.actionType)
+			%IconRect.modulate = Const.ACTION_COLOR
+		Const.CardTypes.WEAPON:
+			title_text = Const.Weapons.keys()[data.weaponType]
+			image = ObjManager.get_weapon_sprite(data.weaponType)
+			%IconRect.modulate = Const.TOOL_COLOR
+		Const.CardTypes.SHIELD:
+			title_text = Const.Shields.keys()[data.shieldType]
+			image = ObjManager.get_shield_sprite(data.shieldType)
+			%IconRect.modulate = Const.TOOL_COLOR
+
+	%TitleLabel.text = UIHelper.pascal_to_readable_text(title_text)
+	%DescLabel.text = data.generate_desc()
+	%IconRect.texture = image 
+	return self
+
 func set_defaults():
 	default_pos = self.position
 	default_rot = self.rotation

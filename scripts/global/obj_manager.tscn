@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cj4ale0ilwpgn"]
+
+[ext_resource type="Script" uid="uid://csacj7husasrk" path="res://scripts/global/obj_manager.gd" id="1_vgp5f"]
+[ext_resource type="PackedScene" uid="uid://cbtjr0jg26po8" path="res://entities/card_datas/actions/riposte_action_data.tscn" id="2_2ly2f"]
+[ext_resource type="PackedScene" uid="uid://2h4yf4w6gdua" path="res://entities/card_datas/actions/langort_action_data.tscn" id="3_gyyai"]
+[ext_resource type="PackedScene" uid="uid://btkkbgx47p5rm" path="res://entities/card_obj.tscn" id="4_gyyai"]
+[ext_resource type="PackedScene" uid="uid://cdecntwnbogk4" path="res://entities/card_datas/actions/surprise_sand_action_data.tscn" id="4_ifvku"]
+[ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="5_easby"]
+[ext_resource type="PackedScene" uid="uid://0ykuie5e2xkv" path="res://entities/card_datas/actions/feint_action_data.tscn" id="5_unjhs"]
+[ext_resource type="PackedScene" uid="uid://db6rrux2hinhj" path="res://entities/card_datas/actions/end_them_rightly_action_data.tscn" id="6_2wimh"]
+[ext_resource type="PackedScene" uid="uid://dbn2nwhhx7u3d" path="res://entities/card_datas/actions/parry_action_data.tscn" id="7_bmoqc"]
+[ext_resource type="PackedScene" uid="uid://bijakpffymp0u" path="res://entities/card_datas/actions/panic_action_data.tscn" id="8_ageor"]
+[ext_resource type="PackedScene" uid="uid://86t2knvnsq41" path="res://entities/card_datas/actions/albert_action_data.tscn" id="9_knlgn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et42b"]
+atlas = ExtResource("5_easby")
+region = Rect2(0, 256, 256, 256)
+
+[node name="ObjManager" type="Node" unique_id=1772400233]
+script = ExtResource("1_vgp5f")
+actions_dict = Dictionary[int, PackedScene]({
+0: ExtResource("2_2ly2f"),
+1: ExtResource("3_gyyai"),
+2: ExtResource("4_ifvku"),
+3: ExtResource("5_unjhs"),
+4: ExtResource("6_2wimh"),
+5: ExtResource("7_bmoqc"),
+6: ExtResource("8_ageor"),
+7: ExtResource("9_knlgn")
+})
+card_obj = ExtResource("4_gyyai")
+sprites_256_atlas = SubResource("AtlasTexture_et42b")

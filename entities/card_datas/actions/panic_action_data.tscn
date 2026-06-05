@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bijakpffymp0u"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_yco26"]
+
+[node name="PanicActionData" unique_id=988386249 instance=ExtResource("1_yco26")]
+type = 1
+actionType = 6

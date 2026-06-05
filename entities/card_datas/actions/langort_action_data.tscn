@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://2h4yf4w6gdua"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_3u77g"]
+[ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_fjmsq"]
+
+[node name="LangortActionData" unique_id=988386249 instance=ExtResource("1_3u77g")]
+type = 1
+actionType = 1
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1520281543]
+script = ExtResource("2_fjmsq")
+metadata/_custom_type_script = "uid://rio4hms2vn51"

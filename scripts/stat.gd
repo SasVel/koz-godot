@@ -27,8 +27,8 @@ class_name Stat
 		maxValue = max(val, 0.0)
 
 signal stat_changed(oldVal : float, newVal : float)
-signal no_stat_val
 signal max_stat_changed(oldVal : float, newVal : float)
+signal no_stat_val
 
 func add(stat : Stat):
 	self.value += stat.value

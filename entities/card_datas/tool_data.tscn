@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://csaqvu2fldwys"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_36t5m"]
+[ext_resource type="Script" uid="uid://brd2be31rtuxr" path="res://scripts/models/data/tool_data.gd" id="2_qildd"]
+
+[node name="ToolData" unique_id=988386249 instance=ExtResource("1_36t5m")]
+script = ExtResource("2_qildd")
+type = 2
