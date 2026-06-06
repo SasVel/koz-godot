@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://ccp1kor2ynh8w" path="res://scripts/models/cards/card_obj.gd" id="3_oy8i5"]
 [ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="4_nlkk3"]
 [ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_h3ehx"]
+[ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="7_5t304"]
+[ext_resource type="Script" uid="uid://dlkhjqhrjlocs" path="res://entities/interact_zone.gd" id="8_f26x7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkk3"]
 resource_local_to_scene = true
@@ -21,22 +23,18 @@ shader_parameter/inset = 0.0
 atlas = ExtResource("4_nlkk3")
 region = Rect2(1792, 256, 237, 256)
 
-[sub_resource type="LabelSettings" id="LabelSettings_nlkk3"]
-font_size = 20
-font_color = Color(0, 0, 0, 1)
-
-[node name="CardObj" type="SubViewportContainer" unique_id=789441108]
+[node name="CardObj" type="SubViewportContainer" unique_id=789441108 node_paths=PackedStringArray("dragZone")]
 material = SubResource("ShaderMaterial_nlkk3")
 offset_right = 216.0
 offset_bottom = 300.0
 scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 0
 theme = ExtResource("2_nlkk3")
 script = ExtResource("3_oy8i5")
 focus_tween_speed = 0.1
 focus_scale = 1.1
 fauxShifted = true
+dragZone = NodePath("SubViewport/InteractZone")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1994013633]
 transparent_bg = true
@@ -45,6 +43,7 @@ size = Vector2i(226, 300)
 render_target_update_mode = 4
 
 [node name="CardBack" type="TextureRect" parent="SubViewport" unique_id=1733591081]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -92,11 +91,25 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "BlaBlaBlaBla"
-label_settings = SubResource("LabelSettings_nlkk3")
+label_settings = ExtResource("7_5t304")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="InteractZone" type="Control" parent="SubViewport" unique_id=115790250]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 22.0
+offset_right = -11.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_f26x7")
+
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="SubViewport/InteractZone" to="SubViewport/InteractZone" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SubViewport/InteractZone" to="SubViewport/InteractZone" method="_on_mouse_exited"]

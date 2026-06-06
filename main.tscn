@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://exwxtrr0f258" path="res://music_and_sounds/music/07. Song of wavering reprise.mp3" id="3_getpj"]
 [ext_resource type="PackedScene" uid="uid://c6q48vqnrxi8p" path="res://entities/tool_card.tscn" id="4_7mycd"]
 [ext_resource type="AudioStream" uid="uid://cb0numi8m7br2" path="res://music_and_sounds/music/08. Until next time.mp3" id="4_ryguw"]
-[ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_5vw27"]
 [ext_resource type="AudioStream" uid="uid://cqkncwehlv086" path="res://music_and_sounds/music/09. Born to grow.mp3" id="5_d13ii"]
 [ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="5_lquwl"]
 [ext_resource type="AudioStream" uid="uid://kyrrcslvq1an" path="res://music_and_sounds/music/10. Novemberdimma.mp3" id="6_1u8w0"]
@@ -20,7 +19,10 @@
 [ext_resource type="AudioStream" uid="uid://dasfq6otiljau" path="res://music_and_sounds/music/24. I hope I'll see you again.mp3" id="9_a6jrf"]
 [ext_resource type="Script" uid="uid://c3wh10qjm5gsy" path="res://addons/tnowe_extra_controls/elements/radial_container_theme.gd" id="9_efxa6"]
 [ext_resource type="Script" uid="uid://cueesbvkobht0" path="res://musics_player.gd" id="10_82xsv"]
+[ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="15_1u8w0"]
 [ext_resource type="Script" uid="uid://ne7wq0mqey7" path="res://main_container.gd" id="15_ryguw"]
+[ext_resource type="PackedScene" uid="uid://7kqipxktmk20" path="res://UI/num_display.tscn" id="16_0odxb"]
+[ext_resource type="Script" uid="uid://b6seccbn8xwbf" path="res://tools_list.gd" id="17_lswn8"]
 [ext_resource type="Script" uid="uid://30k2gbj6kiml" path="res://scripts/models/entities/player.gd" id="21_getpj"]
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="23_1u8w0"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="24_0odxb"]
@@ -54,44 +56,6 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1u8w0"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0odxb"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="Resource" id="Resource_w48qg"]
-script = ExtResource("9_efxa6")
-radius_factor_outer = 1.46
-radius_factor_inner = 0.0
-item_radius_factor = 1.0
-color = Color(1, 1, 1, 0)
-metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6jrf"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
@@ -112,6 +76,14 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="Resource" id="Resource_w48qg"]
+script = ExtResource("9_efxa6")
+radius_factor_outer = 1.46
+radius_factor_inner = 0.0
+item_radius_factor = 1.0
+color = Color(1, 1, 1, 0)
+metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
@@ -123,6 +95,36 @@ shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kq58d"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htxhm"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jq2sk"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -225,26 +227,39 @@ mouse_filter = 1
 script = ExtResource("15_ryguw")
 player = NodePath("../../Player")
 
-[node name="PlayerNameLabel" type="Label" parent="UI/MainContainer" unique_id=974739906]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainContainer" unique_id=193408134]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 54.0
-offset_right = 245.0
-offset_bottom = 89.0
-text = "Sasser the Knight"
-label_settings = ExtResource("5_5vw27")
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 20.0
+offset_top = 19.0
+offset_right = 461.0
+offset_bottom = 153.0
+theme_override_constants/separation = 10
 
-[node name="HealthBar" type="ProgressBar" parent="UI/MainContainer" unique_id=1775980128]
-layout_mode = 1
-offset_left = 26.0
-offset_top = 22.0
-offset_right = 381.0
-offset_bottom = 47.0
+[node name="HealthBar" type="ProgressBar" parent="UI/MainContainer/VBoxContainer" unique_id=1775980128]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_5vw27")
 value = 38.38
 show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1781543553]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerNameLabel" type="Label" parent="UI/MainContainer/VBoxContainer/HBoxContainer" unique_id=974739906]
+layout_mode = 2
+text = "Sasser the Knight"
+label_settings = ExtResource("15_1u8w0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TempoDisplay" parent="UI/MainContainer/VBoxContainer/HBoxContainer" unique_id=641794690 instance=ExtResource("16_0odxb")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatusEffectsContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1521238829]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
 layout_mode = 1
@@ -257,14 +272,15 @@ offset_bottom = 132.0
 grow_vertical = 0
 theme_override_constants/separation = 15
 alignment = 1
+script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_1u8w0")
+material = SubResource("ShaderMaterial_a6jrf")
 layout_mode = 2
 mouse_filter = 1
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_0odxb")
+material = SubResource("ShaderMaterial_xuqvo")
 layout_mode = 2
 mouse_filter = 1
 
@@ -305,27 +321,27 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_lswn8")
-layout_mode = 2
-mouse_filter = 1
-
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_a6jrf")
-layout_mode = 2
-mouse_filter = 1
-
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_xuqvo")
-layout_mode = 2
-mouse_filter = 1
-
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_qsp4k")
 layout_mode = 2
 mouse_filter = 1
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_kq58d")
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_seu75")
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_htxhm")
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_jq2sk")
 layout_mode = 2
 mouse_filter = 1
 
@@ -339,6 +355,7 @@ script = ExtResource("21_getpj")
 defaultStats = SubResource("Resource_ok6jj")
 
 [connection signal="finished" from="MusicsPlayer" to="MusicsPlayer" method="_on_finished"]
+[connection signal="sort_children" from="UI/MainContainer/ToolsList" to="UI/MainContainer/ToolsList" method="_on_sort_children"]
 [connection signal="sort_children" from="UI/MainContainer/ActionsContainer" to="UI/MainContainer/ActionsContainer" method="_on_sort_children"]
 
 [editable path="Enemies/Enemy"]

@@ -9,13 +9,23 @@ class_name CardData
 @export var shieldType : Const.Shields
 
 @export var tempoCost : int = 1
+@onready var source : Entity
 
+@onready var isOn = true : 
+	set(val):
+		if isOn == val: return
+		isOn = val
+		changed_state.emit(val)
+
+signal changed_state(val)
 signal activated
 signal deactivated
 
 func config_source(source_ : Entity):
+	source = source_
+	source.stats.Tempo.stat_changed.connect(func(_x, _y): check_state())
 	for component in %Components.get_children():
-		component.source = source_
+		component.source = source
 
 func add_target(target_ : Entity):
 	for component in %Components.get_children():
@@ -26,6 +36,8 @@ func config(source_ : Entity, targets_ : Array[Entity]):
 		component.config(source_, targets_)
 
 func activate():
+	source.stats.Tempo.value -= self.tempoCost
+
 	for component in %Components.get_children():
 		component.activate()
 	activated.emit()
@@ -35,8 +47,11 @@ func deactivate():
 		component.deactivate()
 	deactivated.emit()
 
+func check_state():
+	isOn = can_activate()
+
 func can_activate():
-	return true
+	return source.stats.Tempo.value >= self.tempoCost
 
 func generate_desc() -> String:
 	var resArr : Array[String]

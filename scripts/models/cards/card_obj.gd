@@ -3,14 +3,23 @@ class_name CardObj
 
 @export var focus_tween_speed = 0.2
 @export var focus_scale = 1.2
-var focus_card_pos_y = self.position.y - (self.size.y / 2)
+var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 @onready var default_pos = self.position
 @onready var default_rot = self.rotation
 
 @onready var data : CardData
 
+@onready var isOn : bool = true :
+	set(val):
+		%CardBack.modulate = Color.WHITE if val else Color("b1b1b1")
+		isOn = val
+
+@onready var isTweening : bool = false
+
 func config(data_ : CardData):
 	data = data_
+	data.changed_state.connect(func(x): isOn = x)
+
 	var image : Texture2D
 	var title_text : String
 	match data.type:
@@ -36,37 +45,39 @@ func set_defaults():
 	default_pos = self.position
 	default_rot = self.rotation
 
+func _get_drag_data(at_position):
+	if !isOn: return
+	return super(at_position)
+
 func _on_focus_entered() -> void:
 	self.z_index = 1
-	move_on_focus(true)
 	scale_on_focus(true)
+	move_on_focus(true)
 
 func _on_focus_exited() -> void:
 	self.z_index = 0
-	move_on_focus(false)
 	scale_on_focus(false)
+	move_on_focus(false)
 
-func scale_on_focus(isOn : bool):
+func scale_on_focus(on_off : bool):
+	if isTweening: return
 	var tween = create_tween()
-	if isOn:
+	if on_off:
 		tween.tween_property(self, "scale", Vector2(focus_scale, focus_scale), focus_tween_speed)
 	else:
 		tween.tween_property(self, "scale", Vector2(1, 1), focus_tween_speed)
 
-func move_on_focus(isOn : bool):
+func move_on_focus(on_off : bool):
+	if isTweening: return
 	var tween = create_tween()
-	if isOn:
+	isTweening = true
+	if on_off:
 		tween.tween_property(self, "position:y", focus_card_pos_y,
 		 focus_tween_speed).from(0)
 		tween.parallel().tween_property(self, "rotation_degrees", 0, focus_tween_speed)
 	else:
 		tween.tween_property(self, "position", default_pos, focus_tween_speed)
-		tween.parallel().tween_property(self, "rotation_degrees", default_rot,
+		tween.parallel().tween_property(self, "rotation", default_rot,
 		 focus_tween_speed)
-
-
-func _on_mouse_entered() -> void:
-	self.grab_focus()
-
-func _on_mouse_exited() -> void:
-	self.release_focus()
+	await tween.finished
+	isTweening = false

@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cicp4i23rac45"]
+
+[resource]
+font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.654902)
+shadow_offset = Vector2(2, 2)

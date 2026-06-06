@@ -4,7 +4,13 @@ extends Control
 @onready var actions_container : Control = %ActionsContainer
 
 func _ready() -> void:
+	await player.ready
 	player.hand_changed.connect(update_hand)
+	update_hand(player.cards_hand)
+	%TempoDisplay.config(\
+	Const.ACTION_COLOR,
+	player.stats.Tempo.value, 
+	player.stats.Tempo.stat_changed)
 
 func update_hand(data : Array):
 	for child in actions_container.get_children():

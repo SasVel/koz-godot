@@ -6,9 +6,9 @@ class_name Enemy
 func _ready() -> void:
 	super()
 	stats.Health.max_stat_changed.connect(\
-		func(oldVal, newVal): %HealthBar.max_value = newVal)
+		func(_oldVal, newVal): %HealthBar.max_value = newVal)
 	stats.Health.stat_changed.connect(\
-		func(oldVal, newVal): %HealthBar.value = newVal)
+		func(_oldVal, newVal): %HealthBar.value = newVal)
 
 	%HealthBar.max_value = stats.Health.maxValue
 	%HealthBar.value = stats.Health.value

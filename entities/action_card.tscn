@@ -2,9 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://btkkbgx47p5rm" path="res://entities/card_obj.tscn" id="1_qcyb0"]
 [ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="2_n4hb7"]
-[ext_resource type="Script" uid="uid://qsxxp4bhjy4n" path="res://scripts/models/cards/action.gd" id="3_q6unm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qcyb0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpff7"]
 resource_local_to_scene = true
 shader = ExtResource("2_n4hb7")
 shader_parameter/cull_backface = true
@@ -15,7 +14,7 @@ shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
 [node name="ActionCard" unique_id=789441108 instance=ExtResource("1_qcyb0")]
-material = SubResource("ShaderMaterial_qcyb0")
-script = ExtResource("3_q6unm")
+material = SubResource("ShaderMaterial_dpff7")
+focus_tween_speed = 0.2
 focus_scale = 1.2
 fauxShifted = false

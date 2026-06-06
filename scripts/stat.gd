@@ -4,19 +4,20 @@ class_name Stat
 @export var value : float = 10.0 :
 	set(val):
 		var newVal = 0
+		var oldVal = value
 		if maxValue == 0.0:
 			# No cap, but clamp to 0.0 to prevent negative values
 			newVal = clamp(val, 0.0, 0.0)
-			stat_changed.emit(value, newVal)
 			value = newVal
+			stat_changed.emit(oldVal, newVal)
 			return
 
 		# Apply cap when maxValue > 0.0
 		newVal = min(val, maxValue)
 		# Emit signal and update only if value actually changed
 		if value != newVal:
-			stat_changed.emit(value, newVal)
 			value = newVal
+			stat_changed.emit(oldVal, newVal)
 		if newVal <= 0.0:
 			no_stat_val.emit()
 

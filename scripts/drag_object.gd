@@ -8,6 +8,7 @@ class_name DragObject
 @export var fauxShifted : bool = false
 @export var fauxShiftDeg : float = 15.0
 @export var fauxTweenSpeed : float = 0.1
+@export var dragZone : Control
 
 var isPickedUp : bool = false
 var isEquipped : bool = false
@@ -15,7 +16,8 @@ var dragObject : Control
 signal drag_started(caller : DragObject)
 signal drag_ended(caller : DragObject)
 
-func _get_drag_data(_at_position):
+func _get_drag_data(at_position : Vector2):
+			
 	var data = {}
 	
 	dragObject = self.duplicate(DUPLICATE_DEFAULT)
