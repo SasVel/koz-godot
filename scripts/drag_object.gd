@@ -16,8 +16,7 @@ var dragObject : Control
 signal drag_started(caller : DragObject)
 signal drag_ended(caller : DragObject)
 
-func _get_drag_data(at_position : Vector2):
-			
+func _get_drag_data(_at_position : Vector2):
 	var data = {}
 	
 	dragObject = self.duplicate(DUPLICATE_DEFAULT)

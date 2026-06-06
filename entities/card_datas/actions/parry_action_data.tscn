@@ -5,3 +5,4 @@
 [node name="ParryActionData" unique_id=988386249 instance=ExtResource("1_ian02")]
 type = 1
 actionType = 5
+isOffensive = false

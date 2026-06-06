@@ -9,6 +9,7 @@ class_name CardData
 @export var shieldType : Const.Shields
 
 @export var tempoCost : int = 1
+@export var isOffensive : bool = true
 @onready var source : Entity
 
 @onready var isOn = true : 

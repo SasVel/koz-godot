@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="3_uvc0s"]
 [ext_resource type="Texture2D" uid="uid://dy64vrxsnixx4" path="res://res/enemies.png" id="4_uvc0s"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="4_x8e4v"]
+[ext_resource type="PackedScene" uid="uid://cpgn2tegjq7md" path="res://entities/EntityBar.tscn" id="5_rrp0o"]
 [ext_resource type="Script" uid="uid://cskwlki1gwqm6" path="res://addons/tnowe_extra_controls/elements/data_dropper.gd" id="5_x8e4v"]
 
 [sub_resource type="Resource" id="Resource_rrp0o"]
@@ -33,14 +34,6 @@ metadata/_custom_type_script = "uid://mi75jnrupyfs"
 atlas = ExtResource("4_uvc0s")
 region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvc0s"]
-bg_color = Color(0.99607843, 0.22352941, 0.10980392, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 6
-
 [node name="Enemy" type="Node2D" unique_id=2060598746]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_pqhw6")
@@ -51,23 +44,8 @@ position = Vector2(0, -46.66667)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_x8e4v")
 
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=1611556557]
+[node name="EnemyBar" parent="." unique_id=1148582265 instance=ExtResource("5_rrp0o")]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -376.66663
-offset_top = -623.3333
-offset_right = 376.66663
-offset_bottom = -570.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_uvc0s")
-value = 38.38
-show_percentage = false
-metadata/_edit_use_anchors_ = true
 
 [node name="DataDropper" type="Control" parent="." unique_id=910297773]
 layout_mode = 3
@@ -80,3 +58,5 @@ script = ExtResource("5_x8e4v")
 metadata/_custom_type_script = "uid://cskwlki1gwqm6"
 
 [connection signal="data_dropped" from="DataDropper" to="." method="_on_data_dropper_data_dropped"]
+
+[editable path="EnemyBar"]

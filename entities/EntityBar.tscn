@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cpgn2tegjq7md"]
+
+[ext_resource type="Script" uid="uid://d00dit2hifsws" path="res://entities/entity_bar.gd" id="1_bi5ys"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvc0s"]
+bg_color = Color(0.99607843, 0.22352941, 0.10980392, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8e4v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrp0o"]
+bg_color = Color(0.058431737, 0.61157584, 0.8078069, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="HealthBar" type="ProgressBar" unique_id=1148582265]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.66663
+offset_top = -623.3333
+offset_right = 376.66663
+offset_bottom = -570.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_uvc0s")
+value = 38.38
+show_percentage = false
+script = ExtResource("1_bi5ys")
+metadata/_edit_use_anchors_ = true
+
+[node name="BlockBar" type="ProgressBar" parent="." unique_id=1792474463]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_x8e4v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rrp0o")
+value = 30.0
+show_percentage = false

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cqpqe0cq4mupb"]
+
+[ext_resource type="PackedScene" uid="uid://7kqipxktmk20" path="res://UI/num_display.tscn" id="1_lw0cm"]
+[ext_resource type="Script" uid="uid://dhucyowhhvtod" path="res://stat_display.gd" id="2_fjyc5"]
+
+[node name="StatDisplay" unique_id=641794690 instance=ExtResource("1_lw0cm")]
+script = ExtResource("2_fjyc5")
+isMaxVal = false

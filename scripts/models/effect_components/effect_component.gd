@@ -2,7 +2,7 @@ extends Node
 class_name EffectComponent
 
 @export var value : int = 10
-@export var bonus_value : int = 0
+@onready var bonus_value : int = 0
 @export var isOffensive : bool = true
 @onready var ticker : String = "NULL"
 
@@ -22,7 +22,7 @@ func deactivate():
 func can_activate():
 	return true
 
-func get_affected_units() -> Array[Entity]:
+func get_affected_units() -> Array:
 	return self.targets if self.isOffensive else [self.source]
 
 func get_full_value() -> int:

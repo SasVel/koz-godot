@@ -20,12 +20,14 @@
 [ext_resource type="Script" uid="uid://c3wh10qjm5gsy" path="res://addons/tnowe_extra_controls/elements/radial_container_theme.gd" id="9_efxa6"]
 [ext_resource type="Script" uid="uid://cueesbvkobht0" path="res://musics_player.gd" id="10_82xsv"]
 [ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="15_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://cpgn2tegjq7md" path="res://entities/EntityBar.tscn" id="15_a6jrf"]
 [ext_resource type="Script" uid="uid://ne7wq0mqey7" path="res://main_container.gd" id="15_ryguw"]
-[ext_resource type="PackedScene" uid="uid://7kqipxktmk20" path="res://UI/num_display.tscn" id="16_0odxb"]
+[ext_resource type="PackedScene" uid="uid://cqpqe0cq4mupb" path="res://UI/stat_display.tscn" id="16_lswn8"]
 [ext_resource type="Script" uid="uid://b6seccbn8xwbf" path="res://tools_list.gd" id="17_lswn8"]
 [ext_resource type="Script" uid="uid://30k2gbj6kiml" path="res://scripts/models/entities/player.gd" id="21_getpj"]
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="23_1u8w0"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="24_0odxb"]
+[ext_resource type="Script" uid="uid://baraqeaue84k4" path="res://card_activate_field.gd" id="24_xuqvo"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xuqvo"]
 streams_count = 9
@@ -48,42 +50,6 @@ shader_parameter/vignette_intensity = 0.2
 shader_parameter/vignette_opacity = 0.42400002014
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
-bg_color = Color(0.99607843, 0.22352941, 0.10980392, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 6
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6jrf"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuqvo"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="Resource" id="Resource_w48qg"]
-script = ExtResource("9_efxa6")
-radius_factor_outer = 1.46
-radius_factor_inner = 0.0
-item_radius_factor = 1.0
-color = Color(1, 1, 1, 0)
-metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
@@ -103,6 +69,14 @@ shader_parameter/fov = 90.0
 shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
+
+[sub_resource type="Resource" id="Resource_w48qg"]
+script = ExtResource("9_efxa6")
+radius_factor_outer = 1.46
+radius_factor_inner = 0.0
+item_radius_factor = 1.0
+color = Color(1, 1, 1, 0)
+metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
 resource_local_to_scene = true
@@ -125,6 +99,26 @@ shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jq2sk"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k2k6"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rl1p"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -235,12 +229,10 @@ offset_right = 461.0
 offset_bottom = 153.0
 theme_override_constants/separation = 10
 
-[node name="HealthBar" type="ProgressBar" parent="UI/MainContainer/VBoxContainer" unique_id=1775980128]
+[node name="PlayerBar" parent="UI/MainContainer/VBoxContainer" unique_id=1148582265 instance=ExtResource("15_a6jrf")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_5vw27")
-value = 38.38
-show_percentage = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1781543553]
 layout_mode = 2
@@ -253,9 +245,10 @@ label_settings = ExtResource("15_1u8w0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TempoDisplay" parent="UI/MainContainer/VBoxContainer/HBoxContainer" unique_id=641794690 instance=ExtResource("16_0odxb")]
+[node name="TempoDisplay" parent="UI/MainContainer/VBoxContainer/HBoxContainer" unique_id=641794690 instance=ExtResource("16_lswn8")]
 unique_name_in_owner = true
 layout_mode = 2
+isMaxVal = true
 
 [node name="StatusEffectsContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1521238829]
 layout_mode = 2
@@ -275,14 +268,12 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_a6jrf")
+material = SubResource("ShaderMaterial_qsp4k")
 layout_mode = 2
-mouse_filter = 1
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_xuqvo")
+material = SubResource("ShaderMaterial_kq58d")
 layout_mode = 2
-mouse_filter = 1
 
 [node name="ActionsContainer" type="Container" parent="UI/MainContainer" unique_id=100635735]
 unique_name_in_owner = true
@@ -321,29 +312,33 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_qsp4k")
-layout_mode = 2
-mouse_filter = 1
-
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_kq58d")
-layout_mode = 2
-mouse_filter = 1
-
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_seu75")
 layout_mode = 2
-mouse_filter = 1
 
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_htxhm")
 layout_mode = 2
-mouse_filter = 1
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_jq2sk")
 layout_mode = 2
+
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_4k2k6")
+layout_mode = 2
+
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_0rl1p")
+layout_mode = 2
+
+[node name="CardActivateField" type="Control" parent="UI/MainContainer" unique_id=1799099242]
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 109.0
+offset_right = 1129.0
+offset_bottom = 439.0
 mouse_filter = 1
+script = ExtResource("24_xuqvo")
 
 [node name="Enemies" type="Node" parent="." unique_id=1692258728]
 
@@ -356,6 +351,22 @@ defaultStats = SubResource("Resource_ok6jj")
 
 [connection signal="finished" from="MusicsPlayer" to="MusicsPlayer" method="_on_finished"]
 [connection signal="sort_children" from="UI/MainContainer/ToolsList" to="UI/MainContainer/ToolsList" method="_on_sort_children"]
+[connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_exited"]
 [connection signal="sort_children" from="UI/MainContainer/ActionsContainer" to="UI/MainContainer/ActionsContainer" method="_on_sort_children"]
+[connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard2" to="UI/MainContainer/ActionsContainer/ActionCard2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard2" to="UI/MainContainer/ActionsContainer/ActionCard2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard3" to="UI/MainContainer/ActionsContainer/ActionCard3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard3" to="UI/MainContainer/ActionsContainer/ActionCard3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard4" to="UI/MainContainer/ActionsContainer/ActionCard4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard4" to="UI/MainContainer/ActionsContainer/ActionCard4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard5" to="UI/MainContainer/ActionsContainer/ActionCard5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard5" to="UI/MainContainer/ActionsContainer/ActionCard5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard6" to="UI/MainContainer/ActionsContainer/ActionCard6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard6" to="UI/MainContainer/ActionsContainer/ActionCard6" method="_on_mouse_exited"]
 
+[editable path="UI/MainContainer/VBoxContainer/PlayerBar"]
 [editable path="Enemies/Enemy"]
+[editable path="Enemies/Enemy/EnemyBar"]

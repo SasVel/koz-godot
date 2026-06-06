@@ -8,3 +8,6 @@ func _ready() -> void:
 func config_deck():
 	cards_deck = ObjManager.get_rand_actions_datas(card_deck_size)
 	draw_hand()
+
+func start_turn():
+	stats.Tempo.reset()

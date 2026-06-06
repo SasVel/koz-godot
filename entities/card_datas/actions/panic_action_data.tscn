@@ -5,3 +5,4 @@
 [node name="PanicActionData" unique_id=988386249 instance=ExtResource("1_yco26")]
 type = 1
 actionType = 6
+isOffensive = false

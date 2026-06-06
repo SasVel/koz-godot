@@ -16,6 +16,10 @@ signal status_effects_changed(status_effects)
 
 func _ready() -> void:
 	stats = defaultStats.duplicate()
+	Game.on_start_turn.connect(start_turn)
+
+func start_turn():
+	pass
 
 #region Hand
 func add_action_hand(action : Action):
