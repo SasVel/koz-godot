@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bmml33o08d1bh"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_skvfg"]
+
+[node name="HalberdToolData" unique_id=988386249 instance=ExtResource("1_skvfg")]
+durability = 4
+isOffensive = true

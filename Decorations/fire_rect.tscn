@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://denor2og15qye"]
+
+[ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="1_wtaua"]
+[ext_resource type="Script" uid="uid://dr6sgduy44n1t" path="res://scripts/fire_rect.gd" id="2_ykgem"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_facbu"]
+atlas = ExtResource("1_wtaua")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="Gradient" id="Gradient_16cjn"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.6385542, 0.6807229)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jmded"]
+gradient = SubResource("Gradient_16cjn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="FireRect" type="TextureRect" unique_id=1524273013]
+offset_left = 146.0
+offset_top = 155.0
+offset_right = 274.0
+offset_bottom = 283.0
+scale = Vector2(0.8, 0.8)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_facbu")
+script = ExtResource("2_ykgem")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=380562256]
+modulate = Color(0.9607843, 0.5254902, 0, 0.6431373)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.25
+offset_top = -97.5
+offset_right = 103.75
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jmded")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=253027723]
+modulate = Color(0.9607843, 1, 0, 0.6431373)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.25
+offset_top = -60.0
+offset_right = 68.75
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jmded")

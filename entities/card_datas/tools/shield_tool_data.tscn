@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d4ltpwnp8hj7f"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_8c5yv"]
+
+[node name="ShieldToolData" unique_id=988386249 instance=ExtResource("1_8c5yv")]
+durability = 4
+type = 3
+isOffensive = true

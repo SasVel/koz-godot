@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="3_uvc0s"]
 [ext_resource type="Texture2D" uid="uid://dy64vrxsnixx4" path="res://res/enemies.png" id="4_uvc0s"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="4_x8e4v"]
+[ext_resource type="Script" uid="uid://2jwj62dqog8p" path="res://entities/idle_animator.gd" id="5_jq0pf"]
 [ext_resource type="PackedScene" uid="uid://cpgn2tegjq7md" path="res://entities/EntityBar.tscn" id="5_rrp0o"]
 [ext_resource type="Script" uid="uid://cskwlki1gwqm6" path="res://addons/tnowe_extra_controls/elements/data_dropper.gd" id="5_x8e4v"]
 
@@ -39,10 +40,18 @@ scale = Vector2(0.3, 0.3)
 script = ExtResource("2_pqhw6")
 defaultStats = SubResource("Resource_f71c5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1600066704]
+[node name="EnemySprite" type="Sprite2D" parent="." unique_id=1600066704]
+unique_name_in_owner = true
 position = Vector2(0, -46.66667)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_x8e4v")
+
+[node name="IdleAnimator" type="Node" parent="EnemySprite" unique_id=300381570 node_paths=PackedStringArray("target")]
+script = ExtResource("5_jq0pf")
+target = NodePath("..")
+scale_speed = 3
+scale_y = 0.3
+scale_x = 0.4
 
 [node name="EnemyBar" parent="." unique_id=1148582265 instance=ExtResource("5_rrp0o")]
 unique_name_in_owner = true

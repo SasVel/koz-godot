@@ -85,6 +85,7 @@ var CARD_BACK_COLOR: Color
 var FIRE_COLOR: Color
 var POSITIVE_COLOR: Color
 var NEGATIVE_COLOR: Color
+var ENEMY_COLORS : Dictionary[String, Color]
 
 func _ready() -> void:
 	load_colors_obj()
@@ -99,6 +100,12 @@ func _ready() -> void:
 	FIRE_COLOR= load_color(colors_obj["FIRE_COLOR"])
 	POSITIVE_COLOR= load_color(colors_obj["POSITIVE_COLOR"])
 	NEGATIVE_COLOR= load_color(colors_obj["NEGATIVE_COLOR"])
+	ENEMY_COLORS = {
+		"SLIME": load_color(colors_obj["ENEMY_COLORS"]["SLIME"]),
+		"SKELLY": load_color(colors_obj["ENEMY_COLORS"]["SKELLY"]),
+		"SHROOM": load_color(colors_obj["ENEMY_COLORS"]["SHROOM"]),
+		"GOBLIN": load_color(colors_obj["ENEMY_COLORS"]["GOBLIN"]),
+	}
 
 func load_colors_obj() -> bool:
 	var file

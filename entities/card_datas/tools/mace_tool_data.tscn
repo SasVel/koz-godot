@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://61gf4wvwm603"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_yy7ab"]
+
+[node name="MaceToolData" unique_id=988386249 instance=ExtResource("1_yy7ab")]
+durability = 4
+weaponType = 5
+isOffensive = true

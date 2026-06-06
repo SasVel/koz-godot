@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://fw7ogr0tlcqd"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_1h116"]
+
+[node name="SwordToolData" unique_id=988386249 instance=ExtResource("1_1h116")]
+durability = 4
+weaponType = 1
+isOffensive = true

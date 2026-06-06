@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="23_1u8w0"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="24_0odxb"]
 [ext_resource type="Script" uid="uid://baraqeaue84k4" path="res://card_activate_field.gd" id="24_xuqvo"]
+[ext_resource type="PackedScene" uid="uid://denor2og15qye" path="res://Decorations/fire_rect.tscn" id="25_qsp4k"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xuqvo"]
 streams_count = 9
@@ -339,6 +340,16 @@ offset_right = 1129.0
 offset_bottom = 439.0
 mouse_filter = 1
 script = ExtResource("24_xuqvo")
+
+[node name="Decorations" type="Node" parent="." unique_id=1916253175]
+
+[node name="FireRect" parent="Decorations" unique_id=1524273013 instance=ExtResource("25_qsp4k")]
+
+[node name="FireRect2" parent="Decorations" unique_id=60019729 instance=ExtResource("25_qsp4k")]
+offset_left = 875.99994
+offset_top = 141.0
+offset_right = 1003.99994
+offset_bottom = 269.0
 
 [node name="Enemies" type="Node" parent="." unique_id=1692258728]
 

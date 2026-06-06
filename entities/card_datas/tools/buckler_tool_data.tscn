@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cyyr45y71nbm1"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_yj6nw"]
+
+[node name="BucklerToolData" unique_id=988386249 instance=ExtResource("1_yj6nw")]
+durability = 4
+type = 3
+shieldType = 1
+isOffensive = true

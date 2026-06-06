@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bsnk7ydwa70l7"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_s68ut"]
+
+[node name="DaggerToolData" unique_id=988386249 instance=ExtResource("1_s68ut")]
+durability = 4
+weaponType = 4
+isOffensive = true

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b3xrt8nigaxgt"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_c2v4a"]
+
+[node name="BastardSwordToolData" unique_id=988386249 instance=ExtResource("1_c2v4a")]
+durability = 4
+weaponType = 3
+isOffensive = true
