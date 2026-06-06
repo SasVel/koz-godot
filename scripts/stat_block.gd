@@ -8,4 +8,4 @@ class_name StatBlock
 func _init() -> void:
 	# Block is always capped to current Health.
 	Health.stat_changed.connect(\
-	func(old, new): Block.maxValue = new)
+	func(_old, new): Block.maxValue = new)

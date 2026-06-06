@@ -57,6 +57,9 @@ offset_bottom = 460.0
 script = ExtResource("5_x8e4v")
 metadata/_custom_type_script = "uid://cskwlki1gwqm6"
 
+[node name="CardDatas" type="Node" parent="." unique_id=737281344]
+unique_name_in_owner = true
+
 [connection signal="data_dropped" from="DataDropper" to="." method="_on_data_dropper_data_dropped"]
 
 [editable path="EnemyBar"]

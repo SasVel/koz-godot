@@ -349,6 +349,9 @@ position = Vector2(549, 358)
 script = ExtResource("21_getpj")
 defaultStats = SubResource("Resource_ok6jj")
 
+[node name="CardDatas" type="Node" parent="Player" unique_id=1975752218]
+unique_name_in_owner = true
+
 [connection signal="finished" from="MusicsPlayer" to="MusicsPlayer" method="_on_finished"]
 [connection signal="sort_children" from="UI/MainContainer/ToolsList" to="UI/MainContainer/ToolsList" method="_on_sort_children"]
 [connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_entered"]

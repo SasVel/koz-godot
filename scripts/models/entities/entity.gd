@@ -17,9 +17,13 @@ signal status_effects_changed(status_effects)
 func _ready() -> void:
 	stats = defaultStats.duplicate()
 	Game.on_start_turn.connect(start_turn)
+	hand_changed.connect(\
+		func(x):
+			if x.size() <= 0:
+				draw_hand())
 
 func start_turn():
-	pass
+	stats.Tempo.reset()
 
 #region Hand
 func add_action_hand(action : Action):
@@ -29,7 +33,6 @@ func add_action_hand(action : Action):
 func add_actions_hand(actions : Array):
 	for action in actions:
 		self.cards_hand.append(action)
-		action.config_source(self)
 	hand_changed.emit(cards_hand)
 
 func get_rand_actions_deck(num):
@@ -60,14 +63,25 @@ func pop_next_actions_deck(num):
 		cards.append(drawn_card)    
 	return cards
 
-func action_activated(action : Action):
-	self.cards_hand.erase(action)
-	self.cards_deck.append(action)
+func action_activated(actionData : CardData):
+	self.cards_hand.erase(actionData)
+	self.cards_deck.append(actionData)
+
+	self.hand_changed.emit(cards_hand)
 
 func clear_hand(isNotify = true):
 	self.cards_hand.clear()
 	if isNotify: hand_changed.emit(cards_hand)
 
+#endregion
+
+#region Deck
+func add_actions_deck(actions : Array):
+	for action in actions:
+		action.activated.connect(func(): action_activated(action))
+		self.cards_deck.append(action)
+		action.config_source(self)
+		%CardDatas.add_child(action)
 #endregion
 
 #region Status Eff

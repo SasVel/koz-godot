@@ -4,6 +4,7 @@
 
 [node name="CardData" type="Node" unique_id=988386249]
 script = ExtResource("1_rdty5")
+isOffensive = null
 
 [node name="Components" type="Node" parent="." unique_id=571709105]
 unique_name_in_owner = true

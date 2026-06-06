@@ -19,6 +19,7 @@ var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 func config(data_ : CardData):
 	data = data_
 	data.changed_state.connect(func(x): isOn = x)
+	isOn = data.isOn
 
 	var image : Texture2D
 	var title_text : String

@@ -6,6 +6,7 @@
 [node name="LangortActionData" unique_id=988386249 instance=ExtResource("1_3u77g")]
 type = 1
 actionType = 1
+isOffensive = true
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1520281543]
 script = ExtResource("2_fjmsq")
