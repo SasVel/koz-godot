@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_tap8e"]
 
 [node name="EndThemRightlyActionData" unique_id=988386249 instance=ExtResource("1_tap8e")]
-type = 1
 actionType = 4
+isOffensive = true

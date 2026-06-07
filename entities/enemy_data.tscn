@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://drfb0uihop40k"]
+
+[ext_resource type="Script" uid="uid://d10684akar3ed" path="res://scripts/models/data/enemy_data.gd" id="1_8uo78"]
+[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_qd7cm"]
+
+[sub_resource type="Resource" id="Resource_2w0nu"]
+script = ExtResource("2_qd7cm")
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
+
+[node name="EnemyData" type="Node" unique_id=2139519148]
+script = ExtResource("1_8uo78")
+idle_anim_settings = SubResource("Resource_2w0nu")

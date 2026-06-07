@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwqpiwxtaif83"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_c62al"]
+[ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_3l8ma"]
+
+[node name="SlashActionData" unique_id=988386249 instance=ExtResource("1_c62al")]
+actionType = 8
+isOffensive = true
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1122987308]
+script = ExtResource("2_3l8ma")
+metadata/_custom_type_script = "uid://rio4hms2vn51"

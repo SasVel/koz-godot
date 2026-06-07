@@ -1,8 +1,11 @@
-extends HBoxContainer
+extends Control 
+
+@export var is_colored_outline : bool = true
 
 func config(color : Color, start_val : int, sig : Signal):
 	%IconRect.modulate = color
-	%NumLabel.label_settings.font_color = color
+	if is_colored_outline:
+		%NumLabel.label_settings.outline_color = color
 	sig.connect(func(_x, y): update(y))
 	update(start_val)
 

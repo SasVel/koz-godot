@@ -1,35 +1,11 @@
 [gd_scene format=3 uid="uid://c8fv4r2jxpgw5"]
 
 [ext_resource type="Script" uid="uid://ho1n603bf0vu" path="res://scripts/models/entities/enemy.gd" id="2_pqhw6"]
-[ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="3_uvc0s"]
 [ext_resource type="Texture2D" uid="uid://dy64vrxsnixx4" path="res://res/enemies.png" id="4_uvc0s"]
-[ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="4_x8e4v"]
 [ext_resource type="Script" uid="uid://2jwj62dqog8p" path="res://entities/idle_animator.gd" id="5_jq0pf"]
 [ext_resource type="PackedScene" uid="uid://cpgn2tegjq7md" path="res://entities/EntityBar.tscn" id="5_rrp0o"]
 [ext_resource type="Script" uid="uid://cskwlki1gwqm6" path="res://addons/tnowe_extra_controls/elements/data_dropper.gd" id="5_x8e4v"]
-
-[sub_resource type="Resource" id="Resource_rrp0o"]
-script = ExtResource("3_uvc0s")
-value = 0.0
-metadata/_custom_type_script = "uid://yuler4bts5rw"
-
-[sub_resource type="Resource" id="Resource_jq0pf"]
-script = ExtResource("3_uvc0s")
-value = 100.0
-metadata/_custom_type_script = "uid://yuler4bts5rw"
-
-[sub_resource type="Resource" id="Resource_68dbu"]
-script = ExtResource("3_uvc0s")
-value = 2.0
-maxValue = 2.0
-metadata/_custom_type_script = "uid://yuler4bts5rw"
-
-[sub_resource type="Resource" id="Resource_f71c5"]
-script = ExtResource("4_x8e4v")
-Health = SubResource("Resource_jq0pf")
-Block = SubResource("Resource_rrp0o")
-Tempo = SubResource("Resource_68dbu")
-metadata/_custom_type_script = "uid://mi75jnrupyfs"
+[ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="7_68dbu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x8e4v"]
 atlas = ExtResource("4_uvc0s")
@@ -38,37 +14,58 @@ region = Rect2(0, 0, 512, 512)
 [node name="Enemy" type="Node2D" unique_id=2060598746]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_pqhw6")
-defaultStats = SubResource("Resource_f71c5")
 
 [node name="EnemySprite" type="Sprite2D" parent="." unique_id=1600066704]
 unique_name_in_owner = true
-position = Vector2(0, -46.66667)
-scale = Vector2(2, 2)
+position = Vector2(0, -136.65822)
+scale = Vector2(2.000064, 2.2999718)
+skew = 0.087250054
 texture = SubResource("AtlasTexture_x8e4v")
 
 [node name="IdleAnimator" type="Node" parent="EnemySprite" unique_id=300381570 node_paths=PackedStringArray("target")]
+unique_name_in_owner = true
 script = ExtResource("5_jq0pf")
 target = NodePath("..")
-scale_speed = 3
-scale_y = 0.3
-scale_x = 0.4
+settings = null
 
-[node name="EnemyBar" parent="." unique_id=1148582265 instance=ExtResource("5_rrp0o")]
+[node name="CardDatas" type="Node" parent="." unique_id=737281344]
 unique_name_in_owner = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=486153604]
+offset_left = -390.0
+offset_top = -843.3334
+offset_right = 41.666687
+offset_bottom = -658.3334
+scale = Vector2(2, 2)
+
+[node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=2114026225]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "BlaBlaBla"
+label_settings = ExtResource("7_68dbu")
+
+[node name="EnemyBar" parent="VBoxContainer" unique_id=1148582265 instance=ExtResource("5_rrp0o")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsDisplay" type="HBoxContainer" parent="VBoxContainer" unique_id=1405329593]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="DataDropper" type="Control" parent="." unique_id=910297773]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -486.66666
-offset_top = -650.0
+offset_top = -650.00006
 offset_right = 499.99997
-offset_bottom = 460.0
+offset_bottom = 459.99994
 script = ExtResource("5_x8e4v")
 metadata/_custom_type_script = "uid://cskwlki1gwqm6"
 
-[node name="CardDatas" type="Node" parent="." unique_id=737281344]
-unique_name_in_owner = true
-
 [connection signal="data_dropped" from="DataDropper" to="." method="_on_data_dropper_data_dropped"]
 
-[editable path="EnemyBar"]
+[editable path="VBoxContainer/EnemyBar"]

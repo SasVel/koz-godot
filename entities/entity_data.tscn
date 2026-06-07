@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ch1h6453j48le"]
+
+[ext_resource type="Script" uid="uid://qcovkwcnbhwm" path="res://scripts/models/data/entity_data.gd" id="1_e0xeo"]
+[ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_0esho"]
+[ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_id0xo"]
+
+[sub_resource type="Resource" id="Resource_hxe8q"]
+script = ExtResource("2_0esho")
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_ni21u"]
+script = ExtResource("2_0esho")
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_sgxi7"]
+script = ExtResource("2_0esho")
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_8tsk4"]
+script = ExtResource("3_id0xo")
+Health = SubResource("Resource_ni21u")
+Block = SubResource("Resource_hxe8q")
+Tempo = SubResource("Resource_sgxi7")
+metadata/_custom_type_script = "uid://mi75jnrupyfs"
+
+[node name="EntityData" type="Node" unique_id=780192406]
+script = ExtResource("1_e0xeo")
+default_stats = SubResource("Resource_8tsk4")

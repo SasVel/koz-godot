@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bipklnhviyjy6"]
+
+[ext_resource type="PackedScene" uid="uid://ch1h6453j48le" path="res://entities/entity_data.tscn" id="1_jnk3q"]
+[ext_resource type="Script" uid="uid://b5cqu0t0lo1sb" path="res://entities/player_classes/class_data.gd" id="2_lvnvm"]
+
+[node name="PlayerClassData" unique_id=780192406 instance=ExtResource("1_jnk3q")]
+script = ExtResource("2_lvnvm")
+player_class = 0
+card_hand_size = 4

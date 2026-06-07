@@ -27,19 +27,20 @@ func config(data_ : CardData):
 		Const.CardTypes.ACTION:
 			title_text = Const.Actions.keys()[data.actionType]
 			image = ObjManager.get_action_sprite(data.actionType)
-			%IconRect.modulate = Const.ACTION_COLOR
+			%CardIconRect.modulate = Const.ACTION_COLOR
 		Const.CardTypes.WEAPON:
 			title_text = Const.Weapons.keys()[data.weaponType]
 			image = ObjManager.get_weapon_sprite(data.weaponType)
-			%IconRect.modulate = Const.TOOL_COLOR
+			%CardIconRect.modulate = Const.TOOL_COLOR
 		Const.CardTypes.SHIELD:
 			title_text = Const.Shields.keys()[data.shieldType]
 			image = ObjManager.get_shield_sprite(data.shieldType)
-			%IconRect.modulate = Const.TOOL_COLOR
+			%CardIconRect.modulate = Const.TOOL_COLOR
 
 	%TitleLabel.text = UIHelper.pascal_to_readable_text(title_text)
 	%DescLabel.text = data.generate_desc()
-	%IconRect.texture = image 
+	%CardIconRect.texture = image 
+	%TempoDisplay.config(Const.ACTION_COLOR, data.tempoCost, data.tempo_changed)
 	return self
 
 func set_defaults():

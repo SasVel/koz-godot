@@ -25,6 +25,11 @@ enum Phases {
 
 @onready var player : Player = get_tree().get_root().get_node("Main/Player")
 @onready var enemiesFolder = get_tree().get_root().get_node("Main/Enemies")
+@onready var enemyPositions = [
+	enemiesFolder.get_child(0),
+	enemiesFolder.get_child(1),
+	enemiesFolder.get_child(2),
+]
 
 signal on_start_turn(val)
 signal on_end_turn(val)
@@ -39,13 +44,14 @@ func _input(event: InputEvent) -> void:
 		end_turn()
 
 func start_game():
-	turn_counter = 1
 	curr_phase = Phases.ATTACK
 	set_attack_phase()
+	set_room()
+	turn_counter = 1
 
 func end_turn():
-	turn_counter += 1
 	swap_phase()
+	turn_counter += 1
 
 func swap_phase():
 	curr_phase = Phases.ATTACK if curr_phase == Phases.DEFEND else Phases.DEFEND
@@ -62,3 +68,19 @@ func set_defend_phase():
 
 func get_enemies() -> Array:
 	return enemiesFolder.get_children()
+
+func set_room(type : Const.RoomTypes = Const.RoomTypes.Random):
+	clear_enemies()
+	add_enemy(ObjManager.get_rand_enemy_obj())
+
+func add_enemy(enemy_obj : Enemy):
+	for pos in enemyPositions:
+		if pos.get_children().size() > 0:
+			continue
+		pos.add_child(enemy_obj)
+		break
+
+func clear_enemies():
+	for pos in enemyPositions:
+		if pos.get_child_count() <= 0: continue
+		pos.get_child(0).queue_free()

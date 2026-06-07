@@ -2,13 +2,16 @@
 extends Node
 class_name CardData
 
-@export var type : Const.CardTypes = Const.CardTypes.GENERIC
+@export var type : Const.CardTypes = Const.CardTypes.ACTION
 
 @export var actionType : Const.Actions 
 @export var weaponType : Const.Weapons
 @export var shieldType : Const.Shields
 
-@export var tempoCost : int = 1
+@export var tempoCost : int = 1 :
+	set(val):
+		tempoCost = val
+		tempo_changed.emit(val)
 @export var isOffensive : bool = true
 @onready var source : Entity
 
@@ -21,6 +24,7 @@ class_name CardData
 signal changed_state(val)
 signal activated
 signal deactivated
+signal tempo_changed(val)
 
 func config_source(source_ : Entity):
 	source = source_

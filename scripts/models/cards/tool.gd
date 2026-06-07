@@ -1,8 +1,9 @@
 extends CardObj
 class_name Tool
 
-func _ready() -> void:
-	var tool_data = data as ToolData
+func config(data_ : CardData):
+	super(data_)
+	var tool_data = data_ as ToolData
 	tool_data.durability_changed.connect(update_durability)
 	update_durability(tool_data.durability)
 	

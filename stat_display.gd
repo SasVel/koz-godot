@@ -1,11 +1,13 @@
-extends HBoxContainer
+extends Control
 
 @export var isMaxVal : bool = false
+@export var is_colored_outline : bool = true
 var display_stat : Stat
 
 func config(color : Color, stat : Stat):
 	%IconRect.modulate = color
-	%NumLabel.label_settings.font_color = color
+	if is_colored_outline:
+		%NumLabel.label_settings.outline_color = color
 	display_stat = stat
 
 	stat.stat_changed.connect(func(_x, _y): update())

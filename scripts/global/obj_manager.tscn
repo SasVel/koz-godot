@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bijakpffymp0u" path="res://entities/card_datas/actions/panic_action_data.tscn" id="8_ageor"]
 [ext_resource type="PackedScene" uid="uid://86t2knvnsq41" path="res://entities/card_datas/actions/albert_action_data.tscn" id="9_knlgn"]
 [ext_resource type="PackedScene" uid="uid://bmml33o08d1bh" path="res://entities/card_datas/tools/halberd_tool_data.tscn" id="10_ol8vm"]
+[ext_resource type="PackedScene" uid="uid://bwqpiwxtaif83" path="res://entities/card_datas/actions/slash_action_data.tscn" id="10_th0i0"]
+[ext_resource type="PackedScene" uid="uid://c7vwmfnhl3yd5" path="res://entities/card_datas/actions/defend_action_data.tscn" id="11_qn5vk"]
 [ext_resource type="PackedScene" uid="uid://fw7ogr0tlcqd" path="res://entities/card_datas/tools/sword_tool_data.tscn" id="11_wbjmf"]
 [ext_resource type="PackedScene" uid="uid://bc007jbb88ktv" path="res://entities/card_datas/tools/messar_tool_data.tscn" id="12_lx7ma"]
 [ext_resource type="PackedScene" uid="uid://b3xrt8nigaxgt" path="res://entities/card_datas/tools/bastard_sword_tool_data.tscn" id="13_b02df"]
@@ -19,10 +21,21 @@
 [ext_resource type="PackedScene" uid="uid://61gf4wvwm603" path="res://entities/card_datas/tools/mace_tool_data.tscn" id="15_yq7du"]
 [ext_resource type="PackedScene" uid="uid://d4ltpwnp8hj7f" path="res://entities/card_datas/tools/shield_tool_data.tscn" id="16_j1slq"]
 [ext_resource type="PackedScene" uid="uid://cyyr45y71nbm1" path="res://entities/card_datas/tools/buckler_tool_data.tscn" id="17_4nbcu"]
+[ext_resource type="PackedScene" uid="uid://cwbguk2wlb370" path="res://entities/enemies/data/slime_data.tscn" id="18_me7ne"]
+[ext_resource type="PackedScene" uid="uid://0i5qrtumagsc" path="res://entities/enemies/data/skelly_data.tscn" id="19_yq7du"]
+[ext_resource type="PackedScene" uid="uid://br82hugstqwle" path="res://entities/enemies/data/shroom_data.tscn" id="20_j1slq"]
+[ext_resource type="PackedScene" uid="uid://cyj0008dxd0ok" path="res://entities/enemies/data/goblin_data.tscn" id="21_4nbcu"]
+[ext_resource type="PackedScene" uid="uid://8lbab1y7lfpv" path="res://entities/player_classes/knight_class_data.tscn" id="22_4nbcu"]
+[ext_resource type="PackedScene" uid="uid://c8fv4r2jxpgw5" path="res://entities/enemy.tscn" id="23_j1slq"]
+[ext_resource type="Texture2D" uid="uid://dht1ilt7obrvh" path="res://res/sprites_512.png" id="24_yq7du"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_et42b"]
 atlas = ExtResource("5_easby")
-region = Rect2(0, 256, 256, 256)
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1slq"]
+atlas = ExtResource("24_yq7du")
+region = Rect2(1024, 0, 512, 512)
 
 [node name="ObjManager" type="Node" unique_id=1772400233]
 script = ExtResource("1_vgp5f")
@@ -34,7 +47,9 @@ actions_dict = Dictionary[int, PackedScene]({
 4: ExtResource("6_2wimh"),
 5: ExtResource("7_bmoqc"),
 6: ExtResource("8_ageor"),
-7: ExtResource("9_knlgn")
+7: ExtResource("9_knlgn"),
+8: ExtResource("10_th0i0"),
+9: ExtResource("11_qn5vk")
 })
 weapons_dict = Dictionary[int, PackedScene]({
 0: ExtResource("10_ol8vm"),
@@ -48,5 +63,16 @@ shields_dict = Dictionary[int, PackedScene]({
 0: ExtResource("16_j1slq"),
 1: ExtResource("17_4nbcu")
 })
+enemies_dict = Dictionary[int, PackedScene]({
+0: ExtResource("18_me7ne"),
+1: ExtResource("19_yq7du"),
+2: ExtResource("20_j1slq"),
+3: ExtResource("21_4nbcu")
+})
+player_classes_dict = Dictionary[int, PackedScene]({
+0: ExtResource("22_4nbcu")
+})
 card_obj = ExtResource("4_gyyai")
+enemy_obj = ExtResource("23_j1slq")
 sprites_256_atlas = SubResource("AtlasTexture_et42b")
+sprites_512_atlas = SubResource("AtlasTexture_j1slq")

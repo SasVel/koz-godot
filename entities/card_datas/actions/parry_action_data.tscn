@@ -3,6 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_ian02"]
 
 [node name="ParryActionData" unique_id=988386249 instance=ExtResource("1_ian02")]
-type = 1
 actionType = 5
 isOffensive = false

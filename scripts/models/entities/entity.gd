@@ -1,11 +1,8 @@
 extends Node
 class_name Entity
 
-@export var defaultStats : StatBlock
-var stats : StatBlock
-
-@export var card_hand_size : int = 4
-@export var card_deck_size : int = 10
+@onready var stats : StatBlock
+@onready var data : EntityData
 
 var cards_hand : Array[CardData]
 var cards_deck : Array[CardData]
@@ -14,8 +11,14 @@ var status_effects : Array[StatusEffData]
 signal hand_changed(cards_hand)
 signal status_effects_changed(status_effects)
 
+func config(data_ : EntityData):
+	data = data_
+	data.config()
+	stats = data.default_stats.duplicate()
+	add_actions_deck(data.card_deck)
+	draw_hand()
+
 func _ready() -> void:
-	stats = defaultStats.duplicate()
 	Game.on_start_turn.connect(start_turn)
 	hand_changed.connect(\
 		func(x):
@@ -36,6 +39,7 @@ func add_actions_hand(actions : Array):
 	hand_changed.emit(cards_hand)
 
 func get_rand_actions_deck(num):
+	if self.cards_deck.size() <= 0: return []
 	var cards = []
 	for i in range(num):
 		var drawn_card = self.cards_deck.pick_random()
@@ -44,7 +48,7 @@ func get_rand_actions_deck(num):
 	return cards
 
 func draw_hand():
-	add_actions_hand(get_rand_actions_deck(card_hand_size))
+	add_actions_hand(get_rand_actions_deck(data.card_hand_size))
 
 func replace_action_hand(action_to_replace, action_to_be_replaced):
 	var cardIdx = self.cards_hand.find(action_to_be_replaced)

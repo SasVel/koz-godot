@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://br82hugstqwle"]
+
+[ext_resource type="PackedScene" uid="uid://drfb0uihop40k" path="res://entities/enemy_data.tscn" id="1_gdl03"]
+[ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_5y6gt"]
+[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_fbj4w"]
+[ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_fbj4w"]
+
+[sub_resource type="Resource" id="Resource_bgmlc"]
+script = ExtResource("2_fbj4w")
+scale_speed = 4
+scale_y = 0.3
+scale_x = 0.3
+has_skew = false
+skew_deg = 3
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
+
+[sub_resource type="Resource" id="Resource_tt72w"]
+script = ExtResource("2_5y6gt")
+value = 0.0
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_cpgdv"]
+script = ExtResource("2_5y6gt")
+value = 100.0
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_j8vnb"]
+script = ExtResource("2_5y6gt")
+value = 2.0
+maxValue = 2.0
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_tysic"]
+script = ExtResource("3_fbj4w")
+Health = SubResource("Resource_cpgdv")
+Block = SubResource("Resource_tt72w")
+Tempo = SubResource("Resource_j8vnb")
+metadata/_custom_type_script = "uid://mi75jnrupyfs"
+
+[node name="ShroomData" unique_id=2139519148 instance=ExtResource("1_gdl03")]
+type = 2
+has_alt_sprite = true
+idle_anim_settings = SubResource("Resource_bgmlc")
+entity_name = "Shroom"
+default_stats = SubResource("Resource_tysic")
+card_deck_types = Array[int]([8, 9, 8])

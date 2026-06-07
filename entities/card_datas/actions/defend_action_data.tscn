@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c7vwmfnhl3yd5"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_v5xa4"]
+[ext_resource type="Script" uid="uid://cr0gxa7eamckf" path="res://scripts/models/effect_components/block_comp.gd" id="2_aakgi"]
+
+[node name="DefendActionData" unique_id=988386249 instance=ExtResource("1_v5xa4")]
+actionType = 9
+isOffensive = false
+
+[node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1685757364]
+script = ExtResource("2_aakgi")
+isOffensive = false
+metadata/_custom_type_script = "uid://cr0gxa7eamckf"

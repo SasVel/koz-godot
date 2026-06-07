@@ -6,15 +6,9 @@ var palette_name = "palette.json"
 
 ## Enums 
 enum CardTypes {
-	GENERIC,
 	ACTION,
 	WEAPON,
 	SHIELD,
-}
-
-enum Generic {
-	ATTACK,  
-	DEFEND,  
 }
 
 enum Actions {
@@ -26,6 +20,8 @@ enum Actions {
 	PARRY, 
 	PANIC, 
 	ALBERT, 
+	SLASH,  
+	DEFEND,  
 }
 
 enum Weapons {
@@ -59,6 +55,10 @@ enum Enemies {
 	GOBLIN, 
 }
 
+enum PlayerClasses {
+	KNIGHT
+}
+
 enum UnitTrackingVars {
 	DAMAGE_DEALT, 
 	DAMAGE_TAKEN, 
@@ -71,6 +71,12 @@ enum StatTypes {
 	Block,
 	Tempo,
 	Damage,
+}
+
+enum RoomTypes {
+	Random = -1,
+	Battle,
+	Rest
 }
 
 var colors_obj

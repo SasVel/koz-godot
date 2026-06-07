@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_fjmsq"]
 
 [node name="LangortActionData" unique_id=988386249 instance=ExtResource("1_3u77g")]
-type = 1
 actionType = 1
 isOffensive = true
 

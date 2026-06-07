@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cyj0008dxd0ok"]
+
+[ext_resource type="PackedScene" uid="uid://drfb0uihop40k" path="res://entities/enemy_data.tscn" id="1_7e6el"]
+[ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_mrheh"]
+[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_qbfld"]
+[ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_qbfld"]
+
+[sub_resource type="Resource" id="Resource_t8hnu"]
+script = ExtResource("2_qbfld")
+scale_speed = 4
+scale_y = 0.2
+has_scale_x = false
+has_skew = false
+skew_deg = 3
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
+
+[sub_resource type="Resource" id="Resource_mrheh"]
+script = ExtResource("2_mrheh")
+value = 0.0
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_qbfld"]
+script = ExtResource("2_mrheh")
+value = 100.0
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_voa70"]
+script = ExtResource("2_mrheh")
+value = 2.0
+maxValue = 2.0
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_rv26j"]
+script = ExtResource("3_qbfld")
+Health = SubResource("Resource_qbfld")
+Block = SubResource("Resource_mrheh")
+Tempo = SubResource("Resource_voa70")
+metadata/_custom_type_script = "uid://mi75jnrupyfs"
+
+[node name="GoblinData" unique_id=2139519148 instance=ExtResource("1_7e6el")]
+type = 3
+idle_anim_settings = SubResource("Resource_t8hnu")
+entity_name = "Gnoblin"
+default_stats = SubResource("Resource_rv26j")
+card_deck_types = Array[int]([8, 9, 8])
