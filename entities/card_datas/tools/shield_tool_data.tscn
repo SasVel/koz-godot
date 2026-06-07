@@ -4,5 +4,4 @@
 
 [node name="ShieldToolData" unique_id=988386249 instance=ExtResource("1_8c5yv")]
 durability = 4
-type = 3
 isOffensive = true

@@ -4,5 +4,6 @@
 
 [node name="SwordToolData" unique_id=988386249 instance=ExtResource("1_1h116")]
 durability = 4
+type = 1
 weaponType = 1
 isOffensive = true

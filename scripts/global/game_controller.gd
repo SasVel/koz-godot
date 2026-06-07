@@ -33,7 +33,7 @@ enum Phases {
 
 signal on_start_turn(val)
 signal on_end_turn(val)
-signal on_changed_phase(val)
+signal on_changed_phase(val : Phases)
 
 func _ready() -> void:
 	await player.ready

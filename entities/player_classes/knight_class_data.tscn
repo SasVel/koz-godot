@@ -28,9 +28,9 @@ Tempo = SubResource("Resource_ce1xy")
 metadata/_custom_type_script = "uid://mi75jnrupyfs"
 
 [node name="KnightClassData" unique_id=780192406 instance=ExtResource("1_f2fh6")]
-tool_types = Array[int]([1, 2])
+tool_types = Array[int]([2, 1])
 starting_weapons = Array[int]([1, 5])
-starting_shields = Array[int]([0])
+starting_shields = Array[int]([0, 1])
 entity_name = "the Knight"
 default_stats = SubResource("Resource_oqual")
 card_deck_types = Array[int]([8, 8, 8, 9, 9, 9, 1, 3, 5, 4])

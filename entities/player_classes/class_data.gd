@@ -16,9 +16,7 @@ func config():
 		match type:
 			Const.CardTypes.WEAPON:
 				starting_tools.append(\
-				ObjManager.get_card_obj(\
-					ObjManager.weapons_dict[starting_weapons.pick_random()].instantiate()))
+					ObjManager.weapons_dict[starting_weapons.pick_random()].instantiate())
 			Const.CardTypes.SHIELD:
 				starting_tools.append(\
-				ObjManager.get_card_obj(\
-					ObjManager.shields_dict[starting_shields.pick_random()].instantiate()))
+					ObjManager.shields_dict[starting_shields.pick_random()].instantiate())

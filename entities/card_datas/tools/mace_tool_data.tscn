@@ -4,5 +4,6 @@
 
 [node name="MaceToolData" unique_id=988386249 instance=ExtResource("1_yy7ab")]
 durability = 4
+type = 1
 weaponType = 5
 isOffensive = true

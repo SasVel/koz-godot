@@ -4,6 +4,5 @@
 
 [node name="BucklerToolData" unique_id=988386249 instance=ExtResource("1_yj6nw")]
 durability = 4
-type = 3
 shieldType = 1
-isOffensive = true
+isOffensive = false

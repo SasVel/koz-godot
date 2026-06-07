@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://30k2gbj6kiml" path="res://scripts/models/entities/player.gd" id="21_getpj"]
 [ext_resource type="Script" uid="uid://baraqeaue84k4" path="res://card_activate_field.gd" id="24_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://denor2og15qye" path="res://Decorations/fire_rect.tscn" id="25_qsp4k"]
+[ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="25_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="26_qsp4k"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xuqvo"]
 streams_count = 9
@@ -126,6 +128,24 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq58d"]
+atlas = ExtResource("25_xuqvo")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="Resource" id="Resource_seu75"]
+script = ExtResource("9_efxa6")
+color = Color(1, 1, 1, 0.50980395)
+texture = SubResource("AtlasTexture_kq58d")
+metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htxhm"]
+atlas = ExtResource("26_qsp4k")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
+atlas = ExtResource("26_qsp4k")
+region = Rect2(0, 512, 256, 256)
+
 [node name="Main" type="Node2D" unique_id=895458731]
 
 [node name="MusicsPlayer" type="AudioStreamPlayer" parent="." unique_id=1462063389]
@@ -209,18 +229,18 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1781543553]
+[node name="TopRow" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1781543553]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerNameLabel" type="Label" parent="UI/MainContainer/VBoxContainer/HBoxContainer" unique_id=974739906]
+[node name="PlayerNameLabel" type="Label" parent="UI/MainContainer/VBoxContainer/TopRow" unique_id=974739906]
 layout_mode = 2
 text = "Sasser the Knight"
 label_settings = ExtResource("15_1u8w0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TempoDisplay" parent="UI/MainContainer/VBoxContainer/HBoxContainer" unique_id=641794690 instance=ExtResource("16_lswn8")]
+[node name="TempoDisplay" parent="UI/MainContainer/VBoxContainer/TopRow" unique_id=641794690 instance=ExtResource("16_lswn8")]
 unique_name_in_owner = true
 layout_mode = 2
 isMaxVal = true
@@ -230,6 +250,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -315,6 +336,37 @@ offset_bottom = 439.0
 mouse_filter = 1
 script = ExtResource("24_xuqvo")
 
+[node name="PhasesContainer" type="Container" parent="UI/MainContainer" unique_id=651839356]
+unique_name_in_owner = true
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 106.0
+offset_top = 268.0
+offset_right = 226.0
+offset_bottom = 388.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("8_4c57u")
+progress_offset = 0.63
+border_between_width = 0.0
+radial_theme = SubResource("Resource_seu75")
+metadata/_custom_type_script = "uid://ctvalpjglsupf"
+
+[node name="AttackPhaseMarker" type="TextureRect" parent="UI/MainContainer/PhasesContainer" unique_id=689683945]
+unique_name_in_owner = true
+y_sort_enabled = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = SubResource("AtlasTexture_htxhm")
+expand_mode = 3
+
+[node name="DefendPhaseMarker" type="TextureRect" parent="UI/MainContainer/PhasesContainer" unique_id=613294922]
+unique_name_in_owner = true
+y_sort_enabled = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = SubResource("AtlasTexture_jq2sk")
+expand_mode = 3
+
 [node name="Decorations" type="Node" parent="." unique_id=1916253175]
 
 [node name="FireRect" parent="Decorations" unique_id=1524273013 instance=ExtResource("25_qsp4k")]
@@ -340,6 +392,9 @@ position = Vector2(250, 376)
 script = ExtResource("21_getpj")
 
 [node name="CardDatas" type="Node" parent="Player" unique_id=1975752218]
+unique_name_in_owner = true
+
+[node name="ToolDatas" type="Node" parent="Player" unique_id=623861092]
 unique_name_in_owner = true
 
 [connection signal="finished" from="MusicsPlayer" to="MusicsPlayer" method="_on_finished"]

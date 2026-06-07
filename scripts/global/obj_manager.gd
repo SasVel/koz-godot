@@ -63,11 +63,6 @@ func get_enemy_obj(data : EnemyData) -> Enemy:
 func get_rand_enemy_obj() -> Enemy:
 	return get_enemy_obj(get_rand_enemy_data())
 
-func get_weapon_sprite(type : Const.Weapons) -> AtlasTexture:
-	var image = sprites_256_atlas.duplicate()
-	image.region = Rect2(256 * type, 256, 0, 256)
-	return image
-
 func get_action_sprite(type : Const.Actions) -> AtlasTexture:
 	var image = sprites_256_atlas.duplicate()
 	match type:
@@ -79,9 +74,14 @@ func get_action_sprite(type : Const.Actions) -> AtlasTexture:
 			image.region = Rect2(256 * type, 256, 256, 256)
 	return image
 
+func get_weapon_sprite(type : Const.Weapons) -> AtlasTexture:
+	var image = sprites_256_atlas.duplicate()
+	image.region = Rect2(256 * type, 0, 256, 256)
+	return image
+
 func get_shield_sprite(type : Const.Shields) -> AtlasTexture:
 	var image = sprites_256_atlas.duplicate()
-	image.region = Rect2(256 * type, 256, 512, 256)
+	image.region = Rect2(256 * type, 512, 256, 256)
 	return image
 
 func get_enemy_sprite(type : Const.Enemies, has_alt = false) -> AtlasTexture:

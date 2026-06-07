@@ -18,11 +18,13 @@ func _ready() -> void:
 #region Tools
 func add_tool(tool : Tool):
 	self.equipped_tools.append(tool)
+	%ToolDatas.add_child(tool)
 	tools_changed.emit(equipped_tools)
 	
 func add_tools(tools : Array):
 	for tool in tools:
 		self.equipped_tools.append(tool)
+		%ToolDatas.add_child(tool)
 	tools_changed.emit(equipped_tools)
 
 #endregion
