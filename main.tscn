@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://denor2og15qye" path="res://Decorations/fire_rect.tscn" id="25_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="25_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="26_qsp4k"]
+[ext_resource type="Script" uid="uid://dk75ppnjir5lr" path="res://UI/turn_alert.gd" id="27_qsp4k"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xuqvo"]
 streams_count = 9
@@ -50,25 +51,23 @@ shader_parameter/vignette_intensity = 0.2
 shader_parameter/vignette_opacity = 0.42400002014
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq58d"]
+atlas = ExtResource("25_xuqvo")
+region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6jrf"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
+[sub_resource type="Resource" id="Resource_seu75"]
+script = ExtResource("9_efxa6")
+color = Color(1, 1, 1, 0.50980395)
+texture = SubResource("AtlasTexture_kq58d")
+metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htxhm"]
+atlas = ExtResource("26_qsp4k")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
+atlas = ExtResource("26_qsp4k")
+region = Rect2(0, 512, 256, 256)
 
 [sub_resource type="Resource" id="Resource_w48qg"]
 script = ExtResource("9_efxa6")
@@ -128,23 +127,35 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kq58d"]
-atlas = ExtResource("25_xuqvo")
-region = Rect2(512, 0, 128, 128)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jq2sk"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
 
-[sub_resource type="Resource" id="Resource_seu75"]
-script = ExtResource("9_efxa6")
-color = Color(1, 1, 1, 0.50980395)
-texture = SubResource("AtlasTexture_kq58d")
-metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k2k6"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_htxhm"]
-atlas = ExtResource("26_qsp4k")
-region = Rect2(256, 0, 256, 256)
+[sub_resource type="Gradient" id="Gradient_qsp4k"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.14070351, 0.50753766, 0.8341709, 1)
+colors = PackedColorArray(0.6392157, 0.27058825, 0.18431373, 0, 0.6392157, 0.27058825, 0.18431373, 0.6431373, 0.6392157, 0.27058825, 0.18431373, 0.8117647, 0.6392157, 0.27058825, 0.18431373, 0.6431373, 0.6392157, 0.27058825, 0.18431373, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
-atlas = ExtResource("26_qsp4k")
-region = Rect2(0, 512, 256, 256)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kq58d"]
+gradient = SubResource("Gradient_qsp4k")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
 
 [node name="Main" type="Node2D" unique_id=895458731]
 
@@ -249,27 +260,45 @@ isMaxVal = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
+[node name="PhasesContainer" type="Container" parent="UI/MainContainer" unique_id=651839356]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -168.0
-offset_right = 467.0
-offset_bottom = 132.0
-grow_vertical = 0
-theme_override_constants/separation = 15
-alignment = 1
-script = ExtResource("17_lswn8")
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 106.0
+offset_top = 268.0
+offset_right = 226.0
+offset_bottom = 388.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("8_4c57u")
+progress_offset = 0.63
+border_between_width = 0.0
+radial_theme = SubResource("Resource_seu75")
+metadata/_custom_type_script = "uid://ctvalpjglsupf"
 
-[node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_lswn8")
+[node name="AttackPhaseMarker" type="TextureRect" parent="UI/MainContainer/PhasesContainer" unique_id=689683945]
+unique_name_in_owner = true
+y_sort_enabled = true
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+texture = SubResource("AtlasTexture_htxhm")
+expand_mode = 3
 
-[node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_a6jrf")
+[node name="DefendPhaseMarker" type="TextureRect" parent="UI/MainContainer/PhasesContainer" unique_id=613294922]
+unique_name_in_owner = true
+y_sort_enabled = true
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+texture = SubResource("AtlasTexture_jq2sk")
+expand_mode = 3
+
+[node name="CardActivateField" type="Control" parent="UI/MainContainer" unique_id=1799099242]
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 109.0
+offset_right = 1129.0
+offset_bottom = 439.0
+mouse_filter = 1
+script = ExtResource("24_xuqvo")
 
 [node name="ActionsContainer" type="Container" parent="UI/MainContainer" unique_id=100635735]
 unique_name_in_owner = true
@@ -327,45 +356,65 @@ layout_mode = 2
 material = SubResource("ShaderMaterial_htxhm")
 layout_mode = 2
 
-[node name="CardActivateField" type="Control" parent="UI/MainContainer" unique_id=1799099242]
-anchors_preset = 0
-offset_left = 32.0
-offset_top = 109.0
-offset_right = 1129.0
-offset_bottom = 439.0
-mouse_filter = 1
-script = ExtResource("24_xuqvo")
-
-[node name="PhasesContainer" type="Container" parent="UI/MainContainer" unique_id=651839356]
+[node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
 unique_name_in_owner = true
-y_sort_enabled = true
-layout_mode = 0
-offset_left = 106.0
-offset_top = 268.0
-offset_right = 226.0
-offset_bottom = 388.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -168.0
+offset_right = 467.0
+offset_bottom = 132.0
+grow_vertical = 0
+theme_override_constants/separation = 15
+alignment = 1
+script = ExtResource("17_lswn8")
+
+[node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
+material = SubResource("ShaderMaterial_jq2sk")
+layout_mode = 2
+
+[node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
+material = SubResource("ShaderMaterial_4k2k6")
+layout_mode = 2
+
+[node name="TurnAlert" type="Control" parent="UI/MainContainer" unique_id=750216790]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("27_qsp4k")
+
+[node name="TurnRect" type="TextureRect" parent="UI/MainContainer/TurnAlert" unique_id=1732378699]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-script = ExtResource("8_4c57u")
-progress_offset = 0.63
-border_between_width = 0.0
-radial_theme = SubResource("Resource_seu75")
-metadata/_custom_type_script = "uid://ctvalpjglsupf"
+texture = SubResource("GradientTexture2D_kq58d")
 
-[node name="AttackPhaseMarker" type="TextureRect" parent="UI/MainContainer/PhasesContainer" unique_id=689683945]
+[node name="TurnLabel" type="Label" parent="UI/MainContainer/TurnAlert" unique_id=770090371]
 unique_name_in_owner = true
-y_sort_enabled = true
-custom_minimum_size = Vector2(120, 120)
-layout_mode = 2
-texture = SubResource("AtlasTexture_htxhm")
-expand_mode = 3
-
-[node name="DefendPhaseMarker" type="TextureRect" parent="UI/MainContainer/PhasesContainer" unique_id=613294922]
-unique_name_in_owner = true
-y_sort_enabled = true
-custom_minimum_size = Vector2(120, 120)
-layout_mode = 2
-texture = SubResource("AtlasTexture_jq2sk")
-expand_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Turn 10"
+label_settings = ExtResource("15_1u8w0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Decorations" type="Node" parent="." unique_id=1916253175]
 
@@ -388,8 +437,9 @@ position = Vector2(785, 376)
 [node name="EnemyPos_3" type="Node2D" parent="Enemies" unique_id=255602858]
 position = Vector2(250, 376)
 
-[node name="Player" type="Node" parent="." unique_id=2028437162]
+[node name="Player" type="Node" parent="." unique_id=2028437162 node_paths=PackedStringArray("player_bar")]
 script = ExtResource("21_getpj")
+player_bar = NodePath("../UI/MainContainer/VBoxContainer/PlayerBar")
 
 [node name="CardDatas" type="Node" parent="Player" unique_id=1975752218]
 unique_name_in_owner = true
@@ -398,11 +448,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [connection signal="finished" from="MusicsPlayer" to="MusicsPlayer" method="_on_finished"]
-[connection signal="sort_children" from="UI/MainContainer/ToolsList" to="UI/MainContainer/ToolsList" method="_on_sort_children"]
-[connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_exited"]
 [connection signal="sort_children" from="UI/MainContainer/ActionsContainer" to="UI/MainContainer/ActionsContainer" method="_on_sort_children"]
 [connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard2" to="UI/MainContainer/ActionsContainer/ActionCard2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard2" to="UI/MainContainer/ActionsContainer/ActionCard2" method="_on_mouse_exited"]
@@ -414,5 +459,10 @@ unique_name_in_owner = true
 [connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard5" to="UI/MainContainer/ActionsContainer/ActionCard5" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard6" to="UI/MainContainer/ActionsContainer/ActionCard6" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard6" to="UI/MainContainer/ActionsContainer/ActionCard6" method="_on_mouse_exited"]
+[connection signal="sort_children" from="UI/MainContainer/ToolsList" to="UI/MainContainer/ToolsList" method="_on_sort_children"]
+[connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_exited"]
 
 [editable path="UI/MainContainer/VBoxContainer/PlayerBar"]

@@ -9,3 +9,15 @@ func _init() -> void:
 	# Block is always capped to current Health.
 	Health.stat_changed.connect(\
 	func(_old, new): Block.maxValue = new)
+
+func take_damage(val : int):
+	if Block.value > 0:
+		if Block.value <= val:
+			val -= Block.value
+			Block.value = 0
+		else:
+			Block.value -= val
+			return
+	if val == 0: return
+
+	Health.value -= val

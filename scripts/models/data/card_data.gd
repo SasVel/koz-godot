@@ -3,6 +3,7 @@ extends Node
 class_name CardData
 
 @export var type : Const.CardTypes = Const.CardTypes.ACTION
+@export var isGeneric : bool = false
 
 @export var actionType : Const.Actions 
 @export var weaponType : Const.Weapons
@@ -25,6 +26,7 @@ signal changed_state(val)
 signal activated
 signal deactivated
 signal tempo_changed(val)
+signal generic_val_changed(val : int)
 
 func config_source(source_ : Entity):
 	source = source_
@@ -51,6 +53,13 @@ func deactivate():
 	for component in %Components.get_children():
 		component.deactivate()
 	deactivated.emit()
+
+func set_generic_value_modifier(val):
+	%Components.get_child(0).bonus_value = val
+	generic_val_changed.emit(val)
+
+func get_generic_value():
+	return %Components.get_child(0).get_full_value()
 
 func check_state():
 	isOn = can_activate()

@@ -8,6 +8,9 @@ extends Node
 
 @export var card_obj : PackedScene
 @export var enemy_obj : PackedScene
+@export var action_mini_obj : PackedScene
+
+@export var sprites_128_atlas : AtlasTexture
 @export var sprites_256_atlas : AtlasTexture
 @export var sprites_512_atlas : AtlasTexture
 
@@ -60,6 +63,9 @@ func get_card_obj(data : CardData) -> CardObj:
 func get_enemy_obj(data : EnemyData) -> Enemy:
 	return enemy_obj.instantiate().config(data)
 
+func get_action_mini_obj(data : CardData) -> ActionMiniDisplay:
+	return action_mini_obj.instantiate().config(data)
+
 func get_rand_enemy_obj() -> Enemy:
 	return get_enemy_obj(get_rand_enemy_data())
 
@@ -93,3 +99,27 @@ func get_enemy_sprite(type : Const.Enemies, has_alt = false) -> AtlasTexture:
 		512)
 
 	return image
+
+func get_action_mini_sprite(type : Const.Actions):
+	var image = sprites_128_atlas.duplicate()
+	var x_pos = 0
+	match type:
+		Const.Actions.SLASH:
+			x_pos = 0
+		Const.Actions.DEFEND:
+			x_pos = 128
+		_:
+			x_pos = 0
+	image.region = Rect2(x_pos, 0, 128, 128)
+	return image
+
+func get_action_color(type : Const.Actions):
+	var color : Color
+	match type:
+		Const.Actions.SLASH:
+			color = Const.ATTACK_COLOR
+		Const.Actions.DEFEND:
+			color = Const.DEFEND_COLOR
+		_:
+			color = Const.ACTION_COLOR
+	return color

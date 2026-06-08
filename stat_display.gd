@@ -15,6 +15,7 @@ func config(color : Color, stat : Stat):
 		stat.max_stat_changed.connect(func(_x, _y): update())
 
 	update()
+	return self
 
 func update():
 	%NumLabel.text = ""

@@ -2,6 +2,7 @@ extends Entity
 class_name Player
 
 @export var default_class : Const.PlayerClasses
+@export var player_bar : EntityBar
 var equipped_tools : Array[ToolData]
 
 signal tools_changed(tools)
@@ -14,6 +15,12 @@ func config(data_ : EntityData):
 func _ready() -> void:
 	super()
 	config(ObjManager.player_classes_dict[default_class].instantiate())
+	player_bar.config(stats.Health, stats.Block)
+	hand_changed.connect(\
+		func(x):
+			if x.size() <= 0:
+				draw_hand())
+	draw_hand()
 
 #region Tools
 func add_tool(tool : Tool):

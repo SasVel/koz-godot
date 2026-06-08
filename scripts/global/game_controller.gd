@@ -4,12 +4,7 @@ enum Phases {
 	ATTACK,
 	DEFEND
 }
-@onready var turn_counter : int = 1 : 
-	set(val):
-		on_start_turn.emit()
-		turn_counter = val
-		on_end_turn.emit()
-
+@onready var turn_counter : int = 1
 @onready var curr_phase = Phases.ATTACK :
 	set(val):
 		if curr_phase == val: return
@@ -31,8 +26,10 @@ enum Phases {
 	enemiesFolder.get_child(2),
 ]
 
-signal on_start_turn(val)
-signal on_end_turn(val)
+@onready var enemy_actions : Array[Callable]
+
+signal on_start_turn()
+signal on_end_turn()
 signal on_changed_phase(val : Phases)
 
 func _ready() -> void:
@@ -49,25 +46,50 @@ func start_game():
 	set_room()
 	turn_counter = 1
 
-func end_turn():
+func start_turn():
 	swap_phase()
 	turn_counter += 1
+	on_start_turn.emit()
+
+func end_turn():
+	await play_enemy_anim_stack()
+	on_end_turn.emit()
+	start_turn()
+
+func play_enemy_anim_stack():
+	await get_tree().create_timer(0.2).timeout
+	for action in enemy_actions:
+		await action.call()
 
 func swap_phase():
 	curr_phase = Phases.ATTACK if curr_phase == Phases.DEFEND else Phases.DEFEND
 
 func set_attack_phase():
-	player.stats.Block.value = 0
-	
-	player.stats.Tempo.maxValue += 1
-	player.stats.Tempo.value += 1
+	apply_attack_phase_modifiers(player)
+	for enemy in get_enemies():
+		apply_defend_phase_modifiers(enemy)
 
 func set_defend_phase():
-	player.stats.Tempo.maxValue -= 1
-	player.stats.Tempo.value -= 1
+	apply_defend_phase_modifiers(player)
+	for enemy in get_enemies():
+		apply_attack_phase_modifiers(enemy)
+
+func apply_attack_phase_modifiers(entity : Entity):
+	entity.stats.Block.value = 0
+	
+	entity.stats.Tempo.maxValue += 1
+	entity.stats.Tempo.value += 1
+
+func apply_defend_phase_modifiers(entity : Entity):
+	entity.stats.Tempo.maxValue -= 1
+	entity.stats.Tempo.value -= 1
 
 func get_enemies() -> Array:
-	return enemiesFolder.get_children()
+	var enemies : Array[Enemy]
+	for pos in enemyPositions:
+		if pos.get_child_count() <= 0: continue
+		enemies.append(pos.get_child(0))
+	return enemies
 
 func set_room(type : Const.RoomTypes = Const.RoomTypes.Random):
 	clear_enemies()

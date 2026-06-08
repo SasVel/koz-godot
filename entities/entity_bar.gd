@@ -1,4 +1,5 @@
 extends ProgressBar
+class_name EntityBar
 
 func config(healthStat : Stat, blockStat : Stat):
 	healthStat.max_stat_changed.connect(\

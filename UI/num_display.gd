@@ -8,6 +8,7 @@ func config(color : Color, start_val : int, sig : Signal):
 		%NumLabel.label_settings.outline_color = color
 	sig.connect(func(_x, y): update(y))
 	update(start_val)
+	return self
 
 func update(num):
 	%NumLabel.text = str(snapped(num, 1))

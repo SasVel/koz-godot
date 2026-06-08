@@ -1,7 +1,7 @@
 extends Resource
 class_name Stat
 
-@export var value : float = 10.0 :
+@export var value : int = 10 :
 	set(val):
 		var newVal = 0
 		var oldVal = value
@@ -22,7 +22,7 @@ class_name Stat
 			no_stat_val.emit()
 
 ## No cap is applied if the value is 0.0.
-@export var maxValue : float = 100.0 :
+@export var maxValue : int = 100 :
 	set(val):
 		max_stat_changed.emit(maxValue, val)
 		maxValue = max(val, 0.0)
