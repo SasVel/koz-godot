@@ -240,18 +240,18 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TopRow" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1781543553]
+[node name="SecondRow" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1781543553]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerNameLabel" type="Label" parent="UI/MainContainer/VBoxContainer/TopRow" unique_id=974739906]
+[node name="PlayerNameLabel" type="Label" parent="UI/MainContainer/VBoxContainer/SecondRow" unique_id=974739906]
 layout_mode = 2
 text = "Sasser the Knight"
 label_settings = ExtResource("15_1u8w0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TempoDisplay" parent="UI/MainContainer/VBoxContainer/TopRow" unique_id=641794690 instance=ExtResource("16_lswn8")]
+[node name="TempoDisplay" parent="UI/MainContainer/VBoxContainer/SecondRow" unique_id=641794690 instance=ExtResource("16_lswn8")]
 unique_name_in_owner = true
 layout_mode = 2
 isMaxVal = true
@@ -259,6 +259,22 @@ isMaxVal = true
 [node name="StatusEffectsContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1521238829]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="RoomsLabel" type="Label" parent="UI/MainContainer" unique_id=785741174]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -63.0
+offset_top = 19.0
+offset_right = -23.0
+offset_bottom = 36.0
+grow_horizontal = 0
+text = "0 Rooms Completed"
+label_settings = ExtResource("15_1u8w0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PhasesContainer" type="Container" parent="UI/MainContainer" unique_id=651839356]
 unique_name_in_owner = true
@@ -379,6 +395,7 @@ material = SubResource("ShaderMaterial_0rl1p")
 layout_mode = 2
 
 [node name="TurnAlert" type="Control" parent="UI/MainContainer" unique_id=750216790]
+visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -422,6 +439,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -9.0
+offset_right = -8.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -473,5 +494,6 @@ unique_name_in_owner = true
 [connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_exited"]
+[connection signal="card_activated" from="Player" to="UI/MainContainer" method="_on_player_card_activated"]
 
 [editable path="UI/MainContainer/VBoxContainer/PlayerBar"]

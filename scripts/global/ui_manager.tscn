@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ghamk5ll18fx"]
+
+[ext_resource type="Script" uid="uid://crw4nfyvh6xq" path="res://scripts/global/ui_manager.gd" id="1_genkr"]
+[ext_resource type="PackedScene" uid="uid://3qcvxv0kvujq" path="res://UI/loot_popup.tscn" id="2_48sb8"]
+
+[node name="UIManager" type="Node" unique_id=451270226]
+script = ExtResource("1_genkr")
+popup_scenes = Dictionary[int, PackedScene]({
+0: ExtResource("2_48sb8")
+})

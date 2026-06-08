@@ -5,6 +5,10 @@ enum Phases {
 	DEFEND
 }
 @onready var turn_counter : int = 1
+@onready var rooms_completed : int = 0 :
+	set(val):
+		rooms_completed = val
+		on_rooms_completed.emit(val)
 @onready var curr_phase = Phases.ATTACK :
 	set(val):
 		if curr_phase == val: return
@@ -33,13 +37,14 @@ enum Phases {
 signal on_start_turn()
 signal on_end_turn()
 signal on_changed_phase(val : Phases)
+signal on_rooms_completed(val : int)
 
 func _ready() -> void:
 	await player.ready
 	start_game()
 	switch_input(true)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if !is_input: return
 
 	if event.is_action_pressed("end_turn"):
@@ -102,12 +107,27 @@ func set_room(type : Const.RoomTypes = Const.RoomTypes.Random):
 	clear_enemies()
 	add_enemy(ObjManager.get_rand_enemy_obj())
 
+func next_room():
+	turn_counter = 1
+	rooms_completed += 1
+	set_room()
+
 func add_enemy(enemy_obj : Enemy):
 	for pos in enemyPositions:
 		if pos.get_children().size() > 0:
 			continue
 		pos.add_child(enemy_obj)
+		enemy_obj.tree_exited.connect(try_complete_battle)
 		break
+
+func try_complete_battle():
+	if check_battle_completed():
+		next_room()
+
+func check_battle_completed():
+	return get_enemies()\
+		.filter(func(x): return !x.is_queued_for_deletion())\
+		.size() <= 0
 
 func clear_enemies():
 	for pos in enemyPositions:

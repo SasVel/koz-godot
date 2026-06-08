@@ -22,3 +22,12 @@ func update():
 	%NumLabel.text += str(snapped(display_stat.value, 1))
 	if isMaxVal:
 		%NumLabel.text += "/%s" % str(snapped(display_stat.maxValue, 1))
+	tween_update()
+
+func tween_update():
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(%IconRect, "scale", Vector2(1.2, 1.2), 0.4)
+	tween.parallel().tween_property(%NumLabel, "scale", Vector2(1.2, 1.2), 0.4)
+
+	tween.tween_property(%IconRect, "scale", Vector2.ONE, 0.3)
+	tween.parallel().tween_property(%NumLabel, "scale", Vector2.ONE, 0.3)

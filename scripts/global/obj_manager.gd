@@ -51,6 +51,12 @@ func get_rand_player_class_data() -> EntityData:
 func get_rand_action_obj() -> CardObj:
 	return card_obj.instantiate().config(get_rand_action_data())
 
+func get_rand_action_objects(num) -> Array[CardObj]:
+	var objects : Array[CardObj] = []
+	for i in range(num):
+		objects.append(get_rand_action_obj())
+	return objects
+
 func get_rand_weapon_obj() -> CardObj:
 	return card_obj.instantiate().config(get_rand_weapon_data())
 

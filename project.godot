@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://cuq1ymrql0s53"
 Const="*uid://bbwts8yaxiq05"
 ObjManager="*uid://cj4ale0ilwpgn"
 Game="*uid://rswuroq5nufs"
+UI="*uid://ghamk5ll18fx"
 
 [display]
 
@@ -41,6 +42,11 @@ theme/custom_font="uid://caqx5n70jexi0"
 [input]
 
 end_turn={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+continue={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]

@@ -2,6 +2,7 @@ extends Entity
 class_name Enemy
 
 func _ready() -> void:
+	super()
 	data.card_hand_size = stats.Tempo.maxValue
 	stats.Tempo.max_stat_changed.connect(func(_old, new): data.card_hand_size = new)
 	Game.on_start_turn.connect(draw_hand)
@@ -33,3 +34,14 @@ func activate_actions_hand():
 		await %ActionsDisplay.tween_action(action)
 		action.activate()
 		await get_tree().create_timer(0.2).timeout
+
+func on_death():
+	await tween_death()
+	Game.enemy_actions.erase(activate_actions_hand)
+	queue_free()
+
+func tween_death():
+	%IdleAnimator.stop()
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(%EnemySprite, "rotation_degrees", 90, 0.5)
+	await tween.finished

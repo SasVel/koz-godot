@@ -3,6 +3,7 @@ class_name CardObj
 
 @export var focus_tween_speed = 0.2
 @export var focus_scale = 1.2
+@export var cardBack : TextureRect
 var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 @onready var default_pos = self.position
 @onready var default_rot = self.rotation
@@ -11,7 +12,7 @@ var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 
 @onready var isOn : bool = true :
 	set(val):
-		%CardBack.modulate = Color.WHITE if val else Color("b1b1b1")
+		cardBack.modulate = Color.WHITE if val else Color("b1b1b1")
 		isOn = val
 
 @onready var isTweening : bool = false
@@ -19,7 +20,8 @@ var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 func config(data_ : CardData):
 	data = data_
 	data.changed_state.connect(func(x): isOn = x)
-	isOn = data.isOn
+	if data.isOn != null:
+		isOn = data.isOn
 
 	var image : Texture2D
 	var title_text : String

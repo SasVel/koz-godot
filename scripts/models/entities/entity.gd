@@ -16,6 +16,7 @@ func config(data_ : EntityData):
 	data = data_
 	data.config()
 	stats = data.default_stats.duplicate()
+	stats.Health.no_stat_val.connect(on_death)
 	add_actions_deck(data.card_deck)
 
 func _ready() -> void:
@@ -118,3 +119,6 @@ func get_status_eff_val(type : Const.StatusEffects):
 			else: 
 				val -= effect.get_value()
 	return val
+
+func on_death():
+	pass
