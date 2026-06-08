@@ -18,15 +18,17 @@ enum Phases {
 			Phases.DEFEND:
 				set_defend_phase()
 
-@onready var player : Player = get_tree().get_root().get_node("Main/Player")
-@onready var enemiesFolder = get_tree().get_root().get_node("Main/Enemies")
+@onready var main = get_tree().get_root().get_node("Main")
+@onready var player : Player = main.get_node("Player")
+@onready var enemiesFolder = main.get_node("Enemies")
 @onready var enemyPositions = [
 	enemiesFolder.get_child(0),
 	enemiesFolder.get_child(1),
 	enemiesFolder.get_child(2),
 ]
-
 @onready var enemy_actions : Array[Callable]
+@onready var is_input : bool = true
+@onready var inputBlocker = main.get_node("UI/InputBlocker")
 
 signal on_start_turn()
 signal on_end_turn()
@@ -35,8 +37,11 @@ signal on_changed_phase(val : Phases)
 func _ready() -> void:
 	await player.ready
 	start_game()
+	switch_input(true)
 
 func _input(event: InputEvent) -> void:
+	if !is_input: return
+
 	if event.is_action_pressed("end_turn"):
 		end_turn()
 
@@ -57,9 +62,11 @@ func end_turn():
 	start_turn()
 
 func play_enemy_anim_stack():
+	switch_input(false)
 	await get_tree().create_timer(0.2).timeout
 	for action in enemy_actions:
 		await action.call()
+	switch_input(true)
 
 func swap_phase():
 	curr_phase = Phases.ATTACK if curr_phase == Phases.DEFEND else Phases.DEFEND
@@ -106,3 +113,7 @@ func clear_enemies():
 	for pos in enemyPositions:
 		if pos.get_child_count() <= 0: continue
 		pos.get_child(0).queue_free()
+
+func switch_input(isOn : bool):
+	is_input = isOn
+	inputBlocker.visible = !isOn
