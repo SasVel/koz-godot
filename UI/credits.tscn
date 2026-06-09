@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://bffbq4lhwinma"]
+
+[ext_resource type="Shader" uid="uid://crjtha6ikpwm5" path="res://shaders/VignetteShader.gdshader" id="1_2g780"]
+[ext_resource type="Script" uid="uid://dky2se11iggr5" path="res://UI/credits.gd" id="1_ftffn"]
+[ext_resource type="LabelSettings" uid="uid://c6c0xikx30vc5" path="res://misc/bigass_title_label_settings.tres" id="2_ftffn"]
+[ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="3_0ccpq"]
+[ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="4_ehabf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8sla6"]
+shader = ExtResource("1_2g780")
+shader_parameter/vignette_intensity = 0.26
+shader_parameter/vignette_opacity = 0.5550000263625
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[node name="Credits" type="Control" unique_id=762354919]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ftffn")
+
+[node name="Shaders" type="Control" parent="." unique_id=1463613438]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Vignette" type="ColorRect" parent="Shaders" unique_id=1651496280]
+material = SubResource("ShaderMaterial_8sla6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1473470985]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = 40.0
+offset_right = 258.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1387837153]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreditsLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1697905872]
+layout_mode = 2
+text = "Credits"
+label_settings = ExtResource("2_ftffn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2086147442]
+layout_mode = 2
+text = "Game Design, Development, etc."
+label_settings = ExtResource("3_0ccpq")
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=166595921]
+layout_mode = 2
+text = "    SasVel"
+label_settings = ExtResource("4_ehabf")
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2108192575]
+layout_mode = 2
+text = "Assets"
+label_settings = ExtResource("3_0ccpq")
+
+[node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1477484429]
+layout_mode = 2
+text = "    SasVel    
+    Limofeus on Itch.io
+    OpenClipart-Vectors from Pixabay"
+label_settings = ExtResource("4_ehabf")
+
+[node name="Label5" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=335099003]
+layout_mode = 2
+text = "Music"
+label_settings = ExtResource("3_0ccpq")
+
+[node name="Label6" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=561187178]
+layout_mode = 2
+text = "    Tottomori
+    "
+label_settings = ExtResource("4_ehabf")
+
+[node name="BackBtn" type="Button" parent="." unique_id=360919578]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -83.0
+offset_right = 58.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

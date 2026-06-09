@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="25_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="26_qsp4k"]
 [ext_resource type="Script" uid="uid://dk75ppnjir5lr" path="res://UI/turn_alert.gd" id="27_qsp4k"]
+[ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="29_kq58d"]
+[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="30_seu75"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xuqvo"]
 streams_count = 9
@@ -76,26 +78,6 @@ radius_factor_inner = 0.0
 item_radius_factor = 1.0
 color = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kq58d"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
 resource_local_to_scene = true
@@ -147,6 +129,26 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok6jj"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_facbu"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
 [sub_resource type="Gradient" id="Gradient_qsp4k"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.14070351, 0.50753766, 0.8341709, 1)
@@ -156,6 +158,17 @@ colors = PackedColorArray(0.6392157, 0.27058825, 0.18431373, 0, 0.6392157, 0.270
 gradient = SubResource("Gradient_qsp4k")
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Resource" id="Resource_htxhm"]
+script = ExtResource("30_seu75")
+ease_type = 3
+transition_type = 9
+scale_speed = 4
+is_scale_pos = false
+scale_y = 0.12
+scale_x = 0.08
+skew_deg = 6
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 
 [node name="Main" type="Node2D" unique_id=895458731]
 
@@ -353,23 +366,23 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_qsp4k")
-layout_mode = 2
-
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_kq58d")
-layout_mode = 2
-
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_seu75")
 layout_mode = 2
 
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_htxhm")
 layout_mode = 2
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_jq2sk")
+layout_mode = 2
+
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_4k2k6")
+layout_mode = 2
+
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_0rl1p")
 layout_mode = 2
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
@@ -387,11 +400,11 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_4k2k6")
+material = SubResource("ShaderMaterial_ok6jj")
 layout_mode = 2
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_0rl1p")
+material = SubResource("ShaderMaterial_facbu")
 layout_mode = 2
 
 [node name="TurnAlert" type="Control" parent="UI/MainContainer" unique_id=750216790]
@@ -449,12 +462,28 @@ grow_vertical = 2
 [node name="Decorations" type="Node" parent="." unique_id=1916253175]
 
 [node name="FireRect" parent="Decorations" unique_id=1524273013 instance=ExtResource("25_qsp4k")]
+offset_left = 147.00002
+offset_top = 133.10551
+offset_right = 275.0
+offset_bottom = 261.10565
+
+[node name="IdleAnimatorControls" type="Node" parent="Decorations/FireRect" unique_id=663109521 node_paths=PackedStringArray("target")]
+script = ExtResource("29_kq58d")
+target = NodePath("..")
+settings = SubResource("Resource_htxhm")
+metadata/_custom_type_script = "uid://b2hdv0h572pc"
 
 [node name="FireRect2" parent="Decorations" unique_id=60019729 instance=ExtResource("25_qsp4k")]
 offset_left = 875.99994
 offset_top = 141.0
 offset_right = 1003.99994
 offset_bottom = 269.0
+
+[node name="IdleAnimatorControls2" type="Node" parent="Decorations/FireRect2" unique_id=320490427 node_paths=PackedStringArray("target")]
+script = ExtResource("29_kq58d")
+target = NodePath("..")
+settings = SubResource("Resource_htxhm")
+metadata/_custom_type_script = "uid://b2hdv0h572pc"
 
 [node name="Enemies" type="Node" parent="." unique_id=1692258728]
 

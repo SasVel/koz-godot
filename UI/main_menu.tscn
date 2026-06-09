@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://bgvoodoogu7ou"]
+
+[ext_resource type="Script" uid="uid://r3fmkobd610a" path="res://UI/main_menu.gd" id="1_cafmx"]
+[ext_resource type="Shader" uid="uid://crjtha6ikpwm5" path="res://shaders/VignetteShader.gdshader" id="1_p8ccj"]
+[ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/background.jpg" id="2_2mudq"]
+[ext_resource type="PackedScene" uid="uid://dv21jyyfqh0lf" path="res://main.tscn" id="2_cafmx"]
+[ext_resource type="Shader" uid="uid://408xqo0ge2bc" path="res://shaders/polygon_mask.gdshader" id="3_2mudq"]
+[ext_resource type="Texture2D" uid="uid://bdkmv41fvlm4y" path="res://res/main_menu_assets/openclipart-vectors-crumpled-148834_640.png" id="3_cafmx"]
+[ext_resource type="PackedScene" uid="uid://bffbq4lhwinma" path="res://UI/credits.tscn" id="3_mmlvu"]
+[ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="4_2mudq"]
+[ext_resource type="Texture2D" uid="uid://cjbi48o472r6c" path="res://res/main_menu_assets/mickeylit-bird-8291076_640.png" id="4_tcix6"]
+[ext_resource type="Texture2D" uid="uid://qpvyyiwauusr" path="res://res/repeating_textures/BrickWall.png" id="5_mmlvu"]
+[ext_resource type="LabelSettings" uid="uid://c6c0xikx30vc5" path="res://misc/bigass_title_label_settings.tres" id="11_tcix6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cafmx"]
+shader = ExtResource("3_2mudq")
+shader_parameter/size = 0.426000020235
+shader_parameter/sides = 12
+shader_parameter/rotation = 70.82002046395002
+shader_parameter/position_x = 0.5790000750025
+shader_parameter/position_y = 0.46000006934999993
+shader_parameter/border_width = 0.0250000011875
+shader_parameter/border_color = Color(0.4026091, 0.44710958, 0.68558747, 0.30588236)
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/maintain_aspect_ratio = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7137b"]
+shader = ExtResource("1_p8ccj")
+shader_parameter/vignette_intensity = 0.26
+shader_parameter/vignette_opacity = 0.5550000263625
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tcix6"]
+font_size = 34
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+shadow_size = 8
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.77254903)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_voib7"]
+
+[node name="MainMenu" type="Control" unique_id=1440762934]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cafmx")
+main_scn = ExtResource("2_cafmx")
+credits_scn = ExtResource("3_mmlvu")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1020456281]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_mmlvu")
+stretch_mode = 1
+script = ExtResource("4_2mudq")
+
+[node name="HoleImage" type="TextureRect" parent="." unique_id=1187995989]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_cafmx")
+layout_mode = 0
+offset_left = -295.0
+offset_top = -233.0
+offset_right = 2001.0
+offset_bottom = 1373.0
+texture = ExtResource("2_2mudq")
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="Images" type="Control" parent="HoleImage" unique_id=1806871135]
+anchors_preset = 0
+offset_left = 521.0
+offset_top = 389.0
+offset_right = 1416.0
+offset_bottom = 979.0
+size_flags_horizontal = 3
+
+[node name="Rock" type="TextureRect" parent="HoleImage/Images" unique_id=130738669]
+unique_name_in_owner = true
+modulate = Color(0.641934, 0.641934, 0.641934, 1)
+layout_mode = 0
+offset_left = 478.34412
+offset_top = 854.0
+offset_right = 1087.9388
+offset_bottom = 1371.484
+rotation = -1.5707964
+texture = ExtResource("3_cafmx")
+expand_mode = 3
+stretch_mode = 5
+flip_h = true
+
+[node name="Birb" type="TextureRect" parent="HoleImage/Images" unique_id=1112884915]
+unique_name_in_owner = true
+modulate = Color(0.49925053, 0.59870875, 1, 1)
+layout_mode = 0
+offset_left = 362.0
+offset_top = 89.0
+offset_right = 1002.0
+offset_bottom = 623.4437
+rotation = -0.24884008
+texture = ExtResource("4_tcix6")
+expand_mode = 5
+stretch_mode = 5
+flip_h = true
+
+[node name="Shaders" type="Control" parent="." unique_id=729104472]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Vignette" type="ColorRect" parent="Shaders" unique_id=1422255625]
+material = SubResource("ShaderMaterial_7137b")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1914031953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 55
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 55
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1819702014]
+layout_mode = 2
+
+[node name="LeftCol" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=594928061]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/HBoxContainer/LeftCol" unique_id=710338732]
+layout_mode = 2
+text = "    
+    Koz"
+label_settings = ExtResource("11_tcix6")
+
+[node name="SubTitleLabel" type="Label" parent="MarginContainer/HBoxContainer/LeftCol" unique_id=1357429161]
+layout_mode = 2
+text = "    by SasVel"
+label_settings = SubResource("LabelSettings_tcix6")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/LeftCol" unique_id=1843185039]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_voib7")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer" unique_id=166049148]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer" unique_id=1793799803]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="NewGameBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer" unique_id=986348933]
+layout_mode = 2
+text = "New Game"
+
+[node name="CreditsBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer" unique_id=882466474]
+layout_mode = 2
+text = "Credits"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/CreditsBtn" to="." method="_on_credits_btn_pressed"]

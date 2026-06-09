@@ -22,25 +22,32 @@ enum Phases {
 			Phases.DEFEND:
 				set_defend_phase()
 
-@onready var main = get_tree().get_root().get_node("Main")
-@onready var player : Player = main.get_node("Player")
-@onready var enemiesFolder = main.get_node("Enemies")
-@onready var enemyPositions = [
-	enemiesFolder.get_child(0),
-	enemiesFolder.get_child(1),
-	enemiesFolder.get_child(2),
-]
+@onready var main : Node2D
+@onready var player : Player 
+@onready var enemiesFolder : Node
+@onready var enemyPositions : Array
 @onready var enemy_actions : Array[Callable]
 @onready var is_input : bool = true
-@onready var inputBlocker = main.get_node("UI/InputBlocker")
+@onready var inputBlocker : Control
 
 signal on_start_turn()
 signal on_end_turn()
 signal on_changed_phase(val : Phases)
 signal on_rooms_completed(val : int)
 
-func _ready() -> void:
-	await player.ready
+func init_references():
+	main = get_tree().get_root().get_node("Main")
+	player = main.get_node("Player")
+	enemiesFolder = main.get_node("Enemies")
+	enemyPositions = [
+		enemiesFolder.get_child(0),
+		enemiesFolder.get_child(1),
+		enemiesFolder.get_child(2),
+	]
+	inputBlocker = main.get_node("UI/InputBlocker")
+
+func init():
+	init_references()
 	start_game()
 	switch_input(true)
 

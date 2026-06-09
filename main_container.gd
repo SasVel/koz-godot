@@ -8,6 +8,8 @@ extends Control
 
 func _ready() -> void:
 	await player.ready
+	Game.init()
+
 	%PlayerBar.config(player.stats.Health, player.stats.Block)
 	%TempoDisplay.config(\
 	Const.ACTION_COLOR,
