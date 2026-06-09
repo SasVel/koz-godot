@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="4_2mudq"]
 [ext_resource type="Texture2D" uid="uid://cjbi48o472r6c" path="res://res/main_menu_assets/mickeylit-bird-8291076_640.png" id="4_tcix6"]
 [ext_resource type="Texture2D" uid="uid://qpvyyiwauusr" path="res://res/repeating_textures/BrickWall.png" id="5_mmlvu"]
+[ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="10_aorne"]
+[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="11_bpm4f"]
 [ext_resource type="LabelSettings" uid="uid://c6c0xikx30vc5" path="res://misc/bigass_title_label_settings.tres" id="11_tcix6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cafmx"]
@@ -23,6 +25,14 @@ shader_parameter/border_width = 0.0250000011875
 shader_parameter/border_color = Color(0.4026091, 0.44710958, 0.68558747, 0.30588236)
 shader_parameter/modulate_color = Color(1, 1, 1, 1)
 shader_parameter/maintain_aspect_ratio = false
+
+[sub_resource type="Resource" id="Resource_7137b"]
+script = ExtResource("11_bpm4f")
+transition_type = 6
+scale_y = 0.04
+has_scale_x = false
+skew_deg = 3
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7137b"]
 shader = ExtResource("1_p8ccj")
@@ -101,15 +111,22 @@ flip_h = true
 unique_name_in_owner = true
 modulate = Color(0.49925053, 0.59870875, 1, 1)
 layout_mode = 0
-offset_left = 362.0
-offset_top = 89.0
-offset_right = 1002.0
-offset_bottom = 623.4437
-rotation = -0.24884008
+offset_left = 461.00003
+offset_top = -7.0
+offset_right = 1101.0
+offset_bottom = 527.4437
+rotation = -0.36550277
+pivot_offset_ratio = Vector2(0.5, 0.8)
 texture = ExtResource("4_tcix6")
 expand_mode = 5
 stretch_mode = 5
 flip_h = true
+
+[node name="IdleAnimatorControls" type="Node" parent="HoleImage/Images/Birb" unique_id=1452669269 node_paths=PackedStringArray("target")]
+script = ExtResource("10_aorne")
+target = NodePath("..")
+settings = SubResource("Resource_7137b")
+metadata/_custom_type_script = "uid://b2hdv0h572pc"
 
 [node name="Shaders" type="Control" parent="." unique_id=729104472]
 layout_mode = 1

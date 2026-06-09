@@ -9,10 +9,12 @@ class_name IdleAnimatorControls
 @onready var rot_tween : Tween
 
 var default_scale
+var default_rotation
 var default_position 
 
 func _ready() -> void:
 	default_scale = target.scale
+	default_rotation = target.rotation
 	default_position = target.position
 	start()
 
@@ -63,7 +65,9 @@ func tween_rotate():
 			.set_loops()\
 			.set_ease(settings.ease_type)\
 			.set_trans(settings.transition_type)
-	rot_tween.tween_property(target, "rotation", deg_to_rad(settings.skew_deg * -1),
+	rot_tween.tween_property(target, "rotation", default_rotation
+	 - deg_to_rad(settings.skew_deg),
 	 settings.scale_speed)
-	rot_tween.tween_property(target, "rotation", deg_to_rad(settings.skew_deg),
+	rot_tween.tween_property(target, "rotation", default_rotation
+	 + deg_to_rad(settings.skew_deg),
 	 settings.scale_speed).set_delay(settings.scale_speed)
