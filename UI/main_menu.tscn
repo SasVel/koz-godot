@@ -10,13 +10,14 @@
 [ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="4_2mudq"]
 [ext_resource type="Texture2D" uid="uid://cjbi48o472r6c" path="res://res/main_menu_assets/mickeylit-bird-8291076_640.png" id="4_tcix6"]
 [ext_resource type="Texture2D" uid="uid://qpvyyiwauusr" path="res://res/repeating_textures/BrickWall.png" id="5_mmlvu"]
+[ext_resource type="Script" uid="uid://chp6fbvceb0hi" path="res://UI/main_menu_hole_img.gd" id="8_bpm4f"]
 [ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="10_aorne"]
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="11_bpm4f"]
 [ext_resource type="LabelSettings" uid="uid://c6c0xikx30vc5" path="res://misc/bigass_title_label_settings.tres" id="11_tcix6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cafmx"]
 shader = ExtResource("3_2mudq")
-shader_parameter/size = 0.426000020235
+shader_parameter/size = 0.4450000211375
 shader_parameter/sides = 12
 shader_parameter/rotation = 70.82002046395002
 shader_parameter/position_x = 0.5790000750025
@@ -83,6 +84,7 @@ offset_right = 2001.0
 offset_bottom = 1373.0
 texture = ExtResource("2_2mudq")
 stretch_mode = 5
+script = ExtResource("8_bpm4f")
 metadata/_edit_lock_ = true
 
 [node name="Images" type="Control" parent="HoleImage" unique_id=1806871135]
@@ -92,6 +94,7 @@ offset_top = 389.0
 offset_right = 1416.0
 offset_bottom = 979.0
 size_flags_horizontal = 3
+metadata/_edit_lock_ = true
 
 [node name="Rock" type="TextureRect" parent="HoleImage/Images" unique_id=130738669]
 unique_name_in_owner = true

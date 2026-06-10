@@ -245,17 +245,15 @@ layout_mode = 0
 offset_left = 20.0
 offset_top = 19.0
 offset_right = 461.0
-offset_bottom = 153.0
-theme_override_constants/separation = 10
+offset_bottom = 189.0
 
 [node name="PlayerBar" parent="UI/MainContainer/VBoxContainer" unique_id=1148582265 instance=ExtResource("15_a6jrf")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="SecondRow" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1781543553]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="PlayerNameLabel" type="Label" parent="UI/MainContainer/VBoxContainer/SecondRow" unique_id=974739906]
 layout_mode = 2
@@ -271,7 +269,6 @@ isMaxVal = true
 
 [node name="StatusEffectsContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1521238829]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="RoomsLabel" type="Label" parent="UI/MainContainer" unique_id=785741174]
 unique_name_in_owner = true

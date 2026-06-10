@@ -27,13 +27,15 @@
 [ext_resource type="PackedScene" uid="uid://cyj0008dxd0ok" path="res://entities/enemies/data/goblin_data.tscn" id="21_4nbcu"]
 [ext_resource type="PackedScene" uid="uid://8lbab1y7lfpv" path="res://entities/player_classes/knight_class_data.tscn" id="22_4nbcu"]
 [ext_resource type="PackedScene" uid="uid://c8fv4r2jxpgw5" path="res://entities/enemy.tscn" id="23_j1slq"]
+[ext_resource type="PackedScene" uid="uid://bkohy4fxvhqdb" path="res://entities/status_effects/str_eff_data.tscn" id="24_jfqbm"]
 [ext_resource type="Texture2D" uid="uid://dht1ilt7obrvh" path="res://res/sprites_512.png" id="24_yq7du"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="27_qn5vk"]
 [ext_resource type="PackedScene" uid="uid://epgoswxm5gh2" path="res://UI/action_mini_display.tscn" id="27_s34ir"]
+[ext_resource type="PackedScene" uid="uid://bo1oesyb4aa4f" path="res://UI/status_eff_display.tscn" id="29_hw0uh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s34ir"]
 atlas = ExtResource("27_qn5vk")
-region = Rect2(0, 0, 128, 128)
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_et42b"]
 atlas = ExtResource("5_easby")
@@ -75,12 +77,16 @@ enemies_dict = Dictionary[int, PackedScene]({
 2: ExtResource("20_j1slq"),
 3: ExtResource("21_4nbcu")
 })
+status_effects_dict = Dictionary[int, PackedScene]({
+0: ExtResource("24_jfqbm")
+})
 player_classes_dict = Dictionary[int, PackedScene]({
 0: ExtResource("22_4nbcu")
 })
 card_obj = ExtResource("4_gyyai")
 enemy_obj = ExtResource("23_j1slq")
 action_mini_obj = ExtResource("27_s34ir")
+eff_mini_obj = ExtResource("29_hw0uh")
 sprites_128_atlas = SubResource("AtlasTexture_s34ir")
 sprites_256_atlas = SubResource("AtlasTexture_et42b")
 sprites_512_atlas = SubResource("AtlasTexture_j1slq")

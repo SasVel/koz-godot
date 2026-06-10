@@ -96,29 +96,38 @@ func add_actions_deck(actions : Array):
 
 #region Status Eff
 func add_status_effect(effect : StatusEffData):
-	for eff in self.effects:
-		if eff.type == effect.type:
+	var stacked : bool = false
+	for eff in self.status_effects:
+		if eff.type == effect.type and eff.duration == effect.duration:
 			eff.stacks += effect.stacks
-		else:
-			self.effects.append(effect)
+			stacked = true
+
+	if stacked or self.status_effects.size() <= 0:
+		effect.config_source(self)
+		self.status_effects.append(effect)
+
 	status_effects_changed.emit(status_effects)
 
 func remove_status_effect(effect : StatusEffData):
-	self.effects.remove(effect)
+	self.status_effects.erase(effect)
 	status_effects_changed.emit(status_effects)
 
-func get_status_eff_by_type(type : Const.StatusEffects):
+func get_effects(type : Const.StatusEffects) -> Array[StatusEffData]:
 	return status_effects.filter(func(x): return x.type == type)
 
-func get_status_eff_val(type : Const.StatusEffects):
-	var val = 0
-	for effect in status_effects:
-		if effect.type == type:
-			if effect.isPositive:
-				val += effect.get_value()
-			else: 
-				val -= effect.get_value()
-	return val
+func take_damage(dmg : int):
+	dmg = process_damage_incoming(dmg)
+	stats.take_damage(dmg)
 
 func on_death():
 	pass
+
+func process_damage_outgoing(dmg : int) -> int:
+	for eff in get_effects(Const.StatusEffects.STRENGTH):
+		dmg += eff.value
+	return dmg
+
+func process_damage_incoming(dmg : int) -> int:
+	for eff in get_effects(Const.StatusEffects.RESILIENCE):
+		dmg -= eff.value
+	return dmg

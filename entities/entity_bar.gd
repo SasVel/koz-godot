@@ -8,7 +8,7 @@ func config(healthStat : Stat, blockStat : Stat):
 
 	healthStat.stat_changed.connect(\
 		func(_oldVal, newVal):
-			self.value = newVal)
+			update_health(newVal))
 
 	blockStat.max_stat_changed.connect(\
 		func(_oldVal, newVal):
@@ -16,9 +16,21 @@ func config(healthStat : Stat, blockStat : Stat):
 
 	blockStat.stat_changed.connect(\
 		func(_oldVal, newVal):
-			%BlockBar.value = newVal)
+			update_block(newVal))
 
-	self.value = healthStat.value
+	update_health(healthStat.value)
 	self.max_value = healthStat.maxValue
-	%BlockBar.value = blockStat.value
-	%BlockBar.value = blockStat.value
+
+	update_block(blockStat.value)
+	%BlockBar.max_value = blockStat.maxValue
+
+func update_health(val):
+	self.value = val
+	%HealthLabel.text = str(val)
+
+func update_block(val):
+	%Divider.visible = val > 0
+	%BlockLabel.visible = val > 0
+
+	%BlockBar.value = val
+	%BlockLabel.text = str(val)

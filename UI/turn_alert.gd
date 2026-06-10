@@ -4,6 +4,7 @@ var anim_speed : float = 5
 
 func _ready() -> void:
 	Game.on_start_turn.connect(play_turn_announcement)
+	self.visible = true
 	%TurnRect.scale.y = 0
 	%TurnLabel.scale = Vector2.ZERO
 
@@ -22,3 +23,4 @@ func play_turn_announcement():
 	tween.parallel().tween_property(%TurnLabel, "scale", Vector2.ZERO, anim_speed * 0.2)
 	tween.parallel().tween_property(%TurnRect, "scale:y", 0, anim_speed * 0.2)
 	tween.parallel().tween_property(%TurnRect, "modulate:a", 0, anim_speed * 0.3)
+	await tween.finished

@@ -1,4 +1,4 @@
-extends Control 
+extends MiniDisplay
 
 @export var is_colored_outline : bool = true
 
@@ -9,6 +9,3 @@ func config(color : Color, start_val : int, sig : Signal):
 	sig.connect(func(_x, y): update(y))
 	update(start_val)
 	return self
-
-func update(num):
-	%NumLabel.text = str(snapped(num, 1))

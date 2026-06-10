@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cpgn2tegjq7md" path="res://entities/EntityBar.tscn" id="5_rrp0o"]
 [ext_resource type="Script" uid="uid://cskwlki1gwqm6" path="res://addons/tnowe_extra_controls/elements/data_dropper.gd" id="5_x8e4v"]
 [ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="7_68dbu"]
+[ext_resource type="Script" uid="uid://tw10yiuclb40" path="res://entities/status_effects_display.gd" id="7_f71c5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x8e4v"]
 atlas = ExtResource("4_uvc0s")
@@ -33,16 +34,17 @@ unique_name_in_owner = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=486153604]
 offset_left = -390.0
-offset_top = -1003.3335
+offset_top = -1113.3335
 offset_right = 41.666687
-offset_bottom = -791.6668
+offset_bottom = -901.6668
 scale = Vector2(2, 2)
 
 [node name="ActionsDisplay" type="HBoxContainer" parent="VBoxContainer" unique_id=1405329593]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 128)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
 script = ExtResource("4_jq0pf")
 
 [node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=2114026225]
@@ -54,8 +56,16 @@ label_settings = ExtResource("7_68dbu")
 
 [node name="EnemyBar" parent="VBoxContainer" unique_id=1148582265 instance=ExtResource("5_rrp0o")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="StatusEffectsDisplay" type="HBoxContainer" parent="VBoxContainer" unique_id=203895206]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("7_f71c5")
 
 [node name="DataDropper" type="Control" parent="." unique_id=910297773]
 layout_mode = 3
@@ -68,6 +78,7 @@ script = ExtResource("5_x8e4v")
 metadata/_custom_type_script = "uid://cskwlki1gwqm6"
 
 [connection signal="hand_changed" from="." to="VBoxContainer/ActionsDisplay" method="_on_enemy_hand_changed"]
+[connection signal="status_effects_changed" from="." to="VBoxContainer/StatusEffectsDisplay" method="_on_enemy_status_effects_changed"]
 [connection signal="data_dropped" from="DataDropper" to="." method="_on_data_dropper_data_dropped"]
 
 [editable path="VBoxContainer/EnemyBar"]

@@ -27,6 +27,7 @@ enum Phases {
 @onready var enemiesFolder : Node
 @onready var enemyPositions : Array
 @onready var enemy_actions : Array[Callable]
+@onready var status_effects_actions : Array[Callable]
 @onready var is_input : bool = true
 @onready var inputBlocker : Control
 
@@ -66,12 +67,22 @@ func start_game():
 func start_turn():
 	swap_phase()
 	turn_counter += 1
+	await play_player_eff_stack()
 	on_start_turn.emit()
 
 func end_turn():
 	await play_enemy_anim_stack()
 	on_end_turn.emit()
 	start_turn()
+
+func play_player_eff_stack():
+	switch_input(false)
+	await get_tree().create_timer(0.2).timeout
+
+	for action in status_effects_actions:
+		await action.call()
+
+	switch_input(true)
 
 func play_enemy_anim_stack():
 	switch_input(false)

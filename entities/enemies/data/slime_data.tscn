@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwbguk2wlb370"]
 
-[ext_resource type="PackedScene" uid="uid://drfb0uihop40k" path="res://entities/enemy_data.tscn" id="1_7ks2s"]
+[ext_resource type="PackedScene" uid="uid://drfb0uihop40k" path="res://entities/enemies/enemy_data.tscn" id="1_7ks2s"]
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_6v3hl"]
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_grwdv"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_6v3hl"]

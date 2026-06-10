@@ -8,6 +8,7 @@ func _ready() -> void:
 	Game.on_start_turn.connect(draw_hand)
 	Game.enemy_actions.append(activate_actions_hand)
 	draw_hand()
+	add_status_effect(ObjManager.status_effects_dict[Const.StatusEffects.STRENGTH].instantiate())
 
 func config(data_ : EntityData):
 	super(data_)

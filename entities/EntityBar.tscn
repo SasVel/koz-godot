@@ -20,6 +20,32 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
 
+[sub_resource type="LabelSettings" id="LabelSettings_bi5ys"]
+font_size = 34
+font_color = Color(1, 0, 0, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.8117647)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_01178"]
+font_size = 34
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+shadow_size = 10
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.8117647)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6hdo"]
+font_size = 34
+font_color = Color(0.07450981, 0.57254905, 0.7529412, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.8117647)
+shadow_offset = Vector2(2, 2)
+
 [node name="HealthBar" type="ProgressBar" unique_id=1148582265]
 anchors_preset = 8
 anchor_left = 0.5
@@ -52,3 +78,46 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_rrp0o")
 step = 1.0
 value = 30.0
 show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1099667293]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 14.333374
+offset_top = -23.666656
+offset_right = 123.333374
+offset_bottom = 25.666656
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HealthLabel" type="Label" parent="HBoxContainer" unique_id=876244727]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 5
+text = "100"
+label_settings = SubResource("LabelSettings_bi5ys")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Divider" type="Label" parent="HBoxContainer" unique_id=268301002]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 5
+text = "|"
+label_settings = SubResource("LabelSettings_01178")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlockLabel" type="Label" parent="HBoxContainer" unique_id=967869630]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 5
+text = "10"
+label_settings = SubResource("LabelSettings_n6hdo")
+horizontal_alignment = 1
+vertical_alignment = 1

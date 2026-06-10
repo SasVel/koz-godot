@@ -39,10 +39,8 @@ enum Shields {
 }
 
 enum StatusEffects {
-	ADD_DMG, 
-	REM_DMG, 
-	ADD_BLOCK, 
-	REM_BLOCK, 
+	STRENGTH,
+	RESILIENCE,
 	CHANGE_PHASE_ATK, 
 	CHANGE_PHASE_DEF, 
 	STUN, 

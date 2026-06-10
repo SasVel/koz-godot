@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bo1oesyb4aa4f"]
+
+[ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="1_kiwmt"]
+[ext_resource type="Script" uid="uid://b68ju3slt7n8v" path="res://UI/status_eff_display.gd" id="2_dlrch"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlrch"]
+atlas = ExtResource("1_kiwmt")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kiwmt"]
+font_size = 34
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+shadow_size = 8
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.7411765)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcfub"]
+font_size = 34
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+shadow_size = 8
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.7411765)
+
+[node name="StatusEffDisplay" type="TextureRect" unique_id=514427309]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 60.0
+offset_bottom = 60.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_dlrch")
+expand_mode = 5
+stretch_mode = 5
+script = ExtResource("2_dlrch")
+
+[node name="NumLabel" type="Label" parent="." unique_id=317560878]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_kiwmt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StacksLabel" type="Label" parent="." unique_id=707125424]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_right = 12.0
+offset_bottom = 46.0
+grow_horizontal = 0
+text = "x2"
+label_settings = SubResource("LabelSettings_xcfub")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -4,11 +4,13 @@ extends Node
 @export var weapons_dict : Dictionary[Const.Weapons, PackedScene]
 @export var shields_dict : Dictionary[Const.Shields, PackedScene]
 @export var enemies_dict : Dictionary[Const.Enemies, PackedScene]
+@export var status_effects_dict : Dictionary[Const.StatusEffects, PackedScene]
 @export var player_classes_dict : Dictionary[Const.PlayerClasses, PackedScene]
 
 @export var card_obj : PackedScene
 @export var enemy_obj : PackedScene
 @export var action_mini_obj : PackedScene
+@export var eff_mini_obj : PackedScene
 
 @export var sprites_128_atlas : AtlasTexture
 @export var sprites_256_atlas : AtlasTexture
@@ -48,6 +50,9 @@ func get_rand_enemy_data() -> EnemyData:
 func get_rand_player_class_data() -> EntityData:
 	return player_classes_dict[randi_range(0, Const.Enemies.size() - 1)].instantiate()
 
+func get_rand_eff_data() -> StatusEffData:
+	return status_effects_dict[randi_range(0, Const.StatusEffects.size() - 1)].instantiate()
+
 func get_rand_action_obj() -> CardObj:
 	return card_obj.instantiate().config(get_rand_action_data())
 
@@ -71,6 +76,9 @@ func get_enemy_obj(data : EnemyData) -> Enemy:
 
 func get_action_mini_obj(data : CardData) -> ActionMiniDisplay:
 	return action_mini_obj.instantiate().config(data)
+
+func get_eff_mini_obj(data : StatusEffData) -> StatusEffDisplay:
+	return eff_mini_obj.instantiate().config(data)
 
 func get_rand_enemy_obj() -> Enemy:
 	return get_enemy_obj(get_rand_enemy_data())
@@ -106,7 +114,7 @@ func get_enemy_sprite(type : Const.Enemies, has_alt = false) -> AtlasTexture:
 
 	return image
 
-func get_action_mini_sprite(type : Const.Actions):
+func get_action_mini_sprite(type : Const.Actions) -> Texture2D:
 	var image = sprites_128_atlas.duplicate()
 	var x_pos = 0
 	match type:
@@ -119,13 +127,35 @@ func get_action_mini_sprite(type : Const.Actions):
 	image.region = Rect2(x_pos, 0, 128, 128)
 	return image
 
-func get_action_color(type : Const.Actions):
+func get_action_color(type : Const.Actions) -> Color:
 	var color : Color
 	match type:
 		Const.Actions.SLASH:
 			color = Const.ATTACK_COLOR
 		Const.Actions.DEFEND:
 			color = Const.DEFEND_COLOR
+		_:
+			color = Const.ACTION_COLOR
+	return color
+
+func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
+	var image = sprites_128_atlas.duplicate()
+	match type:
+		Const.StatusEffects.CHANGE_PHASE_ATK:
+			## Image to change icon.
+			image.region = Rect2(512, 0, 128, 128)
+			var sword_img = get_weapon_sprite(Const.Weapons.SWORD).get_image()
+			sword_img.shrink_x2()
+			#image.get_image().blit_rect(sword_img, sword_img.get_used_rect() Vector2.ZERO)
+		_:
+			image.region = Rect2(384, 0, 128, 128)
+	return image
+
+func get_effect_color(type : Const.StatusEffects) -> Color:
+	var color : Color
+	match type:
+		Const.StatusEffects.STRENGTH:
+			color = Const.ATTACK_COLOR
 		_:
 			color = Const.ACTION_COLOR
 	return color

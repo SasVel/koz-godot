@@ -7,7 +7,7 @@ func _init() -> void:
 
 func activate():
 	for unit in get_affected_units():
-		unit.stats.Block.value += get_full_value() 
+		unit.stats.Block.value += value
 
 func generate_desc() -> String:
-	return "Gain %s BLOCK" % get_full_value()
+	return "Gain %s BLOCK" % value

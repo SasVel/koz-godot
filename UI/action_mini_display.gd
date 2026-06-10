@@ -1,4 +1,4 @@
-extends TextureRect
+extends MiniDisplay
 class_name ActionMiniDisplay
 
 @export var is_colored_outline : bool = true
@@ -13,15 +13,13 @@ func config(data_ : CardData):
 	self.modulate = color
 	if is_colored_outline:
 		%NumLabel.label_settings.outline_color = color
-	data.generic_val_changed.connect(func(x): update(x))
+	data.source.status_effects_changed.connect(\
+		func(x): update(data.get_generic_value()))
+
 	update(data.get_generic_value())
 	return self
 
 func update(num):
-	%NumLabel.text = str(snapped(num, 1))
-
-func tween_activate():
-	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.2)
-	tween.tween_property(self, "scale", Vector2.ZERO, 0.3)
-	await tween.finished
+	if data.isOffensive:
+		num = data.source.process_damage_outgoing(num)
+	super(num)
