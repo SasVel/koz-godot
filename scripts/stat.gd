@@ -3,6 +3,7 @@ class_name Stat
 
 @export var value : int = 10 :
 	set(val):
+		if value == val: return
 		var newVal = 0
 		var oldVal = value
 		if maxValue == 0.0:
@@ -24,6 +25,7 @@ class_name Stat
 ## No cap is applied if the value is 0.0.
 @export var maxValue : int = 100 :
 	set(val):
+		if maxValue == val: return
 		max_stat_changed.emit(maxValue, val)
 		maxValue = max(val, 0.0)
 

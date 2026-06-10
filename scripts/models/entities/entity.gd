@@ -86,8 +86,8 @@ func move_action_to_deck(actionData : CardData, isActivation : bool = false):
 func add_action_deck(action : CardData):
 	action.activated.connect(func(): move_action_to_deck(action, true))
 	self.cards_deck.append(action)
-	action.config_source(self)
 	%CardDatas.add_child(action)
+	action.config_source(self)
 
 func add_actions_deck(actions : Array):
 	for action in actions:
@@ -105,6 +105,7 @@ func add_status_effect(effect : StatusEffData):
 	if stacked or self.status_effects.size() <= 0:
 		effect.config_source(self)
 		self.status_effects.append(effect)
+		%EffectDatas.add_child(effect)
 
 	status_effects_changed.emit(status_effects)
 

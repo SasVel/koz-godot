@@ -43,7 +43,7 @@ func update_tools(data : Array):
 		child.queue_free()
 
 	for info in data:
-		var card_inst = ObjManager.get_card_obj(info)
+		var card_inst = ObjManager.get_tool_obj(info)
 		%ToolsList.add_child(card_inst)
 
 func update_rooms_label(val : int):

@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://cyyr45y71nbm1"]
 
 [ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_yj6nw"]
+[ext_resource type="Script" uid="uid://cr0gxa7eamckf" path="res://scripts/models/effect_components/block_comp.gd" id="2_katsk"]
 
 [node name="BucklerToolData" unique_id=988386249 instance=ExtResource("1_yj6nw")]
-durability = 4
+durability = 3
 shieldType = 1
 isOffensive = false
+
+[node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1390095307]
+script = ExtResource("2_katsk")
+value = 20
+metadata/_custom_type_script = "uid://cr0gxa7eamckf"

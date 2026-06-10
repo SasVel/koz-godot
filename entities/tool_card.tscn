@@ -4,7 +4,6 @@
 [ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="2_670yt"]
 [ext_resource type="Script" uid="uid://cecarh81oxns5" path="res://scripts/models/cards/tool.gd" id="3_nhk73"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="4_670yt"]
-[ext_resource type="Shader" uid="uid://bllcgaou8xt30" path="res://shaders/ReplaceColor.gdshader" id="4_o07si"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_670yt"]
 resource_local_to_scene = true
@@ -15,11 +14,6 @@ shader_parameter/fov = 90.0
 shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhk73"]
-resource_local_to_scene = true
-shader = ExtResource("4_o07si")
-shader_parameter/color = Color(1, 1, 1, 1)
 
 [node name="ToolCard" unique_id=789441108 instance=ExtResource("1_g0q5f")]
 material = SubResource("ShaderMaterial_670yt")
@@ -33,10 +27,7 @@ text = "Halberd"
 [node name="DurabilityLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(767831041) index="1" unique_id=372696409]
 unique_name_in_owner = true
 layout_mode = 2
-text = "/~~~~/"
+text = "|########|"
 label_settings = ExtResource("4_670yt")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="CardIconRect" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(752301886) index="1" unique_id=881828344]
-material = SubResource("ShaderMaterial_nhk73")

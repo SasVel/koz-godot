@@ -10,16 +10,19 @@ signal deactivated
 func config_source(source_ : Entity):
 	source = source_
 	for component in %Components.get_children():
-		component.source = source
+		component.config_source(source_)
 
 func add_target(target_ : Entity):
 	for component in %Components.get_children():
-		component.targets.append(target_)
+		component.add_target(target_)
+
+func add_targets(targets_ : Array[Entity]):
+	for component in %Components.get_children():
+		component.add_targets(targets_)
 
 func config(source_ : Entity, targets_ : Array[Entity]):
 	for component in %Components.get_children():
 		config_comp(component, source_, targets_)
-		component.config(source_, targets_)
 
 func config_comp(component : EffectComponent, source_ : Entity, targets_ : Array[Entity]):
 	component.config(source_, targets_)

@@ -32,6 +32,9 @@ target = NodePath("..")
 [node name="CardDatas" type="Node" parent="." unique_id=737281344]
 unique_name_in_owner = true
 
+[node name="EffectDatas" type="Node" parent="." unique_id=1226418796]
+unique_name_in_owner = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=486153604]
 offset_left = -390.0
 offset_top = -1113.3335

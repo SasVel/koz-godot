@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://fw7ogr0tlcqd"]
 
 [ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_1h116"]
+[ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_dd1wf"]
 
 [node name="SwordToolData" unique_id=988386249 instance=ExtResource("1_1h116")]
 durability = 4
 type = 1
 weaponType = 1
-isOffensive = true
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1145210996]
+script = ExtResource("2_dd1wf")
+value = 25
+metadata/_custom_type_script = "uid://rio4hms2vn51"

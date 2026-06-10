@@ -10,4 +10,4 @@ func activate():
 		unit.stats.Block.value += value
 
 func generate_desc() -> String:
-	return "Gain %s BLOCK" % value
+	return "Gain %s BLOCK." % value

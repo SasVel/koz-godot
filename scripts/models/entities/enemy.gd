@@ -21,7 +21,7 @@ func config(data_ : EntityData):
 
 func _on_data_dropper_data_dropped(_at_position: Vector2, 
 	drop_data: Variant):
-	var card_data = drop_data["object"].data
+	var card_data : CardData = drop_data["object"].data
 	card_data.add_target(self)
 	card_data.activate()
 

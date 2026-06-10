@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://bsnk7ydwa70l7"]
 
 [ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_s68ut"]
+[ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_f86jw"]
 
 [node name="DaggerToolData" unique_id=988386249 instance=ExtResource("1_s68ut")]
-durability = 4
+durability = 1
+type = 1
 weaponType = 4
-isOffensive = true
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=495826272]
+script = ExtResource("2_f86jw")
+value = 70
+metadata/_custom_type_script = "uid://rio4hms2vn51"

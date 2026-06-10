@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://0ykuie5e2xkv"]
 
 [ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_n5dg3"]
+[ext_resource type="Script" uid="uid://cr0gxa7eamckf" path="res://scripts/models/effect_components/block_comp.gd" id="2_0o5ms"]
+[ext_resource type="Script" uid="uid://cmrq5u7y2j8ck" path="res://scripts/models/effect_components/tempo_comp.gd" id="3_kevjg"]
 
 [node name="FeintActionData" unique_id=988386249 instance=ExtResource("1_n5dg3")]
 actionType = 3
-isOffensive = true
+
+[node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=771110746]
+script = ExtResource("2_0o5ms")
+isOffensive = false
+metadata/_custom_type_script = "uid://cr0gxa7eamckf"
+
+[node name="TempoComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=1861906670]
+script = ExtResource("3_kevjg")
+value = 1
+isOffensive = false
+metadata/_custom_type_script = "uid://cmrq5u7y2j8ck"

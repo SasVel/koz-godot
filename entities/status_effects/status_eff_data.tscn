@@ -4,7 +4,7 @@
 
 [node name="StatusEffData" type="Node" unique_id=1231074189]
 script = ExtResource("1_7pnc0")
-value = null
+stacks = 0
 
 [node name="Components" type="Node" parent="." unique_id=2091518437]
 unique_name_in_owner = true

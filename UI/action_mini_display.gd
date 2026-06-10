@@ -14,7 +14,7 @@ func config(data_ : CardData):
 	if is_colored_outline:
 		%NumLabel.label_settings.outline_color = color
 	data.source.status_effects_changed.connect(\
-		func(x): update(data.get_generic_value()))
+		func(_x): update(data.get_generic_value()))
 
 	update(data.get_generic_value())
 	return self

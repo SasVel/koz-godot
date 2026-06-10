@@ -38,6 +38,6 @@ func update_stacks(stacks):
 	%StacksLabel.text = "x%s" % stacks
 
 func delete():
-	data.source.remove_status_effect(data)
 	Game.status_effects_actions.erase(activate)
+	data.source.remove_status_effect(data)
 	queue_free()
