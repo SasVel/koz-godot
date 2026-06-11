@@ -1,11 +1,10 @@
-@tool
 extends ComponentsData
 class_name CardData
 
 @export var type : Const.CardTypes = Const.CardTypes.ACTION
 @export var isGeneric : bool = false
 
-@export var actionType : Const.Actions 
+@export var actionType : Const.Actions
 @export var weaponType : Const.Weapons
 @export var shieldType : Const.Shields
 
@@ -13,9 +12,8 @@ class_name CardData
 	set(val):
 		tempoCost = val
 		tempo_changed.emit(val)
-@export var isOffensive : bool = true
 
-@onready var isOn = true : 
+@onready var isOn = true :
 	set(val):
 		if isOn == val: return
 		isOn = val

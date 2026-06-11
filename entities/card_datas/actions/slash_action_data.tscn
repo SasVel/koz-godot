@@ -5,8 +5,8 @@
 
 [node name="SlashActionData" unique_id=988386249 instance=ExtResource("1_c62al")]
 actionType = 8
-isOffensive = true
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1122987308]
 script = ExtResource("2_3l8ma")
+value = 100
 metadata/_custom_type_script = "uid://rio4hms2vn51"

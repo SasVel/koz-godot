@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://mi75jnrupyfs"
 
 [node name="KnightClassData" unique_id=780192406 instance=ExtResource("1_f2fh6")]
 tool_types = Array[int]([2, 1])
-starting_weapons = Array[int]([5])
+starting_weapons = Array[int]([1, 5])
 starting_shields = Array[int]([0, 1])
 entity_name = "the Knight"
 default_stats = SubResource("Resource_oqual")

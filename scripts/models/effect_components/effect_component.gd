@@ -8,6 +8,9 @@ class_name EffectComponent
 @onready var source : Entity
 @onready var targets : Array[Entity]
 
+signal activated
+signal deactivated
+
 func config(source_ : Entity, targets_ : Array[Entity]):
 	config_source(source_)
 	add_targets(targets_)
@@ -17,19 +20,21 @@ func config_source(source_ : Entity):
 	source = source_
 
 func activate():
-	pass
+	activated.emit()
 
 func deactivate():
-	pass
+	deactivated.emit()
 
 func can_activate():
 	return true
 
 func add_target(target_ : Entity):
+	if targets.has(target_): return
 	targets.append(target_)
 
 func add_targets(targets_ : Array[Entity]):
-	targets.append_array(targets)
+	for target in targets_:
+		add_target(target)
 
 func get_affected_units() -> Array:
 	return self.targets if self.isOffensive else [self.source]

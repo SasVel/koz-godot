@@ -15,7 +15,7 @@ signal status_effects_changed(status_effects)
 func config(data_ : EntityData):
 	data = data_
 	data.config()
-	stats = data.default_stats.duplicate()
+	stats = data.default_stats.duplicate(true)
 	stats.Health.no_stat_val.connect(on_death)
 	add_actions_deck(data.card_deck)
 
@@ -29,7 +29,7 @@ func start_turn():
 func add_action_hand(action : Action):
 	self.cards_hand.append(action)
 	hand_changed.emit(cards_hand)
-	
+
 func add_actions_hand(actions : Array):
 	for action in actions:
 		self.cards_hand.append(action)
@@ -40,10 +40,10 @@ func get_rand_actions_deck(num):
 	var cards = []
 	for i in range(num):
 		var drawn_card = self.cards_deck.pick_random()
-		if drawn_card == null: 
+		if drawn_card == null:
 			return cards
 		self.cards_deck.erase(drawn_card)
-		cards.append(drawn_card)    
+		cards.append(drawn_card)
 	return cards
 
 func clear_hand():
@@ -68,7 +68,7 @@ func pop_next_actions_deck(num):
 	for i in range(num):
 		var drawn_card = self.cards_deck[0]
 		self.cards_deck.erase(drawn_card)
-		cards.append(drawn_card)    
+		cards.append(drawn_card)
 	return cards
 
 func move_action_to_deck(actionData : CardData, isActivation : bool = false):
@@ -111,6 +111,7 @@ func add_status_effect(effect : StatusEffData):
 
 func remove_status_effect(effect : StatusEffData):
 	self.status_effects.erase(effect)
+	%EffectDatas.remove_child(effect)
 	status_effects_changed.emit(status_effects)
 
 func get_effects(type : Const.StatusEffects) -> Array[StatusEffData]:

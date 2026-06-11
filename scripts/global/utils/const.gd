@@ -4,7 +4,7 @@ var path_to_palette : String = "res://data"
 var path_to_palette_user : String = "user://data"
 var palette_name = "palette.json"
 
-## Enums 
+## Enums
 enum CardTypes {
 	ACTION,
 	WEAPON,
@@ -12,45 +12,45 @@ enum CardTypes {
 }
 
 enum Actions {
-	RIPOSTE, 
-	LANGORT, 
-	SURPRISE_SAND, 
-	FEINT, 
-	END_THEM_RIGHTLY, 
-	PARRY, 
-	PANIC, 
-	ALBERT, 
-	SLASH,  
-	DEFEND,  
+	RIPOSTE,
+	LANGORT,
+	SURPRISE_SAND,
+	FEINT,
+	END_THEM_RIGHTLY,
+	PARRY,
+	PANIC,
+	ALBERT,
+	SLASH,
+	DEFEND,
 }
 
 enum Weapons {
-	HALBERD, 
-	SWORD, 
-	MESSAR, 
-	BASTARD_SWORD, 
-	DAGGER, 
-	MACE, 
+	HALBERD,
+	SWORD,
+	MESSAR,
+	BASTARD_SWORD,
+	DAGGER,
+	MACE,
 }
 
 enum Shields {
-	SHIELD, 
-	BUCKLER, 
+	SHIELD,
+	BUCKLER,
 }
 
 enum StatusEffects {
 	STRENGTH,
 	RESILIENCE,
-	CHANGE_PHASE_ATK, 
-	CHANGE_PHASE_DEF, 
-	STUN, 
+	CHANGE_PHASE_ATK,
+	CHANGE_PHASE_DEF,
+	STUN,
 }
 
 enum Enemies {
-	SLIME, 
-	SKELLY, 
-	SHROOM, 
-	GOBLIN, 
+	SLIME,
+	SKELLY,
+	SHROOM,
+	GOBLIN,
 }
 
 enum PlayerClasses {
@@ -58,11 +58,11 @@ enum PlayerClasses {
 }
 
 enum UnitTrackingVars {
-	DAMAGE_DEALT, 
-	DAMAGE_TAKEN, 
-	BLOCK_GAINED, 
-	TEMPO_GAINED, 
-	STUN_APPLIED, 
+	DAMAGE_DEALT,
+	DAMAGE_TAKEN,
+	BLOCK_GAINED,
+	TEMPO_GAINED,
+	STUN_APPLIED,
 }
 enum StatTypes {
 	Health,
@@ -79,7 +79,7 @@ enum RoomTypes {
 
 var colors_obj
 
-var BACKGROUND_COLOR: Color 
+var BACKGROUND_COLOR: Color
 var ACTION_COLOR: Color
 var TOOL_COLOR: Color
 
@@ -98,7 +98,7 @@ func _ready() -> void:
 	ACTION_COLOR= load_color(colors_obj["ACTION_COLOR"])
 	TOOL_COLOR = load_color(colors_obj["TOOL_COLOR"])
 
-	ATTACK_COLOR= load_color(colors_obj["ATTACK_COLOR"]) 
+	ATTACK_COLOR= load_color(colors_obj["ATTACK_COLOR"])
 	DEFEND_COLOR= load_color(colors_obj["DEFEND_COLOR"])
 	CARD_BACK_COLOR= load_color(colors_obj["CARD_BACK_COLOR"])
 	FIRE_COLOR= load_color(colors_obj["FIRE_COLOR"])
@@ -138,7 +138,7 @@ func check_palette_existing() -> bool:
 func load_color(color_info) -> Color:
 	var color : Color
 	if color_info is Array:
-		color = Color.from_rgba8(color_info[0], color_info[1], color_info[2]) 
+		color = Color.from_rgba8(color_info[0], color_info[1], color_info[2])
 		if color_info.size() > 3:
 			color.a = color_info[3]
 	elif color_info is String:

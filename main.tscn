@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cqpqe0cq4mupb" path="res://UI/stat_display.tscn" id="16_lswn8"]
 [ext_resource type="Script" uid="uid://b6seccbn8xwbf" path="res://tools_list.gd" id="17_lswn8"]
 [ext_resource type="Script" uid="uid://bjfofuvh3c3vi" path="res://end_turn_btn.gd" id="18_htxhm"]
+[ext_resource type="Script" uid="uid://tw10yiuclb40" path="res://entities/status_effects_display.gd" id="18_jq2sk"]
 [ext_resource type="Script" uid="uid://30k2gbj6kiml" path="res://scripts/models/entities/player.gd" id="21_getpj"]
 [ext_resource type="Script" uid="uid://baraqeaue84k4" path="res://card_activate_field.gd" id="24_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://denor2og15qye" path="res://Decorations/fire_rect.tscn" id="25_qsp4k"]
@@ -77,26 +78,6 @@ item_radius_factor = 1.0
 color = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_htxhm"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jq2sk"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4k2k6"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
@@ -138,6 +119,26 @@ shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b1qrp"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_come4"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8e4i"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -239,8 +240,9 @@ player = NodePath("../../Player")
 layout_mode = 0
 offset_left = 20.0
 offset_top = 19.0
-offset_right = 461.0
-offset_bottom = 189.0
+offset_right = 536.24994
+offset_bottom = 245.0
+scale = Vector2(0.8, 0.8)
 
 [node name="PlayerBar" parent="UI/MainContainer/VBoxContainer" unique_id=1148582265 instance=ExtResource("15_a6jrf")]
 unique_name_in_owner = true
@@ -263,7 +265,9 @@ layout_mode = 2
 isMaxVal = true
 
 [node name="StatusEffectsContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1521238829]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+script = ExtResource("18_jq2sk")
 
 [node name="RoomsLabel" type="Label" parent="UI/MainContainer" unique_id=785741174]
 unique_name_in_owner = true
@@ -385,23 +389,23 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_htxhm")
-layout_mode = 2
-
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_jq2sk")
-layout_mode = 2
-
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_4k2k6")
 layout_mode = 2
 
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_0rl1p")
 layout_mode = 2
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_ok6jj")
+layout_mode = 2
+
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_facbu")
+layout_mode = 2
+
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_b1qrp")
 layout_mode = 2
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
@@ -419,11 +423,11 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_facbu")
+material = SubResource("ShaderMaterial_come4")
 layout_mode = 2
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_b1qrp")
+material = SubResource("ShaderMaterial_h8e4i")
 layout_mode = 2
 
 [node name="TurnAlert" type="Control" parent="UI/MainContainer" unique_id=750216790]
@@ -478,6 +482,18 @@ offset_right = -8.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PopupsContainer" type="Control" parent="UI" unique_id=100367143]
+unique_name_in_owner = true
+top_level = true
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Decorations" type="Node" parent="." unique_id=1916253175]
 
@@ -548,5 +564,6 @@ unique_name_in_owner = true
 [connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_exited"]
 [connection signal="card_activated" from="Player" to="UI/MainContainer" method="_on_player_card_activated"]
+[connection signal="status_effects_changed" from="Player" to="UI/MainContainer/VBoxContainer/StatusEffectsContainer" method="_on_player_status_effects_changed"]
 
 [editable path="UI/MainContainer/VBoxContainer/PlayerBar"]

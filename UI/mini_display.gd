@@ -1,4 +1,4 @@
-extends Control 
+extends Control
 class_name MiniDisplay
 
 func update(num):

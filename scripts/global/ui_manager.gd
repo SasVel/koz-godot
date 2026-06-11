@@ -3,7 +3,8 @@ extends Node
 @export var popup_scenes : Dictionary[Popups, PackedScene]
 
 enum Popups {
-	LOOT
+	LOOT,
+	GAME_OVER
 }
 
 func get_popup_inst(type : Popups):

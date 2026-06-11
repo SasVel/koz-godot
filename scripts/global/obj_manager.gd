@@ -18,10 +18,10 @@ extends Node
 @export var sprites_512_atlas : AtlasTexture
 
 func get_rand_action_data(dict = actions_dict) -> CardData:
-	return dict[randi_range(0, Const.Actions.size() - 1)].instantiate()
+	return dict[randi_range(0, Const.Actions.size() - 1) as Const.Actions].instantiate()
 
 func get_action_datas(\
-	types : Array[Const.Actions], 
+	types : Array[Const.Actions],
 	dict = actions_dict) -> Array[CardData]:
 	var arr : Array[CardData]
 	for type in types:
@@ -40,19 +40,19 @@ func get_rand_actions_datas(size, is_unique = false) -> Array[CardData]:
 	return arr
 
 func get_rand_weapon_data() -> ToolData:
-	return weapons_dict[randi_range(0, Const.Weapons.size() - 1)].instantiate()
+	return weapons_dict[randi_range(0, Const.Weapons.size() - 1) as Const.Weapons].instantiate()
 
 func get_rand_shield_data() -> ToolData:
-	return shields_dict[randi_range(0, Const.Shields.size() - 1)].instantiate()
+	return shields_dict[randi_range(0, Const.Shields.size() - 1) as Const.Shields].instantiate()
 
 func get_rand_enemy_data() -> EnemyData:
-	return enemies_dict[randi_range(0, Const.Enemies.size() - 1)].instantiate()
+	return enemies_dict[randi_range(0, Const.Enemies.size() - 1) as Const.Enemies].instantiate()
 
 func get_rand_player_class_data() -> EntityData:
-	return player_classes_dict[randi_range(0, Const.Enemies.size() - 1)].instantiate()
+	return player_classes_dict[randi_range(0, Const.Enemies.size() - 1) as Const.PlayerClasses].instantiate()
 
 func get_rand_eff_data() -> StatusEffData:
-	return status_effects_dict[randi_range(0, Const.StatusEffects.size() - 1)].instantiate()
+	return status_effects_dict[randi_range(0, Const.StatusEffects.size() - 1) as Const.StatusEffects].instantiate()
 
 func get_rand_action_obj() -> CardObj:
 	return card_obj.instantiate().config(get_rand_action_data())
@@ -111,9 +111,9 @@ func get_shield_sprite(type : Const.Shields) -> AtlasTexture:
 func get_enemy_sprite(type : Const.Enemies, has_alt = false) -> AtlasTexture:
 	var image = sprites_512_atlas.duplicate()
 	image.region = Rect2(\
-		512 * type, 
+		512 * type,
 		0 if !has_alt else 512 * randi_range(0, 1),
-		512, 
+		512,
 		512)
 
 	return image

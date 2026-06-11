@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_tap8e"]
 [ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_4p4fm"]
-[ext_resource type="Script" uid="uid://bux6moi2u64xw" path="res://scripts/models/effect_components/status_eff_comp.gd" id="2_jfnsr"]
+[ext_resource type="PackedScene" uid="uid://cjn7jamaae674" path="res://entities/status_effects/stun_eff_data.tscn" id="3_4p4fm"]
 
 [node name="EndThemRightlyActionData" unique_id=988386249 instance=ExtResource("1_tap8e")]
 actionType = 4
@@ -12,10 +12,8 @@ script = ExtResource("2_4p4fm")
 value = 45
 metadata/_custom_type_script = "uid://rio4hms2vn51"
 
-[node name="StatusEffComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=88070454]
-script = ExtResource("2_jfnsr")
-type = 4
+[node name="StunEffData" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=1231074189 instance=ExtResource("3_4p4fm")]
 stacks = 2
-value = -3
 isOffensive = false
-metadata/_custom_type_script = "uid://bux6moi2u64xw"
+
+[editable path="Components/StunEffData"]

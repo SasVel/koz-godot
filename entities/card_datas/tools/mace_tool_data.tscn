@@ -2,18 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_yy7ab"]
 [ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_amr71"]
-[ext_resource type="Script" uid="uid://bux6moi2u64xw" path="res://scripts/models/effect_components/status_eff_comp.gd" id="3_lul83"]
+[ext_resource type="PackedScene" uid="uid://cjn7jamaae674" path="res://entities/status_effects/stun_eff_data.tscn" id="3_amr71"]
 
 [node name="MaceToolData" unique_id=988386249 instance=ExtResource("1_yy7ab")]
 durability = 5
 type = 1
+isGeneric = false
 weaponType = 5
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1133975424]
 script = ExtResource("2_amr71")
 metadata/_custom_type_script = "uid://rio4hms2vn51"
 
-[node name="StatusEffComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=282408131]
-script = ExtResource("3_lul83")
-type = 4
-metadata/_custom_type_script = "uid://bux6moi2u64xw"
+[node name="StunEffData" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=1231074189 instance=ExtResource("3_amr71")]
+isPositive = true
+
+[editable path="Components/StunEffData"]

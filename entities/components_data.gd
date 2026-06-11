@@ -1,26 +1,23 @@
-@tool
-extends Node
+extends EffectComponent
 class_name ComponentsData
 
-@onready var source : Entity
-
-signal activated
-signal deactivated
-
 func config_source(source_ : Entity):
-	source = source_
+	super(source_)
 	for component in %Components.get_children():
 		component.config_source(source_)
 
 func add_target(target_ : Entity):
+	super(target_)
 	for component in %Components.get_children():
 		component.add_target(target_)
 
 func add_targets(targets_ : Array[Entity]):
+	super(targets_)
 	for component in %Components.get_children():
 		component.add_targets(targets_)
 
 func config(source_ : Entity, targets_ : Array[Entity]):
+	super(source_, targets_)
 	for component in %Components.get_children():
 		config_comp(component, source_, targets_)
 
@@ -30,12 +27,12 @@ func config_comp(component : EffectComponent, source_ : Entity, targets_ : Array
 func activate():
 	for component in %Components.get_children():
 		component.activate()
-	activated.emit()
+	super()
 
 func deactivate():
 	for component in %Components.get_children():
 		component.deactivate()
-	deactivated.emit()
+	super()
 
 func generate_desc() -> String:
 	var resArr : Array[String]

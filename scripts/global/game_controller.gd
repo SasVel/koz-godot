@@ -1,5 +1,7 @@
 extends Node
 
+@onready var main_scn = load("res://main.tscn")
+
 enum Phases {
 	ATTACK,
 	DEFEND
@@ -23,22 +25,28 @@ enum Phases {
 				set_defend_phase()
 
 @onready var main : Node2D
-@onready var player : Player 
+@onready var player : Player
 @onready var enemiesFolder : Node
 @onready var enemyPositions : Array
 @onready var enemy_actions : Array[Callable]
-@onready var status_effects_actions : Array[Callable]
+@onready var player_status_eff_actions : Array[Callable]
+@onready var enemy_status_eff_actions : Array[Callable]
 @onready var is_input : bool = true
 @onready var inputBlocker : Control
+@onready var popupsContainer : Control
 
 signal on_start_turn()
 signal on_end_turn()
 signal on_changed_phase(val : Phases)
 signal on_rooms_completed(val : int)
 
+func _init() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func init_references():
 	main = get_tree().get_root().get_node("Main")
 	player = main.get_node("Player")
+	player.stats.Health.no_stat_val.connect(show_game_over_screen)
 	enemiesFolder = main.get_node("Enemies")
 	enemyPositions = [
 		enemiesFolder.get_child(0),
@@ -46,11 +54,19 @@ func init_references():
 		enemiesFolder.get_child(2),
 	]
 	inputBlocker = main.get_node("UI/InputBlocker")
+	popupsContainer = main.get_node("UI/PopupsContainer")
 
 func init():
+	get_tree().paused = false
 	init_references()
 	start_game()
 	switch_input(true)
+
+func restart():
+	get_tree().unload_current_scene()
+	get_tree().change_scene_to_packed(main_scn)
+	await get_tree().scene_changed
+	init()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_input: return
@@ -67,8 +83,8 @@ func start_game():
 func start_turn():
 	swap_phase()
 	turn_counter += 1
-	await play_player_eff_stack()
 	on_start_turn.emit()
+	await play_player_eff_stack()
 
 func end_turn():
 	await play_enemy_anim_stack()
@@ -79,7 +95,7 @@ func play_player_eff_stack():
 	switch_input(false)
 	await get_tree().create_timer(0.2).timeout
 
-	for action in status_effects_actions:
+	for action in player_status_eff_actions:
 		await action.call()
 
 	switch_input(true)
@@ -87,6 +103,11 @@ func play_player_eff_stack():
 func play_enemy_anim_stack():
 	switch_input(false)
 	await get_tree().create_timer(0.2).timeout
+
+	for action in enemy_status_eff_actions:
+		await action.call()
+	await get_tree().create_timer(0.2).timeout
+
 	for action in enemy_actions:
 		await action.call()
 	switch_input(true)
@@ -106,7 +127,7 @@ func set_defend_phase():
 
 func apply_attack_phase_modifiers(entity : Entity):
 	entity.stats.Block.value = 0
-	
+
 	entity.stats.Tempo.maxValue += 1
 	entity.stats.Tempo.value += 1
 
@@ -138,6 +159,18 @@ func add_enemy(enemy_obj : Enemy):
 		enemy_obj.tree_exited.connect(try_complete_battle)
 		break
 
+func add_status_eff_action(action : Callable, is_for_player):
+	if is_for_player:
+		player_status_eff_actions.append(action)
+	else:
+		enemy_status_eff_actions.append(action)
+
+func remove_status_eff_action(action : Callable, is_for_player):
+	if is_for_player:
+		player_status_eff_actions.erase(action)
+	else:
+		enemy_status_eff_actions.erase(action)
+
 func try_complete_battle():
 	if check_battle_completed():
 		next_room()
@@ -155,3 +188,7 @@ func clear_enemies():
 func switch_input(isOn : bool):
 	is_input = isOn
 	inputBlocker.visible = !isOn
+
+func show_game_over_screen():
+	var screen = UI.get_popup_inst(UI.Popups.GAME_OVER)
+	popupsContainer.add_child(screen)

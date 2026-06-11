@@ -6,7 +6,6 @@ var data : StatusEffData
 
 func config(eff_data : StatusEffData):
 	data = eff_data
-	Game.status_effects_actions.append(activate)
 	var color = ObjManager.get_effect_color(data.type)
 	self.texture = ObjManager.get_effect_sprite(data.type)
 	self.modulate = color
@@ -15,29 +14,29 @@ func config(eff_data : StatusEffData):
 		%StacksLabel.label_settings.outline_color = color
 
 	update(eff_data.duration)
+	Game.add_status_eff_action(activate, true if data.source is Player else false)
 	return self
 
 func activate():
 	await tween_activate()
-	data.activate()
+	data.activate_eff()
 	if data.duration == 0:
-		delete()
+		delete(true)
 	else:
 		update(data.duration)
 
 func update(num):
-	if num == -1:
-		%NumLabel.text = ""
-	else:
-		super(num)
+	%NumLabel.visible = num > 1
+	super(num)
 
 	update_stacks(data.stacks)
 
 func update_stacks(stacks):
+	%StacksLabel.visible = stacks > 1
 	if stacks <= 1: return
 	%StacksLabel.text = "x%s" % stacks
 
-func delete():
-	Game.status_effects_actions.erase(activate)
-	data.source.remove_status_effect(data)
+func delete(with_data : bool = false):
+	Game.remove_status_eff_action(activate, true if data.source is Player else false)
+	if with_data: data.delete()
 	queue_free()

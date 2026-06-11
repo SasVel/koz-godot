@@ -14,7 +14,7 @@ class_name Stat
 			return
 
 		# Apply cap when maxValue > 0.0
-		newVal = min(val, maxValue)
+		newVal = clamp(val, 0, maxValue)
 		# Emit signal and update only if value actually changed
 		if value != newVal:
 			value = newVal
