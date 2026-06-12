@@ -4,6 +4,8 @@ class_name ToolData
 @export_range(0, 8) var durability : int = 4 :
 	set(val):
 		durability = val
+		if durability <= 0:
+			source.remove_tool(self)
 		durability_changed.emit(val)
 
 signal durability_changed(val)

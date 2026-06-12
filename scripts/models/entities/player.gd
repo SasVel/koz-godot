@@ -23,7 +23,7 @@ func _ready() -> void:
 	draw_hand()
 
 #region Tools
-func add_tool(tool : Tool):
+func add_tool(tool : ToolData):
 	self.equipped_tools.append(tool)
 	tool.config_source(self)
 	%ToolDatas.add_child(tool)
@@ -34,6 +34,11 @@ func add_tools(tools : Array):
 		self.equipped_tools.append(tool)
 		tool.config_source(self)
 		%ToolDatas.add_child(tool)
+	tools_changed.emit(equipped_tools)
+
+func remove_tool(tool : ToolData):
+	self.equipped_tools.erase(tool)
+	%ToolDatas.remove_child(tool)
 	tools_changed.emit(equipped_tools)
 
 #endregion

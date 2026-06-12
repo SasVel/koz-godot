@@ -95,7 +95,6 @@ offset_top = 389.0
 offset_right = 1416.0
 offset_bottom = 979.0
 size_flags_horizontal = 3
-metadata/_edit_lock_ = true
 
 [node name="Rock" type="TextureRect" parent="HoleImage/Images" unique_id=130738669]
 unique_name_in_owner = true

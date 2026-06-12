@@ -483,18 +483,6 @@ offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PopupsContainer" type="Control" parent="UI" unique_id=100367143]
-unique_name_in_owner = true
-top_level = true
-z_index = 100
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="Decorations" type="Node" parent="." unique_id=1916253175]
 
 [node name="FireRect" parent="Decorations" unique_id=1524273013 instance=ExtResource("25_qsp4k")]
@@ -544,6 +532,25 @@ unique_name_in_owner = true
 
 [node name="EffectDatas" type="Node" parent="Player" unique_id=398733229]
 unique_name_in_owner = true
+
+[node name="UIOverEverything" type="Control" parent="." unique_id=950534204]
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 700.0
+mouse_filter = 2
+
+[node name="PopupsContainer" type="Control" parent="UIOverEverything" unique_id=100367143]
+unique_name_in_owner = true
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="finished" from="MusicsPlayer" to="MusicsPlayer" method="_on_finished"]
 [connection signal="pressed" from="UI/MainContainer/EndTurnBtn" to="UI/MainContainer/EndTurnBtn" method="_on_pressed"]

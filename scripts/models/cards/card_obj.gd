@@ -41,7 +41,7 @@ func config(data_ : CardData):
 
 	%TitleLabel.text = UIHelper.pascal_to_readable_text(title_text)
 	%DescLabel.text = data.generate_desc()
-	%CardIconRect.texture = image 
+	%CardIconRect.texture = image
 	%TempoDisplay.config(Const.ACTION_COLOR, data.tempoCost, data.tempo_changed)
 	return self
 

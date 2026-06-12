@@ -46,7 +46,7 @@ func _init() -> void:
 func init_references():
 	main = get_tree().get_root().get_node("Main")
 	player = main.get_node("Player")
-	player.stats.Health.no_stat_val.connect(show_game_over_screen)
+	Obj.connect_signals({ player.stats.Health.no_stat_val: show_game_over_screen })
 	enemiesFolder = main.get_node("Enemies")
 	enemyPositions = [
 		enemiesFolder.get_child(0),
@@ -54,7 +54,7 @@ func init_references():
 		enemiesFolder.get_child(2),
 	]
 	inputBlocker = main.get_node("UI/InputBlocker")
-	popupsContainer = main.get_node("UI/PopupsContainer")
+	popupsContainer = main.get_node("UIOverEverything/PopupsContainer")
 
 func init():
 	get_tree().paused = false
@@ -63,7 +63,7 @@ func init():
 	switch_input(true)
 
 func restart():
-	get_tree().unload_current_scene()
+	get_tree().current_scene.queue_free()
 	get_tree().change_scene_to_packed(main_scn)
 	await get_tree().scene_changed
 	init()

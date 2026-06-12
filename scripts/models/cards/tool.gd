@@ -7,7 +7,7 @@ func config(data_ : CardData):
 	tool_data.durability_changed.connect(update_durability)
 	update_durability(tool_data.durability)
 	return self
-	
+
 func update_durability(val):
 	%DurabilityLabel.text = "|"
 	for i in range(val):

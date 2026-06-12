@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://chp0dlk5ri2df"]
+
+[ext_resource type="Script" uid="uid://cey11tfvyy70s" path="res://scripts/models/effect_components/chance_component.gd" id="1_4tiis"]
+
+[node name="ChanceComponent" type="Node" unique_id=131828786]
+script = ExtResource("1_4tiis")
+metadata/_custom_type_script = "uid://ctvmvcsgyepag"
+
+[node name="Components" type="Node" parent="." unique_id=2098243238]
+unique_name_in_owner = true

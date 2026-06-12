@@ -140,12 +140,14 @@ stretch_mode = 5
 
 [node name="DescLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=1825582841]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
 text = "BlaBlaBlaBla"
 label_settings = ExtResource("7_5t304")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="InteractZone" type="Control" parent="SubViewport" unique_id=115790250]
 z_index = 1
