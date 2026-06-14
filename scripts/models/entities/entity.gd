@@ -21,9 +21,11 @@ func config(data_ : EntityData):
 
 func _ready() -> void:
 	Game.on_start_turn.connect(start_turn)
+	start_turn()
 
 func start_turn():
 	stats.Tempo.reset()
+	draw_hand()
 
 #region Hand
 func add_action_hand(action : Action):
@@ -35,24 +37,30 @@ func add_actions_hand(actions : Array):
 		self.cards_hand.append(action)
 	hand_changed.emit(cards_hand)
 
-func get_rand_actions_deck(num):
-	if self.cards_deck.size() <= 0: return []
-	var cards = []
+func get_rand_actions_hand(num : int):
+	var actions = []
 	for i in range(num):
-		var drawn_card = self.cards_deck.pick_random()
-		if drawn_card == null:
-			return cards
-		self.cards_deck.erase(drawn_card)
-		cards.append(drawn_card)
-	return cards
+		var filtered_hand = self.cards_hand.filter(func(x): return !actions.has(x))
+		if filtered_hand.size() > 0:
+			actions.append(filtered_hand.pick_random())
+	return actions
+
+func play_rand_actions_hand(num : int):
+	var actions = get_rand_actions_hand(num)
+	actions.all(func(x): x.activate())
+	hand_changed.emit(cards_hand)
 
 func clear_hand():
-	for card in cards_hand:
-		move_action_to_deck(card)
+	for i in range(cards_hand.size()):
+		move_action_to_deck(cards_hand[0])
+	hand_changed.emit(cards_hand)
 
-func draw_hand():
-	clear_hand()
-	add_actions_hand(get_rand_actions_deck(data.card_hand_size))
+func draw_hand(is_clear_hand : bool = true):
+	if is_clear_hand: clear_hand()
+	add_actions_hand(pop_rand_actions_deck(data.card_hand_size))
+
+func draw_actions(num):
+	add_actions_hand(pop_rand_actions_deck(num))
 
 func replace_action_hand(action_to_replace, action_to_be_replaced):
 	var cardIdx = self.cards_hand.find(action_to_be_replaced)
@@ -70,6 +78,9 @@ func pop_next_actions_deck(num):
 		self.cards_deck.erase(drawn_card)
 		cards.append(drawn_card)
 	return cards
+
+func move_actions_hand_deck(num):
+		range(num).all(func(_x): move_action_to_deck(get_rand_action_deck()))
 
 func move_action_to_deck(actionData : CardData, isActivation : bool = false):
 	self.cards_hand.erase(actionData)
@@ -92,6 +103,39 @@ func add_action_deck(action : CardData):
 func add_actions_deck(actions : Array):
 	for action in actions:
 		add_action_deck(action)
+
+func get_rand_action_deck() -> CardData:
+	if self.cards_deck.size() <= 0: return null
+	return self.cards_deck.pick_random()
+
+func get_rand_actions_deck(num):
+	if self.cards_deck.size() <= 0: return []
+	var cards = []
+	for i in range(num):
+		var drawn_card = get_rand_action_deck()
+		if drawn_card == null:
+			return cards
+		cards.append(drawn_card)
+	return cards
+
+func pop_rand_action_deck() -> CardData:
+	if self.cards_deck.size() <= 0: return null
+
+	var drawn_card = self.cards_deck.pick_random()
+	if drawn_card == null:
+		return null
+	self.cards_deck.erase(drawn_card)
+	return drawn_card
+
+func pop_rand_actions_deck(num):
+	if self.cards_deck.size() <= 0: return []
+	var cards = []
+	for i in range(num):
+		var drawn_card = pop_rand_action_deck()
+		if drawn_card == null:
+			return cards
+		cards.append(drawn_card)
+	return cards
 #endregion
 
 #region Status Eff
@@ -111,7 +155,9 @@ func add_status_effect(effect : StatusEffData):
 
 func remove_status_effect(effect : StatusEffData):
 	self.status_effects.erase(effect)
-	%EffectDatas.remove_child(effect)
+
+	if %EffectDatas.get_children().any(func(x): return x == effect):
+		%EffectDatas.remove_child(effect)
 	status_effects_changed.emit(status_effects)
 
 func get_effects(type : Const.StatusEffects) -> Array[StatusEffData]:
@@ -126,10 +172,10 @@ func on_death():
 
 func process_damage_outgoing(dmg : int) -> int:
 	for eff in get_effects(Const.StatusEffects.STRENGTH):
-		dmg += eff.value
+		dmg += eff.stacks
 	return dmg
 
 func process_damage_incoming(dmg : int) -> int:
 	for eff in get_effects(Const.StatusEffects.RESILIENCE):
-		dmg -= eff.value
+		dmg -= eff.stacks
 	return dmg

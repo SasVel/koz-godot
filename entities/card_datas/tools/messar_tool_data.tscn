@@ -2,12 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_vtehi"]
 [ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_3ncal"]
+[ext_resource type="Script" uid="uid://70ll8wh61u6s" path="res://scripts/models/effect_components/durability_processor_comp.gd" id="2_ixcjh"]
 
-[node name="MessarToolData" unique_id=988386249 instance=ExtResource("1_vtehi")]
-durability = 4
+[node name="MessarToolData" unique_id=988386249 node_paths=PackedStringArray("durability_processor") instance=ExtResource("1_vtehi")]
+durability_processor = NodePath("Components/DurabilityProcessorComp")
+type = 1
+isGeneric = false
 weaponType = 2
+value = 10
 
-[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=73138775]
+[node name="DurabilityProcessorComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=990251061]
+script = ExtResource("2_ixcjh")
+negation_chance = 0.3
+metadata/_custom_type_script = "uid://70ll8wh61u6s"
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=73138775]
 script = ExtResource("2_3ncal")
-value = 16
+value = 18
 metadata/_custom_type_script = "uid://rio4hms2vn51"

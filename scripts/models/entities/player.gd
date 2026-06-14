@@ -13,14 +13,9 @@ func config(data_ : EntityData):
 	add_tools(class_data.starting_tools)
 
 func _ready() -> void:
-	super()
 	config(ObjManager.player_classes_dict[default_class].instantiate())
 	player_bar.config(stats.Health, stats.Block)
-	hand_changed.connect(\
-		func(x):
-			if x.size() <= 0:
-				draw_hand())
-	draw_hand()
+	super()
 
 #region Tools
 func add_tool(tool : ToolData):

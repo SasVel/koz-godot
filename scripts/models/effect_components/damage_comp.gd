@@ -9,6 +9,7 @@ func _ready() -> void:
 func activate():
 	for unit in get_affected_units():
 		unit.take_damage(source.process_damage_outgoing(value))
+	super()
 
 func generate_desc() -> String:
 	return "Deal %s DMG." % value

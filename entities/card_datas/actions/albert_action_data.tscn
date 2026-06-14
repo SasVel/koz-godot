@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://86t2knvnsq41"]
 
 [ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_5dnpx"]
+[ext_resource type="Script" uid="uid://dlyn7nbwqyu5u" path="res://scripts/models/effect_components/draw_comp.gd" id="2_v56hc"]
 
 [node name="AlbertActionData" unique_id=988386249 instance=ExtResource("1_5dnpx")]
 actionType = 7
-isOffensive = true
+
+[node name="DrawComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1302956343]
+script = ExtResource("2_v56hc")
+count = 2
+metadata/_custom_type_script = "uid://dlyn7nbwqyu5u"

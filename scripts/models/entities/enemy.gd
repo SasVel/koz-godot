@@ -2,15 +2,13 @@ extends Entity
 class_name Enemy
 
 func _ready() -> void:
-	super()
 	data.card_hand_size = stats.Tempo.maxValue
 	stats.Tempo.stat_changed.connect(\
 		func(_old, new):
 			data.card_hand_size = new
 			reduce_actions_hand_to_hand_size())
-	Game.on_start_turn.connect(draw_hand)
 	Game.enemy_actions.append(activate_actions_hand)
-	draw_hand()
+	super()
 
 func config(data_ : EntityData):
 	super(data_)

@@ -5,6 +5,7 @@ class_name ChangePhaseComp
 
 func activate():
 	Game.curr_phase = phase
+	super()
 
 func generate_desc() -> String:
 	return "Change phase to %s." % Game.Phases.keys()[phase]

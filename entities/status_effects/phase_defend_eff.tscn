@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bh2b027mjnxwe"]
+
+[ext_resource type="PackedScene" uid="uid://51eutumha5c5" path="res://entities/status_effects/status_eff_data.tscn" id="1_c0s6i"]
+[ext_resource type="Script" uid="uid://dn3hhu3h6hf0w" path="res://scripts/models/effect_components/change_phase_comp.gd" id="2_oyjaa"]
+
+[node name="PhaseDefendEff" unique_id=1231074189 instance=ExtResource("1_c0s6i")]
+type = 3
+duration = 1
+
+[node name="ChangePhaseComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(2091518437) index="0" unique_id=904096331]
+script = ExtResource("2_oyjaa")
+phase = 1
+metadata/_custom_type_script = "uid://dn3hhu3h6hf0w"

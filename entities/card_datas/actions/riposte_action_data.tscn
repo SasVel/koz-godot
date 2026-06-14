@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_qmal6"]
 [ext_resource type="Script" uid="uid://cr0gxa7eamckf" path="res://scripts/models/effect_components/block_comp.gd" id="2_v1arc"]
+[ext_resource type="PackedScene" uid="uid://bkohy4fxvhqdb" path="res://entities/status_effects/str_eff_data.tscn" id="3_h8kp2"]
 
 [node name="RiposteActionData" unique_id=988386249 instance=ExtResource("1_qmal6")]
 isOffensive = false
@@ -10,3 +11,9 @@ isOffensive = false
 script = ExtResource("2_v1arc")
 isOffensive = false
 metadata/_custom_type_script = "uid://cr0gxa7eamckf"
+
+[node name="StrEffData" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=1231074189 instance=ExtResource("3_h8kp2")]
+stacks = 1
+duration = -1
+isPositive = false
+isOffensive = false

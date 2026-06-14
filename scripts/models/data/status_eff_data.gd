@@ -13,14 +13,13 @@ class_name StatusEffData
 			delete()
 		else:
 			self.duration_changed.emit(val)
-@export var isPositive : bool = true
 
 signal duration_changed(val)
 signal depleted
 
 func activate():
 		get_affected_units()\
-			.all(func(x): x.add_status_effect(ObjManager.status_effects_dict[type].instantiate()))
+			.all(func(x): x.add_status_effect(self.duplicate()))
 
 func activate_eff():
 	if %Components.get_child_count() > 0:
@@ -35,13 +34,13 @@ func activate_eff():
 func config_comp(component : EffectComponent, source_ : Entity, targets_ : Array[Entity]):
 	super(component, source_, targets_)
 	component.value = value
-	component.isOffensive = !isPositive
+	component.isOffensive = isOffensive
 
 func generate_desc() -> String:
 	return "Add %s %s to %s." % [
 		str(stacks),
 		Const.StatusEffects.keys()[type],
-		"self" if !isPositive else "enemy"
+		"self" if !isOffensive else "enemy"
 	]
 
 func delete():

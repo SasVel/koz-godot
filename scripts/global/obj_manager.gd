@@ -145,6 +145,12 @@ func get_action_color(type : Const.Actions) -> Color:
 func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
 	var image = sprites_128_atlas.duplicate()
 	match type:
+		Const.StatusEffects.STRENGTH:
+			image = get_weapon_sprite(Const.Weapons.SWORD)
+			image.get_image().shrink_x2()
+		Const.StatusEffects.RESILIENCE:
+			image = get_shield_sprite(Const.Shields.SHIELD)
+			image.get_image().shrink_x2()
 		Const.StatusEffects.CHANGE_PHASE_ATK:
 			## Image to change icon.
 			image.region = Rect2(512, 0, 128, 128)

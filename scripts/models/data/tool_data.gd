@@ -8,11 +8,17 @@ class_name ToolData
 			source.remove_tool(self)
 		durability_changed.emit(val)
 
+@export var durability_processor : DurabilityProcessorComp
+
 signal durability_changed(val)
 
 func activate():
 	super()
-	durability -= 1
+	durability -= process_durability_loss(1)
 
 func can_activate():
 	return super() and durability > 0
+
+func process_durability_loss(num):
+	if durability_processor == null: return num
+	return 0 if durability_processor.activate() else num

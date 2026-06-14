@@ -13,6 +13,7 @@ config_version=5
 config/name="Koz"
 run/main_scene="uid://bgvoodoogu7ou"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/image="uid://bvynoeblx1f63"
 config/icon="res://icon.svg"
 
 [audio]
@@ -25,6 +26,7 @@ Const="*uid://bbwts8yaxiq05"
 ObjManager="*uid://cj4ale0ilwpgn"
 Game="*uid://rswuroq5nufs"
 UI="*uid://ghamk5ll18fx"
+MusicAndSounds="*uid://dbgqywy2gukoi"
 
 [display]
 

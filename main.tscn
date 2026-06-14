@@ -1,23 +1,13 @@
 [gd_scene format=3 uid="uid://dv21jyyfqh0lf"]
 
-[ext_resource type="AudioStream" uid="uid://7hucfemk7nqh" path="res://music_and_sounds/music/02. Ancient screw.mp3" id="1_cegan"]
 [ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/background.jpg" id="1_ig7tw"]
 [ext_resource type="Shader" uid="uid://crjtha6ikpwm5" path="res://shaders/VignetteShader.gdshader" id="2_0xm2m"]
-[ext_resource type="AudioStream" uid="uid://bql2n0oucmkml" path="res://music_and_sounds/music/06. Retrofitting sand dollars.mp3" id="2_82xsv"]
 [ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="2_272bh"]
-[ext_resource type="AudioStream" uid="uid://exwxtrr0f258" path="res://music_and_sounds/music/07. Song of wavering reprise.mp3" id="3_getpj"]
 [ext_resource type="PackedScene" uid="uid://c6q48vqnrxi8p" path="res://entities/tool_card.tscn" id="4_7mycd"]
-[ext_resource type="AudioStream" uid="uid://cb0numi8m7br2" path="res://music_and_sounds/music/08. Until next time.mp3" id="4_ryguw"]
-[ext_resource type="AudioStream" uid="uid://cqkncwehlv086" path="res://music_and_sounds/music/09. Born to grow.mp3" id="5_d13ii"]
 [ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="5_lquwl"]
-[ext_resource type="AudioStream" uid="uid://kyrrcslvq1an" path="res://music_and_sounds/music/10. Novemberdimma.mp3" id="6_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://ccgybac60bnaq" path="res://entities/action_card.tscn" id="6_7mycd"]
-[ext_resource type="AudioStream" uid="uid://klkcbndl3giy" path="res://music_and_sounds/music/21. Gravel run.mp3" id="7_0odxb"]
 [ext_resource type="Script" uid="uid://ctvalpjglsupf" path="res://addons/tnowe_extra_controls/elements/radial_container.gd" id="8_4c57u"]
-[ext_resource type="AudioStream" uid="uid://dyj6odhha1jp8" path="res://music_and_sounds/music/23. Foxtail.mp3" id="8_lswn8"]
-[ext_resource type="AudioStream" uid="uid://dasfq6otiljau" path="res://music_and_sounds/music/24. I hope I'll see you again.mp3" id="9_a6jrf"]
 [ext_resource type="Script" uid="uid://c3wh10qjm5gsy" path="res://addons/tnowe_extra_controls/elements/radial_container_theme.gd" id="9_efxa6"]
-[ext_resource type="Script" uid="uid://cueesbvkobht0" path="res://musics_player.gd" id="10_82xsv"]
 [ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="15_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://cpgn2tegjq7md" path="res://entities/EntityBar.tscn" id="15_a6jrf"]
 [ext_resource type="Script" uid="uid://ne7wq0mqey7" path="res://main_container.gd" id="15_ryguw"]
@@ -33,18 +23,6 @@
 [ext_resource type="Script" uid="uid://dk75ppnjir5lr" path="res://UI/turn_alert.gd" id="27_qsp4k"]
 [ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="29_kq58d"]
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="30_seu75"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xuqvo"]
-streams_count = 9
-stream_0/stream = ExtResource("1_cegan")
-stream_1/stream = ExtResource("2_82xsv")
-stream_2/stream = ExtResource("3_getpj")
-stream_3/stream = ExtResource("4_ryguw")
-stream_4/stream = ExtResource("5_d13ii")
-stream_5/stream = ExtResource("6_1u8w0")
-stream_6/stream = ExtResource("7_0odxb")
-stream_7/stream = ExtResource("8_lswn8")
-stream_8/stream = ExtResource("9_a6jrf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
 shader = ExtResource("2_0xm2m")
@@ -78,7 +56,7 @@ item_radius_factor = 1.0
 color = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k2k6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -88,7 +66,7 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rl1p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1u8w0"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -98,7 +76,7 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok6jj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0odxb"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -108,7 +86,7 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_facbu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -118,7 +96,7 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1qrp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6jrf"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -128,7 +106,7 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_come4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuqvo"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -138,7 +116,7 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8e4i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -170,13 +148,6 @@ skew_deg = 6
 metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 
 [node name="Main" type="Node2D" unique_id=895458731]
-
-[node name="MusicsPlayer" type="AudioStreamPlayer" parent="." unique_id=1462063389]
-stream = SubResource("AudioStreamRandomizer_xuqvo")
-autoplay = true
-mix_target = 2
-bus = &"Music"
-script = ExtResource("10_82xsv")
 
 [node name="Background" type="TextureRect" parent="." unique_id=2092396494]
 anchors_preset = 15
@@ -389,23 +360,23 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_4k2k6")
+material = SubResource("ShaderMaterial_d13ii")
 layout_mode = 2
 
 [node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_0rl1p")
+material = SubResource("ShaderMaterial_1u8w0")
 layout_mode = 2
 
 [node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_ok6jj")
+material = SubResource("ShaderMaterial_0odxb")
 layout_mode = 2
 
 [node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_facbu")
+material = SubResource("ShaderMaterial_lswn8")
 layout_mode = 2
 
 [node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_b1qrp")
+material = SubResource("ShaderMaterial_a6jrf")
 layout_mode = 2
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
@@ -423,11 +394,11 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_come4")
+material = SubResource("ShaderMaterial_xuqvo")
 layout_mode = 2
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_h8e4i")
+material = SubResource("ShaderMaterial_qsp4k")
 layout_mode = 2
 
 [node name="TurnAlert" type="Control" parent="UI/MainContainer" unique_id=750216790]
@@ -552,7 +523,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="finished" from="MusicsPlayer" to="MusicsPlayer" method="_on_finished"]
 [connection signal="pressed" from="UI/MainContainer/EndTurnBtn" to="UI/MainContainer/EndTurnBtn" method="_on_pressed"]
 [connection signal="sort_children" from="UI/MainContainer/ActionsContainer" to="UI/MainContainer/ActionsContainer" method="_on_sort_children"]
 [connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard2" to="UI/MainContainer/ActionsContainer/ActionCard2" method="_on_mouse_entered"]

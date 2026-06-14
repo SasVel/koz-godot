@@ -27,13 +27,17 @@ func activate():
 
 func update(num):
 	%NumLabel.visible = num > 1
-	super(num)
+	if num == -1:
+		super(8)
+		%NumLabel.rotation_degrees = 90
+	else:
+		super(num)
+		%NumLabel.rotation_degrees = 0
 
 	update_stacks(data.stacks)
 
 func update_stacks(stacks):
 	%StacksLabel.visible = stacks > 1
-	if stacks <= 1: return
 	%StacksLabel.text = "x%s" % stacks
 
 func delete(with_data : bool = false):
