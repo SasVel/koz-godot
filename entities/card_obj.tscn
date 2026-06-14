@@ -30,27 +30,42 @@ region = Rect2(256, 0, 128, 128)
 atlas = ExtResource("4_nlkk3")
 region = Rect2(1792, 256, 237, 256)
 
-[node name="CardObj" type="SubViewportContainer" unique_id=789441108 node_paths=PackedStringArray("cardBack", "dragZone")]
-material = SubResource("ShaderMaterial_nlkk3")
-offset_right = 216.0
+[node name="CardObj" type="Control" unique_id=87810923 node_paths=PackedStringArray("cardBack", "container")]
+custom_minimum_size = Vector2(226, 300)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 226.0
 offset_bottom = 300.0
 scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+focus_mode = 2
+mouse_filter = 1
 theme = ExtResource("2_nlkk3")
 script = ExtResource("3_oy8i5")
 focus_tween_speed = 0.1
 focus_scale = 1.1
-cardBack = NodePath("SubViewport/CardBack")
+cardBack = NodePath("SubViewportContainer/SubViewport/CardBack")
 fauxShifted = true
-dragZone = NodePath("SubViewport/InteractZone")
+container = NodePath("SubViewportContainer")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1994013633]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1491279813]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_nlkk3")
+custom_minimum_size = Vector2(226, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1994013633]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(226, 300)
 render_target_update_mode = 4
 
-[node name="CardBack" type="TextureRect" parent="SubViewport" unique_id=1733591081]
+[node name="CardBack" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1733591081]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -63,7 +78,7 @@ texture = ExtResource("2_obpk5")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewport/CardBack" unique_id=1598253765]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/CardBack" unique_id=1598253765]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,20 +90,20 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CardBack/MarginContainer" unique_id=752301886]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer" unique_id=752301886]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=264211312]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=264211312]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=767831041]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=767831041]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1601413309]
+[node name="TitleLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1601413309]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -98,14 +113,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TempoDisplay" type="Control" parent="SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1230546215]
+[node name="TempoDisplay" type="Control" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1230546215]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 script = ExtResource("6_ls7t3")
 is_colored_outline = false
 
-[node name="IconRect" type="TextureRect" parent="SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay" unique_id=1398163549]
+[node name="IconRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay" unique_id=1398163549]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
@@ -115,7 +130,7 @@ texture = SubResource("AtlasTexture_6iubg")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="NumLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay" unique_id=1053042408]
+[node name="NumLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay" unique_id=1053042408]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -130,7 +145,7 @@ label_settings = ExtResource("8_7b0cb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardIconRect" type="TextureRect" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=881828344]
+[node name="CardIconRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=881828344]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
@@ -138,7 +153,7 @@ texture = SubResource("AtlasTexture_h3ehx")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="DescLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=1825582841]
+[node name="DescLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=1825582841]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -149,21 +164,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="InteractZone" type="Control" parent="SubViewport" unique_id=115790250]
+[node name="InteractZone" type="Control" parent="." unique_id=115790250]
 z_index = 1
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 22.0
-offset_right = -11.0
-offset_bottom = -14.0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
+mouse_default_cursor_shape = 2
 script = ExtResource("8_f26x7")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="mouse_entered" from="SubViewport/InteractZone" to="SubViewport/InteractZone" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="SubViewport/InteractZone" to="SubViewport/InteractZone" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="InteractZone" to="InteractZone" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InteractZone" to="InteractZone" method="_on_mouse_exited"]

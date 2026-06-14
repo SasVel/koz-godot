@@ -317,6 +317,7 @@ offset_bottom = 36.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
@@ -359,25 +360,40 @@ layout_mode = 2
 [node name="Control3" type="Control" parent="UI/MainContainer/ActionsContainer" unique_id=2100818964]
 layout_mode = 2
 
-[node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
+[node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_d13ii")
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+focus_mode = 1
+cardBack = NodePath("SubViewport/CardBack")
 
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_1u8w0")
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+focus_mode = 1
+cardBack = NodePath("SubViewport/CardBack")
 
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_0odxb")
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+focus_mode = 1
+cardBack = NodePath("SubViewport/CardBack")
 
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_lswn8")
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+focus_mode = 1
+cardBack = NodePath("SubViewport/CardBack")
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_a6jrf")
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+focus_mode = 1
+cardBack = NodePath("SubViewport/CardBack")
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
 unique_name_in_owner = true
@@ -393,13 +409,19 @@ theme_override_constants/separation = 15
 alignment = 1
 script = ExtResource("17_lswn8")
 
-[node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
+[node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 node_paths=PackedStringArray("cardBack") instance=ExtResource("4_7mycd")]
 material = SubResource("ShaderMaterial_xuqvo")
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+focus_mode = 1
+cardBack = NodePath("SubViewport/CardBack")
 
-[node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
+[node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 node_paths=PackedStringArray("cardBack") instance=ExtResource("4_7mycd")]
 material = SubResource("ShaderMaterial_qsp4k")
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+focus_mode = 1
+cardBack = NodePath("SubViewport/CardBack")
 
 [node name="TurnAlert" type="Control" parent="UI/MainContainer" unique_id=750216790]
 visible = false

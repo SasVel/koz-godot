@@ -5,6 +5,16 @@
 [ext_resource type="Script" uid="uid://cecarh81oxns5" path="res://scripts/models/cards/tool.gd" id="3_nhk73"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="4_670yt"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0q5f"]
+resource_local_to_scene = true
+shader = ExtResource("2_670yt")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_670yt"]
 resource_local_to_scene = true
 shader = ExtResource("2_670yt")
@@ -16,18 +26,23 @@ shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
 [node name="ToolCard" unique_id=789441108 instance=ExtResource("1_g0q5f")]
-material = SubResource("ShaderMaterial_670yt")
+material = SubResource("ShaderMaterial_g0q5f")
 script = ExtResource("3_nhk73")
 focus_scale = 1.2
-fauxShifted = false
 
-[node name="TitleLabel" parent="SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(767831041) index="0" unique_id=1601413309]
+[node name="SubViewportContainer" parent="." index="0" unique_id=1491279813]
+material = SubResource("ShaderMaterial_670yt")
+
+[node name="TitleLabel" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(767831041) index="0" unique_id=1601413309]
 text = "Halberd"
 
-[node name="DurabilityLabel" type="Label" parent="SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(767831041) index="1" unique_id=372696409]
+[node name="DurabilityLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(767831041) index="1" unique_id=372696409]
 unique_name_in_owner = true
 layout_mode = 2
 text = "|########|"
 label_settings = ExtResource("4_670yt")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InteractZone" parent="." index="1" unique_id=115790250]
+tooltip_text = "Drag this Tool to activate it."

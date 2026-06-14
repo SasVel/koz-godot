@@ -8,11 +8,13 @@ class_name DragObject
 @export var fauxShifted : bool = false
 @export var fauxShiftDeg : float = 15.0
 @export var fauxTweenSpeed : float = 0.1
-@export var dragZone : Control
+@export var container : Control
 
 var isPickedUp : bool = false
 var isEquipped : bool = false
+
 var dragObject : Control
+
 signal drag_started(caller : DragObject)
 signal drag_ended(caller : DragObject)
 
@@ -26,7 +28,7 @@ func _get_drag_data(_at_position : Vector2):
 	dragObject.z_index = 100
 
 	dragObject.position = get_local_mouse_position() * -1
-	if fauxShifted: faux_shift(dragObject)
+	if fauxShifted: faux_shift(container)
 
 	var control = Control.new()
 	control.add_child(dragObject)
@@ -56,10 +58,10 @@ func _notification(what):
 			drag_ended.emit(self)
 
 func faux_shift(dragObj : Control):
-	var center = self.global_position + (self.size / 2)
+	var center = self.global_position + (dragObj.size / 2)
 	var distanceToCenter = get_global_mouse_position().distance_to(center)
-	var rotY : float = (distanceToCenter / (self.size.y / 2)) * fauxShiftDeg
-	var rotX : float = (distanceToCenter / (self.size.x / 2)) * fauxShiftDeg
+	var rotY : float = (distanceToCenter / (dragObj.size.y / 2)) * fauxShiftDeg
+	var rotX : float = (distanceToCenter / (dragObj.size.x / 2)) * fauxShiftDeg
 
 	if get_global_mouse_position().y < center.y:
 		rotX *= -1
@@ -72,5 +74,5 @@ func faux_shift(dragObj : Control):
 	Obj.tween_shader_parameter(dragObj, "rot_x_deg", 0.0, rotX, fauxTweenSpeed)
 
 func reset_faux_shift():
-	self.material.set_shader_parameter("rot_y_deg", 0)
-	self.material.set_shader_parameter("rot_x_deg", 0)
+	container.material.set_shader_parameter("rot_y_deg", 0)
+	container.material.set_shader_parameter("rot_x_deg", 0)
