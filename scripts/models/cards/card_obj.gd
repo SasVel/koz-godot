@@ -16,6 +16,9 @@ var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 		isOn = val
 
 @onready var isTweening : bool = false
+var pre_activation_position : Vector2
+var pre_activation_rot : float
+var pre_activation_scale : Vector2
 
 func config(data_ : CardData):
 	data = data_
@@ -85,3 +88,33 @@ func move_on_focus(on_off : bool):
 		 focus_tween_speed)
 	await tween.finished
 	isTweening = false
+
+func animate_pre_activation(drop_position):
+	pre_activation_position = self.global_position
+	pre_activation_rot = self.rotation
+	pre_activation_scale = self.scale
+
+	self.z_index = 100
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "global_position", (get_viewport_rect().size / 2) - self.size / 2, 0.5).from(drop_position)
+	tween.parallel().tween_property(self, "rotation_degrees", 0, 0.5)
+	tween.parallel().tween_property(self, "scale", self.scale * 1.1, 0.5)
+
+	tween.tween_property(self, "scale", self.scale * 1.3, 0.1)
+	await tween.finished
+	await get_tree().create_timer(0.3).timeout
+
+func animate_post_activation():
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "global_position", pre_activation_position, 0.5)
+	tween.parallel().tween_property(self, "rotation", pre_activation_rot, 0.5)
+	tween.parallel().tween_property(self, "scale", pre_activation_scale, 0.5)
+	await tween.finished
+	self.z_index = 0
+
+func activate(drop_position):
+	Game.switch_input(false)
+	await animate_pre_activation(drop_position)
+	data.activate()
+	Game.switch_input(true)
+	await animate_post_activation()

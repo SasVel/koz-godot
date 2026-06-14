@@ -6,6 +6,5 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 		return true
 	return false
 
-func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	var objData = data["object"].data
-	objData.activate()
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	data["object"].activate(at_position)

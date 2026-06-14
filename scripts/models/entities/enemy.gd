@@ -19,11 +19,10 @@ func config(data_ : EntityData):
 	%EnemySprite.modulate = Const.ENEMY_COLORS[Const.Enemies.keys()[data.type]]
 	return self
 
-func _on_data_dropper_data_dropped(_at_position: Vector2,
-	drop_data: Variant):
-	var card_data : CardData = drop_data["object"].data
-	card_data.add_target(self)
-	card_data.activate()
+func _on_data_dropper_data_dropped(at_position: Vector2, drop_data: Variant):
+	var card_obj : CardObj = drop_data["object"]
+	card_obj.data.add_target(self)
+	await card_obj.activate(at_position)
 
 func add_action_deck(action : CardData):
 	action.config(self, [Game.player])

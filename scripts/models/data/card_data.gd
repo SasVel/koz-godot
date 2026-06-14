@@ -19,6 +19,7 @@ class_name CardData
 		isOn = val
 		changed_state.emit(val)
 
+
 signal changed_state(val)
 signal tempo_changed(val)
 

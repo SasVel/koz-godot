@@ -1,4 +1,4 @@
-extends Control 
+extends Control
 class_name DragObject
 
 ## Set custom minimum size, the object will have a size of 0,0 otherwise.
@@ -18,7 +18,7 @@ signal drag_ended(caller : DragObject)
 
 func _get_drag_data(_at_position : Vector2):
 	var data = {}
-	
+
 	dragObject = self.duplicate(DUPLICATE_DEFAULT)
 
 	dragObject.set_deferred("size", dragObject.size)
@@ -30,7 +30,7 @@ func _get_drag_data(_at_position : Vector2):
 
 	var control = Control.new()
 	control.add_child(dragObject)
-	
+
 	isPickedUp = true
 	self.visible = false
 	set_drag_preview(control)
@@ -45,7 +45,7 @@ func _notification(what):
 			self.mouse_filter = Control.MOUSE_FILTER_PASS
 
 	if !isPickedUp: return
-	
+
 	match what:
 		NOTIFICATION_DRAG_BEGIN:
 			drag_started.emit(self)
@@ -60,12 +60,12 @@ func faux_shift(dragObj : Control):
 	var distanceToCenter = get_global_mouse_position().distance_to(center)
 	var rotY : float = (distanceToCenter / (self.size.y / 2)) * fauxShiftDeg
 	var rotX : float = (distanceToCenter / (self.size.x / 2)) * fauxShiftDeg
-	
+
 	if get_global_mouse_position().y < center.y:
 		rotX *= -1
 	if get_global_mouse_position().x >= center.x:
 		rotY *= -1
-	
+
 	#dragObj.material.set_shader_parameter("rot_y_deg", rotY)
 	Obj.tween_shader_parameter(dragObj, "rot_y_deg", 0.0, rotY, fauxTweenSpeed)
 	#dragObj.material.set_shader_parameter("rot_x_deg", rotX)
