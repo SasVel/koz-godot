@@ -27,7 +27,7 @@ enum Actions {
 enum Weapons {
 	HALBERD,
 	SWORD,
-	MESSAR,
+	MESSER,
 	BASTARD_SWORD,
 	DAGGER,
 	MACE,
@@ -54,7 +54,9 @@ enum Enemies {
 }
 
 enum PlayerClasses {
-	KNIGHT
+	KNIGHT,
+	MERCENARY,
+	BANDIT,
 }
 
 enum UnitTrackingVars {

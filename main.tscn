@@ -224,8 +224,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PlayerNameLabel" type="Label" parent="UI/MainContainer/VBoxContainer/SecondRow" unique_id=974739906]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Sasser the Knight"
+text = "Sasser ?"
 label_settings = ExtResource("15_1u8w0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -360,40 +361,40 @@ layout_mode = 2
 [node name="Control3" type="Control" parent="UI/MainContainer/ActionsContainer" unique_id=2100818964]
 layout_mode = 2
 
-[node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
+[node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_d13ii")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
-cardBack = NodePath("SubViewport/CardBack")
+fauxShiftDeg = 15.0
 
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_1u8w0")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
-cardBack = NodePath("SubViewport/CardBack")
+fauxShiftDeg = 15.0
 
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_0odxb")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
-cardBack = NodePath("SubViewport/CardBack")
+fauxShiftDeg = 15.0
 
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_lswn8")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
-cardBack = NodePath("SubViewport/CardBack")
+fauxShiftDeg = 15.0
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 node_paths=PackedStringArray("cardBack") instance=ExtResource("6_7mycd")]
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_a6jrf")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
-cardBack = NodePath("SubViewport/CardBack")
+fauxShiftDeg = 15.0
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
 unique_name_in_owner = true
@@ -409,19 +410,19 @@ theme_override_constants/separation = 15
 alignment = 1
 script = ExtResource("17_lswn8")
 
-[node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 node_paths=PackedStringArray("cardBack") instance=ExtResource("4_7mycd")]
+[node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
 material = SubResource("ShaderMaterial_xuqvo")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
-cardBack = NodePath("SubViewport/CardBack")
+fauxShiftDeg = 15.0
 
-[node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 node_paths=PackedStringArray("cardBack") instance=ExtResource("4_7mycd")]
+[node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
 material = SubResource("ShaderMaterial_qsp4k")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
-cardBack = NodePath("SubViewport/CardBack")
+fauxShiftDeg = 15.0
 
 [node name="TurnAlert" type="Control" parent="UI/MainContainer" unique_id=750216790]
 visible = false
@@ -515,6 +516,7 @@ position = Vector2(250, 376)
 
 [node name="Player" type="Node" parent="." unique_id=2028437162 node_paths=PackedStringArray("player_bar")]
 script = ExtResource("21_getpj")
+default_class = 1
 player_bar = NodePath("../UI/MainContainer/VBoxContainer/PlayerBar")
 
 [node name="CardDatas" type="Node" parent="Player" unique_id=1975752218]
@@ -563,6 +565,7 @@ mouse_filter = 2
 [connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard2" to="UI/MainContainer/ToolsList/ToolCard2" method="_on_mouse_exited"]
 [connection signal="card_activated" from="Player" to="UI/MainContainer" method="_on_player_card_activated"]
+[connection signal="configured" from="Player" to="UI/MainContainer" method="_on_player_configured"]
 [connection signal="status_effects_changed" from="Player" to="UI/MainContainer/VBoxContainer/StatusEffectsContainer" method="_on_player_status_effects_changed"]
 
 [editable path="UI/MainContainer/VBoxContainer/PlayerBar"]

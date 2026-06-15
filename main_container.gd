@@ -74,3 +74,8 @@ func _on_player_card_activated(card_data: CardData) -> void:
 		child.data == card_data:
 			child.queue_free()
 			return
+
+
+func _on_player_configured() -> void:
+	%PlayerNameLabel.text = %PlayerNameLabel.text.replace("?", player.data.entity_name)
+	pass # Replace with function body.

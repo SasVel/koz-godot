@@ -11,6 +11,7 @@ var status_effects : Array[StatusEffData]
 signal hand_changed(cards_hand : Array[CardData])
 signal card_activated(card_data : CardData)
 signal status_effects_changed(status_effects)
+signal configured
 
 func config(data_ : EntityData):
 	data = data_
@@ -18,6 +19,7 @@ func config(data_ : EntityData):
 	stats = data.default_stats.duplicate(true)
 	stats.Health.no_stat_val.connect(on_death)
 	add_actions_deck(data.card_deck)
+	configured.emit()
 
 func _ready() -> void:
 	Game.on_start_turn.connect(start_turn)

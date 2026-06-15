@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bwqpiwxtaif83" path="res://entities/card_datas/actions/slash_action_data.tscn" id="10_th0i0"]
 [ext_resource type="PackedScene" uid="uid://c7vwmfnhl3yd5" path="res://entities/card_datas/actions/defend_action_data.tscn" id="11_qn5vk"]
 [ext_resource type="PackedScene" uid="uid://fw7ogr0tlcqd" path="res://entities/card_datas/tools/sword_tool_data.tscn" id="11_wbjmf"]
-[ext_resource type="PackedScene" uid="uid://bc007jbb88ktv" path="res://entities/card_datas/tools/messar_tool_data.tscn" id="12_lx7ma"]
+[ext_resource type="PackedScene" uid="uid://bc007jbb88ktv" path="res://entities/card_datas/tools/messer_tool_data.tscn" id="12_lx7ma"]
 [ext_resource type="PackedScene" uid="uid://b3xrt8nigaxgt" path="res://entities/card_datas/tools/bastard_sword_tool_data.tscn" id="13_b02df"]
 [ext_resource type="PackedScene" uid="uid://bsnk7ydwa70l7" path="res://entities/card_datas/tools/dagger_tool_data.tscn" id="14_me7ne"]
 [ext_resource type="PackedScene" uid="uid://61gf4wvwm603" path="res://entities/card_datas/tools/mace_tool_data.tscn" id="15_yq7du"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bkohy4fxvhqdb" path="res://entities/status_effects/str_eff_data.tscn" id="24_jfqbm"]
 [ext_resource type="Texture2D" uid="uid://dht1ilt7obrvh" path="res://res/sprites_512.png" id="24_yq7du"]
 [ext_resource type="PackedScene" uid="uid://cjn7jamaae674" path="res://entities/status_effects/stun_eff_data.tscn" id="25_5fmjw"]
+[ext_resource type="PackedScene" uid="uid://4c6e77xyhasd" path="res://entities/player_classes/mercenary_class_data.tscn" id="27_c3n6k"]
 [ext_resource type="PackedScene" uid="uid://c6q48vqnrxi8p" path="res://entities/tool_card.tscn" id="27_hw0uh"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="27_qn5vk"]
 [ext_resource type="PackedScene" uid="uid://epgoswxm5gh2" path="res://UI/action_mini_display.tscn" id="27_s34ir"]
@@ -84,7 +85,8 @@ status_effects_dict = Dictionary[int, PackedScene]({
 4: ExtResource("25_5fmjw")
 })
 player_classes_dict = Dictionary[int, PackedScene]({
-0: ExtResource("22_4nbcu")
+0: ExtResource("22_4nbcu"),
+1: ExtResource("27_c3n6k")
 })
 card_obj = ExtResource("4_gyyai")
 tool_obj = ExtResource("27_hw0uh")

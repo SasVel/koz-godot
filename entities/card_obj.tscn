@@ -46,6 +46,7 @@ focus_tween_speed = 0.1
 focus_scale = 1.1
 cardBack = NodePath("SubViewportContainer/SubViewport/CardBack")
 fauxShifted = true
+fauxShiftDeg = 7.0
 container = NodePath("SubViewportContainer")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1491279813]

@@ -32,6 +32,7 @@ enum Phases {
 @onready var player_status_eff_actions : Array[Callable]
 @onready var enemy_status_eff_actions : Array[Callable]
 @onready var is_input : bool = true
+@onready var is_object_dragged : bool = false
 @onready var inputBlocker : Control
 @onready var popupsContainer : Control
 

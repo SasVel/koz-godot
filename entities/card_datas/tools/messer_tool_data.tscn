@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bc007jbb88ktv"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_04ulj"]
+[ext_resource type="Script" uid="uid://70ll8wh61u6s" path="res://scripts/models/effect_components/durability_processor_comp.gd" id="2_je20q"]
+[ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="3_a4k41"]
+
+[node name="MesserToolData" unique_id=988386249 node_paths=PackedStringArray("durability_processor") instance=ExtResource("1_04ulj")]
+durability_processor = NodePath("Components/DurabilityProcessorComp")
+type = 1
+isGeneric = false
+weaponType = 2
+value = 10
+
+[node name="DurabilityProcessorComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=990251061]
+script = ExtResource("2_je20q")
+negation_chance = 0.3
+metadata/_custom_type_script = "uid://70ll8wh61u6s"
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=73138775]
+script = ExtResource("3_a4k41")
+value = 18
+metadata/_custom_type_script = "uid://rio4hms2vn51"

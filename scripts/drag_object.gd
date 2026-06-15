@@ -51,11 +51,13 @@ func _notification(what):
 	match what:
 		NOTIFICATION_DRAG_BEGIN:
 			drag_started.emit(self)
+			Game.is_object_dragged = true
 		NOTIFICATION_DRAG_END:
 			self.visible = true
 			isPickedUp = false
 			reset_faux_shift()
 			drag_ended.emit(self)
+			Game.is_object_dragged = false
 
 func faux_shift(dragObj : Control):
 	var center = self.global_position + (dragObj.size / 2)
