@@ -54,7 +54,7 @@ func config(data_ : CardData):
 func _ready() -> void:
 	focus_card_pos_y = get_viewport_rect().size.y - (self.custom_minimum_size.y * focus_scale + 10)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !self.has_focus() and\
 	!isAnimTweening and\
 	self.position != self.default_pos\
@@ -136,9 +136,9 @@ func activate(drop_position):
 	Game.switch_input(true)
 	await animate_post_activation()
 
-func _can_drop_data(at_position: Vector2, drop_data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, drop_data: Variant) -> bool:
 	return drop_data["object"].isLoot
 
-func _drop_data(at_position: Vector2, drop_data: Variant) -> void:
+func _drop_data(_at_position: Vector2, drop_data: Variant) -> void:
 	data.source.replace_action_hand(drop_data["object"].data.duplicate(), self.data, true)
 	drop_data["object"].queue_free()

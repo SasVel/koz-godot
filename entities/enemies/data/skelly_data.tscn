@@ -17,17 +17,19 @@ metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 [sub_resource type="Resource" id="Resource_ycobc"]
 script = ExtResource("2_ycobc")
 value = 0.0
+maxValue = 70
 metadata/_custom_type_script = "uid://yuler4bts5rw"
 
 [sub_resource type="Resource" id="Resource_0u81h"]
 script = ExtResource("2_ycobc")
-value = 100.0
+value = 70
+maxValue = 70
 metadata/_custom_type_script = "uid://yuler4bts5rw"
 
 [sub_resource type="Resource" id="Resource_p27pl"]
 script = ExtResource("2_ycobc")
-value = 2.0
-maxValue = 2.0
+value = 2
+maxValue = 2
 metadata/_custom_type_script = "uid://yuler4bts5rw"
 
 [sub_resource type="Resource" id="Resource_0dmfe"]
@@ -42,4 +44,4 @@ type = 1
 idle_anim_settings = SubResource("Resource_v28r2")
 entity_name = "Skelly"
 default_stats = SubResource("Resource_0dmfe")
-card_deck_types = Array[int]([8, 9, 8])
+card_deck_types = Array[int]([8, 9, 8, 10])

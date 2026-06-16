@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://86t2knvnsq41" path="res://entities/card_datas/actions/albert_action_data.tscn" id="9_knlgn"]
 [ext_resource type="PackedScene" uid="uid://bmml33o08d1bh" path="res://entities/card_datas/tools/halberd_tool_data.tscn" id="10_ol8vm"]
 [ext_resource type="PackedScene" uid="uid://bwqpiwxtaif83" path="res://entities/card_datas/actions/slash_action_data.tscn" id="10_th0i0"]
+[ext_resource type="PackedScene" uid="uid://3l1tyi3w131j" path="res://entities/card_datas/actions/smash_action_data.tscn" id="11_4pinj"]
 [ext_resource type="PackedScene" uid="uid://c7vwmfnhl3yd5" path="res://entities/card_datas/actions/defend_action_data.tscn" id="11_qn5vk"]
 [ext_resource type="PackedScene" uid="uid://fw7ogr0tlcqd" path="res://entities/card_datas/tools/sword_tool_data.tscn" id="11_wbjmf"]
 [ext_resource type="PackedScene" uid="uid://bc007jbb88ktv" path="res://entities/card_datas/tools/messer_tool_data.tscn" id="12_lx7ma"]
@@ -40,7 +41,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s34ir"]
 atlas = ExtResource("27_qn5vk")
-region = Rect2(384, 0, 128, 128)
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_et42b"]
 atlas = ExtResource("5_easby")
@@ -62,7 +63,8 @@ actions_dict = Dictionary[int, PackedScene]({
 6: ExtResource("8_ageor"),
 7: ExtResource("9_knlgn"),
 8: ExtResource("10_th0i0"),
-9: ExtResource("11_qn5vk")
+9: ExtResource("11_qn5vk"),
+10: ExtResource("11_4pinj")
 })
 weapons_dict = Dictionary[int, PackedScene]({
 0: ExtResource("10_ol8vm"),

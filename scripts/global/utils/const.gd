@@ -22,6 +22,7 @@ enum Actions {
 	ALBERT,
 	SLASH,
 	DEFEND,
+	SMASH,
 }
 
 enum Weapons {

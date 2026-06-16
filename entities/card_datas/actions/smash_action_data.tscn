@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://3l1tyi3w131j"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_274ni"]
+[ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_y0gvp"]
+[ext_resource type="PackedScene" uid="uid://cjn7jamaae674" path="res://entities/status_effects/stun_eff_data.tscn" id="3_wx3bm"]
+
+[node name="SmashActionData" unique_id=988386249 instance=ExtResource("1_274ni")]
+actionType = 10
+tempoCost = 2
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1184072026]
+script = ExtResource("2_y0gvp")
+value = 30
+metadata/_custom_type_script = "uid://rio4hms2vn51"
+
+[node name="StunEffData" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=1231074189 instance=ExtResource("3_wx3bm")]

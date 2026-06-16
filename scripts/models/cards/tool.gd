@@ -14,6 +14,6 @@ func update_durability(val):
 		%DurabilityLabel.text += "#"
 	%DurabilityLabel.text += "|"
 
-func _drop_data(at_position: Vector2, drop_data: Variant) -> void:
+func _drop_data(_at_position: Vector2, drop_data: Variant) -> void:
 	(data.source as Player).replace_tool(drop_data["object"].data.duplicate(), self.data)
 	drop_data["object"].queue_free()

@@ -134,7 +134,7 @@ func get_action_mini_sprite(type : Const.Actions) -> Texture2D:
 		Const.Actions.DEFEND:
 			x_pos = 128
 		_:
-			x_pos = 0
+			x_pos = 256
 	image.region = Rect2(x_pos, 0, 128, 128)
 	return image
 
