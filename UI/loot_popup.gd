@@ -1,6 +1,8 @@
 extends Control
 class_name LootPopup
 
+signal finished
+
 func _ready() -> void:
 	var card_rewards = ObjManager.get_rand_action_objects(3)
 	if randi_range(0, 3) == 3:
@@ -11,8 +13,14 @@ func _ready() -> void:
 
 	for reward in card_rewards:
 		%LootContainer.add_child(reward)
+		reward.isLoot = true
+		reward.focus_card_pos_y = 0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("continue"):
+		finished.emit()
 		self.queue_free()
-		Game.next_room()
+
+func _on_continue_btn_pressed() -> void:
+	finished.emit()
+	self.queue_free()

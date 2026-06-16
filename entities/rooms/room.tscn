@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bite5gmrnecl8" path="res://entities/rooms/room.gd" id="1_pl5rr"]
 [ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/background.jpg" id="1_wv86s"]
 [ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="2_pl5rr"]
-[ext_resource type="PackedScene" uid="uid://udq3k5kt871x" path="res://shaders/transitions/transitions/t_cells.tscn" id="4_3rrti"]
 
 [node name="Room" type="Node2D" unique_id=1640835901]
 script = ExtResource("1_pl5rr")
@@ -27,12 +26,3 @@ script = ExtResource("2_pl5rr")
 metadata/_edit_lock_ = true
 
 [node name="Decorations" type="Node" parent="." unique_id=1492867646]
-
-[node name="Transition" parent="." unique_id=1984375428 instance=ExtResource("4_3rrti")]
-unique_name_in_owner = true
-z_index = 100
-offset_right = 1155.0
-offset_bottom = 705.0
-mouse_filter = 2
-factor = 0.0
-width = 0.5

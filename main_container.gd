@@ -31,7 +31,7 @@ func update_hand(data : Array):
 	for child in actions_container.get_children():
 		child.queue_free()
 
-	for i in range(data.size()):
+	for i in range(data.size() + 2):
 		%ActionsContainer.add_child(Control.new())
 
 	for info in data:
@@ -78,4 +78,3 @@ func _on_player_card_activated(card_data: CardData) -> void:
 
 func _on_player_configured() -> void:
 	%PlayerNameLabel.text = %PlayerNameLabel.text.replace("?", player.data.entity_name)
-	pass # Replace with function body.

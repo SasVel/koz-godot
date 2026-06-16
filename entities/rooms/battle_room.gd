@@ -29,10 +29,14 @@ func add_enemy(enemy_obj : Enemy):
 		break
 
 func try_complete_battle():
-	if check_completed():
-		completed.emit()
+	if check_enemies_dead():
+		var loot_popup = UI.get_popup_inst(UI.Popups.LOOT)
+		Game.popupsContainer.add_child(loot_popup)
+		await loot_popup.finished
+		Game.next_room()
 
-func check_completed():
+
+func check_enemies_dead():
 	return get_enemies()\
 		.filter(func(x): return !x.is_queued_for_deletion())\
 		.size() <= 0

@@ -6,7 +6,7 @@ enum Phases {
 	ATTACK,
 	DEFEND
 }
-@onready var turn_counter : int = 1
+@onready var turn_counter : int = 0
 @onready var rooms_completed : int = 0 :
 	set(val):
 		rooms_completed = val
@@ -64,9 +64,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		end_turn()
 
 func start_game():
-	curr_phase = Phases.ATTACK
+	curr_phase = Phases.DEFEND
 	set_room()
-	turn_counter = 1
 
 func start_turn():
 	swap_phase()
@@ -113,10 +112,12 @@ func set_room():
 	curr_room = room
 
 	room.completed.connect(next_room)
+	await room.ready
 	await room.switch_transition(true)
+	start_turn()
 
 func next_room():
-	turn_counter = 1
+	turn_counter = 0
 	rooms_completed += 1
 	set_room()
 

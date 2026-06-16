@@ -4,7 +4,6 @@ class_name CardObj
 @export var focus_tween_speed = 0.2
 @export var focus_scale = 1.2
 @export var cardBack : TextureRect
-var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 @onready var default_pos = self.position
 @onready var default_rot = self.rotation
 
@@ -15,9 +14,11 @@ var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 		cardBack.modulate = Color.WHITE if val else Color("b1b1b1")
 		isOn = val
 
+@onready var isLoot : bool = false
 @onready var isFocusTweening : bool = false
 @onready var isAnimTweening : bool = false
 
+var focus_card_pos_y : float
 var pre_activation_position : Vector2
 var pre_activation_rot : float
 var pre_activation_scale : Vector2
@@ -50,8 +51,14 @@ func config(data_ : CardData):
 	%TempoDisplay.config(Const.ACTION_COLOR, data.tempoCost, data.tempo_changed)
 	return self
 
+func _ready() -> void:
+	focus_card_pos_y = get_viewport_rect().size.y - (self.custom_minimum_size.y * focus_scale + 10)
+
 func _physics_process(delta: float) -> void:
-	if !self.has_focus() and !isAnimTweening and self.position != self.default_pos:
+	if !self.has_focus() and\
+	!isAnimTweening and\
+	self.position != self.default_pos\
+	and !isLoot:
 		_on_focus_exited()
 
 func set_defaults():
@@ -75,19 +82,20 @@ func _on_focus_exited() -> void:
 
 func scale_on_focus(on_off : bool):
 	if isFocusTweening: return
-	var tween = create_tween()
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	if on_off:
 		tween.tween_property(self, "scale", Vector2(focus_scale, focus_scale), focus_tween_speed)
 	else:
 		tween.tween_property(self, "scale", Vector2(1, 1), focus_tween_speed)
 
 func move_on_focus(on_off : bool):
-	if isFocusTweening: return
-	var tween = create_tween()
+	if isFocusTweening or isLoot: return
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	isFocusTweening = true
 	if on_off:
-		tween.tween_property(self, "position:y", focus_card_pos_y,
-		 focus_tween_speed).from(0)
+		tween.tween_property(self, "global_position:y", focus_card_pos_y,
+		 focus_tween_speed).from(self.global_position.y)
+		tween.parallel().tween_property(self, "global_position:x", get_global_mouse_position().x - (self.size.x / 2), focus_tween_speed)
 		tween.parallel().tween_property(self, "rotation_degrees", 0, focus_tween_speed)
 	else:
 		tween.tween_property(self, "position", default_pos, focus_tween_speed)
@@ -127,3 +135,10 @@ func activate(drop_position):
 	data.activate()
 	Game.switch_input(true)
 	await animate_post_activation()
+
+func _can_drop_data(at_position: Vector2, drop_data: Variant) -> bool:
+	return drop_data["object"].isLoot
+
+func _drop_data(at_position: Vector2, drop_data: Variant) -> void:
+	data.source.replace_action_hand(drop_data["object"].data.duplicate(), self.data, true)
+	drop_data["object"].queue_free()

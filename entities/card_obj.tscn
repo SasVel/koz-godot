@@ -45,11 +45,8 @@ script = ExtResource("3_oy8i5")
 focus_tween_speed = 0.1
 focus_scale = 1.1
 cardBack = NodePath("SubViewportContainer/SubViewport/CardBack")
-title = null
-description = null
 fauxShifted = true
 fauxShiftDeg = 7.0
-fauxTweenSpeed = null
 container = NodePath("SubViewportContainer")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1491279813]
@@ -174,10 +171,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 150.0
+offset_left = 3.0
+offset_right = -1.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2

@@ -42,4 +42,8 @@ func remove_tool(tool : ToolData):
 	%ToolDatas.remove_child(tool)
 	tools_changed.emit(equipped_tools)
 
+func replace_tool(tool_to_replace, tool_to_be_replaced):
+	remove_tool(tool_to_be_replaced)
+	add_tool(tool_to_replace)
+
 #endregion

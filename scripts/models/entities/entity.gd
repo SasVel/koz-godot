@@ -44,8 +44,12 @@ func apply_defend_phase_modifiers():
 	self.stats.Tempo.value -= 1
 
 #region Hand
-func add_action_hand(action : Action):
-	self.cards_hand.append(action)
+func add_action_hand(action : CardData, at_idx : int = -1, isNew : bool = false):
+	if at_idx != -1:
+		self.cards_hand.insert(at_idx, action)
+	else:
+		self.cards_hand.append(action)
+	if isNew: try_config_action(action)
 	hand_changed.emit(cards_hand)
 
 func add_actions_hand(actions : Array):
@@ -78,13 +82,13 @@ func draw_hand(is_clear_hand : bool = true):
 func draw_actions(num):
 	add_actions_hand(pop_rand_actions_deck(num))
 
-func replace_action_hand(action_to_replace, action_to_be_replaced):
+func replace_action_hand(action_to_replace, action_to_be_replaced, isNew : bool = false):
 	var cardIdx = self.cards_hand.find(action_to_be_replaced)
 	if cardIdx == -1:
 		return
 
-	self.cards_hand.erase(cardIdx)
-	self.cards_hand.insert(cardIdx, action_to_replace)
+	self.cards_hand.erase(action_to_be_replaced)
+	add_action_hand(action_to_replace, cardIdx, isNew)
 	hand_changed.emit(cards_hand)
 
 func pop_next_actions_deck(num):
@@ -111,10 +115,8 @@ func move_action_to_deck(actionData : CardData, isActivation : bool = false):
 
 #region Deck
 func add_action_deck(action : CardData):
-	action.activated.connect(func(): move_action_to_deck(action, true))
 	self.cards_deck.append(action)
-	%CardDatas.add_child(action)
-	action.config_source(self)
+	try_config_action(action)
 
 func add_actions_deck(actions : Array):
 	for action in actions:
@@ -195,3 +197,13 @@ func process_damage_incoming(dmg : int) -> int:
 	for eff in get_effects(Const.StatusEffects.RESILIENCE):
 		dmg -= eff.stacks
 	return dmg
+#endregion
+
+func try_config_action(action : CardData):
+	if action.source != null: return
+	config_action(action)
+
+func config_action(action : CardData):
+	Obj.connect_signals({ action.activated: func(): move_action_to_deck(action, true) })
+	%CardDatas.add_child(action)
+	action.config_source(self)

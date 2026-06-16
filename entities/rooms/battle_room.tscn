@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://bll6s507vx1ol" path="res://entities/rooms/battle_room.gd" id="2_p5arh"]
 [ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="3_p5arh"]
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="4_lgpfl"]
+[ext_resource type="Shader" uid="uid://ovrd5ydp8p0q" path="res://shaders/transitions/src/shader/transition.gdshader" id="6_gd440"]
+[ext_resource type="Texture2D" uid="uid://d3aus70ocx6g3" path="res://shaders/transitions/src/texture/transition_shape/noise/cell_02.tres" id="7_bne1m"]
+[ext_resource type="Script" uid="uid://bo1i5j2m427bs" path="res://shaders/transitions/src/script/transition_rect.gd" id="8_qtq62"]
 
 [sub_resource type="Resource" id="Resource_gd440"]
 script = ExtResource("4_lgpfl")
@@ -16,6 +19,26 @@ scale_y = 0.12
 scale_x = 0.08
 skew_deg = 6
 metadata/_custom_type_script = "uid://dl53p3t1sbh74"
+
+[sub_resource type="Gradient" id="Gradient_dg77c"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ydvy8"]
+gradient = SubResource("Gradient_dg77c")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3ics"]
+shader = ExtResource("6_gd440")
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/node_resolution = Vector2(1155, 705)
+shader_parameter/factor = 0.5
+shader_parameter/width = 0.3
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_ydvy8")
+shader_parameter/gradient_fixed = false
+shader_parameter/shape_texture = ExtResource("7_bne1m")
+shader_parameter/shape_tiling = 6.0
+shader_parameter/shape_rotation = 0.0
+shader_parameter/shape_scroll = Vector2(-0.1, 0)
+shader_parameter/shape_feathering = 0.0
+shader_parameter/shape_treshold = 1.0
 
 [node name="BattleRoom" unique_id=1640835901 instance=ExtResource("1_q5ix2")]
 script = ExtResource("2_p5arh")
@@ -57,3 +80,23 @@ position = Vector2(785, 376)
 
 [node name="EnemyPos_3" type="Node2D" parent="Enemies" index="2" unique_id=1056772927]
 position = Vector2(250, 376)
+
+[node name="Transition" type="ColorRect" parent="." index="3" unique_id=392957002]
+unique_name_in_owner = true
+z_index = 100
+material = SubResource("ShaderMaterial_p3ics")
+custom_minimum_size = Vector2(1155, 705)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1155.0
+offset_bottom = 705.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_qtq62")
+gradient_texture = SubResource("GradientTexture2D_ydvy8")
+shape_texture = ExtResource("7_bne1m")
+shape_tiling = 6.0
+shape_scroll = Vector2(-0.1, 0)
+metadata/_custom_type_script = "uid://bo1i5j2m427bs"

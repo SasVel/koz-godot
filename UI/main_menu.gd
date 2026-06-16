@@ -1,4 +1,4 @@
-extends Control 
+extends Control
 
 @export var main_scn : PackedScene
 @export var credits_scn : PackedScene
