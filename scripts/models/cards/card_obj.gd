@@ -15,7 +15,9 @@ var focus_card_pos_y = self.position.y - (self.size.y * 0.8)
 		cardBack.modulate = Color.WHITE if val else Color("b1b1b1")
 		isOn = val
 
-@onready var isTweening : bool = false
+@onready var isFocusTweening : bool = false
+@onready var isAnimTweening : bool = false
+
 var pre_activation_position : Vector2
 var pre_activation_rot : float
 var pre_activation_scale : Vector2
@@ -48,6 +50,10 @@ func config(data_ : CardData):
 	%TempoDisplay.config(Const.ACTION_COLOR, data.tempoCost, data.tempo_changed)
 	return self
 
+func _physics_process(delta: float) -> void:
+	if !self.has_focus() and !isAnimTweening and self.position != self.default_pos:
+		_on_focus_exited()
+
 func set_defaults():
 	default_pos = self.position
 	default_rot = self.rotation
@@ -68,7 +74,7 @@ func _on_focus_exited() -> void:
 	move_on_focus(false)
 
 func scale_on_focus(on_off : bool):
-	if isTweening: return
+	if isFocusTweening: return
 	var tween = create_tween()
 	if on_off:
 		tween.tween_property(self, "scale", Vector2(focus_scale, focus_scale), focus_tween_speed)
@@ -76,9 +82,9 @@ func scale_on_focus(on_off : bool):
 		tween.tween_property(self, "scale", Vector2(1, 1), focus_tween_speed)
 
 func move_on_focus(on_off : bool):
-	if isTweening: return
+	if isFocusTweening: return
 	var tween = create_tween()
-	isTweening = true
+	isFocusTweening = true
 	if on_off:
 		tween.tween_property(self, "position:y", focus_card_pos_y,
 		 focus_tween_speed).from(0)
@@ -88,9 +94,10 @@ func move_on_focus(on_off : bool):
 		tween.parallel().tween_property(self, "rotation", default_rot,
 		 focus_tween_speed)
 	await tween.finished
-	isTweening = false
+	isFocusTweening = false
 
 func animate_pre_activation(drop_position):
+	isAnimTweening = true
 	pre_activation_position = self.global_position
 	pre_activation_rot = self.rotation
 	pre_activation_scale = self.scale
@@ -112,6 +119,7 @@ func animate_post_activation():
 	tween.parallel().tween_property(self, "scale", pre_activation_scale, 0.5)
 	await tween.finished
 	self.z_index = 0
+	isAnimTweening = false
 
 func activate(drop_position):
 	Game.switch_input(false)
