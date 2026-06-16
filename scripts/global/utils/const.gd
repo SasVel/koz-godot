@@ -74,9 +74,7 @@ enum StatTypes {
 }
 
 enum RoomTypes {
-	Random = -1,
 	Battle,
-	Rest
 }
 
 var colors_obj

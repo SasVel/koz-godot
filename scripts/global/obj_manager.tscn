@@ -34,6 +34,8 @@
 [ext_resource type="PackedScene" uid="uid://c6q48vqnrxi8p" path="res://entities/tool_card.tscn" id="27_hw0uh"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="27_qn5vk"]
 [ext_resource type="PackedScene" uid="uid://epgoswxm5gh2" path="res://UI/action_mini_display.tscn" id="27_s34ir"]
+[ext_resource type="PackedScene" uid="uid://buhrpw74vpluv" path="res://entities/player_classes/bandit_class_data.tscn" id="28_rqqf7"]
+[ext_resource type="PackedScene" uid="uid://dd48xuglqpuk" path="res://entities/rooms/battle_room.tscn" id="29_4pinj"]
 [ext_resource type="PackedScene" uid="uid://bo1oesyb4aa4f" path="res://UI/status_eff_display.tscn" id="29_hw0uh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s34ir"]
@@ -86,7 +88,11 @@ status_effects_dict = Dictionary[int, PackedScene]({
 })
 player_classes_dict = Dictionary[int, PackedScene]({
 0: ExtResource("22_4nbcu"),
-1: ExtResource("27_c3n6k")
+1: ExtResource("27_c3n6k"),
+2: ExtResource("28_rqqf7")
+})
+rooms_dict = Dictionary[int, PackedScene]({
+0: ExtResource("29_4pinj")
 })
 card_obj = ExtResource("4_gyyai")
 tool_obj = ExtResource("27_hw0uh")

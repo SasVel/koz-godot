@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="10_aorne"]
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="11_bpm4f"]
 [ext_resource type="LabelSettings" uid="uid://c6c0xikx30vc5" path="res://misc/bigass_title_label_settings.tres" id="11_tcix6"]
+[ext_resource type="PackedScene" uid="uid://udq3k5kt871x" path="res://shaders/transitions/transitions/t_cells.tscn" id="15_7137b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cafmx"]
 shader = ExtResource("3_2mudq")
@@ -206,6 +207,14 @@ text = "New Game"
 [node name="CreditsBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer" unique_id=882466474]
 layout_mode = 2
 text = "Credits"
+
+[node name="Transition" parent="." unique_id=581929043 instance=ExtResource("15_7137b")]
+unique_name_in_owner = true
+z_index = 100
+layout_mode = 1
+mouse_filter = 2
+factor = 0.0
+width = 0.5
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/CreditsBtn" to="." method="_on_credits_btn_pressed"]

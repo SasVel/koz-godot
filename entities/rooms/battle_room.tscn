@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dd48xuglqpuk"]
+
+[ext_resource type="PackedScene" uid="uid://4fagkau3k6jc" path="res://entities/rooms/room.tscn" id="1_q5ix2"]
+[ext_resource type="PackedScene" uid="uid://denor2og15qye" path="res://Decorations/fire_rect.tscn" id="2_d564k"]
+[ext_resource type="Script" uid="uid://bll6s507vx1ol" path="res://entities/rooms/battle_room.gd" id="2_p5arh"]
+[ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="3_p5arh"]
+[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="4_lgpfl"]
+
+[sub_resource type="Resource" id="Resource_gd440"]
+script = ExtResource("4_lgpfl")
+ease_type = 3
+transition_type = 9
+scale_speed = 4
+is_scale_pos = false
+scale_y = 0.12
+scale_x = 0.08
+skew_deg = 6
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
+
+[node name="BattleRoom" unique_id=1640835901 instance=ExtResource("1_q5ix2")]
+script = ExtResource("2_p5arh")
+
+[node name="FireRect" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="0" unique_id=1524273013 instance=ExtResource("2_d564k")]
+offset_left = 147.00002
+offset_top = 133.10551
+offset_right = 275.0
+offset_bottom = 261.10565
+metadata/_edit_use_anchors_ = true
+
+[node name="IdleAnimatorControls" type="Node" parent="Decorations/FireRect" index="2" unique_id=141654095 node_paths=PackedStringArray("target")]
+script = ExtResource("3_p5arh")
+target = NodePath("..")
+settings = SubResource("Resource_gd440")
+metadata/_custom_type_script = "uid://b2hdv0h572pc"
+
+[node name="FireRect2" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="1" unique_id=1857025563 instance=ExtResource("2_d564k")]
+offset_left = 875.99994
+offset_top = 141.0
+offset_right = 1003.99994
+offset_bottom = 269.0
+metadata/_edit_use_anchors_ = true
+
+[node name="IdleAnimatorControls2" type="Node" parent="Decorations/FireRect2" index="2" unique_id=1827271875 node_paths=PackedStringArray("target")]
+script = ExtResource("3_p5arh")
+target = NodePath("..")
+settings = SubResource("Resource_gd440")
+metadata/_custom_type_script = "uid://b2hdv0h572pc"
+
+[node name="Enemies" type="Node" parent="." index="2" unique_id=1802013414]
+unique_name_in_owner = true
+
+[node name="EnemyPos_1" type="Node2D" parent="Enemies" index="0" unique_id=470433538]
+position = Vector2(555, 394)
+
+[node name="EnemyPos_2" type="Node2D" parent="Enemies" index="1" unique_id=1653820162]
+position = Vector2(785, 376)
+
+[node name="EnemyPos_3" type="Node2D" parent="Enemies" index="2" unique_id=1056772927]
+position = Vector2(250, 376)

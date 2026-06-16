@@ -19,6 +19,12 @@ func config(data_ : EntityData):
 	%EnemySprite.modulate = Const.ENEMY_COLORS[Const.Enemies.keys()[data.type]]
 	return self
 
+func on_changed_phase(val : Game.Phases):
+	if val == Game.Phases.ATTACK:
+		apply_defend_phase_modifiers()
+	elif val == Game.Phases.DEFEND:
+		apply_attack_phase_modifiers()
+
 func _on_data_dropper_data_dropped(at_position: Vector2, drop_data: Variant):
 	var card_obj : CardObj = drop_data["object"]
 	card_obj.data.add_target(self)

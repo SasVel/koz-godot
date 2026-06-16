@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://ep01hvf1axii" path="res://scripts/models/effect_components/play_actions_comp.gd" id="2_p3qhu"]
 
 [node name="PanicActionData" unique_id=988386249 instance=ExtResource("1_yco26")]
-type = 1
 actionType = 6
 isOffensive = false
 

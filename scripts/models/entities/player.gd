@@ -17,6 +17,12 @@ func _ready() -> void:
 	player_bar.config(stats.Health, stats.Block)
 	super()
 
+func on_changed_phase(val : Game.Phases):
+	if val == Game.Phases.ATTACK:
+		apply_attack_phase_modifiers()
+	elif val == Game.Phases.DEFEND:
+		apply_defend_phase_modifiers()
+
 #region Tools
 func add_tool(tool : ToolData):
 	self.equipped_tools.append(tool)

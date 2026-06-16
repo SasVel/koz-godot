@@ -14,7 +14,7 @@ config/name="Koz"
 run/main_scene="uid://bgvoodoogu7ou"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://bvynoeblx1f63"
-config/icon="res://icon.svg"
+config/icon="res://res/icon.png"
 
 [audio]
 

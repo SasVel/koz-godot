@@ -23,11 +23,25 @@ func config(data_ : EntityData):
 
 func _ready() -> void:
 	Game.on_start_turn.connect(start_turn)
+	Game.on_changed_phase.connect(on_changed_phase)
 	start_turn()
 
 func start_turn():
 	stats.Tempo.reset()
 	draw_hand()
+
+func on_changed_phase(val : Game.Phases):
+	pass
+
+func apply_attack_phase_modifiers():
+	self.stats.Block.value = 0
+
+	self.stats.Tempo.maxValue += 1
+	self.stats.Tempo.value += 1
+
+func apply_defend_phase_modifiers():
+	self.stats.Tempo.maxValue -= 1
+	self.stats.Tempo.value -= 1
 
 #region Hand
 func add_action_hand(action : Action):

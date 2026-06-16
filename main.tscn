@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://dv21jyyfqh0lf"]
 
-[ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/background.jpg" id="1_ig7tw"]
 [ext_resource type="Shader" uid="uid://crjtha6ikpwm5" path="res://shaders/VignetteShader.gdshader" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="2_272bh"]
 [ext_resource type="PackedScene" uid="uid://c6q48vqnrxi8p" path="res://entities/tool_card.tscn" id="4_7mycd"]
 [ext_resource type="Shader" uid="uid://bcqokulbpof0c" path="res://shaders/FauxPerspective.gdshader" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ccgybac60bnaq" path="res://entities/action_card.tscn" id="6_7mycd"]
@@ -17,12 +15,9 @@
 [ext_resource type="Script" uid="uid://tw10yiuclb40" path="res://entities/status_effects_display.gd" id="18_jq2sk"]
 [ext_resource type="Script" uid="uid://30k2gbj6kiml" path="res://scripts/models/entities/player.gd" id="21_getpj"]
 [ext_resource type="Script" uid="uid://baraqeaue84k4" path="res://card_activate_field.gd" id="24_xuqvo"]
-[ext_resource type="PackedScene" uid="uid://denor2og15qye" path="res://Decorations/fire_rect.tscn" id="25_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="25_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="26_qsp4k"]
 [ext_resource type="Script" uid="uid://dk75ppnjir5lr" path="res://UI/turn_alert.gd" id="27_qsp4k"]
-[ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="29_kq58d"]
-[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="30_seu75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
 shader = ExtResource("2_0xm2m")
@@ -136,40 +131,13 @@ gradient = SubResource("Gradient_qsp4k")
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
-[sub_resource type="Resource" id="Resource_htxhm"]
-script = ExtResource("30_seu75")
-ease_type = 3
-transition_type = 9
-scale_speed = 4
-is_scale_pos = false
-scale_y = 0.12
-scale_x = 0.08
-skew_deg = 6
-metadata/_custom_type_script = "uid://dl53p3t1sbh74"
-
 [node name="Main" type="Node2D" unique_id=895458731]
-
-[node name="Background" type="TextureRect" parent="." unique_id=2092396494]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -49.000126
-offset_top = -52.000065
-offset_right = 3090.9998
-offset_bottom = 1890.4999
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_ig7tw")
-expand_mode = 3
-stretch_mode = 5
-script = ExtResource("2_272bh")
-metadata/_edit_lock_ = true
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1773490858]
 position = Vector2(576, 350)
 
 [node name="UI" type="Control" parent="." unique_id=1036917726]
+z_index = 5
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
@@ -477,46 +445,8 @@ offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Decorations" type="Node" parent="." unique_id=1916253175]
-
-[node name="FireRect" parent="Decorations" unique_id=1524273013 instance=ExtResource("25_qsp4k")]
-offset_left = 147.00002
-offset_top = 133.10551
-offset_right = 275.0
-offset_bottom = 261.10565
-
-[node name="IdleAnimatorControls" type="Node" parent="Decorations/FireRect" unique_id=663109521 node_paths=PackedStringArray("target")]
-script = ExtResource("29_kq58d")
-target = NodePath("..")
-settings = SubResource("Resource_htxhm")
-metadata/_custom_type_script = "uid://b2hdv0h572pc"
-
-[node name="FireRect2" parent="Decorations" unique_id=60019729 instance=ExtResource("25_qsp4k")]
-offset_left = 875.99994
-offset_top = 141.0
-offset_right = 1003.99994
-offset_bottom = 269.0
-
-[node name="IdleAnimatorControls2" type="Node" parent="Decorations/FireRect2" unique_id=320490427 node_paths=PackedStringArray("target")]
-script = ExtResource("29_kq58d")
-target = NodePath("..")
-settings = SubResource("Resource_htxhm")
-metadata/_custom_type_script = "uid://b2hdv0h572pc"
-
-[node name="Enemies" type="Node" parent="." unique_id=1692258728]
-
-[node name="EnemyPos_1" type="Node2D" parent="Enemies" unique_id=441333931]
-position = Vector2(555, 394)
-
-[node name="EnemyPos_2" type="Node2D" parent="Enemies" unique_id=2120487240]
-position = Vector2(785, 376)
-
-[node name="EnemyPos_3" type="Node2D" parent="Enemies" unique_id=255602858]
-position = Vector2(250, 376)
-
 [node name="Player" type="Node" parent="." unique_id=2028437162 node_paths=PackedStringArray("player_bar")]
 script = ExtResource("21_getpj")
-default_class = 1
 player_bar = NodePath("../UI/MainContainer/VBoxContainer/PlayerBar")
 
 [node name="CardDatas" type="Node" parent="Player" unique_id=1975752218]
