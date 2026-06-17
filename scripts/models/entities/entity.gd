@@ -57,16 +57,16 @@ func add_actions_hand(actions : Array):
 		self.cards_hand.append(action)
 	hand_changed.emit(cards_hand)
 
-func get_rand_actions_hand(num : int):
+func get_rand_actions_hand(num : int, excluded_list : Array[CardData] = []):
 	var actions = []
 	for i in range(num):
-		var filtered_hand = self.cards_hand.filter(func(x): return !actions.has(x))
+		var filtered_hand = self.cards_hand.filter(func(x): return !actions.has(x) and !excluded_list.has(x))
 		if filtered_hand.size() > 0:
 			actions.append(filtered_hand.pick_random())
 	return actions
 
-func play_rand_actions_hand(num : int):
-	var actions = get_rand_actions_hand(num)
+func play_rand_actions_hand(num : int, excluded_list : Array[CardData] = []):
+	var actions = get_rand_actions_hand(num, excluded_list)
 	actions.all(func(x): x.activate())
 	hand_changed.emit(cards_hand)
 
