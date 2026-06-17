@@ -10,5 +10,5 @@ weaponType = 1
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1145210996]
 script = ExtResource("2_dd1wf")
-value = 1000
+value = 25
 metadata/_custom_type_script = "uid://rio4hms2vn51"

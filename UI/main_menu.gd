@@ -10,6 +10,14 @@ func _ready() -> void:
 	switch_transition(true)
 
 func _on_new_game_btn_pressed() -> void:
+	var name_popup = UI.get_popup_inst(UI.Popups.NAME)
+	self.add_child(name_popup)
+	await name_popup.finished
+	name_popup.queue_free()
+
+	var class_selection_popup = UI.get_popup_inst(UI.Popups.CLASS_SELECTION)
+	self.add_child(class_selection_popup)
+	await class_selection_popup.finished
 	await switch_transition(false)
 	get_tree().change_scene_to_packed(main_scn)
 

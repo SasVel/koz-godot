@@ -9,6 +9,12 @@ script = ExtResource("2_rh17y")
 value = 0
 metadata/_custom_type_script = "uid://yuler4bts5rw"
 
+[sub_resource type="Resource" id="Resource_rh17y"]
+script = ExtResource("2_rh17y")
+value = 0
+maxValue = 6
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
 [sub_resource type="Resource" id="Resource_uy4bq"]
 script = ExtResource("2_rh17y")
 value = 100
@@ -16,8 +22,8 @@ metadata/_custom_type_script = "uid://yuler4bts5rw"
 
 [sub_resource type="Resource" id="Resource_ce1xy"]
 script = ExtResource("2_rh17y")
-value = 2
-maxValue = 2
+value = 3
+maxValue = 3
 metadata/_custom_type_script = "uid://yuler4bts5rw"
 
 [sub_resource type="Resource" id="Resource_oqual"]
@@ -25,6 +31,7 @@ script = ExtResource("3_8o4ub")
 Health = SubResource("Resource_uy4bq")
 Block = SubResource("Resource_bmav7")
 Tempo = SubResource("Resource_ce1xy")
+HandSize = SubResource("Resource_rh17y")
 metadata/_custom_type_script = "uid://mi75jnrupyfs"
 
 [node name="KnightClassData" unique_id=780192406 instance=ExtResource("1_f2fh6")]
@@ -32,5 +39,6 @@ tool_types = Array[int]([2, 1])
 starting_weapons = Array[int]([1])
 starting_shields = Array[int]([0, 1])
 entity_name = "the Knight"
+desc = "Well rounded and resilient."
 default_stats = SubResource("Resource_oqual")
 card_deck_types = Array[int]([8, 8, 8, 9, 9, 9, 0, 4, 3, 7])

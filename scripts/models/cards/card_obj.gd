@@ -26,6 +26,7 @@ var pre_activation_scale : Vector2
 func config(data_ : CardData):
 	data = data_
 	data.changed_state.connect(func(x): isOn = x)
+	data.card_object = self
 	if data.isOn != null:
 		isOn = data.isOn
 
@@ -129,16 +130,19 @@ func animate_post_activation():
 	self.z_index = 0
 	isAnimTweening = false
 
-func activate(drop_position):
-	Game.switch_input(false)
+func activate(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
+	Game.event_queue.append(Callable(self, "activation_sequence").bindv([drop_position, deduct_tempo]))
+
+func activation_sequence(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
 	await animate_pre_activation(drop_position)
-	data.activate()
-	Game.switch_input(true)
+	data.activate(deduct_tempo)
+	if self.is_queued_for_deletion(): return
 	await animate_post_activation()
 
 func _can_drop_data(_at_position: Vector2, drop_data: Variant) -> bool:
 	return drop_data["object"].isLoot
 
 func _drop_data(_at_position: Vector2, drop_data: Variant) -> void:
+	if data.source == null: return
 	data.source.replace_action_hand(drop_data["object"].data.duplicate(), self.data, true)
 	drop_data["object"].queue_free()

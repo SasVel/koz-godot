@@ -10,6 +10,12 @@ value = 0
 maxValue = 75
 metadata/_custom_type_script = "uid://yuler4bts5rw"
 
+[sub_resource type="Resource" id="Resource_mdtor"]
+script = ExtResource("2_mdtor")
+value = 0
+maxValue = 6
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
 [sub_resource type="Resource" id="Resource_q7xmm"]
 script = ExtResource("2_mdtor")
 value = 75
@@ -27,6 +33,7 @@ script = ExtResource("3_480wo")
 Health = SubResource("Resource_q7xmm")
 Block = SubResource("Resource_1onx6")
 Tempo = SubResource("Resource_c5mjt")
+HandSize = SubResource("Resource_mdtor")
 metadata/_custom_type_script = "uid://mi75jnrupyfs"
 
 [node name="MercenaryClassData" unique_id=780192406 instance=ExtResource("1_t43li")]
@@ -35,5 +42,6 @@ tool_types = Array[int]([1, 2])
 starting_weapons = Array[int]([2])
 starting_shields = Array[int]([1])
 entity_name = "the Mercenary"
+desc = "Consistant damage and good constitution."
 default_stats = SubResource("Resource_flx34")
 card_deck_types = Array[int]([8, 8, 9, 9, 2, 2, 3, 6, 7, 7])

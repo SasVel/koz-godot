@@ -21,11 +21,24 @@ enum Phases {
 @onready var main : Node2D
 @onready var player : Player
 @onready var curr_room : Room
+
+@onready var event_queue : Array[Callable]
+@onready var is_playing_event : bool = false :
+	set(val):
+		is_playing_event = val
+		switch_input(!is_playing_event)
+		if !is_playing_event and event_queue.size() <= 0:
+			event_queue_empty.emit()
+
 @onready var enemy_actions : Array[Callable]
 @onready var player_status_eff_actions : Array[Callable]
 @onready var enemy_status_eff_actions : Array[Callable]
+
 @onready var inputBlocker : Control
 @onready var popupsContainer : Control
+
+@onready var player_name : String = "Sasser"
+@onready var default_class : Const.PlayerClasses = Const.PlayerClasses.KNIGHT
 
 @onready var is_input : bool = true
 @onready var is_object_dragged : bool = false
@@ -34,9 +47,32 @@ signal on_start_turn()
 signal on_end_turn()
 signal on_changed_phase(val : Phases)
 signal on_rooms_completed(val : int)
+signal event_queue_empty
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _physics_process(_delta: float) -> void:
+	if event_queue.size() > 0 and !is_playing_event:
+		await pop_play_event()
+
+func pop_play_event():
+	is_playing_event = true
+	print(event_queue)
+	var event = event_queue.pop_back()
+	await event.call()
+	is_playing_event = false
+
+func add_event(event : Callable):
+	event_queue.push_front(event)
+
+func add_events(event_arr : Array[Callable]):
+	if event_queue.size() <= 0:
+		event_queue.append_array(event_arr)
+		return
+	var queue_copy = event_queue.duplicate()
+	event_queue = event_arr
+	event_queue.append_array(queue_copy)
 
 func init_references():
 	main = get_tree().get_root().get_node("Main")
@@ -79,25 +115,13 @@ func end_turn():
 	start_turn()
 
 func play_player_eff_stack():
-	switch_input(false)
-	await get_tree().create_timer(0.2).timeout
-
-	for action in player_status_eff_actions:
-		await action.call()
-
-	switch_input(true)
+	add_events(player_status_eff_actions)
+	await event_queue_empty
 
 func play_enemy_anim_stack():
-	switch_input(false)
-	await get_tree().create_timer(0.2).timeout
-
-	for action in enemy_status_eff_actions:
-		await action.call()
-	await get_tree().create_timer(0.2).timeout
-
-	for action in enemy_actions:
-		await action.call()
-	switch_input(true)
+	add_events(enemy_status_eff_actions)
+	add_events(enemy_actions)
+	await event_queue_empty
 
 func swap_phase():
 	curr_phase = Phases.ATTACK if curr_phase == Phases.DEFEND else Phases.DEFEND
@@ -120,7 +144,6 @@ func next_room():
 	turn_counter = 0
 	rooms_completed += 1
 	set_room()
-
 
 func add_status_eff_action(action : Callable, is_for_player):
 	if is_for_player:

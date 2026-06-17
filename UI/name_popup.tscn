@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cgsj2yrymleua"]
+
+[ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_0eb6w"]
+[ext_resource type="Script" uid="uid://dpv1piwo6kiy0" path="res://name_popup.gd" id="2_gkdrj"]
+
+[node name="NamePopup" type="Control" unique_id=949640972]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0eb6w")
+script = ExtResource("2_gkdrj")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=478908044]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.24313726, 0.24313726, 0.24313726, 0.4117647)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1446958994]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -32.0
+offset_right = 88.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer" unique_id=417508661]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Write your name"
+max_length = 50
+
+[node name="DoneBtn" type="Button" parent="VBoxContainer" unique_id=68797958]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "This is my name!"
+
+[connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/DoneBtn" to="." method="_on_done_btn_pressed"]

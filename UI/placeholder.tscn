@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://6obkyplrtqym"]
+
+[ext_resource type="Script" uid="uid://dd2tutucug1om" path="res://UI/placeholder.gd" id="1_ysrlr"]
+
+[node name="Placeholder" type="Control" unique_id=1985409837]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ysrlr")
+metadata/_custom_type_script = "uid://dd2tutucug1om"

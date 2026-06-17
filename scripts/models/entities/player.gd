@@ -1,7 +1,6 @@
 extends Entity
 class_name Player
 
-@export var default_class : Const.PlayerClasses
 @export var player_bar : EntityBar
 var equipped_tools : Array[ToolData]
 
@@ -13,7 +12,7 @@ func config(data_ : EntityData):
 	add_tools(class_data.starting_tools)
 
 func _ready() -> void:
-	config(ObjManager.player_classes_dict[default_class].instantiate())
+	config(ObjManager.player_classes_dict[Game.default_class].instantiate())
 	player_bar.config(stats.Health, stats.Block)
 	super()
 

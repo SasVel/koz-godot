@@ -45,6 +45,8 @@ func apply_defend_phase_modifiers():
 
 #region Hand
 func add_action_hand(action : CardData, at_idx : int = -1, isNew : bool = false):
+	if self.cards_hand.size() >= stats.HandSize.maxValue:
+		return
 	if at_idx != -1:
 		self.cards_hand.insert(at_idx, action)
 	else:
@@ -54,20 +56,23 @@ func add_action_hand(action : CardData, at_idx : int = -1, isNew : bool = false)
 
 func add_actions_hand(actions : Array):
 	for action in actions:
+		if self.cards_hand.size() >= stats.HandSize.maxValue:
+			break
 		self.cards_hand.append(action)
 	hand_changed.emit(cards_hand)
 
-func get_rand_actions_hand(num : int, excluded_list : Array[CardData] = []):
+func get_rand_actions_hand(num : int, excluded_actions : Array[CardData] = []):
 	var actions = []
 	for i in range(num):
-		var filtered_hand = self.cards_hand.filter(func(x): return !actions.has(x) and !excluded_list.has(x))
+		var filtered_hand = self.cards_hand.filter(func(x): return !actions.has(x) and !excluded_actions.has(x))
 		if filtered_hand.size() > 0:
 			actions.append(filtered_hand.pick_random())
 	return actions
 
-func play_rand_actions_hand(num : int, excluded_list : Array[CardData] = []):
-	var actions = get_rand_actions_hand(num, excluded_list)
-	actions.all(func(x): x.activate())
+func play_rand_actions_hand(num : int, deduct_tempo : bool = true, excluded_actions : Array[CardData] = []):
+	var actions = get_rand_actions_hand(num, excluded_actions)
+	for action in actions:
+		action.card_object.activate(action.card_object.global_position, deduct_tempo)
 	hand_changed.emit(cards_hand)
 
 func clear_hand():
@@ -102,12 +107,13 @@ func pop_next_actions_deck(num):
 func move_actions_hand_deck(num):
 		range(num).all(func(_x): move_action_to_deck(get_rand_action_deck()))
 
-func move_action_to_deck(actionData : CardData, isActivation : bool = false):
+func move_action_to_deck(actionData : CardData, isActivation : bool = false, send_hand_changed : bool = false):
 	self.cards_hand.erase(actionData)
 	self.cards_deck.append(actionData)
 
 	if !isActivation:
-		self.hand_changed.emit(cards_hand)
+		if send_hand_changed:
+			self.hand_changed.emit(cards_hand)
 	else:
 		self.card_activated.emit(actionData)
 

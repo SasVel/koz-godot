@@ -19,6 +19,7 @@ class_name CardData
 		isOn = val
 		changed_state.emit(val)
 
+@onready var card_object : CardObj
 
 signal changed_state(val)
 signal tempo_changed(val)
@@ -27,9 +28,10 @@ func config_source(source_ : Entity):
 	super(source_)
 	source.stats.Tempo.stat_changed.connect(func(_x, _y): check_state())
 
-func activate():
-	source.stats.Tempo.value -= self.tempoCost
+func activate(deduct_tempo : bool = true):
 	super()
+	if deduct_tempo:
+		source.stats.Tempo.value -= self.tempoCost
 
 func get_generic_value():
 	return %Components.get_child(0).value

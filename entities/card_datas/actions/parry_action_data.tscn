@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://dbn2nwhhx7u3d"]
 
 [ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_ian02"]
+[ext_resource type="Script" uid="uid://cr0gxa7eamckf" path="res://scripts/models/effect_components/block_comp.gd" id="2_b24gp"]
 
 [node name="ParryActionData" unique_id=988386249 instance=ExtResource("1_ian02")]
 actionType = 5
 isOffensive = false
+
+[node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=748430054]
+script = ExtResource("2_b24gp")
+value = 40
+metadata/_custom_type_script = "uid://cr0gxa7eamckf"

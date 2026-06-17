@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dgr6it13ss1ys"]
+
+[ext_resource type="Script" uid="uid://dxkojhn1owt6y" path="res://UI/ClassSelection/class_selection_popup.gd" id="1_cmfh7"]
+
+[node name="ClassSelectionPopup" type="Control" unique_id=734078724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cmfh7")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=242512541]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.24313726, 0.24313726, 0.24313726, 0.4117647)
+
+[node name="Container" type="HBoxContainer" parent="." unique_id=1278285888]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.0
+offset_top = -184.0
+offset_right = 457.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10

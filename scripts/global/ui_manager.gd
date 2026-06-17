@@ -4,7 +4,9 @@ extends Node
 
 enum Popups {
 	LOOT,
-	GAME_OVER
+	GAME_OVER,
+	CLASS_SELECTION,
+	NAME,
 }
 
 func get_popup_inst(type : Popups):

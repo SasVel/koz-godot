@@ -12,9 +12,10 @@ class_name ToolData
 
 signal durability_changed(val)
 
-func activate():
+func activate(deduct_tempo : bool = true):
 	super()
-	durability -= process_durability_loss(1)
+	if deduct_tempo:
+		durability -= process_durability_loss(1)
 
 func can_activate():
 	return super() and durability > 0

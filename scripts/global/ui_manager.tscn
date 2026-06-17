@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://crw4nfyvh6xq" path="res://scripts/global/ui_manager.gd" id="1_genkr"]
 [ext_resource type="PackedScene" uid="uid://3qcvxv0kvujq" path="res://UI/loot_popup.tscn" id="2_48sb8"]
 [ext_resource type="PackedScene" uid="uid://bv45wg2utkorj" path="res://UI/game_over_popup.tscn" id="3_6mygx"]
+[ext_resource type="PackedScene" uid="uid://dgr6it13ss1ys" path="res://UI/ClassSelection/class_selection_popup.tscn" id="4_nd7hd"]
+[ext_resource type="PackedScene" uid="uid://cgsj2yrymleua" path="res://UI/name_popup.tscn" id="5_2o6ry"]
 
 [node name="UIManager" type="Node" unique_id=451270226]
 script = ExtResource("1_genkr")
 popup_scenes = Dictionary[int, PackedScene]({
 0: ExtResource("2_48sb8"),
-1: ExtResource("3_6mygx")
+1: ExtResource("3_6mygx"),
+2: ExtResource("4_nd7hd"),
+3: ExtResource("5_2o6ry")
 })
