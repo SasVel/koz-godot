@@ -9,13 +9,13 @@ class_name StatusEffData
 	set(val):
 		duration = val
 		if val == 0:
-			self.depleted.emit()
+			self.depleted.emit(self)
 			delete()
 		else:
 			self.duration_changed.emit(val)
 
 signal duration_changed(val)
-signal depleted
+signal depleted(eff)
 
 func activate():
 		get_affected_units()\

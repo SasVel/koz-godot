@@ -18,9 +18,10 @@ func config(eff_data : StatusEffData):
 	return self
 
 func activate():
-	await tween_activate()
+	var is_for_deletion = data.duration == 0
+	await tween_activate(is_for_deletion)
 	data.activate_eff()
-	if data.duration == 0:
+	if is_for_deletion:
 		delete(true)
 	else:
 		update(data.duration)

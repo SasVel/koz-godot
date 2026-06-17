@@ -67,7 +67,7 @@ func _get_card_objects():
 func _get_placeholders():
 	return %ActionsContainer.get_children().filter(func(x): return x is Placeholder)
 
-func update_tools(data : Array, clear : bool = false):
+func update_tools(data : Array, clear : bool = true):
 	if clear:
 		for child in %ToolsList.get_children():
 			child.queue_free()

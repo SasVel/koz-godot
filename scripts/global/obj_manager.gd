@@ -14,6 +14,7 @@ extends Node
 @export var action_mini_obj : PackedScene
 @export var eff_mini_obj : PackedScene
 
+@export var sprites_64_atlas : AtlasTexture
 @export var sprites_128_atlas : AtlasTexture
 @export var sprites_256_atlas : AtlasTexture
 @export var sprites_512_atlas : AtlasTexture
@@ -150,23 +151,31 @@ func get_action_color(type : Const.Actions) -> Color:
 	return color
 
 func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
-	var image = sprites_128_atlas.duplicate()
+	var atlas = sprites_128_atlas.duplicate()
+	var image : Image
 	match type:
 		Const.StatusEffects.STRENGTH:
-			image = get_weapon_sprite(Const.Weapons.SWORD)
-			image.get_image().shrink_x2()
+			atlas.region = Rect2(0,0,128,128)
+			image = atlas.get_image()
+			var plus_icon = sprites_64_atlas.duplicate()
+			plus_icon.region = Rect2(0,0,64,64)
+			image.blend_rect(plus_icon.get_image(), Rect2i(0,0,64,64), Vector2i(64,0))
 		Const.StatusEffects.RESILIENCE:
-			image = get_shield_sprite(Const.Shields.SHIELD)
-			image.get_image().shrink_x2()
+			atlas.region = Rect2(128,0,128,128)
+			image = atlas.get_image()
+			var plus_icon = sprites_64_atlas.duplicate()
+			plus_icon.region = Rect2(0,0,64,64)
+			image.blend_rect(plus_icon.get_image(), Rect2i(0,0,64,64), Vector2i(64,0))
 		Const.StatusEffects.CHANGE_PHASE_ATK:
 			## Image to change icon.
-			image.region = Rect2(512, 0, 128, 128)
+			atlas.region = Rect2(512, 0, 128, 128)
 			var sword_img = get_weapon_sprite(Const.Weapons.SWORD).get_image()
 			sword_img.shrink_x2()
-			#image.get_image().blit_rect(sword_img, sword_img.get_used_rect() Vector2.ZERO)
+			image = atlas.get_image().blit_rect(sword_img, sword_img.get_used_rect(), Vector2.ZERO)
 		_:
-			image.region = Rect2(384, 0, 128, 128)
-	return image
+			atlas.region = Rect2(384, 0, 128, 128)
+			image = atlas.get_image()
+	return ImageTexture.create_from_image(image)
 
 func get_effect_color(type : Const.StatusEffects) -> Color:
 	var color : Color

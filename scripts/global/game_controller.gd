@@ -58,7 +58,6 @@ func _physics_process(_delta: float) -> void:
 
 func pop_play_event():
 	is_playing_event = true
-	print(event_queue)
 	var event = event_queue.pop_back()
 	await event.call()
 	is_playing_event = false

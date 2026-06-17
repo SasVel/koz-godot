@@ -174,6 +174,7 @@ func add_status_effect(effect : StatusEffData):
 		effect.config_source(self)
 		self.status_effects.append(effect)
 		%EffectDatas.add_child(effect)
+		effect.depleted.connect(remove_status_effect)
 
 	status_effects_changed.emit(status_effects)
 
