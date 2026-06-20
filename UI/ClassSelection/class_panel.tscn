@@ -86,6 +86,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ChooseBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2086735342]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 text = "Choose"
 

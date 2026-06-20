@@ -3,6 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://51eutumha5c5" path="res://entities/status_effects/status_eff_data.tscn" id="1_4djwc"]
 
 [node name="StrEffData" unique_id=1231074189 instance=ExtResource("1_4djwc")]
-stacks = 0
 duration = 1
 value = 1

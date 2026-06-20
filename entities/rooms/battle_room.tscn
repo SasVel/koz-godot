@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://ovrd5ydp8p0q" path="res://shaders/transitions/src/shader/transition.gdshader" id="6_gd440"]
 [ext_resource type="Texture2D" uid="uid://d3aus70ocx6g3" path="res://shaders/transitions/src/texture/transition_shape/noise/cell_02.tres" id="7_bne1m"]
 [ext_resource type="Script" uid="uid://bo1i5j2m427bs" path="res://shaders/transitions/src/script/transition_rect.gd" id="8_qtq62"]
+[ext_resource type="Script" uid="uid://cmp5ysigxtlro" path="res://UI/color_transition_editor.gd" id="9_bne1m"]
 
 [sub_resource type="Resource" id="Resource_gd440"]
 script = ExtResource("4_lgpfl")
@@ -100,3 +101,6 @@ shape_texture = ExtResource("7_bne1m")
 shape_tiling = 6.0
 shape_scroll = Vector2(-0.1, 0)
 metadata/_custom_type_script = "uid://bo1i5j2m427bs"
+
+[node name="ColorTransitionEditor" type="Node" parent="Transition" index="0" unique_id=1483188117]
+script = ExtResource("9_bne1m")

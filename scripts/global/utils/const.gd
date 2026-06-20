@@ -45,6 +45,9 @@ enum StatusEffects {
 	CHANGE_PHASE_ATK,
 	CHANGE_PHASE_DEF,
 	STUN,
+	WEAKNESS,
+	FRAIL,
+	POISON,
 }
 
 enum Enemies {
@@ -81,6 +84,8 @@ enum RoomTypes {
 var colors_obj
 
 var BACKGROUND_COLOR: Color
+var BACKGROUND_LIGHTER : Color
+var BACKGROUND_DARKER : Color
 var ACTION_COLOR: Color
 var TOOL_COLOR: Color
 
@@ -96,6 +101,8 @@ func _ready() -> void:
 	load_colors_obj()
 
 	BACKGROUND_COLOR = load_color(colors_obj["BACKGROUND_COLOR"])
+	BACKGROUND_LIGHTER = BACKGROUND_COLOR.lightened(0.2)
+	BACKGROUND_DARKER = BACKGROUND_COLOR.darkened(0.2)
 	ACTION_COLOR= load_color(colors_obj["ACTION_COLOR"])
 	TOOL_COLOR = load_color(colors_obj["TOOL_COLOR"])
 

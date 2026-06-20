@@ -198,11 +198,17 @@ func on_death():
 func process_damage_outgoing(dmg : int) -> int:
 	for eff in get_effects(Const.StatusEffects.STRENGTH):
 		dmg += eff.stacks
+	for eff in get_effects(Const.StatusEffects.WEAKNESS):
+		dmg += eff.stacks
+
 	return dmg
 
 func process_damage_incoming(dmg : int) -> int:
 	for eff in get_effects(Const.StatusEffects.RESILIENCE):
 		dmg -= eff.stacks
+	for eff in get_effects(Const.StatusEffects.FRAIL):
+		dmg += eff.stacks
+
 	return dmg
 #endregion
 

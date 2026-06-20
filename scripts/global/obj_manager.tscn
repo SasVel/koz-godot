@@ -31,11 +31,14 @@
 [ext_resource type="PackedScene" uid="uid://bkohy4fxvhqdb" path="res://entities/status_effects/str_eff_data.tscn" id="24_jfqbm"]
 [ext_resource type="Texture2D" uid="uid://dht1ilt7obrvh" path="res://res/sprites_512.png" id="24_yq7du"]
 [ext_resource type="PackedScene" uid="uid://cjn7jamaae674" path="res://entities/status_effects/stun_eff_data.tscn" id="25_5fmjw"]
+[ext_resource type="PackedScene" uid="uid://qkaghml2s8qj" path="res://entities/status_effects/weakness_eff_data.tscn" id="27_0mrb7"]
 [ext_resource type="PackedScene" uid="uid://4c6e77xyhasd" path="res://entities/player_classes/mercenary_class_data.tscn" id="27_c3n6k"]
 [ext_resource type="PackedScene" uid="uid://c6q48vqnrxi8p" path="res://entities/tool_card.tscn" id="27_hw0uh"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="27_qn5vk"]
 [ext_resource type="PackedScene" uid="uid://epgoswxm5gh2" path="res://UI/action_mini_display.tscn" id="27_s34ir"]
+[ext_resource type="PackedScene" uid="uid://df6df43qwujhh" path="res://entities/status_effects/frail_eff_data.tscn" id="28_4cd8w"]
 [ext_resource type="PackedScene" uid="uid://buhrpw74vpluv" path="res://entities/player_classes/bandit_class_data.tscn" id="28_rqqf7"]
+[ext_resource type="PackedScene" uid="uid://dd1np0ll6q50b" path="res://entities/status_effects/poison_eff_data.tscn" id="29_4cd8w"]
 [ext_resource type="PackedScene" uid="uid://dd48xuglqpuk" path="res://entities/rooms/battle_room.tscn" id="29_4pinj"]
 [ext_resource type="PackedScene" uid="uid://bo1oesyb4aa4f" path="res://UI/status_eff_display.tscn" id="29_hw0uh"]
 [ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="36_o6px0"]
@@ -91,7 +94,10 @@ enemies_dict = Dictionary[int, PackedScene]({
 })
 status_effects_dict = Dictionary[int, PackedScene]({
 0: ExtResource("24_jfqbm"),
-4: ExtResource("25_5fmjw")
+4: ExtResource("25_5fmjw"),
+5: ExtResource("27_0mrb7"),
+6: ExtResource("28_4cd8w"),
+7: ExtResource("29_4cd8w")
 })
 player_classes_dict = Dictionary[int, PackedScene]({
 0: ExtResource("22_4nbcu"),
