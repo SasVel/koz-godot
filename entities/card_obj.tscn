@@ -10,6 +10,7 @@
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="7_5t304"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="7_7b0cb"]
 [ext_resource type="LabelSettings" uid="uid://brmy2s0k6mu8k" path="res://misc/number_label_settings.tres" id="8_7b0cb"]
+[ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="8_118ut"]
 [ext_resource type="Script" uid="uid://dlkhjqhrjlocs" path="res://entities/interact_zone.gd" id="8_f26x7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkk3"]
@@ -26,9 +27,19 @@ shader_parameter/inset = 0.0
 atlas = ExtResource("7_7b0cb")
 region = Rect2(256, 0, 128, 128)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcnyk"]
+shader = ExtResource("8_118ut")
+shader_parameter/shadow_offset = Vector2(2, 2)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3ehx"]
 atlas = ExtResource("4_nlkk3")
 region = Rect2(1792, 256, 237, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l52sb"]
+shader = ExtResource("8_118ut")
+shader_parameter/shadow_offset = Vector2(2, 2)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [node name="CardObj" type="Control" unique_id=87810923 node_paths=PackedStringArray("cardBack", "container")]
 custom_minimum_size = Vector2(226, 300)
@@ -121,12 +132,26 @@ layout_mode = 2
 script = ExtResource("6_ls7t3")
 is_colored_outline = false
 
-[node name="IconRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay" unique_id=1398163549]
+[node name="IconRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay" unique_id=1894493893]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 offset_right = 60.0
 offset_bottom = 60.0
+texture = SubResource("AtlasTexture_6iubg")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="IconShadow" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay/IconRect" unique_id=1398163549]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_lcnyk")
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("AtlasTexture_6iubg")
 expand_mode = 5
 stretch_mode = 5
@@ -150,6 +175,20 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+texture = SubResource("AtlasTexture_h3ehx")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="CardIconShadow" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/CardIconRect" unique_id=1915794250]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_l52sb")
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("AtlasTexture_h3ehx")
 expand_mode = 3
 stretch_mode = 5

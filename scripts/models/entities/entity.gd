@@ -199,7 +199,7 @@ func process_damage_outgoing(dmg : int) -> int:
 	for eff in get_effects(Const.StatusEffects.STRENGTH):
 		dmg += eff.stacks
 	for eff in get_effects(Const.StatusEffects.WEAKNESS):
-		dmg += eff.stacks
+		dmg -= eff.stacks
 
 	return dmg
 

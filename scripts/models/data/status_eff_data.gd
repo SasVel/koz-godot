@@ -40,7 +40,7 @@ func generate_desc() -> String:
 	return "Add %s %s to %s." % [
 		str(stacks),
 		Const.StatusEffects.keys()[type],
-		"self" if !isOffensive else "enemy"
+		"self" if !isOffensive else "opponent"
 	]
 
 func delete():

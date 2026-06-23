@@ -16,7 +16,7 @@ func config(data_ : EntityData):
 	%NameLabel.text = data.entity_name
 	%EnemyBar.config(stats.Health, stats.Block)
 	%EnemySprite.texture = ObjManager.get_enemy_sprite(data.type, data.has_alt_sprite)
-	%EnemySprite.modulate = Const.ENEMY_COLORS[Const.Enemies.keys()[data.type]]
+	%EnemySprite.modulate = ObjManager.get_enemy_color(data.type)
 	return self
 
 func on_changed_phase(val : Game.Phases):

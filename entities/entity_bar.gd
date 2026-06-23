@@ -1,7 +1,15 @@
 extends ProgressBar
 class_name EntityBar
 
+@export var healthBarStyleBox : StyleBoxFlat
+@export var blockBarStyleBox : StyleBoxFlat
+
 func config(healthStat : Stat, blockStat : Stat):
+	healthBarStyleBox.bg_color = Const.SECONDARY_COLOR
+	%HealthLabel.label_settings.font_color = Const.SECONDARY_COLOR
+	blockBarStyleBox.bg_color = Const.COMPLIMENTARY_COLOR
+	%BlockLabel.label_settings.font_color = Const.COMPLIMENTARY_COLOR
+
 	healthStat.max_stat_changed.connect(\
 		func(_oldVal, newVal):
 			self.max_value = newVal)

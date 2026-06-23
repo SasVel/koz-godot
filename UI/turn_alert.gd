@@ -6,6 +6,7 @@ func _ready() -> void:
 	Game.on_start_turn.connect(play_turn_announcement)
 	self.visible = true
 	%TurnRect.scale.y = 0
+	%TurnRect.color = Const.BACKGROUND_DARKER_COLOR
 	%TurnLabel.scale = Vector2.ZERO
 
 func play_turn_announcement():

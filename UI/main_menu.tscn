@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://udq3k5kt871x" path="res://shaders/transitions/transitions/t_cells.tscn" id="15_7137b"]
 [ext_resource type="Script" uid="uid://cmp5ysigxtlro" path="res://UI/color_transition_editor.gd" id="17_t2nhh"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwv5u"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cafmx"]
 shader = ExtResource("3_2mudq")
 shader_parameter/size = 0.4450000211375
@@ -69,6 +71,7 @@ credits_scn = ExtResource("3_mmlvu")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1020456281]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_cwv5u")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

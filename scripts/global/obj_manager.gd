@@ -97,13 +97,10 @@ func get_rand_enemy_obj() -> Enemy:
 
 func get_action_sprite(type : Const.Actions) -> AtlasTexture:
 	var image = sprites_256_atlas.duplicate()
-	match type:
-		Const.Actions.SLASH:
-			image.region = Rect2(256, 0, 256, 256)
-		Const.Actions.DEFEND:
-			image.region = Rect2(0, 512, 256, 256)
-		_:
-			image.region = Rect2(256 * type, 256, 256, 256)
+	if int(type) <= 5:
+		image.region = Rect2(256 * type, 512, 256, 256)
+	else:
+		image.region = Rect2(256 * (type - 6), 768, 256, 256)
 	return image
 
 func get_weapon_sprite(type : Const.Weapons) -> AtlasTexture:
@@ -113,7 +110,7 @@ func get_weapon_sprite(type : Const.Weapons) -> AtlasTexture:
 
 func get_shield_sprite(type : Const.Shields) -> AtlasTexture:
 	var image = sprites_256_atlas.duplicate()
-	image.region = Rect2(256 * type, 512, 256, 256)
+	image.region = Rect2(256 * type, 256, 256, 256)
 	return image
 
 func get_enemy_sprite(type : Const.Enemies, has_alt = false) -> AtlasTexture:
@@ -126,28 +123,30 @@ func get_enemy_sprite(type : Const.Enemies, has_alt = false) -> AtlasTexture:
 
 	return image
 
-func get_action_mini_sprite(type : Const.Actions) -> Texture2D:
-	var image = sprites_128_atlas.duplicate()
-	var x_pos = 0
+func get_enemy_color(type : Const.Enemies) -> Color:
+	var color : Color
 	match type:
-		Const.Actions.SLASH:
-			x_pos = 0
-		Const.Actions.DEFEND:
-			x_pos = 128
+		Const.Enemies.SLIME:
+			color = Const.PRIMARY_COLOR
+			color.a = 0.8
 		_:
-			x_pos = 256
-	image.region = Rect2(x_pos, 0, 128, 128)
-	return image
+			color = Const.PRIMARY_COLOR
+	return color
+
+func get_action_mini_sprite(type : Const.Actions) -> Texture2D:
+	var sprite = get_action_sprite(type)
+	sprite.get_image().shrink_x2()
+	return sprite
 
 func get_action_color(type : Const.Actions) -> Color:
 	var color : Color
 	match type:
 		Const.Actions.SLASH:
-			color = Const.ATTACK_COLOR
+			color = Const.PRIMARY_HUE_SHIFT_UP_COLOR
 		Const.Actions.DEFEND:
-			color = Const.DEFEND_COLOR
+			color = Const.PRIMARY_HUE_SHIFT_UP_COLOR
 		_:
-			color = Const.ACTION_COLOR
+			color = Const.PRIMARY_HUE_SHIFT_UP_COLOR
 	return color
 
 func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
@@ -160,18 +159,27 @@ func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
 			var plus_icon = sprites_64_atlas.duplicate()
 			plus_icon.region = Rect2(0,0,64,64)
 			image.blend_rect(plus_icon.get_image(), Rect2i(0,0,64,64), Vector2i(64,0))
-		Const.StatusEffects.RESILIENCE:
-			atlas.region = Rect2(128,0,128,128)
+		Const.StatusEffects.WEAKNESS:
+			atlas.region = Rect2(0,0,128,128)
 			image = atlas.get_image()
-			var plus_icon = sprites_64_atlas.duplicate()
-			plus_icon.region = Rect2(0,0,64,64)
-			image.blend_rect(plus_icon.get_image(), Rect2i(0,0,64,64), Vector2i(64,0))
+			var minus_icon = sprites_64_atlas.duplicate()
+			minus_icon.region = Rect2(64,0,64,64)
+			image.blend_rect(minus_icon.get_image(), Rect2i(0,0,64,64), Vector2i(64,0))
+		Const.StatusEffects.RESILIENCE:
+			atlas.region = Rect2(128,128,128,128)
+			image = atlas.get_image()
+		Const.StatusEffects.FRAIL:
+			atlas.region = Rect2(0,128,128,128)
+			image = atlas.get_image()
 		Const.StatusEffects.CHANGE_PHASE_ATK:
 			## Image to change icon.
 			atlas.region = Rect2(512, 0, 128, 128)
 			var sword_img = get_weapon_sprite(Const.Weapons.SWORD).get_image()
 			sword_img.shrink_x2()
 			image = atlas.get_image().blit_rect(sword_img, sword_img.get_used_rect(), Vector2.ZERO)
+		Const.StatusEffects.POISON:
+			atlas.region = Rect2(256,128,128,128)
+			image = atlas.get_image()
 		_:
 			atlas.region = Rect2(384, 0, 128, 128)
 			image = atlas.get_image()
@@ -180,8 +188,14 @@ func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
 func get_effect_color(type : Const.StatusEffects) -> Color:
 	var color : Color
 	match type:
-		Const.StatusEffects.STRENGTH:
-			color = Const.ATTACK_COLOR
+		Const.StatusEffects.POISON:
+			color = Const.NEGATIVE_COLOR
+		Const.StatusEffects.STUN:
+			color = Const.NEGATIVE_COLOR
+		Const.StatusEffects.WEAKNESS:
+			color = Const.NEGATIVE_COLOR
+		Const.StatusEffects.FRAIL:
+			color = Const.NEGATIVE_COLOR
 		_:
-			color = Const.ACTION_COLOR
+			color = Const.COMPLIMENTARY_COLOR
 	return color

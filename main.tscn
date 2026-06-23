@@ -23,7 +23,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
 shader = ExtResource("2_0xm2m")
 shader_parameter/vignette_intensity = 0.2
-shader_parameter/vignette_opacity = 0.42400002014
+shader_parameter/vignette_opacity = 0.800000038
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kq58d"]
@@ -42,7 +42,7 @@ region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
 atlas = ExtResource("26_qsp4k")
-region = Rect2(0, 512, 256, 256)
+region = Rect2(0, 256, 256, 256)
 
 [sub_resource type="Resource" id="Resource_w48qg"]
 script = ExtResource("9_efxa6")
@@ -51,16 +51,6 @@ radius_factor_inner = 0.0
 item_radius_factor = 0.875
 color = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_074og"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cegan"]
 resource_local_to_scene = true
@@ -122,15 +112,15 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="Gradient" id="Gradient_qsp4k"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.14070351, 0.50753766, 0.8341709, 1)
-colors = PackedColorArray(0.6392157, 0.27058825, 0.18431373, 0, 0.6392157, 0.27058825, 0.18431373, 0.6431373, 0.6392157, 0.27058825, 0.18431373, 0.8117647, 0.6392157, 0.27058825, 0.18431373, 0.6431373, 0.6392157, 0.27058825, 0.18431373, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kq58d"]
-gradient = SubResource("Gradient_qsp4k")
-fill_from = Vector2(0.5, 0)
-fill_to = Vector2(0.5, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0odxb"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
 
 [node name="Main" type="Node2D" unique_id=895458731]
 
@@ -204,6 +194,8 @@ vertical_alignment = 1
 [node name="TempoDisplay" parent="UI/MainContainer/VBoxContainer/SecondRow" unique_id=641794690 instance=ExtResource("16_lswn8")]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "This is your tempo!
+It's used to play Actions or Tools."
 isMaxVal = true
 
 [node name="StatusEffectsContainer" type="HBoxContainer" parent="UI/MainContainer/VBoxContainer" unique_id=1521238829]
@@ -288,6 +280,8 @@ offset_bottom = 36.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+tooltip_text = "Ends the turn.
+Shortcut: ENTER"
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_constants/outline_size = 8
@@ -340,35 +334,35 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_074og")
-custom_minimum_size = Vector2(0, 0)
-layout_mode = 2
-focus_mode = 1
-fauxShiftDeg = 15.0
-
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_cegan")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_82xsv")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_getpj")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_ryguw")
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+focus_mode = 1
+fauxShiftDeg = 15.0
+
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_d13ii")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
@@ -391,13 +385,13 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_d13ii")
+material = SubResource("ShaderMaterial_1u8w0")
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_1u8w0")
+material = SubResource("ShaderMaterial_0odxb")
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
@@ -416,16 +410,18 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("27_qsp4k")
 
-[node name="TurnRect" type="TextureRect" parent="UI/MainContainer/TurnAlert" unique_id=1732378699]
+[node name="TurnRect" type="ColorRect" parent="UI/MainContainer/TurnAlert" unique_id=4732302]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -28.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = SubResource("GradientTexture2D_kq58d")
 
 [node name="TurnLabel" type="Label" parent="UI/MainContainer/TurnAlert" unique_id=770090371]
 unique_name_in_owner = true

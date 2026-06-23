@@ -1,4 +1,4 @@
-class_name NamedColorDict 
+class_name NamedColorDict
 
 const colors = {
   "ALICE_BLUE": Color.ALICE_BLUE,

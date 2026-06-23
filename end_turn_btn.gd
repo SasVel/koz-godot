@@ -1,7 +1,7 @@
 extends Button
 
 func _ready() -> void:
-	self.add_theme_color_override("font_color", Const.ACTION_COLOR)
+	self.add_theme_color_override("font_color", Const.ACCENT_COLOR)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("end_turn"):

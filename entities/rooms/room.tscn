@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bite5gmrnecl8" path="res://entities/rooms/room.gd" id="1_pl5rr"]
 [ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/background.jpg" id="1_wv86s"]
+[ext_resource type="Shader" uid="uid://bgfg804h0psmp" path="res://shaders/SpriteColor.gdshader" id="2_3rrti"]
 [ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="2_pl5rr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wv86s"]
+shader = ExtResource("2_3rrti")
+shader_parameter/is_lines_inverted = false
 
 [node name="Room" type="Node2D" unique_id=1640835901]
 script = ExtResource("1_pl5rr")
 
 [node name="Background" type="TextureRect" parent="." unique_id=779102403]
+modulate = Color(0.17344266, 0.24591735, 0.9200913, 1)
+material = SubResource("ShaderMaterial_wv86s")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

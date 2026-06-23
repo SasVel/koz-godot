@@ -30,7 +30,7 @@ gradient = SubResource("Gradient_dg77c")
 shader = ExtResource("6_gd440")
 shader_parameter/base_color = Color(0, 0, 0, 1)
 shader_parameter/node_resolution = Vector2(1155, 705)
-shader_parameter/factor = 0.5
+shader_parameter/factor = 0.0
 shader_parameter/width = 0.3
 shader_parameter/gradient_texture = SubResource("GradientTexture2D_ydvy8")
 shader_parameter/gradient_fixed = false
@@ -96,11 +96,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("8_qtq62")
+factor = 0.0
 gradient_texture = SubResource("GradientTexture2D_ydvy8")
 shape_texture = ExtResource("7_bne1m")
 shape_tiling = 6.0
 shape_scroll = Vector2(-0.1, 0)
 metadata/_custom_type_script = "uid://bo1i5j2m427bs"
+metadata/_edit_lock_ = true
 
 [node name="ColorTransitionEditor" type="Node" parent="Transition" index="0" unique_id=1483188117]
 script = ExtResource("9_bne1m")

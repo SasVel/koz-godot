@@ -36,20 +36,21 @@ func config(data_ : CardData):
 		Const.CardTypes.ACTION:
 			title_text = Const.Actions.keys()[data.actionType]
 			image = ObjManager.get_action_sprite(data.actionType)
-			%CardIconRect.modulate = Const.ACTION_COLOR
+			%CardIconRect.modulate = Const.PRIMARY_HUE_SHIFT_UP_COLOR
 		Const.CardTypes.WEAPON:
 			title_text = Const.Weapons.keys()[data.weaponType]
 			image = ObjManager.get_weapon_sprite(data.weaponType)
-			%CardIconRect.modulate = Const.TOOL_COLOR
+			%CardIconRect.modulate = Const.PRIMARY_HUE_SHIFT_UP_COLOR
 		Const.CardTypes.SHIELD:
 			title_text = Const.Shields.keys()[data.shieldType]
 			image = ObjManager.get_shield_sprite(data.shieldType)
-			%CardIconRect.modulate = Const.TOOL_COLOR
+			%CardIconRect.modulate = Const.PRIMARY_HUE_SHIFT_UP_COLOR
 
 	%TitleLabel.text = UIHelper.pascal_to_readable_text(title_text)
 	%DescLabel.text = data.generate_desc()
 	%CardIconRect.texture = image
-	%TempoDisplay.config(Const.ACTION_COLOR, data.tempoCost, data.tempo_changed)
+	%CardIconShadow.texture = image
+	%TempoDisplay.config(Const.ACCENT_COLOR, data.tempoCost, data.tempo_changed)
 	return self
 
 func _ready() -> void:
@@ -61,6 +62,9 @@ func _physics_process(_delta: float) -> void:
 	self.position != self.default_pos\
 	and !isLoot:
 		_on_focus_exited()
+
+func change_opacity(val : float):
+	cardBack.modulate.a = val
 
 func set_defaults():
 	default_pos = self.position

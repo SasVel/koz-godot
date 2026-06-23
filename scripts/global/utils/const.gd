@@ -12,17 +12,17 @@ enum CardTypes {
 }
 
 enum Actions {
-	RIPOSTE,
-	LANGORT,
-	SURPRISE_SAND,
-	FEINT,
-	END_THEM_RIGHTLY,
-	PARRY,
-	PANIC,
-	ALBERT,
-	SLASH,
-	DEFEND,
-	SMASH,
+	RIPOSTE = 0,
+	LANGORT = 1,
+	SURPRISE_SAND = 2,
+	FEINT = 3,
+	END_THEM_RIGHTLY = 4,
+	PARRY = 5,
+	PANIC = 6,
+	ALBERT = 7,
+	SLASH = 8,
+	DEFEND = 9,
+	SMASH = 10,
 }
 
 enum Weapons {
@@ -83,41 +83,23 @@ enum RoomTypes {
 
 var colors_obj
 
+# Colors
+var PRIMARY_COLOR: Color
+var SECONDARY_COLOR: Color
+var ACCENT_COLOR: Color
+var COMPLIMENTARY_COLOR : Color
 var BACKGROUND_COLOR: Color
-var BACKGROUND_LIGHTER : Color
-var BACKGROUND_DARKER : Color
-var ACTION_COLOR: Color
-var TOOL_COLOR: Color
-
-var ATTACK_COLOR: Color
-var DEFEND_COLOR: Color
-var CARD_BACK_COLOR: Color
-var FIRE_COLOR: Color
-var POSITIVE_COLOR: Color
 var NEGATIVE_COLOR: Color
-var ENEMY_COLORS : Dictionary[String, Color]
+
+# Variations
+var BACKGROUND_LIGHTER_COLOR : Color
+var BACKGROUND_DARKER_COLOR : Color
+var PRIMARY_HUE_SHIFT_UP_COLOR : Color
+var PRIMARY_HUE_SHIFT_DOWN_COLOR : Color
 
 func _ready() -> void:
 	load_colors_obj()
-
-	BACKGROUND_COLOR = load_color(colors_obj["BACKGROUND_COLOR"])
-	BACKGROUND_LIGHTER = BACKGROUND_COLOR.lightened(0.2)
-	BACKGROUND_DARKER = BACKGROUND_COLOR.darkened(0.2)
-	ACTION_COLOR= load_color(colors_obj["ACTION_COLOR"])
-	TOOL_COLOR = load_color(colors_obj["TOOL_COLOR"])
-
-	ATTACK_COLOR= load_color(colors_obj["ATTACK_COLOR"])
-	DEFEND_COLOR= load_color(colors_obj["DEFEND_COLOR"])
-	CARD_BACK_COLOR= load_color(colors_obj["CARD_BACK_COLOR"])
-	FIRE_COLOR= load_color(colors_obj["FIRE_COLOR"])
-	POSITIVE_COLOR= load_color(colors_obj["POSITIVE_COLOR"])
-	NEGATIVE_COLOR= load_color(colors_obj["NEGATIVE_COLOR"])
-	ENEMY_COLORS = {
-		"SLIME": load_color(colors_obj["ENEMY_COLORS"]["SLIME"]),
-		"SKELLY": load_color(colors_obj["ENEMY_COLORS"]["SKELLY"]),
-		"SHROOM": load_color(colors_obj["ENEMY_COLORS"]["SHROOM"]),
-		"GOBLIN": load_color(colors_obj["ENEMY_COLORS"]["GOBLIN"]),
-	}
+	map_colors()
 
 func load_colors_obj() -> bool:
 	var file
@@ -129,7 +111,7 @@ func load_colors_obj() -> bool:
 		source_dir.copy(path_to_palette + "/" + file,
 		path_to_palette_user + "/" + file)
 
-	file = FileAccess.open(path_to_palette_user + "/" + "palette.json",
+	file = FileAccess.open(path_to_palette_user + "/" + "palette_default.json",
 	 FileAccess.READ)
 	var json_text = file.get_as_text()
 	var json = JSON.new()
@@ -140,8 +122,29 @@ func load_colors_obj() -> bool:
 		push_error("colors JSON file did not load correctly.")
 	return error == OK
 
+func map_colors():
+	# Colors
+	BACKGROUND_COLOR = load_color(colors_obj["BACKGROUND_COLOR"])
+	PRIMARY_COLOR = load_color(colors_obj["PRIMARY_COLOR"])
+	SECONDARY_COLOR = load_color(colors_obj["SECONDARY_COLOR"])
+	ACCENT_COLOR = load_color(colors_obj["ACCENT_COLOR"])
+	COMPLIMENTARY_COLOR = load_color(colors_obj["COMPLIMENTARY_COLOR"])
+	NEGATIVE_COLOR= load_color(colors_obj["NEGATIVE_COLOR"])
+
+	# Variations
+	BACKGROUND_LIGHTER_COLOR = BACKGROUND_COLOR.lightened(0.2)
+	BACKGROUND_DARKER_COLOR = BACKGROUND_COLOR.darkened(0.2)
+
+	var primary_hue_shift_up = rgb_to_hsv(PRIMARY_COLOR)
+	primary_hue_shift_up[0] += 0.02
+	PRIMARY_HUE_SHIFT_UP_COLOR = Color.from_hsv(primary_hue_shift_up[0], primary_hue_shift_up[1], primary_hue_shift_up[2])
+
+	var primary_hue_shift_down = rgb_to_hsv(PRIMARY_COLOR)
+	primary_hue_shift_down[0] -= 0.01
+	PRIMARY_HUE_SHIFT_DOWN_COLOR = Color.from_hsv(primary_hue_shift_down[0], primary_hue_shift_down[1], primary_hue_shift_down[2])
+
 func check_palette_existing() -> bool:
-	return FileAccess.file_exists("usr://data/palette.json")
+	return FileAccess.file_exists("usr://data/palette_default.json")
 
 func load_color(color_info) -> Color:
 	var color : Color
@@ -150,6 +153,42 @@ func load_color(color_info) -> Color:
 		if color_info.size() > 3:
 			color.a = color_info[3]
 	elif color_info is String:
-		color = NamedColorDict.colors[color_info]
+		if color_info[0] == "#":
+			color = Color.html(color_info.replace(" ", ""))
+		else:
+			color = Color(color_info)
 
 	return color
+
+func rgb_to_hsv(c: Color) -> Vector3:
+	# Input: Color with r,g,b in 0..1
+	# Output: Vector3(h_degrees, s, v) where h in 0..360, s and v in 0..1
+	var r = c.r
+	var g = c.g
+	var b = c.b
+	var mx = max(r, max(g, b))
+	var mn = min(r, min(g, b))
+	var v = mx
+	var d = mx - mn
+	var s = 0.0
+	var h = 0.0
+
+	if mx > 0.0:
+		s = d / mx
+	else:
+		s = 0.0
+
+	if d > 0.0:
+		if mx == r:
+			h = (g - b) / d
+			if h < 0.0:
+				h += 6.0
+		elif mx == g:
+			h = (b - r) / d + 2.0
+		else:
+			h = (r - g) / d + 4.0
+		h *= 60.0
+	else:
+		h = 0.0
+
+	return Vector3(h, s, v)

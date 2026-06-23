@@ -8,6 +8,7 @@ func config(eff_data : StatusEffData):
 	data = eff_data
 	var color = ObjManager.get_effect_color(data.type)
 	self.texture = ObjManager.get_effect_sprite(data.type)
+	%ShadowRect.texture = ObjManager.get_effect_sprite(data.type)
 	self.modulate = color
 	if is_colored_outline:
 		%NumLabel.label_settings.outline_color = color
@@ -27,6 +28,7 @@ func activate():
 		update(data.duration)
 
 func update(num):
+	tooltip_text = data.generate_desc()
 	%NumLabel.visible = num > 1
 	if num == -1:
 		super(8)

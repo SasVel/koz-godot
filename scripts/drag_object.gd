@@ -39,6 +39,9 @@ func _get_drag_data(_at_position : Vector2):
 	data["object"] = self
 	return data
 
+func change_opacity(val : float):
+	self.modulate.a = val
+
 func _notification(what):
 	match what:
 		NOTIFICATION_DRAG_BEGIN:
@@ -52,6 +55,7 @@ func _notification(what):
 		NOTIFICATION_DRAG_BEGIN:
 			drag_started.emit(self)
 			Game.is_object_dragged = true
+			dragObject.change_opacity(0.9)
 		NOTIFICATION_DRAG_END:
 			self.visible = true
 			isPickedUp = false

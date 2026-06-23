@@ -2,10 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="1_kiwmt"]
 [ext_resource type="Script" uid="uid://b68ju3slt7n8v" path="res://UI/status_eff_display.gd" id="2_dlrch"]
+[ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="3_xcfub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlrch"]
 atlas = ExtResource("1_kiwmt")
 region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dlrch"]
+shader = ExtResource("3_xcfub")
+shader_parameter/shadow_offset = Vector2(5, 5)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kiwmt"]
 font_size = 34
@@ -31,6 +37,20 @@ texture = SubResource("AtlasTexture_dlrch")
 expand_mode = 5
 stretch_mode = 5
 script = ExtResource("2_dlrch")
+
+[node name="ShadowRect" type="TextureRect" parent="." unique_id=429564551]
+unique_name_in_owner = true
+show_behind_parent = true
+material = SubResource("ShaderMaterial_dlrch")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_dlrch")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="NumLabel" type="Label" parent="." unique_id=317560878]
 unique_name_in_owner = true

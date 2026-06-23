@@ -10,8 +10,6 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8e4v"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrp0o"]
 bg_color = Color(0.058431737, 0.61157584, 0.8078069, 1)
 corner_radius_top_left = 6
@@ -19,6 +17,8 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8e4v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bi5ys"]
 font_size = 34
@@ -63,6 +63,8 @@ step = 1.0
 value = 100.0
 show_percentage = false
 script = ExtResource("1_bi5ys")
+healthBarStyleBox = SubResource("StyleBoxFlat_uvc0s")
+blockBarStyleBox = SubResource("StyleBoxFlat_rrp0o")
 metadata/_edit_use_anchors_ = true
 
 [node name="BlockBar" type="ProgressBar" parent="." unique_id=1792474463]

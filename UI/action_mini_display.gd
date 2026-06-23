@@ -9,8 +9,9 @@ func config(data_ : CardData):
 
 	var color = ObjManager.get_action_color(data.actionType)
 	self.texture = ObjManager.get_action_mini_sprite(data.actionType)
+	%ShadowRect.texture = ObjManager.get_action_mini_sprite(data.actionType)
 
-	self.modulate = color
+	self.self_modulate = color
 	if is_colored_outline:
 		%NumLabel.label_settings.outline_color = color
 	data.source.status_effects_changed.connect(\
@@ -20,6 +21,7 @@ func config(data_ : CardData):
 	return self
 
 func update(num):
+	self.tooltip_text = data.generate_desc()
 	if data.isOffensive:
 		num = data.source.process_damage_outgoing(num)
 	super(num)

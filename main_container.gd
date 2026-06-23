@@ -14,10 +14,10 @@ func _ready() -> void:
 
 	%PlayerBar.config(player.stats.Health, player.stats.Block)
 	%TempoDisplay.config(\
-	Const.ACTION_COLOR,
+	Const.ACCENT_COLOR,
 	player.stats.Tempo)
-	%AttackPhaseMarker.modulate = Const.ATTACK_COLOR
-	%DefendPhaseMarker.modulate = Const.DEFEND_COLOR
+	%AttackPhaseMarker.modulate = Const.ACCENT_COLOR
+	%DefendPhaseMarker.modulate = Const.COMPLIMENTARY_COLOR
 	Game.on_changed_phase.connect(tween_phase_change)
 	Game.on_rooms_completed.connect(update_rooms_label)
 	phases_container.progress_offset = attack_phase_offset
