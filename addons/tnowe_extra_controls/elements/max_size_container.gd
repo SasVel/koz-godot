@@ -54,8 +54,10 @@ func _resize_child(child : Control):
 func _property_can_revert(property):
 	if property == &"max_size":
 		return max_size != size
+	return false
 
 
 func _property_get_revert(property):
 	if property == &"max_size":
 		return size
+	return Vector2.ZERO

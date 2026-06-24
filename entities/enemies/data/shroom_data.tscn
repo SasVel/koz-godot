@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_fbj4w"]
 
 [sub_resource type="Resource" id="Resource_bgmlc"]
+resource_local_to_scene = true
 script = ExtResource("2_fbj4w")
 scale_speed = 4
 scale_y = 0.3
@@ -42,5 +43,7 @@ type = 2
 has_alt_sprite = true
 idle_anim_settings = SubResource("Resource_bgmlc")
 entity_name = "Shroom"
+desc = ""
 default_stats = SubResource("Resource_tysic")
 card_deck_types = Array[int]([8, 9, 8])
+card_hand_size = 2

@@ -6,7 +6,7 @@
 [node name="StunEffData" unique_id=1231074189 instance=ExtResource("1_unt31")]
 type = 4
 duration = 1
-isPositive = false
+value = -1
 
 [node name="TempoComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(2091518437) index="0" unique_id=1118751711]
 script = ExtResource("2_bgcpa")

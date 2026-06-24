@@ -8,7 +8,7 @@ extends Node
 @onready var skew_tween : Tween
 
 var default_scale
-var default_position 
+var default_position
 
 func config(settings_ : IdleAnimSettings):
 	settings = settings_

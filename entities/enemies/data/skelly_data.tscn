@@ -4,8 +4,12 @@
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_0u81h"]
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_ycobc"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_0u81h"]
+[ext_resource type="PackedScene" uid="uid://3l1tyi3w131j" path="res://entities/card_datas/actions/smash_action_data.tscn" id="5_v28r2"]
+[ext_resource type="PackedScene" uid="uid://bwqpiwxtaif83" path="res://entities/card_datas/actions/slash_action_data.tscn" id="6_xmbqe"]
+[ext_resource type="PackedScene" uid="uid://c7vwmfnhl3yd5" path="res://entities/card_datas/actions/defend_action_data.tscn" id="7_n3r6n"]
 
-[sub_resource type="Resource" id="Resource_v28r2"]
+[sub_resource type="Resource" id="Resource_djbgq"]
+resource_local_to_scene = true
 script = ExtResource("2_0u81h")
 scale_speed = 6
 has_scale_y = false
@@ -41,7 +45,26 @@ metadata/_custom_type_script = "uid://mi75jnrupyfs"
 
 [node name="SkellyData" unique_id=2139519148 instance=ExtResource("1_k3i7q")]
 type = 1
-idle_anim_settings = SubResource("Resource_v28r2")
+idle_anim_settings = SubResource("Resource_djbgq")
 entity_name = "Skelly"
 default_stats = SubResource("Resource_0dmfe")
 card_deck_types = Array[int]([8, 9, 8, 10])
+
+[node name="SmashActionData" parent="Cards" parent_id_path=PackedInt32Array(1465442438) index="0" unique_id=988386249 instance=ExtResource("5_v28r2")]
+
+[node name="SlashActionData" parent="Cards" parent_id_path=PackedInt32Array(1465442438) index="1" unique_id=1243554940 instance=ExtResource("6_xmbqe")]
+
+[node name="DamageComp" parent="Cards/SlashActionData/Components" parent_id_path=PackedInt32Array(1243554940, 571709105) index="0" unique_id=1122987308]
+value = 15
+
+[node name="SlashActionData2" parent="Cards" parent_id_path=PackedInt32Array(1465442438) index="2" unique_id=994261505 instance=ExtResource("6_xmbqe")]
+
+[node name="DamageComp" parent="Cards/SlashActionData2/Components" parent_id_path=PackedInt32Array(994261505, 571709105) index="0" unique_id=1122987308]
+value = 24
+
+[node name="DefendActionData" parent="Cards" parent_id_path=PackedInt32Array(1465442438) index="3" unique_id=18291983 instance=ExtResource("7_n3r6n")]
+
+[node name="DefendActionData2" parent="Cards" parent_id_path=PackedInt32Array(1465442438) index="4" unique_id=749231462 instance=ExtResource("7_n3r6n")]
+
+[editable path="Cards/SlashActionData"]
+[editable path="Cards/SlashActionData2"]

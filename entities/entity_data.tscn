@@ -26,3 +26,9 @@ metadata/_custom_type_script = "uid://mi75jnrupyfs"
 [node name="EntityData" type="Node" unique_id=780192406]
 script = ExtResource("1_e0xeo")
 default_stats = SubResource("Resource_8tsk4")
+
+[node name="Components" type="Node" parent="." unique_id=916782208]
+unique_name_in_owner = true
+
+[node name="Cards" type="Node" parent="." unique_id=683452772]
+unique_name_in_owner = true

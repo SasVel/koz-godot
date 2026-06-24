@@ -25,7 +25,11 @@ enum Phases {
 @onready var event_queue : Array[Callable]
 @onready var is_playing_event : bool = false :
 	set(val):
+		if is_playing_event == val:
+			return
+
 		is_playing_event = val
+		end_turn_timer.paused = is_playing_event
 		switch_input(!is_playing_event)
 		if !is_playing_event and event_queue.size() <= 0:
 			event_queue_empty.emit()
@@ -33,6 +37,7 @@ enum Phases {
 @onready var enemy_actions : Array[Callable]
 @onready var player_status_eff_actions : Array[Callable]
 @onready var enemy_status_eff_actions : Array[Callable]
+@onready var end_turn_timer : EndTurnTimer
 
 @onready var inputBlocker : Control
 @onready var popupsContainer : Control
@@ -54,16 +59,19 @@ func _init() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if event_queue.size() > 0 and !is_playing_event:
+		is_playing_event = true
 		await pop_play_event()
+		if event_queue.size() <= 0:
+			is_playing_event = false
 
 func pop_play_event():
-	is_playing_event = true
 	var event = event_queue.pop_back()
 	if event.get_object() != null:
 		await event.call()
-	is_playing_event = false
 
-func add_event(event : Callable):
+func add_event(event : Callable, is_unique : bool = false):
+	if is_unique and event_queue.any(func(x): x.get_object() == event.get_object()):
+		return
 	event_queue.push_front(event)
 
 func add_events(event_arr : Array[Callable]):
@@ -71,7 +79,8 @@ func add_events(event_arr : Array[Callable]):
 		event_queue.append_array(event_arr)
 		return
 	var queue_copy = event_queue.duplicate()
-	event_queue = event_arr
+	event_queue.clear()
+	event_queue.append_array(event_arr)
 	event_queue.append_array(queue_copy)
 
 func init_references():
@@ -80,6 +89,7 @@ func init_references():
 	Obj.connect_signals({ player.stats.Health.no_stat_val: show_game_over_screen })
 	inputBlocker = main.get_node("UI/InputBlocker")
 	popupsContainer = main.get_node("UIOverEverything/PopupsContainer")
+	end_turn_timer = main.get_node("EndTurnTimer")
 
 func init():
 	get_tree().paused = false
@@ -112,6 +122,7 @@ func start_turn():
 func end_turn():
 	await play_enemy_anim_stack()
 	on_end_turn.emit()
+	refresh_end_turn_timer()
 	start_turn()
 
 func play_player_eff_stack():
@@ -128,7 +139,8 @@ func swap_phase():
 
 func set_room():
 	if curr_room != null:
-		await curr_room.switch_transition(false)
+		add_event(curr_room.switch_transition.bind(false))
+		await event_queue_empty
 		curr_room.queue_free()
 
 	var room = ObjManager.get_rand_room()
@@ -137,7 +149,8 @@ func set_room():
 
 	room.completed.connect(next_room)
 	await room.ready
-	await room.switch_transition(true)
+	add_event(curr_room.switch_transition.bind(true))
+	await event_queue_empty
 	start_turn()
 
 func next_room():
@@ -164,3 +177,15 @@ func switch_input(isOn : bool):
 func show_game_over_screen():
 	var screen = UI.get_popup_inst(UI.Popups.GAME_OVER)
 	popupsContainer.add_child(screen)
+
+func start_end_turn_timer(wait_time):
+	add_event(end_turn_timer.timer_start.bind(wait_time))
+
+func refresh_end_turn_timer():
+	if end_turn_timer.is_stopped():
+		return
+	end_turn_timer.stop()
+	end_turn_timer.start()
+
+func stop_end_turn_timer():
+	end_turn_timer.stop()

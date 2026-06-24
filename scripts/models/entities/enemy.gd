@@ -17,6 +17,13 @@ func config(data_ : EntityData):
 	%EnemyBar.config(stats.Health, stats.Block)
 	%EnemySprite.texture = ObjManager.get_enemy_sprite(data.type, data.has_alt_sprite)
 	%EnemySprite.modulate = ObjManager.get_enemy_color(data.type)
+	var ability_desc = data.generate_desc()
+	if ability_desc == "":
+		%SpecialAbilityLabel.visible = false
+	else:
+		%SpecialAbilityLabel.visible = true
+		%SpecialAbilityLabel.text = data.generate_desc()
+	data.activate()
 	return self
 
 func on_changed_phase(val : Game.Phases):
@@ -55,6 +62,7 @@ func on_death():
 
 func _exit_tree() -> void:
 	Game.enemy_actions.erase(activate_actions_hand)
+	data.deactivate()
 
 func tween_death():
 	%IdleAnimator.stop()
