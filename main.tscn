@@ -10,9 +10,11 @@
 [ext_resource type="Script" uid="uid://c3wh10qjm5gsy" path="res://addons/tnowe_extra_controls/elements/radial_container_theme.gd" id="9_efxa6"]
 [ext_resource type="PackedScene" uid="uid://6obkyplrtqym" path="res://UI/placeholder.tscn" id="13_cegan"]
 [ext_resource type="PackedScene" uid="uid://dlxv0fa2g0o7q" path="res://UI/radial_timer_display.tscn" id="14_ryguw"]
+[ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="15_0odxb"]
 [ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="15_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://cpgn2tegjq7md" path="res://entities/EntityBar.tscn" id="15_a6jrf"]
 [ext_resource type="Script" uid="uid://ne7wq0mqey7" path="res://main_container.gd" id="15_ryguw"]
+[ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="16_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://cqpqe0cq4mupb" path="res://UI/stat_display.tscn" id="16_lswn8"]
 [ext_resource type="Script" uid="uid://b6seccbn8xwbf" path="res://tools_list.gd" id="17_lswn8"]
 [ext_resource type="Script" uid="uid://bjfofuvh3c3vi" path="res://end_turn_btn.gd" id="18_htxhm"]
@@ -47,6 +49,11 @@ region = Rect2(256, 0, 256, 256)
 atlas = ExtResource("26_qsp4k")
 region = Rect2(0, 256, 256, 256)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuqvo"]
+shader = ExtResource("15_0odxb")
+shader_parameter/shadow_offset = Vector2(6, 6)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
+
 [sub_resource type="Resource" id="Resource_w48qg"]
 script = ExtResource("9_efxa6")
 radius_factor_outer = 1.585
@@ -54,26 +61,6 @@ radius_factor_inner = 0.0
 item_radius_factor = 0.875
 color = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ryguw"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1u8w0"]
 resource_local_to_scene = true
@@ -115,7 +102,27 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuqvo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kq58d"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -303,6 +310,19 @@ theme_override_font_sizes/font_size = 24
 text = "End Turn"
 script = ExtResource("18_htxhm")
 
+[node name="BtnShadow" type="TextureRect" parent="UI/MainContainer/EndTurnContainer/EndTurnBtn" unique_id=1560512372]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_xuqvo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_a6jrf")
+expand_mode = 1
+
 [node name="EndTurnTimeDisplay" parent="UI/MainContainer/EndTurnContainer" unique_id=1143788982 instance=ExtResource("14_ryguw")]
 layout_mode = 2
 mouse_filter = 2
@@ -352,35 +372,35 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_ryguw")
-custom_minimum_size = Vector2(0, 0)
-layout_mode = 2
-focus_mode = 1
-fauxShiftDeg = 15.0
-
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_d13ii")
-custom_minimum_size = Vector2(0, 0)
-layout_mode = 2
-focus_mode = 1
-fauxShiftDeg = 15.0
-
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_1u8w0")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_0odxb")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_lswn8")
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+focus_mode = 1
+fauxShiftDeg = 15.0
+
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_a6jrf")
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+focus_mode = 1
+fauxShiftDeg = 15.0
+
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_qsp4k")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
@@ -403,13 +423,13 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_a6jrf")
+material = SubResource("ShaderMaterial_kq58d")
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_xuqvo")
+material = SubResource("ShaderMaterial_seu75")
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0

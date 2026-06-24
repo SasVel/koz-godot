@@ -142,11 +142,11 @@ func get_action_color(type : Const.Actions) -> Color:
 	var color : Color
 	match type:
 		Const.Actions.SLASH:
-			color = Const.PRIMARY_HUE_SHIFT_UP_COLOR
+			color = Const.ACCENT_COLOR
 		Const.Actions.DEFEND:
-			color = Const.PRIMARY_HUE_SHIFT_UP_COLOR
+			color = Const.COMPLIMENTARY_COLOR
 		_:
-			color = Const.PRIMARY_HUE_SHIFT_UP_COLOR
+			color = Const.ACCENT_COLOR
 	return color
 
 func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:

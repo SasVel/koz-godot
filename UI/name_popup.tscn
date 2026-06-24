@@ -2,6 +2,13 @@
 
 [ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_0eb6w"]
 [ext_resource type="Script" uid="uid://dpv1piwo6kiy0" path="res://name_popup.gd" id="2_gkdrj"]
+[ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="3_wbeip"]
+[ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="4_ryjw7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dti8"]
+shader = ExtResource("3_wbeip")
+shader_parameter/shadow_offset = Vector2(6, 6)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [node name="NamePopup" type="Control" unique_id=949640972]
 layout_mode = 3
@@ -52,6 +59,19 @@ layout_mode = 2
 theme = ExtResource("1_0eb6w")
 disabled = true
 text = "This is my name!"
+
+[node name="BtnShadow" type="TextureRect" parent="VBoxContainer/DoneBtn" unique_id=1960882372]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_5dti8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_ryjw7")
+expand_mode = 1
 
 [connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="text_submitted" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

@@ -11,7 +11,7 @@ func _ready() -> void:
 		enemiesFolder.get_child(1),
 		enemiesFolder.get_child(2),
 	]
-	add_enemy(ObjManager.get_enemy_obj(ObjManager.enemies_dict[Const.Enemies.SKELLY].instantiate()))
+	add_enemy(ObjManager.get_rand_enemy_obj())
 
 func get_enemies() -> Array:
 	var enemies : Array[Enemy]
@@ -22,7 +22,7 @@ func get_enemies() -> Array:
 
 func add_enemy(enemy_obj : Enemy):
 	for pos in enemyPositions:
-		if pos.get_children().size() > 0:
+		if pos.get_child_count() > 0:
 			continue
 		pos.add_child(enemy_obj)
 		enemy_obj.tree_exited.connect(try_complete_battle)

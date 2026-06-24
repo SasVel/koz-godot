@@ -24,6 +24,14 @@ scale = Vector2(2.000064, 2.2999718)
 skew = 0.087250054
 texture = SubResource("AtlasTexture_x8e4v")
 
+[node name="SpriteShadow" type="Sprite2D" parent="EnemySprite" unique_id=1870254546]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 0.4117647)
+show_behind_parent = true
+position = Vector2(26.013401, 11.638615)
+skew = 0.087249994
+texture = SubResource("AtlasTexture_x8e4v")
+
 [node name="IdleAnimator" type="Node" parent="EnemySprite" unique_id=300381570 node_paths=PackedStringArray("target")]
 unique_name_in_owner = true
 script = ExtResource("5_jq0pf")

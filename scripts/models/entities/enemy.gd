@@ -15,7 +15,9 @@ func config(data_ : EntityData):
 	%IdleAnimator.config((data as EnemyData).idle_anim_settings)
 	%NameLabel.text = data.entity_name
 	%EnemyBar.config(stats.Health, stats.Block)
-	%EnemySprite.texture = ObjManager.get_enemy_sprite(data.type, data.has_alt_sprite)
+	var enemy_sprite = ObjManager.get_enemy_sprite(data.type, data.has_alt_sprite)
+	%EnemySprite.texture = enemy_sprite
+	%SpriteShadow.texture = enemy_sprite
 	%EnemySprite.modulate = ObjManager.get_enemy_color(data.type)
 	var ability_desc = data.generate_desc()
 	if ability_desc == "":

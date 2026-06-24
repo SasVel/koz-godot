@@ -4,9 +4,16 @@
 [ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="2_7uw1u"]
 [ext_resource type="Script" uid="uid://1ubypw3lwyy7" path="res://UI/ClassSelection/class_panel.gd" id="2_kbbr3"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="3_x8uyh"]
+[ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="5_6kwiq"]
+[ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="6_r3m8k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcck5"]
 bg_color = Color(1, 1, 1, 0.46666667)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jaiwi"]
+shader = ExtResource("5_6kwiq")
+shader_parameter/shadow_offset = Vector2(6, 6)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [node name="ClassPanel" type="PanelContainer" unique_id=1955146153]
 offset_right = 492.0
@@ -89,5 +96,18 @@ autowrap_mode = 3
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 text = "Choose"
+
+[node name="BtnShadow" type="TextureRect" parent="MarginContainer/VBoxContainer/ChooseBtn" unique_id=66928649]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_jaiwi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_r3m8k")
+expand_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ChooseBtn" to="." method="_on_choose_btn_pressed"]

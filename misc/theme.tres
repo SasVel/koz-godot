@@ -18,11 +18,11 @@ texture = ExtResource("1_yobfc")
 texture = ExtResource("2_gwh2h")
 
 [resource]
-Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_color = Color(0.90186185, 0.90186185, 0.90186185, 1)
 Button/colors/font_disabled_color = Color(0, 0, 0, 0.8509804)
-Button/colors/font_focus_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_color = Color(0, 0, 0, 1)
-Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/constants/h_separation = 8
 Button/constants/outline_size = 5

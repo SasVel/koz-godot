@@ -181,6 +181,7 @@ stretch_mode = 5
 
 [node name="CardIconShadow" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/CardIconRect" unique_id=1915794250]
 unique_name_in_owner = true
+show_behind_parent = true
 material = SubResource("ShaderMaterial_l52sb")
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 1
