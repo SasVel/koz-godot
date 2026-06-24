@@ -3,6 +3,8 @@ extends Node
 var path_to_palette : String = "res://data"
 var path_to_palette_user : String = "user://data"
 var palette_name = "palette.json"
+var themes : Dictionary[String, Dictionary]
+var selected_theme : Array
 
 ## Enums
 enum CardTypes {
@@ -81,7 +83,6 @@ enum RoomTypes {
 	Battle,
 }
 
-var colors_obj
 
 # Colors
 var PRIMARY_COLOR: Color
@@ -97,11 +98,13 @@ var BACKGROUND_DARKER_COLOR : Color
 var PRIMARY_HUE_SHIFT_UP_COLOR : Color
 var PRIMARY_HUE_SHIFT_DOWN_COLOR : Color
 
-func _ready() -> void:
-	load_colors_obj()
-	map_colors()
+signal palette_changed
 
-func load_colors_obj() -> bool:
+func _ready() -> void:
+	load_palettes()
+	load_palette(0)
+
+func load_palettes():
 	var file
 	if !check_palette_existing():
 		DirAccess.make_dir_recursive_absolute(path_to_palette_user)
@@ -110,19 +113,23 @@ func load_colors_obj() -> bool:
 		file = source_dir.get_files().get(0)
 		source_dir.copy(path_to_palette + "/" + file,
 		path_to_palette_user + "/" + file)
+	var dir = DirAccess.open(path_to_palette)
+	if dir:
+		dir.list_dir_begin()
+		var fileNames = dir.get_files()
+		for fileName in fileNames:
+			fileName = fileName.replace(".remap", "")
+			file = ResourceLoader.load("/".join([path_to_palette, fileName]))
+			themes[fileName.replace(".json", "")] = file.data
 
-	file = FileAccess.open(path_to_palette_user + "/" + "palette_default.json",
-	 FileAccess.READ)
-	var json_text = file.get_as_text()
-	var json = JSON.new()
-	var error = json.parse(json_text)
-	if error == OK:
-		colors_obj = json.data
-	else:
-		push_error("colors JSON file did not load correctly.")
-	return error == OK
+func load_palette(idx : int):
+	var key = themes.keys()[idx]
+	selected_theme = [key, themes[themes.keys()[idx]]]
+	map_colors()
+	palette_changed.emit()
 
 func map_colors():
+	var colors_obj : Dictionary = selected_theme[1]
 	# Colors
 	BACKGROUND_COLOR = load_color(colors_obj["BACKGROUND_COLOR"])
 	PRIMARY_COLOR = load_color(colors_obj["PRIMARY_COLOR"])

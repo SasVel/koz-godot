@@ -19,6 +19,7 @@
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="16_cwv5u"]
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="17_c2iqt"]
 [ext_resource type="Script" uid="uid://cmp5ysigxtlro" path="res://UI/color_transition_editor.gd" id="17_t2nhh"]
+[ext_resource type="Script" uid="uid://co3c6lwimv2ic" path="res://UI/theme_select.gd" id="18_c2iqt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cwv5u"]
 
@@ -249,6 +250,11 @@ mouse_filter = 2
 texture = ExtResource("17_c2iqt")
 expand_mode = 1
 
+[node name="ThemeSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer" unique_id=1600752693]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("18_c2iqt")
+
 [node name="Transition" parent="." unique_id=581929043 instance=ExtResource("15_7137b")]
 unique_name_in_owner = true
 z_index = 100
@@ -262,3 +268,4 @@ script = ExtResource("17_t2nhh")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/CreditsBtn" to="." method="_on_credits_btn_pressed"]
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/ThemeSelect" to="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/ThemeSelect" method="_on_item_selected"]

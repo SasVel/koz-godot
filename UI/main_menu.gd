@@ -4,10 +4,8 @@ extends Control
 @export var credits_scn : PackedScene
 
 func _ready() -> void:
-	set_theme_colors()
-	%Birb.modulate = Const.ACCENT_COLOR
-	%Rock.modulate = Const.PRIMARY_COLOR
-	%HoleImage.material.set_shader_parameter("modulate_color", Const.BACKGROUND_COLOR)
+	load_colors_from_palette()
+	Const.palette_changed.connect(load_colors_from_palette)
 	switch_transition(true)
 
 func _on_new_game_btn_pressed() -> void:
@@ -46,3 +44,10 @@ func set_theme_colors():
 	btn_stylebox = theme.get_stylebox("disabled", "Button")
 	btn_stylebox.modulate_color = Const.BACKGROUND_DARKER_COLOR
 	theme.set_stylebox("disabled", "Button", btn_stylebox)
+
+func load_colors_from_palette():
+	set_theme_colors()
+	%Birb.modulate = Const.ACCENT_COLOR
+	%Rock.modulate = Const.PRIMARY_COLOR
+	%HoleImage.material.set_shader_parameter("modulate_color", Const.BACKGROUND_LIGHTER_COLOR)
+	%Background.self_modulate = Const.BACKGROUND_COLOR
