@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_5y6gt"]
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_fbj4w"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_fbj4w"]
+[ext_resource type="PackedScene" uid="uid://cq50j0mcvs0g" path="res://scripts/models/effect_components/turn_activator_comp.tscn" id="5_cpgdv"]
+[ext_resource type="PackedScene" uid="uid://qkaghml2s8qj" path="res://entities/status_effects/weakness_eff_data.tscn" id="6_j8vnb"]
 
 [sub_resource type="Resource" id="Resource_bgmlc"]
 resource_local_to_scene = true
@@ -43,7 +45,12 @@ type = 2
 has_alt_sprite = true
 idle_anim_settings = SubResource("Resource_bgmlc")
 entity_name = "Shroom"
-desc = ""
 default_stats = SubResource("Resource_tysic")
 card_deck_types = Array[int]([8, 9, 8])
-card_hand_size = 2
+
+[node name="TurnActivatorComp" parent="Components" parent_id_path=PackedInt32Array(598381325) index="0" unique_id=1833178821 instance=ExtResource("5_cpgdv")]
+
+[node name="WeaknessEffData" parent="Components/TurnActivatorComp/Components" parent_id_path=PackedInt32Array(1833178821, 489758667) index="0" unique_id=1231074189 instance=ExtResource("6_j8vnb")]
+duration = -1
+
+[editable path="Components/TurnActivatorComp"]

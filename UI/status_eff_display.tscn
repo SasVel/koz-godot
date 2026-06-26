@@ -15,15 +15,15 @@ shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kiwmt"]
 font_size = 34
-font_color = Color(0, 0, 0, 1)
 outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 shadow_size = 8
 shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.7411765)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xcfub"]
 font_size = 34
-font_color = Color(0, 0, 0, 1)
 outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 shadow_size = 8
 shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.7411765)
 
@@ -37,6 +37,7 @@ texture = SubResource("AtlasTexture_dlrch")
 expand_mode = 5
 stretch_mode = 5
 script = ExtResource("2_dlrch")
+is_colored_outline = false
 
 [node name="ShadowRect" type="TextureRect" parent="." unique_id=429564551]
 unique_name_in_owner = true

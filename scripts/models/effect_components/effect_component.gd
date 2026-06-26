@@ -37,6 +37,10 @@ func add_targets(targets_ : Array[Entity]):
 		add_target(target)
 
 func get_affected_units() -> Array:
+	if self.targets.size() <= 0:
+		return [self.source]
+	elif self.source == null:
+		return self.targets
 	return (self.targets if self.isOffensive else [self.source]).filter(func(x): return x != null)
 
 func generate_desc() -> String:

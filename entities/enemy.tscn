@@ -95,6 +95,7 @@ size_flags_vertical = 3
 script = ExtResource("7_f71c5")
 
 [node name="DataDropper" type="Control" parent="." unique_id=910297773]
+unique_name_in_owner = true
 z_index = 1
 layout_mode = 3
 anchors_preset = 0

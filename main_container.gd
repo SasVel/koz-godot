@@ -28,6 +28,9 @@ func _ready() -> void:
 	update_hand(player.cards_hand, true)
 	update_tools(player.equipped_tools, true)
 	update_rooms_label(Game.rooms_completed)
+	update_turns_label(Game.turn_counter)
+	Game.on_start_turn.connect(func(): update_turns_label(Game.turn_counter))
+
 
 func update_hand(data : Array, clear : bool = false):
 	var children = %ActionsContainer.get_children()
@@ -77,7 +80,10 @@ func update_tools(data : Array, clear : bool = true):
 		%ToolsList.add_child(card_inst)
 
 func update_rooms_label(val : int):
-	%RoomsLabel.text = "%s Rooms Completed" % str(val)
+	%RoomsLabel.text = "Rooms Completed: %s" % str(val)
+
+func update_turns_label(val : int):
+	%TurnsLabel.text = "Turn: %s" % str(val)
 
 func tween_phase_change(val : Game.Phases):
 	var tween = create_tween()\

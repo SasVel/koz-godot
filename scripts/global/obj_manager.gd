@@ -1,19 +1,31 @@
 extends Node
 
+@export_category("Card Types")
 @export var actions_dict : Dictionary[Const.Actions, PackedScene]
 @export var weapons_dict : Dictionary[Const.Weapons, PackedScene]
 @export var shields_dict : Dictionary[Const.Shields, PackedScene]
-@export var enemies_dict : Dictionary[Const.Enemies, PackedScene]
+
+@export_category("Status Effects")
 @export var status_effects_dict : Dictionary[Const.StatusEffects, PackedScene]
+@export var status_eff_desc_dict : Dictionary[Const.StatusEffects, String]
+
+@export_category("Player")
 @export var player_classes_dict : Dictionary[Const.PlayerClasses, PackedScene]
+
+@export_category("Enemies")
+@export var enemies_dict : Dictionary[Const.Enemies, PackedScene]
+
+@export_category("Rooms")
 @export var rooms_dict : Dictionary[Const.RoomTypes, PackedScene]
 
+@export_category("Objects")
 @export var card_obj : PackedScene
 @export var tool_obj : PackedScene
 @export var enemy_obj : PackedScene
 @export var action_mini_obj : PackedScene
 @export var eff_mini_obj : PackedScene
 
+@export_category("Sprite sheets")
 @export var sprites_64_atlas : AtlasTexture
 @export var sprites_128_atlas : AtlasTexture
 @export var sprites_256_atlas : AtlasTexture
@@ -176,7 +188,8 @@ func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
 			atlas.region = Rect2(512, 0, 128, 128)
 			var sword_img = get_weapon_sprite(Const.Weapons.SWORD).get_image()
 			sword_img.shrink_x2()
-			image = atlas.get_image().blit_rect(sword_img, sword_img.get_used_rect(), Vector2.ZERO)
+			image = atlas.get_image()
+			image.blit_rect(sword_img, sword_img.get_used_rect(), Vector2.ZERO)
 		Const.StatusEffects.POISON:
 			atlas.region = Rect2(256,128,128,128)
 			image = atlas.get_image()
@@ -202,3 +215,6 @@ func get_effect_color(type : Const.StatusEffects) -> Color:
 		_:
 			color = Const.COMPLIMENTARY_COLOR
 	return color
+
+func get_effect_description(type : Const.StatusEffects):
+	return status_eff_desc_dict[type]

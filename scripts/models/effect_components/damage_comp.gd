@@ -12,4 +12,4 @@ func activate():
 	super()
 
 func generate_desc() -> String:
-	return "Deal %s DMG." % value
+	return "Deal %.f DMG." % source.process_damage_outgoing(value)

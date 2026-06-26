@@ -27,7 +27,9 @@ func config(data_ : EntityData):
 		%SpecialAbilityLabel.visible = false
 	else:
 		%SpecialAbilityLabel.visible = true
-		%SpecialAbilityLabel.text = data.generate_desc()
+		var desc = data.generate_desc()
+		%SpecialAbilityLabel.text = desc
+		%DataDropper.tooltip_text = desc
 	enemy_data.enemy_config(self, [Game.player])
 	data.activate()
 	return self

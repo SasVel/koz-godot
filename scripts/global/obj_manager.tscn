@@ -87,13 +87,6 @@ shields_dict = Dictionary[int, PackedScene]({
 0: ExtResource("16_j1slq"),
 1: ExtResource("17_4nbcu")
 })
-enemies_dict = Dictionary[int, PackedScene]({
-0: ExtResource("18_me7ne"),
-1: ExtResource("19_yq7du"),
-2: ExtResource("20_j1slq"),
-3: ExtResource("21_4nbcu"),
-4: ExtResource("25_lla61")
-})
 status_effects_dict = Dictionary[int, PackedScene]({
 0: ExtResource("24_jfqbm"),
 4: ExtResource("25_5fmjw"),
@@ -101,10 +94,28 @@ status_effects_dict = Dictionary[int, PackedScene]({
 6: ExtResource("28_4cd8w"),
 7: ExtResource("29_4cd8w")
 })
+status_eff_desc_dict = Dictionary[int, String]({
+0: "Adds to dealt Damage.",
+1: "Reduces taken Damage.",
+2: "Changes turn phase to Attack",
+3: "Changes turn phase to Defend",
+4: "Removes Tempo.",
+5: "Reduces dealt Damage.",
+6: "Increases taken Damage.",
+7: "Deals Damage.",
+8: "Increases Tool cost."
+})
 player_classes_dict = Dictionary[int, PackedScene]({
 0: ExtResource("22_4nbcu"),
 1: ExtResource("27_c3n6k"),
 2: ExtResource("28_rqqf7")
+})
+enemies_dict = Dictionary[int, PackedScene]({
+0: ExtResource("18_me7ne"),
+1: ExtResource("19_yq7du"),
+2: ExtResource("20_j1slq"),
+3: ExtResource("21_4nbcu"),
+4: ExtResource("25_lla61")
 })
 rooms_dict = Dictionary[int, PackedScene]({
 0: ExtResource("29_4pinj")

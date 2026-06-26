@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_6v3hl"]
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_grwdv"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_6v3hl"]
+[ext_resource type="PackedScene" uid="uid://cq50j0mcvs0g" path="res://scripts/models/effect_components/turn_activator_comp.tscn" id="5_2nyq2"]
+[ext_resource type="PackedScene" uid="uid://dd1np0ll6q50b" path="res://entities/status_effects/poison_eff_data.tscn" id="7_ykoeq"]
 
 [sub_resource type="Resource" id="Resource_2nyq2"]
 resource_local_to_scene = true
@@ -19,7 +21,8 @@ metadata/_custom_type_script = "uid://yuler4bts5rw"
 
 [sub_resource type="Resource" id="Resource_6v3hl"]
 script = ExtResource("2_grwdv")
-value = 100.0
+value = 120
+maxValue = 120
 metadata/_custom_type_script = "uid://yuler4bts5rw"
 
 [sub_resource type="Resource" id="Resource_7qdh3"]
@@ -41,3 +44,10 @@ idle_anim_settings = SubResource("Resource_2nyq2")
 entity_name = "Slime"
 default_stats = SubResource("Resource_8v32s")
 card_deck_types = Array[int]([8, 9, 8])
+
+[node name="TurnActivatorComp" parent="Components" parent_id_path=PackedInt32Array(598381325) index="0" unique_id=1833178821 instance=ExtResource("5_2nyq2")]
+
+[node name="PoisonEffData" parent="Components/TurnActivatorComp/Components" parent_id_path=PackedInt32Array(1833178821, 489758667) index="0" unique_id=1074999394 instance=ExtResource("7_ykoeq")]
+
+[editable path="Components/TurnActivatorComp"]
+[editable path="Components/TurnActivatorComp/Components/PoisonEffData"]

@@ -31,6 +31,7 @@ class_name CardData
 
 signal changed_state(val)
 signal tempo_changed(val : int)
+signal update_status()
 
 func config_source(source_ : Entity):
 	super(source_)
@@ -52,6 +53,7 @@ func update_status_state(effects : Array[StatusEffData]):
 	if effects.any(func(x): return x.type == Const.StatusEffects.CONSTRICT):
 		check_state()
 		tempo_changed.emit(tempoCost)
+	update_status.emit()
 
 func can_activate():
 	return source.stats.Tempo.value >= self.tempoCost

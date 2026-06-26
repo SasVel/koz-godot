@@ -6,10 +6,10 @@
 [node name="PoisonEffData" unique_id=1231074189 instance=ExtResource("1_l6btp")]
 type = 7
 duration = 2
-value = 2
+value = 5
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(2091518437) index="0" unique_id=1050064348]
 script = ExtResource("2_e050r")
-value = 2
+value = 5
 isOffensive = false
 metadata/_custom_type_script = "uid://rio4hms2vn51"

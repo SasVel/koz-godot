@@ -48,7 +48,8 @@ func config(data_ : CardData):
 
 	cardBack.self_modulate = Const.BACKGROUND_LIGHTER_COLOR
 	%TitleLabel.text = UIHelper.pascal_to_readable_text(title_text)
-	%DescLabel.text = data.generate_desc()
+	set_generate_description()
+	data.update_status.connect(set_generate_description)
 	%CardIconRect.texture = image
 	%CardIconShadow.texture = image
 	%TempoDisplay.config(Const.ACCENT_COLOR, data.tempoCost, data.tempo_changed)
@@ -64,6 +65,9 @@ func _physics_process(_delta: float) -> void:
 	self.position != self.default_pos\
 	and !isLoot:
 		_on_focus_exited()
+
+func set_generate_description():
+	%DescLabel.text = data.generate_desc()
 
 func change_opacity(val : float):
 	cardBack.modulate.a = val
