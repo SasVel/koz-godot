@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dyds1hbigh4w3"]
+
+[ext_resource type="PackedScene" uid="uid://51eutumha5c5" path="res://entities/status_effects/status_eff_data.tscn" id="1_muyyv"]
+
+[node name="ConstrictEffData" unique_id=1231074189 instance=ExtResource("1_muyyv")]
+type = 8

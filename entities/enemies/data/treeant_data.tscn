@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://6pcvp2y6mjnd"]
+
+[ext_resource type="PackedScene" uid="uid://drfb0uihop40k" path="res://entities/enemies/enemy_data.tscn" id="1_6q56h"]
+[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_3tf00"]
+[ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="3_1y4el"]
+[ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="4_w6y78"]
+[ext_resource type="PackedScene" uid="uid://cq50j0mcvs0g" path="res://scripts/models/effect_components/turn_activator_comp.tscn" id="5_kgjub"]
+[ext_resource type="PackedScene" uid="uid://dyds1hbigh4w3" path="res://entities/status_effects/constrict_eff_data.tscn" id="6_ay5o3"]
+
+[sub_resource type="Resource" id="Resource_upuk4"]
+resource_local_to_scene = true
+script = ExtResource("2_3tf00")
+scale_speed = 12
+has_scale_y = false
+skew_deg = 8
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
+
+[sub_resource type="Resource" id="Resource_kgjub"]
+script = ExtResource("3_1y4el")
+value = 0.0
+maxValue = 200
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_gwr16"]
+script = ExtResource("3_1y4el")
+value = 2
+maxValue = 2
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_ay5o3"]
+script = ExtResource("3_1y4el")
+value = 200
+maxValue = 200
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_etwwr"]
+script = ExtResource("3_1y4el")
+value = 2.0
+maxValue = 2.0
+metadata/_custom_type_script = "uid://yuler4bts5rw"
+
+[sub_resource type="Resource" id="Resource_f40cr"]
+resource_local_to_scene = true
+script = ExtResource("4_w6y78")
+Health = SubResource("Resource_ay5o3")
+Block = SubResource("Resource_kgjub")
+Tempo = SubResource("Resource_etwwr")
+HandSize = SubResource("Resource_gwr16")
+metadata/_custom_type_script = "uid://mi75jnrupyfs"
+
+[node name="TreeantData" unique_id=2139519148 instance=ExtResource("1_6q56h")]
+type = 4
+has_alt_sprite = false
+custom_scale_multi = 1.2
+idle_anim_settings = SubResource("Resource_upuk4")
+entity_name = "Tree boy"
+default_stats = SubResource("Resource_f40cr")
+
+[node name="TurnActivatorComp" parent="Components" parent_id_path=PackedInt32Array(598381325) index="0" unique_id=1833178821 instance=ExtResource("5_kgjub")]
+
+[node name="ConstrictEffData" parent="Components/TurnActivatorComp/Components" parent_id_path=PackedInt32Array(1833178821, 489758667) index="0" unique_id=1231074189 instance=ExtResource("6_ay5o3")]
+
+[editable path="Components/TurnActivatorComp"]

@@ -26,8 +26,8 @@ func config(healthStat : Stat, blockStat : Stat):
 		func(_oldVal, newVal):
 			update_block(newVal))
 
-	update_health(healthStat.value)
 	self.max_value = healthStat.maxValue
+	update_health(healthStat.value)
 
 	update_block(blockStat.value)
 	%BlockBar.max_value = blockStat.maxValue

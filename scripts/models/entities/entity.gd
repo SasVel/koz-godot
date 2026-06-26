@@ -10,13 +10,14 @@ var status_effects : Array[StatusEffData]
 
 signal hand_changed(cards_hand : Array[CardData])
 signal card_activated(card_data : CardData)
-signal status_effects_changed(status_effects)
+signal status_effects_changed(eff_data : Array[StatusEffData])
 signal configured
 
 func config(data_ : EntityData):
 	data = data_
 	data.config()
 	stats = data.default_stats.duplicate(true)
+	stats.reset()
 	stats.Health.no_stat_val.connect(on_death)
 	add_actions_deck(data.card_deck)
 	configured.emit()
@@ -170,7 +171,7 @@ func add_status_effect(effect : StatusEffData):
 			eff.stacks += effect.stacks
 			stacked = true
 
-	if stacked or self.status_effects.size() <= 0:
+	if !stacked or self.status_effects.size() <= 0:
 		effect.config_source(self)
 		self.status_effects.append(effect)
 		%EffectDatas.add_child(effect)

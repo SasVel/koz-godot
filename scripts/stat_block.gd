@@ -22,3 +22,8 @@ func take_damage(val : int):
 	if val == 0: return
 
 	Health.value -= val
+
+func reset():
+	Health.value = Health.maxValue
+	Block.value = 0
+	Tempo.value = Tempo.maxValue

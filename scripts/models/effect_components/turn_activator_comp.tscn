@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cq50j0mcvs0g"]
+
+[ext_resource type="Script" uid="uid://bair6mbjx2176" path="res://scripts/models/effect_components/turn_activator_comp.gd" id="1_xh0cm"]
+
+[node name="TurnActivatorComp" type="Node" unique_id=1833178821]
+script = ExtResource("1_xh0cm")
+
+[node name="Components" type="Node" parent="." unique_id=489758667]
+unique_name_in_owner = true

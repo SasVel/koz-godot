@@ -1,7 +1,7 @@
 extends Control
 class_name MiniDisplay
 
-func update(num):
+func update(num : int):
 	%NumLabel.text = str(snapped(num, 1))
 
 func tween_activate(is_for_deletion : bool = true):

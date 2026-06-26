@@ -68,6 +68,7 @@ func pop_play_event():
 	var event = event_queue.pop_back()
 	if event.get_object() != null:
 		await event.call()
+		is_playing_event = false
 
 func add_event(event : Callable, is_unique : bool = false):
 	if is_unique and event_queue.any(func(x): x.get_object() == event.get_object()):

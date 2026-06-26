@@ -12,6 +12,14 @@ class_name CardData
 	set(val):
 		tempoCost = val
 		tempo_changed.emit(val)
+	get():
+		var val = tempoCost
+		if source != null and \
+		type == Const.CardTypes.WEAPON or \
+		type == Const.CardTypes.SHIELD:
+			for eff in source.get_effects(Const.StatusEffects.CONSTRICT):
+				val += eff.stacks
+		return val
 
 @onready var isOn = true :
 	set(val):
@@ -22,11 +30,12 @@ class_name CardData
 @onready var card_object : CardObj
 
 signal changed_state(val)
-signal tempo_changed(val)
+signal tempo_changed(val : int)
 
 func config_source(source_ : Entity):
 	super(source_)
 	source.stats.Tempo.stat_changed.connect(func(_x, _y): check_state())
+	source.status_effects_changed.connect(update_status_state)
 
 func activate(deduct_tempo : bool = true):
 	super()
@@ -38,6 +47,11 @@ func get_generic_value():
 
 func check_state():
 	isOn = can_activate()
+
+func update_status_state(effects : Array[StatusEffData]):
+	if effects.any(func(x): return x.type == Const.StatusEffects.CONSTRICT):
+		check_state()
+		tempo_changed.emit(tempoCost)
 
 func can_activate():
 	return source.stats.Tempo.value >= self.tempoCost

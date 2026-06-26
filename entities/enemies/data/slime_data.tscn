@@ -36,6 +36,7 @@ Tempo = SubResource("Resource_7qdh3")
 metadata/_custom_type_script = "uid://mi75jnrupyfs"
 
 [node name="SlimeData" unique_id=2139519148 instance=ExtResource("1_7ks2s")]
+has_alt_sprite = false
 idle_anim_settings = SubResource("Resource_2nyq2")
 entity_name = "Slime"
 default_stats = SubResource("Resource_8v32s")

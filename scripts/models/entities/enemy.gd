@@ -12,10 +12,13 @@ func _ready() -> void:
 
 func config(data_ : EntityData):
 	super(data_)
-	%IdleAnimator.config((data as EnemyData).idle_anim_settings)
+	var enemy_data = data as EnemyData
+	%IdleAnimator.config(enemy_data.idle_anim_settings)
 	%NameLabel.text = data.entity_name
 	%EnemyBar.config(stats.Health, stats.Block)
 	var enemy_sprite = ObjManager.get_enemy_sprite(data.type, data.has_alt_sprite)
+	if enemy_data.custom_scale_multi != 1.0:
+		%EnemySprite.scale *=  enemy_data.custom_scale_multi
 	%EnemySprite.texture = enemy_sprite
 	%SpriteShadow.texture = enemy_sprite
 	%EnemySprite.modulate = ObjManager.get_enemy_color(data.type)
@@ -25,6 +28,7 @@ func config(data_ : EntityData):
 	else:
 		%SpecialAbilityLabel.visible = true
 		%SpecialAbilityLabel.text = data.generate_desc()
+	enemy_data.enemy_config(self, [Game.player])
 	data.activate()
 	return self
 

@@ -50,6 +50,7 @@ enum StatusEffects {
 	WEAKNESS,
 	FRAIL,
 	POISON,
+	CONSTRICT
 }
 
 enum Enemies {
@@ -57,6 +58,7 @@ enum Enemies {
 	SKELLY,
 	SHROOM,
 	GOBLIN,
+	TREEANT,
 }
 
 enum PlayerClasses {
@@ -72,6 +74,7 @@ enum UnitTrackingVars {
 	TEMPO_GAINED,
 	STUN_APPLIED,
 }
+
 enum StatTypes {
 	Health,
 	Block,
