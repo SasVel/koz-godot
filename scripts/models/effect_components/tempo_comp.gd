@@ -8,7 +8,6 @@ func _ready() -> void:
 func activate():
 	for unit in get_affected_units():
 		unit.stats.Tempo.value += value
-		print(value)
 		unit.hand_changed.emit(unit.cards_hand)
 
 func generate_desc() -> String:

@@ -180,6 +180,9 @@ func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
 		Const.StatusEffects.POISON:
 			atlas.region = Rect2(256,128,128,128)
 			image = atlas.get_image()
+		Const.StatusEffects.CONSTRICT:
+			atlas.region = Rect2(384,128,128,128)
+			image = atlas.get_image()
 		_:
 			atlas.region = Rect2(384, 0, 128, 128)
 			image = atlas.get_image()
