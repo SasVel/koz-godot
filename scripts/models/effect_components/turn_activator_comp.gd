@@ -3,15 +3,12 @@ class_name TurnActivatorComp
 
 @onready var isOn : bool = false
 
-func _ready() -> void:
-	Game.on_start_turn.connect(activate)
-
 func activate():
-	if isOn:
+	if isOn and Game.turn_counter > 1:
 		super()
 	else:
 		isOn = true
-		Obj.connect_signals({ Game.on_start_turn: activate })
+		Obj.connect_signals({ Game.on_start_turn_layer_2: activate })
 
 func deactivate():
 	isOn = false

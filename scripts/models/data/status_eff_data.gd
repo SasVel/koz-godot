@@ -31,6 +31,12 @@ func activate_eff():
 
 	activated.emit()
 
+func try_stack_effect(effect : StatusEffData) -> bool:
+	if self.type == effect.type and self.duration == effect.duration:
+		self.stacks += effect.stacks
+		return true
+	return false
+
 func config_comp(component : EffectComponent, source_ : Entity, targets_ : Array[Entity]):
 	super(component, source_, targets_)
 	component.value = value
@@ -42,6 +48,11 @@ func generate_desc() -> String:
 		Const.StatusEffects.keys()[type],
 		"self" if !isOffensive else "opponent"
 	]
+
+func generate_eff_desc() -> String:
+	var eff_desc = ObjManager.get_effect_description(type)
+	eff_desc = eff_desc.replace("?", ("%.fx" % stacks if stacks > 1 else "") + str(value))
+	return eff_desc
 
 func delete():
 	source.remove_status_effect(self)

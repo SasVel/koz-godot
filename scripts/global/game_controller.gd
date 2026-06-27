@@ -48,7 +48,9 @@ enum Phases {
 @onready var is_input : bool = true
 @onready var is_object_dragged : bool = false
 
-signal on_start_turn()
+signal on_start_turn_layer_1()
+signal on_start_turn_layer_2()
+
 signal on_end_turn()
 signal on_changed_phase(val : Phases)
 signal on_rooms_completed(val : int)
@@ -117,8 +119,12 @@ func start_game():
 func start_turn():
 	swap_phase()
 	turn_counter += 1
-	on_start_turn.emit()
+	on_start_turn_emit()
 	await play_player_eff_stack()
+
+func on_start_turn_emit():
+	on_start_turn_layer_1.emit()
+	on_start_turn_layer_2.emit()
 
 func end_turn():
 	await play_enemy_anim_stack()

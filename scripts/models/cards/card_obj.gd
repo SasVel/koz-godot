@@ -53,7 +53,7 @@ func config(data_ : CardData):
 	%CardIconRect.texture = image
 	%CardIconShadow.texture = image
 	%TempoDisplay.config(Const.ACCENT_COLOR, data.tempoCost, data.tempo_changed)
-	data.tempo_changed.connect(%TempoDisplay.update)
+	data.tempo_changed.connect(func(_x, y): %TempoDisplay.update(y))
 	return self
 
 func _ready() -> void:

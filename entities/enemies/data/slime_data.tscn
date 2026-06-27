@@ -47,7 +47,7 @@ card_deck_types = Array[int]([8, 9, 8])
 
 [node name="TurnActivatorComp" parent="Components" parent_id_path=PackedInt32Array(598381325) index="0" unique_id=1833178821 instance=ExtResource("5_2nyq2")]
 
-[node name="PoisonEffData" parent="Components/TurnActivatorComp/Components" parent_id_path=PackedInt32Array(1833178821, 489758667) index="0" unique_id=1074999394 instance=ExtResource("7_ykoeq")]
+[node name="PoisonEffData" parent="Components/TurnActivatorComp/Components" parent_id_path=PackedInt32Array(1833178821, 489758667) index="0" unique_id=1231074189 instance=ExtResource("7_ykoeq")]
+duration = 2
 
 [editable path="Components/TurnActivatorComp"]
-[editable path="Components/TurnActivatorComp/Components/PoisonEffData"]

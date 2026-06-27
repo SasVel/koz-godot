@@ -102,7 +102,7 @@ status_eff_desc_dict = Dictionary[int, String]({
 4: "Removes Tempo.",
 5: "Reduces dealt Damage.",
 6: "Increases taken Damage.",
-7: "Deals Damage.",
+7: "Deals ? Damage.",
 8: "Increases Tool cost."
 })
 player_classes_dict = Dictionary[int, PackedScene]({

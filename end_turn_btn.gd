@@ -15,5 +15,5 @@ func tween_end_turn():
 func _on_pressed() -> void:
 	Game.end_turn()
 	self.disabled = true
-	await Game.on_start_turn
+	await Game.on_start_turn_layer_2
 	self.disabled = false

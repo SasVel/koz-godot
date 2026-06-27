@@ -23,7 +23,7 @@ func config(data_ : EntityData):
 	configured.emit()
 
 func _ready() -> void:
-	Game.on_start_turn.connect(start_turn)
+	Game.on_start_turn_layer_1.connect(start_turn)
 	Game.on_changed_phase.connect(on_changed_phase)
 	start_turn()
 
@@ -167,9 +167,7 @@ func pop_rand_actions_deck(num):
 func add_status_effect(effect : StatusEffData):
 	var stacked : bool = false
 	for eff in self.status_effects:
-		if eff.type == effect.type and eff.duration == effect.duration:
-			eff.stacks += effect.stacks
-			stacked = true
+		stacked = eff.try_stack_effect(effect)
 
 	if !stacked or self.status_effects.size() <= 0:
 		effect.config_source(self)

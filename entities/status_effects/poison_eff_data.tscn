@@ -2,14 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://51eutumha5c5" path="res://entities/status_effects/status_eff_data.tscn" id="1_l6btp"]
 [ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_e050r"]
+[ext_resource type="Script" uid="uid://po86tp5agxie" path="res://entities/status_effects/poison_eff_data.gd" id="2_jsrpu"]
 
 [node name="PoisonEffData" unique_id=1231074189 instance=ExtResource("1_l6btp")]
+script = ExtResource("2_jsrpu")
 type = 7
-duration = 2
-value = 5
+duration = 1
+value = 2
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(2091518437) index="0" unique_id=1050064348]
 script = ExtResource("2_e050r")
-value = 5
+value = 1
 isOffensive = false
 metadata/_custom_type_script = "uid://rio4hms2vn51"

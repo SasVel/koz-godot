@@ -30,7 +30,7 @@ class_name CardData
 @onready var card_object : CardObj
 
 signal changed_state(val)
-signal tempo_changed(val : int)
+signal tempo_changed(oldVal : int, val : int)
 signal update_status()
 
 func config_source(source_ : Entity):
@@ -52,7 +52,7 @@ func check_state():
 func update_status_state(effects : Array[StatusEffData]):
 	if effects.any(func(x): return x.type == Const.StatusEffects.CONSTRICT):
 		check_state()
-		tempo_changed.emit(tempoCost)
+		tempo_changed.emit(null, tempoCost)
 	update_status.emit()
 
 func can_activate():

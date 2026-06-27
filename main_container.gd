@@ -29,7 +29,7 @@ func _ready() -> void:
 	update_tools(player.equipped_tools, true)
 	update_rooms_label(Game.rooms_completed)
 	update_turns_label(Game.turn_counter)
-	Game.on_start_turn.connect(func(): update_turns_label(Game.turn_counter))
+	Game.on_start_turn_layer_1.connect(func(): update_turns_label(Game.turn_counter))
 
 
 func update_hand(data : Array, clear : bool = false):

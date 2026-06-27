@@ -28,7 +28,7 @@ func activate():
 		update(data.duration)
 
 func update(num):
-	self.tooltip_text = ObjManager.get_effect_description(data.type)
+	self.tooltip_text = data.generate_eff_desc()
 	%NumLabel.visible = num > 1
 	if num == -1:
 		super(8)

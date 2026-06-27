@@ -26,6 +26,6 @@ func _physics_process(_delta: float) -> void:
 func _on_timeout() -> void:
 	Game.end_turn()
 	display.visible = false
-	await Game.on_start_turn
+	await Game.on_start_turn_layer_2
 	display.visible = true
 	self.start()
