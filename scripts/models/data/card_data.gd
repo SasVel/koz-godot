@@ -15,8 +15,8 @@ class_name CardData
 	get():
 		var val = tempoCost
 		if source != null and \
-		type == Const.CardTypes.WEAPON or \
-		type == Const.CardTypes.SHIELD:
+		(type == Const.CardTypes.WEAPON or \
+		type == Const.CardTypes.SHIELD):
 			for eff in source.get_effects(Const.StatusEffects.CONSTRICT):
 				val += eff.stacks
 		return val

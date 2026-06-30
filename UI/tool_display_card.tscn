@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://b73cc3b36w7b7"]
+
+[ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_menrt"]
+[ext_resource type="Script" uid="uid://cvwcykwjrcxx3" path="res://UI/tool_display_card.gd" id="2_o23ov"]
+[ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="4_d4udx"]
+[ext_resource type="Script" uid="uid://btelx0bototx5" path="res://UI/num_display.gd" id="5_6o5qs"]
+[ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="6_xuc75"]
+[ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="7_8p347"]
+[ext_resource type="LabelSettings" uid="uid://brmy2s0k6mu8k" path="res://misc/number_label_settings.tres" id="8_77jgm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3lnqk"]
+load_path = "res://.godot/imported/sprites_256.png-52613440007506de9c13a2fc03872083.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_polf8"]
+atlas = SubResource("CompressedTexture2D_3lnqk")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ca783"]
+font_size = 20
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.654902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwyrv"]
+atlas = ExtResource("6_xuc75")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n4776"]
+shader = ExtResource("7_8p347")
+shader_parameter/shadow_offset = Vector2(2, 2)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
+
+[node name="ToolDisplayCard" type="PanelContainer" unique_id=672961235]
+offset_right = 285.0
+offset_bottom = 120.0
+theme = ExtResource("1_menrt")
+script = ExtResource("2_o23ov")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1240267112]
+layout_mode = 2
+
+[node name="CardIconRect" type="TextureRect" parent="HBoxContainer" unique_id=130559325]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = SubResource("AtlasTexture_polf8")
+expand_mode = 5
+
+[node name="CardIconShadow" type="TextureRect" parent="HBoxContainer/CardIconRect" unique_id=1127647270]
+unique_name_in_owner = true
+modulate = Color(0.17254898, 0.17254898, 0.17254892, 0.47843137)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_polf8")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1871380714]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=264285988]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Halberd"
+label_settings = SubResource("LabelSettings_ca783")
+autowrap_mode = 3
+
+[node name="DurabilityLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1162228173]
+unique_name_in_owner = true
+layout_mode = 2
+text = "|####|"
+label_settings = ExtResource("4_d4udx")
+
+[node name="TempoDisplay" type="Control" parent="HBoxContainer" unique_id=1416053155]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 0
+script = ExtResource("5_6o5qs")
+is_colored_outline = false
+
+[node name="IconRect" type="TextureRect" parent="HBoxContainer/TempoDisplay" unique_id=1088498023]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+texture = SubResource("AtlasTexture_lwyrv")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="IconShadow" type="TextureRect" parent="HBoxContainer/TempoDisplay/IconRect" unique_id=1531634998]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_n4776")
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_lwyrv")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="NumLabel" type="Label" parent="HBoxContainer/TempoDisplay" unique_id=160918775]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = ExtResource("8_77jgm")
+horizontal_alignment = 1
+vertical_alignment = 1

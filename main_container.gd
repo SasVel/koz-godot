@@ -83,7 +83,7 @@ func update_rooms_label(val : int):
 	%RoomsLabel.text = "Rooms Completed: %s" % str(val)
 
 func update_turns_label(val : int):
-	%TurnsLabel.text = "Turn: %s" % str(val)
+	%EndTurnBtn.text = "End Turn %s" % str(val)
 
 func tween_phase_change(val : Game.Phases):
 	var tween = create_tween()\

@@ -21,6 +21,7 @@ extends Node
 @export_category("Objects")
 @export var card_obj : PackedScene
 @export var tool_obj : PackedScene
+@export var tool_display_obj : PackedScene
 @export var enemy_obj : PackedScene
 @export var action_mini_obj : PackedScene
 @export var eff_mini_obj : PackedScene
@@ -90,6 +91,9 @@ func get_card_obj(data : CardData) -> CardObj:
 
 func get_tool_obj(data : ToolData) -> Tool:
 	return tool_obj.instantiate().config(data)
+
+func get_tool_display_obj(data : ToolData):
+	return tool_display_obj.instantiate().config(data)
 
 func get_enemy_obj(data : EnemyData) -> Enemy:
 	return enemy_obj.instantiate().config(data)

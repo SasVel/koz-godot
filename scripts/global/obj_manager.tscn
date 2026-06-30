@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://dd48xuglqpuk" path="res://entities/rooms/battle_room.tscn" id="29_4pinj"]
 [ext_resource type="PackedScene" uid="uid://bo1oesyb4aa4f" path="res://UI/status_eff_display.tscn" id="29_hw0uh"]
 [ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="36_o6px0"]
+[ext_resource type="PackedScene" uid="uid://b73cc3b36w7b7" path="res://UI/tool_display_card.tscn" id="37_ahfjw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amtf5"]
 atlas = ExtResource("36_o6px0")
@@ -122,6 +123,7 @@ rooms_dict = Dictionary[int, PackedScene]({
 })
 card_obj = ExtResource("4_gyyai")
 tool_obj = ExtResource("27_hw0uh")
+tool_display_obj = ExtResource("37_ahfjw")
 enemy_obj = ExtResource("23_j1slq")
 action_mini_obj = ExtResource("27_s34ir")
 eff_mini_obj = ExtResource("29_hw0uh")

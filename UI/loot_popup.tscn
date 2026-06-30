@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0j1adc0jlcir" path="res://UI/loot_popup.gd" id="1_8wwhi"]
 [ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="1_oblhx"]
+[ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_tywks"]
 [ext_resource type="Script" uid="uid://bka8u7n3uw10m" path="res://UI/loot_container.gd" id="3_4kiy8"]
 
 [node name="LootPopup" type="Control" unique_id=791477110]
@@ -13,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_tywks")
 script = ExtResource("1_8wwhi")
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=89872140]
@@ -48,17 +50,25 @@ label_settings = ExtResource("1_oblhx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LootContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=986871094]
+[node name="Panel" type="Panel" parent="HBoxContainer" unique_id=56221911]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LootContainer" type="HBoxContainer" parent="HBoxContainer/Panel" unique_id=986871094]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 400)
-layout_mode = 2
+layout_mode = 0
+offset_top = -404.0
+offset_right = 916.0
+offset_bottom = -4.0
 alignment = 1
 script = ExtResource("3_4kiy8")
 
 [node name="ContinueBtn" type="Button" parent="HBoxContainer" unique_id=62376413]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Continue"
 
-[connection signal="sort_children" from="HBoxContainer/LootContainer" to="HBoxContainer/LootContainer" method="_on_sort_children"]
+[connection signal="sort_children" from="HBoxContainer/Panel/LootContainer" to="HBoxContainer/Panel/LootContainer" method="_on_sort_children"]
 [connection signal="pressed" from="HBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]

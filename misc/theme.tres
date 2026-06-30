@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cv4w5ey5urxsk" path="res://res/ButtonAssets/button_yellow_hover.png" id="1_kfyo1"]
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="1_yobfc"]
 [ext_resource type="Texture2D" uid="uid://c4picoit8vwvk" path="res://res/ButtonAssets/button_yellow_pressed.png" id="2_gwh2h"]
+[ext_resource type="Texture2D" uid="uid://cb73ic4mend0d" path="res://res/paper_panel_1057_x_1067.png" id="4_7pjvw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f70oy"]
 texture = ExtResource("2_gwh2h")
@@ -16,6 +17,15 @@ texture = ExtResource("1_yobfc")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfyo1"]
 texture = ExtResource("2_gwh2h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j3pel"]
+texture = ExtResource("4_7pjvw")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 30.0
+texture_margin_bottom = 20.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [resource]
 Button/colors/font_color = Color(0.90186185, 0.90186185, 0.90186185, 1)
@@ -36,3 +46,5 @@ MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxTexture_j3pel")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_j3pel")

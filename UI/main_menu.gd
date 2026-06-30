@@ -45,6 +45,11 @@ func set_theme_colors():
 	btn_stylebox.modulate_color = Const.BACKGROUND_DARKER_COLOR
 	theme.set_stylebox("disabled", "Button", btn_stylebox)
 
+	# Panel container texture color
+	var panel_container_stylebox = theme.get_stylebox("panel", "PanelContainer")
+	panel_container_stylebox.modulate_color = Const.BACKGROUND_DARKER_COLOR
+	theme.set_stylebox("panel", "PanelContainer", panel_container_stylebox)
+
 func load_colors_from_palette():
 	set_theme_colors()
 	%Birb.modulate = Const.ACCENT_COLOR

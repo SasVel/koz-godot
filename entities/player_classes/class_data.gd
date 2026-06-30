@@ -12,6 +12,9 @@ tools. One of each category up to 2 will be picked randomly.")
 
 func config():
 	super()
+	load_tools()
+
+func load_tools():
 	for type in tool_types:
 		match type:
 			Const.CardTypes.WEAPON:

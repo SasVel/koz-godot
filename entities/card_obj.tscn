@@ -207,6 +207,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="InteractZone" type="Control" parent="." unique_id=115790250]
+unique_name_in_owner = true
 z_index = 1
 layout_mode = 1
 anchors_preset = 15

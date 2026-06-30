@@ -5,10 +5,8 @@
 [ext_resource type="Script" uid="uid://1ubypw3lwyy7" path="res://UI/ClassSelection/class_panel.gd" id="2_kbbr3"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="3_x8uyh"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="5_6kwiq"]
+[ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_jaiwi"]
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="6_r3m8k"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcck5"]
-bg_color = Color(1, 1, 1, 0.46666667)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jaiwi"]
 shader = ExtResource("5_6kwiq")
@@ -16,11 +14,10 @@ shader_parameter/shadow_offset = Vector2(6, 6)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [node name="ClassPanel" type="PanelContainer" unique_id=1955146153]
-offset_right = 492.0
-offset_bottom = 597.0
+offset_right = 353.0
+offset_bottom = 491.0
 size_flags_horizontal = 3
 theme = ExtResource("1_ro40j")
-theme_override_styles/panel = SubResource("StyleBoxFlat_bcck5")
 script = ExtResource("2_kbbr3")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=569172774]
@@ -38,19 +35,18 @@ label_settings = ExtResource("2_7uw1u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1385964855]
+[node name="RowsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1019101775]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="LeftContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1019101775]
-layout_mode = 2
-alignment = 1
-
-[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftContainer" unique_id=1960159825]
+[node name="TopRowContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/RowsContainer" unique_id=801723646]
 layout_mode = 2
 
-[node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftContainer/StatsContainer" unique_id=1955702915]
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer" unique_id=1960159825]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1955702915]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -59,7 +55,7 @@ text = "Health: "
 label_settings = ExtResource("3_x8uyh")
 vertical_alignment = 1
 
-[node name="TempoLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftContainer/StatsContainer" unique_id=1325496925]
+[node name="TempoLabel" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1325496925]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -68,7 +64,7 @@ text = "Tempo: "
 label_settings = ExtResource("3_x8uyh")
 vertical_alignment = 1
 
-[node name="HandSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftContainer/StatsContainer" unique_id=1907641669]
+[node name="HandSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1907641669]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -77,11 +73,7 @@ text = "Hand Size: "
 label_settings = ExtResource("3_x8uyh")
 vertical_alignment = 1
 
-[node name="ToolsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/LeftContainer" unique_id=1731801753]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="DescLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=182177868]
+[node name="DescLabel" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer" unique_id=182177868]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -91,6 +83,16 @@ label_settings = ExtResource("3_x8uyh")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer" unique_id=1157093350]
+layout_mode = 2
+text = "Starting Tools: "
+label_settings = ExtResource("5_jaiwi")
+
+[node name="ToolsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RowsContainer" unique_id=1078747496]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="ChooseBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2086735342]
 custom_minimum_size = Vector2(0, 45)

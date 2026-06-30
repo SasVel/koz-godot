@@ -246,22 +246,6 @@ label_settings = ExtResource("15_1u8w0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TurnsLabel" type="Label" parent="UI/MainContainer" unique_id=571283705]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -458.0
-offset_top = 19.0
-offset_right = -340.0
-offset_bottom = 52.0
-grow_horizontal = 0
-text = "Turn: 1"
-label_settings = ExtResource("15_1u8w0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="PhasesContainer" type="Container" parent="UI/MainContainer" unique_id=651839356]
 unique_name_in_owner = true
 y_sort_enabled = true
@@ -301,11 +285,12 @@ texture = SubResource("AtlasTexture_jq2sk")
 expand_mode = 3
 
 [node name="EndTurnBtn" type="Button" parent="UI/MainContainer" unique_id=304399245]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(125, 40)
 layout_mode = 0
-offset_left = 901.0
+offset_left = 944.0
 offset_top = 342.0
-offset_right = 1026.0
+offset_right = 1100.0
 offset_bottom = 382.0
 size_flags_vertical = 4
 tooltip_text = "Ends the turn.
@@ -333,9 +318,9 @@ expand_mode = 1
 [node name="EndTurnTimeDisplay" parent="UI/MainContainer" unique_id=1143788982 instance=ExtResource("14_ryguw")]
 layout_mode = 0
 offset_left = 1030.0001
-offset_top = 311.0
+offset_top = 199.00005
 offset_right = 1158.0001
-offset_bottom = 439.0
+offset_bottom = 327.00006
 size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "Ends the round after the timer runs out."
