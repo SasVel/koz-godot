@@ -73,6 +73,11 @@ func take_damage(dmg : int):
 	await %HitAnimator.play()
 	%IdleAnimator.play()
 
+func tween_action():
+	%IdleAnimator.pause()
+	await %ActionAnimator.play()
+	%IdleAnimator.play()
+
 func on_death():
 	await tween_death()
 	queue_free()

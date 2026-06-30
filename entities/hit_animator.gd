@@ -10,7 +10,7 @@ func play():
 	default_scale = target.scale
 
 	var offset_positions : Array[Vector2] = []
-	for i in range(randi_range(3, 6)):
+	for i in range(randi_range(2, 5)):
 		offset_positions.append(Vector2(randf_range(-10, 10), randf_range(-10, 10)))
 
 	var tween = create_tween()

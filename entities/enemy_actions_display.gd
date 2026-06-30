@@ -12,5 +12,6 @@ func tween_action(card_data : CardData):
 	var children = self.get_children()
 	for child in children:
 		if child.data == card_data:
-			await child.tween_activate()
+			owner.tween_action()
+			await child.tween_activate() 
 			return

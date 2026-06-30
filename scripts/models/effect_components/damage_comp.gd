@@ -11,4 +11,4 @@ func activate():
 	super()
 
 func generate_desc() -> String:
-	return "Deal %.f DMG." % source.process_damage_outgoing(value)
+	return "Deal %.f DMG." % (source.process_damage_outgoing(value) if source != null else value)
