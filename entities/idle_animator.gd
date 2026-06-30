@@ -32,6 +32,22 @@ func stop():
 	if skew_tween!= null:
 		skew_tween.stop()
 
+func play():
+	if scale_x_tween != null:
+		scale_x_tween.play()
+	if scale_y_tween != null:
+		scale_y_tween.play()
+	if skew_tween!= null:
+		skew_tween.play()
+
+func pause():
+	if scale_x_tween != null:
+		scale_x_tween.pause()
+	if scale_y_tween != null:
+		scale_y_tween.pause()
+	if skew_tween!= null:
+		skew_tween.pause()
+
 func tween_scale_y():
 	scale_y_tween = create_tween()\
 			.set_loops()\

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ban6xrepbaq11"]
+
+[ext_resource type="Texture2D" uid="uid://cdxtm2vcb8fk" path="res://res/Explosion2.png" id="1_v78ah"]
+[ext_resource type="Script" uid="uid://unxtwb23uubg" path="res://UI/HitEffect/hit_effect.gd" id="2_r5xsu"]
+
+[node name="HitEffect" type="TextureRect" unique_id=196891123]
+offset_right = 1250.0
+offset_bottom = 1250.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_v78ah")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_r5xsu")

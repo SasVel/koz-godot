@@ -31,6 +31,8 @@ extends Node
 @export var sprites_256_atlas : AtlasTexture
 @export var sprites_512_atlas : AtlasTexture
 
+@onready var hit_eff_scn = preload("res://UI/HitEffect/hit_effect.tscn")
+
 func get_rand_action_data(dict = actions_dict) -> CardData:
 	return dict[randi_range(0, Const.Actions.size() - 1) as Const.Actions].instantiate()
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8fv4r2jxpgw5"]
 
 [ext_resource type="Script" uid="uid://ho1n603bf0vu" path="res://scripts/models/entities/enemy.gd" id="2_pqhw6"]
+[ext_resource type="Script" uid="uid://c2hvcbk27di8l" path="res://entities/hit_animator.gd" id="4_f71c5"]
 [ext_resource type="Script" uid="uid://dp816s7gsb6r0" path="res://entities/enemy_actions_display.gd" id="4_jq0pf"]
 [ext_resource type="Texture2D" uid="uid://dy64vrxsnixx4" path="res://res/enemies.png" id="4_uvc0s"]
 [ext_resource type="Script" uid="uid://2jwj62dqog8p" path="res://entities/idle_animator.gd" id="5_jq0pf"]
@@ -35,6 +36,11 @@ texture = SubResource("AtlasTexture_x8e4v")
 [node name="IdleAnimator" type="Node" parent="EnemySprite" unique_id=300381570 node_paths=PackedStringArray("target")]
 unique_name_in_owner = true
 script = ExtResource("5_jq0pf")
+target = NodePath("..")
+
+[node name="HitAnimator" type="Node" parent="EnemySprite" unique_id=1660302979 node_paths=PackedStringArray("target")]
+unique_name_in_owner = true
+script = ExtResource("4_f71c5")
 target = NodePath("..")
 
 [node name="CardDatas" type="Node" parent="." unique_id=737281344]

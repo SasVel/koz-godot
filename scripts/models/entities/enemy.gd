@@ -64,6 +64,15 @@ func reduce_actions_hand_to_hand_size():
 	for i in range(diff):
 		move_action_to_deck(cards_hand[0])
 
+func take_damage(dmg : int):
+	super(dmg)
+	var hit_eff : HitEffect = ObjManager.hit_eff_scn.instantiate()
+	self.add_child(hit_eff)
+	hit_eff.position = Vector2((hit_eff.size / 2) * -1)
+	%IdleAnimator.pause()
+	await %HitAnimator.play()
+	%IdleAnimator.play()
+
 func on_death():
 	await tween_death()
 	queue_free()
