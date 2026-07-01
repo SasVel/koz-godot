@@ -1,6 +1,5 @@
 extends HBoxContainer
 
-
 func on_status_eff_changed(status_effects : Array) -> void:
 	var children = self.get_children()
 	for child in children:

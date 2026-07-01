@@ -15,10 +15,11 @@
 atlas = ExtResource("4_uvc0s")
 region = Rect2(0, 0, 512, 512)
 
-[node name="Enemy" type="Node2D" unique_id=2060598746 node_paths=PackedStringArray("entity_bar")]
+[node name="Enemy" type="Node2D" unique_id=2060598746 node_paths=PackedStringArray("entity_bar", "status_eff_bar")]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_pqhw6")
 entity_bar = NodePath("VBoxContainer/VBoxContainer/EnemyBar")
+status_eff_bar = NodePath("VBoxContainer/StatusEffectsDisplay")
 
 [node name="EnemySprite" type="Sprite2D" parent="." unique_id=1600066704]
 unique_name_in_owner = true
@@ -112,13 +113,14 @@ unique_name_in_owner = true
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = -486.66666
-offset_top = -650.00006
-offset_right = 499.99997
-offset_bottom = 459.99994
+offset_left = -546.6666
+offset_top = -810.0
+offset_right = 603.3334
+offset_bottom = 460.0
 script = ExtResource("5_x8e4v")
 metadata/_custom_type_script = "uid://cskwlki1gwqm6"
 
+[connection signal="drawn_hand" from="." to="VBoxContainer/ActionsDisplay" method="_on_enemy_drawn_hand"]
 [connection signal="hand_changed" from="." to="VBoxContainer/ActionsDisplay" method="_on_enemy_hand_changed"]
 [connection signal="status_effects_changed" from="." to="VBoxContainer/StatusEffectsDisplay" method="_on_enemy_status_effects_changed"]
 [connection signal="data_dropped" from="DataDropper" to="." method="_on_data_dropper_data_dropped"]

@@ -46,6 +46,16 @@ static func tween_eff_trails(source_center_pos : Vector2, eff_comp : EffectCompo
 		target.entity_bar.global_position + target.entity_bar.size / 2)
 		Game.visualEffectsContainer.add_child(trail)
 		await trail.play()
+	elif eff_comp is StatusEffData:
+		var comp = (eff_comp as StatusEffData)
+		var targets = comp.get_affected_units()
+		for target in targets:
+			var trail : TrailEffect = ObjManager.trail_eff_scn.instantiate()
+			trail.config(ObjManager.get_effect_color(comp.type),\
+			source_center_pos,\
+			target.status_eff_bar.global_position + target.status_eff_bar.size / 2)
+			Game.visualEffectsContainer.add_child(trail)
+			await trail.play()
 
 static func set_theme_colors(control : Control):
 	var btn_stylebox : StyleBoxTexture

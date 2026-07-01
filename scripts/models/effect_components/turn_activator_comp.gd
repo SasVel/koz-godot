@@ -5,7 +5,10 @@ class_name TurnActivatorComp
 
 func activate():
 	if isOn and Game.turn_counter > 1:
-		super()
+		for component in %Components.get_children():
+			await UIHelper.tween_eff_trails(source.global_position, component)
+			component.activate()
+		activated.emit()
 	else:
 		isOn = true
 		Obj.connect_signals({ Game.on_start_turn_layer_2: activate })

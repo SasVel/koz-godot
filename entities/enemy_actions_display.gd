@@ -1,6 +1,12 @@
 extends HBoxContainer
 
+func _on_enemy_drawn_hand(cards_hand: Variant) -> void:
+	update_hand(cards_hand)
+
 func _on_enemy_hand_changed(cards_hand: Variant) -> void:
+	update_hand(cards_hand)
+
+func update_hand(cards_hand):
 	for child in self.get_children():
 		child.queue_free()
 

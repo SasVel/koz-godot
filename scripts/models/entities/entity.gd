@@ -2,6 +2,7 @@ extends Node
 class_name Entity
 
 @export var entity_bar : EntityBar
+@export var status_eff_bar : BoxContainer
 
 @onready var stats : StatBlock
 @onready var data : EntityData
@@ -11,6 +12,7 @@ var cards_deck : Array[CardData]
 var status_effects : Array[StatusEffData]
 
 signal hand_changed(cards_hand : Array[CardData])
+signal drawn_hand(cards_hand : Array[CardData])
 signal card_activated(card_data : CardData)
 signal status_effects_changed(eff_data : Array[StatusEffData])
 signal configured
@@ -27,7 +29,6 @@ func config(data_ : EntityData):
 func _ready() -> void:
 	Game.on_start_turn_layer_2.connect(start_turn)
 	Game.on_changed_phase.connect(on_changed_phase)
-	start_turn()
 
 func start_turn():
 	stats.Tempo.reset()
@@ -57,12 +58,12 @@ func add_action_hand(action : CardData, at_idx : int = -1, isNew : bool = false)
 	if isNew: try_config_action(action)
 	hand_changed.emit(cards_hand)
 
-func add_actions_hand(actions : Array):
+func add_actions_hand(actions : Array, is_sig_played : bool = true):
 	for action in actions:
 		if self.cards_hand.size() >= stats.HandSize.maxValue:
 			break
 		self.cards_hand.append(action)
-	hand_changed.emit(cards_hand)
+	if is_sig_played: hand_changed.emit(cards_hand)
 
 func get_rand_actions_hand(num : int, excluded_actions : Array[CardData] = []):
 	var actions = []
@@ -85,7 +86,8 @@ func clear_hand():
 
 func draw_hand(is_clear_hand : bool = true):
 	if is_clear_hand: clear_hand()
-	add_actions_hand(pop_rand_actions_deck(data.card_hand_size))
+	add_actions_hand(pop_rand_actions_deck(data.card_hand_size), false)
+	drawn_hand.emit(cards_hand)
 
 func draw_actions(num):
 	add_actions_hand(pop_rand_actions_deck(num))

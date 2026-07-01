@@ -158,7 +158,6 @@ func animate_post_activation():
 	self.z_index = 0
 	isAnimTweening = false
 
-
 func activate(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
 	Game.event_queue.append(Callable(self, "activation_sequence").bindv([drop_position, deduct_tempo]))
 

@@ -23,6 +23,7 @@ func _ready() -> void:
 	phases_container.progress_offset = attack_phase_offset
 
 	player.hand_changed.connect(update_hand)
+	player.drawn_hand.connect(draw_hand)
 	player.tools_changed.connect(update_tools)
 
 	update_hand(player.cards_hand, true)
@@ -31,6 +32,19 @@ func _ready() -> void:
 	update_turns_label(Game.turn_counter)
 	Game.on_start_turn_layer_1.connect(func(): update_turns_label(Game.turn_counter))
 
+func draw_hand(cards_hand):
+	await tween_hand_offset(false)
+	update_hand(cards_hand)
+	await get_tree().create_timer(0.5).timeout
+	await tween_hand_offset(true)
+
+func tween_hand_offset(isOpen : bool):
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	if isOpen:
+		tween.tween_property(%ActionsContainer, "progress_offset", 0.95, 0.8)
+	else:
+		tween.tween_property(%ActionsContainer, "progress_offset", 0.45, 0.8)
+	await tween.finished
 
 func update_hand(data : Array, clear : bool = false):
 	var children = %ActionsContainer.get_children()
