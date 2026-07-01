@@ -12,6 +12,7 @@ func _ready() -> void:
 		enemiesFolder.get_child(2),
 	]
 	add_enemy(ObjManager.get_rand_enemy_obj())
+	#add_enemy(ObjManager.get_enemy_obj(ObjManager.enemies_dict[Const.Enemies.GOBLIN].instantiate()))
 
 func get_enemies() -> Array:
 	var enemies : Array[Enemy]

@@ -12,6 +12,7 @@ func config(max_time : float):
 
 func timer_start(time):
 	config(time)
+	await display.tween_start()
 	self.start(time)
 	display.visible = true
 
@@ -25,7 +26,9 @@ func _physics_process(_delta: float) -> void:
 
 func _on_timeout() -> void:
 	Game.end_turn()
+	await display.tween_stop()
 	display.visible = false
 	await Game.on_start_turn_layer_2
 	display.visible = true
+	await display.tween_start()
 	self.start()

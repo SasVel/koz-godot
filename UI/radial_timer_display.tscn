@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4tyik1qmegwa" path="res://UI/radial_timer_display.gd" id="1_bixv3"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="1_uwkj3"]
+[ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="3_yv66s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwkj3"]
 atlas = ExtResource("1_uwkj3")
@@ -15,9 +16,23 @@ region = Rect2(384, 256, 128, 128)
 offset_right = 128.0
 offset_bottom = 128.0
 scale = Vector2(0.8, 0.8)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 value = 100.0
 rounded = true
 fill_mode = 5
 texture_under = SubResource("AtlasTexture_uwkj3")
 texture_progress = SubResource("AtlasTexture_yv66s")
 script = ExtResource("1_bixv3")
+
+[node name="Label" type="Label" parent="." unique_id=1428944694]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "20"
+label_settings = ExtResource("3_yv66s")
+horizontal_alignment = 1
+vertical_alignment = 1

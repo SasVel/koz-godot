@@ -100,6 +100,7 @@ func update_turns_label(val : int):
 	%EndTurnBtn.text = "End Turn %s" % str(val)
 
 func tween_phase_change(val : Game.Phases):
+	%PhasesContainer.tooltip_text = get_phases_text(val)
 	var tween = create_tween()\
 		.set_ease(Tween.EASE_IN_OUT)\
 		.set_trans(Tween.TRANS_CUBIC)
@@ -109,6 +110,14 @@ func tween_phase_change(val : Game.Phases):
 	else:
 		tween.tween_property(%PhasesContainer, "progress_offset",
 		defend_phase_offset, 0.5)
+
+func get_phases_text(phase : Game.Phases) -> String:
+	var attack_text = "+1 TEMPO."
+	var defend_text = "Retain BLOCK."
+	if phase == Game.Phases.ATTACK:
+		return "This turn: %s\nNext turn: %s" % [attack_text, defend_text]
+	else:
+		return "This turn: %s\nNext turn: %s" % [defend_text, attack_text]
 
 func _on_player_card_activated(card_data: CardData) -> void:
 	var children = actions_container.get_children()
@@ -124,7 +133,6 @@ func _on_player_card_activated(card_data: CardData) -> void:
 		child.data == card_data:
 			child.queue_free()
 			return
-
 
 func _on_player_configured() -> void:
 	%PlayerNameLabel.text = "%s %s" % [Game.player_name, player.data.entity_name]
