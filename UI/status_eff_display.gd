@@ -15,6 +15,8 @@ func config(eff_data : StatusEffData):
 		%StacksLabel.label_settings.outline_color = color
 
 	update(eff_data.duration)
+	data.duration_changed.connect(update)
+	data.stacks_changed.connect(update_stacks)
 	Game.add_status_eff_action(activate, true if data.source is Player else false)
 	return self
 

@@ -8,4 +8,5 @@ actionType = 8
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1122987308]
 script = ExtResource("2_3l8ma")
+value = 12
 metadata/_custom_type_script = "uid://rio4hms2vn51"

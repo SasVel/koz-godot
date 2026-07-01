@@ -3,7 +3,11 @@ extends ComponentsData
 class_name StatusEffData
 
 @export var type : Const.StatusEffects
-@export var stacks : int = 1
+@export var stacks : int = 1 :
+	set(val):
+		stacks = val
+		stacks_changed.emit(val)
+
 ## Duration of -1 is infinite.
 @export var duration : int = -1 :
 	set(val):
@@ -15,6 +19,7 @@ class_name StatusEffData
 			self.duration_changed.emit(val)
 
 signal duration_changed(val)
+signal stacks_changed(val)
 signal depleted(eff)
 
 func activate():

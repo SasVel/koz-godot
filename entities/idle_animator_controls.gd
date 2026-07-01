@@ -19,7 +19,6 @@ func _ready() -> void:
 	start()
 
 func start():
-	await get_tree().create_timer(randf_range(0.0, 0.5)).timeout
 	if settings.has_scale_y: tween_scale_y()
 	if settings.has_skew: tween_rotate()
 	await get_tree().create_timer(settings.scale_speed).timeout

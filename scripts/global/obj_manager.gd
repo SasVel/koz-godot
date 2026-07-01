@@ -168,6 +168,16 @@ func get_action_color(type : Const.Actions) -> Color:
 			color = Const.ACCENT_COLOR
 	return color
 
+func get_fire_sprite() -> Texture2D:
+	# Not the best implementation, but it seems the rng is based on
+	# time, and getting 2 fire sprites in the same frame results in the same ones
+	# every time. No, randomise() doesn't help.
+	var rng = RandomNumberGenerator.new()
+	var fire_type : int = rng.randi_range(0, 2)
+	var atlas = sprites_128_atlas.duplicate()
+	atlas.region= Rect2(128 * fire_type, 256, 128, 128)
+	return atlas
+
 func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
 	var atlas = sprites_128_atlas.duplicate()
 	var image : Image

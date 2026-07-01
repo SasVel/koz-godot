@@ -317,10 +317,10 @@ expand_mode = 1
 
 [node name="EndTurnTimeDisplay" parent="UI/MainContainer" unique_id=1143788982 instance=ExtResource("14_ryguw")]
 layout_mode = 0
-offset_left = 1030.0001
-offset_top = 199.00005
-offset_right = 1158.0001
-offset_bottom = 327.00006
+offset_left = 823.0001
+offset_top = 308.00003
+offset_right = 951.0001
+offset_bottom = 436.00006
 size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "Ends the round after the timer runs out."
@@ -374,35 +374,50 @@ material = SubResource("ShaderMaterial_1u8w0")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
+title = ""
+description = ""
 fauxShiftDeg = 15.0
+fauxTweenSpeed = 0.1
 
 [node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_0odxb")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
+title = ""
+description = ""
 fauxShiftDeg = 15.0
+fauxTweenSpeed = 0.1
 
 [node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_lswn8")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
+title = ""
+description = ""
 fauxShiftDeg = 15.0
+fauxTweenSpeed = 0.1
 
 [node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_a6jrf")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
+title = ""
+description = ""
 fauxShiftDeg = 15.0
+fauxTweenSpeed = 0.1
 
 [node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_qsp4k")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 focus_mode = 1
+title = ""
+description = ""
 fauxShiftDeg = 15.0
+fauxTweenSpeed = 0.1
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
 unique_name_in_owner = true
@@ -424,13 +439,19 @@ script = ExtResource("17_lswn8")
 material = SubResource("ShaderMaterial_kq58d")
 layout_mode = 2
 focus_mode = 1
+title = ""
+description = ""
 fauxShiftDeg = 15.0
+fauxTweenSpeed = 0.1
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
 material = SubResource("ShaderMaterial_seu75")
 layout_mode = 2
 focus_mode = 1
+title = ""
+description = ""
 fauxShiftDeg = 15.0
+fauxTweenSpeed = 0.1
 
 [node name="TurnAlert" type="Control" parent="UI/MainContainer" unique_id=750216790]
 visible = false
