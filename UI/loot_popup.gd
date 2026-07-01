@@ -4,6 +4,8 @@ class_name LootPopup
 signal finished
 
 func _ready() -> void:
+	UIHelper.set_theme_colors(self)
+	self.theme_changed.emit()
 	var card_rewards = ObjManager.get_rand_action_objects(3)
 	if randi_range(0, 3) == 3:
 		if randi_range(0, 1):

@@ -1,6 +1,8 @@
 extends Node
 class_name Entity
 
+@export var entity_bar : EntityBar
+
 @onready var stats : StatBlock
 @onready var data : EntityData
 
@@ -23,7 +25,7 @@ func config(data_ : EntityData):
 	configured.emit()
 
 func _ready() -> void:
-	Game.on_start_turn_layer_1.connect(start_turn)
+	Game.on_start_turn_layer_2.connect(start_turn)
 	Game.on_changed_phase.connect(on_changed_phase)
 	start_turn()
 
@@ -169,7 +171,7 @@ func add_status_effect(effect : StatusEffData):
 	for eff in self.status_effects:
 		stacked = eff.try_stack_effect(effect)
 
-	if !stacked or self.status_effects.size() <= 0:
+	if !stacked:
 		effect.config_source(self)
 		self.status_effects.append(effect)
 		%EffectDatas.add_child(effect)
@@ -182,6 +184,13 @@ func remove_status_effect(effect : StatusEffData):
 
 	if %EffectDatas.get_children().any(func(x): return x == effect):
 		%EffectDatas.remove_child(effect)
+	status_effects_changed.emit(status_effects)
+
+func clear_status_effects():
+	self.status_effects.clear()
+	for eff_node in %EffectDatas.get_children():
+		eff_node.queue_free()
+
 	status_effects_changed.emit(status_effects)
 
 func get_effects(type : Const.StatusEffects) -> Array[StatusEffData]:

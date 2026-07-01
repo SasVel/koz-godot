@@ -8,7 +8,7 @@
 script = ExtResource("2_jsrpu")
 type = 7
 duration = 1
-value = 2
+value = 1
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(2091518437) index="0" unique_id=1050064348]
 script = ExtResource("2_e050r")

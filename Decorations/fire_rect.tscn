@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="1_wtaua"]
 [ext_resource type="Script" uid="uid://dr6sgduy44n1t" path="res://scripts/fire_rect.gd" id="2_ykgem"]
+[ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="3_16cjn"]
+[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="4_jmded"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_facbu"]
 atlas = ExtResource("1_wtaua")
@@ -16,6 +18,64 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_16cjn")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_wtaua"]
+resource_local_to_scene = true
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.5985401, 0.6569343)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ykgem"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_wtaua")
+width = 28
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_16cjn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jmded"]
+curve = SubResource("Curve_16cjn")
+
+[sub_resource type="Curve" id="Curve_2nyo6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.5401286, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pdmxs"]
+curve = SubResource("Curve_2nyo6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dufn6"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 10)
+gravity = Vector3(0, -980, 0)
+scale_curve = SubResource("CurveTexture_pdmxs")
+alpha_curve = SubResource("CurveTexture_jmded")
+
+[sub_resource type="Resource" id="Resource_16cjn"]
+script = ExtResource("4_jmded")
+ease_type = 3
+transition_type = 9
+scale_speed = 4
+is_scale_pos = false
+scale_y = 0.12
+scale_x = 0.08
+skew_deg = 6
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
+
+[sub_resource type="Resource" id="Resource_2nyo6"]
+script = ExtResource("4_jmded")
+ease_type = 3
+transition_type = 9
+scale_speed = 4
+is_scale_pos = false
+scale_y = 0.08
+scale_x = 0.08
+has_skew = false
+skew_deg = 6
+metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 
 [node name="FireRect" type="TextureRect" unique_id=1524273013]
 offset_left = 146.0
@@ -43,6 +103,7 @@ offset_right = 103.75
 offset_bottom = 102.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_jmded")
 
 [node name="InnerCircle" type="TextureRect" parent="." unique_id=253027723]
@@ -61,4 +122,37 @@ offset_right = 68.75
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_jmded")
+
+[node name="FireParticles" type="GPUParticles2D" parent="." unique_id=1592143005]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(68.749985, 88.749985)
+scale = Vector2(0.9999997, 0.9999997)
+amount = 12
+texture = SubResource("GradientTexture2D_ykgem")
+lifetime = 0.8
+preprocess = 1.43
+speed_scale = 0.4
+explosiveness = 0.14
+randomness = 0.9
+process_material = SubResource("ParticleProcessMaterial_dufn6")
+
+[node name="FireAnimControls" type="Node" parent="." unique_id=2144738955 node_paths=PackedStringArray("target")]
+script = ExtResource("3_16cjn")
+target = NodePath("..")
+settings = SubResource("Resource_16cjn")
+metadata/_custom_type_script = "uid://b2hdv0h572pc"
+
+[node name="OuterCircleAnimControls" type="Node" parent="." unique_id=237379850 node_paths=PackedStringArray("target")]
+script = ExtResource("3_16cjn")
+target = NodePath("../OuterCircle")
+settings = SubResource("Resource_2nyo6")
+metadata/_custom_type_script = "uid://b2hdv0h572pc"
+
+[node name="InnerCircleAnimControls" type="Node" parent="." unique_id=849905174 node_paths=PackedStringArray("target")]
+script = ExtResource("3_16cjn")
+target = NodePath("../InnerCircle")
+settings = SubResource("Resource_2nyo6")
+metadata/_custom_type_script = "uid://b2hdv0h572pc"

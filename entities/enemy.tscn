@@ -15,9 +15,10 @@
 atlas = ExtResource("4_uvc0s")
 region = Rect2(0, 0, 512, 512)
 
-[node name="Enemy" type="Node2D" unique_id=2060598746]
+[node name="Enemy" type="Node2D" unique_id=2060598746 node_paths=PackedStringArray("entity_bar")]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_pqhw6")
+entity_bar = NodePath("VBoxContainer/VBoxContainer/EnemyBar")
 
 [node name="EnemySprite" type="Sprite2D" parent="." unique_id=1600066704]
 unique_name_in_owner = true

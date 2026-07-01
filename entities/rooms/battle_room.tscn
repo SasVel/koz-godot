@@ -3,23 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://4fagkau3k6jc" path="res://entities/rooms/room.tscn" id="1_q5ix2"]
 [ext_resource type="PackedScene" uid="uid://denor2og15qye" path="res://Decorations/fire_rect.tscn" id="2_d564k"]
 [ext_resource type="Script" uid="uid://bll6s507vx1ol" path="res://entities/rooms/battle_room.gd" id="2_p5arh"]
-[ext_resource type="Script" uid="uid://b2hdv0h572pc" path="res://entities/idle_animator_controls.gd" id="3_p5arh"]
-[ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="4_lgpfl"]
 [ext_resource type="Shader" uid="uid://ovrd5ydp8p0q" path="res://shaders/transitions/src/shader/transition.gdshader" id="6_gd440"]
 [ext_resource type="Texture2D" uid="uid://d3aus70ocx6g3" path="res://shaders/transitions/src/texture/transition_shape/noise/cell_02.tres" id="7_bne1m"]
 [ext_resource type="Script" uid="uid://bo1i5j2m427bs" path="res://shaders/transitions/src/script/transition_rect.gd" id="8_qtq62"]
 [ext_resource type="Script" uid="uid://cmp5ysigxtlro" path="res://UI/color_transition_editor.gd" id="9_bne1m"]
-
-[sub_resource type="Resource" id="Resource_gd440"]
-script = ExtResource("4_lgpfl")
-ease_type = 3
-transition_type = 9
-scale_speed = 4
-is_scale_pos = false
-scale_y = 0.12
-scale_x = 0.08
-skew_deg = 6
-metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 
 [sub_resource type="Gradient" id="Gradient_dg77c"]
 
@@ -41,6 +28,20 @@ shader_parameter/shape_scroll = Vector2(-0.1, 0)
 shader_parameter/shape_feathering = 0.0
 shader_parameter/shape_treshold = 1.0
 
+[sub_resource type="Gradient" id="Gradient_lgpfl"]
+resource_local_to_scene = true
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.40487805, 0.69756097)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gd440"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_lgpfl")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="BattleRoom" unique_id=1640835901 instance=ExtResource("1_q5ix2")]
 script = ExtResource("2_p5arh")
 
@@ -51,24 +52,12 @@ offset_right = 275.0
 offset_bottom = 261.10565
 metadata/_edit_use_anchors_ = true
 
-[node name="IdleAnimatorControls" type="Node" parent="Decorations/FireRect" index="2" unique_id=141654095 node_paths=PackedStringArray("target")]
-script = ExtResource("3_p5arh")
-target = NodePath("..")
-settings = SubResource("Resource_gd440")
-metadata/_custom_type_script = "uid://b2hdv0h572pc"
-
 [node name="FireRect2" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="1" unique_id=1857025563 instance=ExtResource("2_d564k")]
 offset_left = 875.99994
 offset_top = 141.0
 offset_right = 1003.99994
 offset_bottom = 269.0
 metadata/_edit_use_anchors_ = true
-
-[node name="IdleAnimatorControls2" type="Node" parent="Decorations/FireRect2" index="2" unique_id=1827271875 node_paths=PackedStringArray("target")]
-script = ExtResource("3_p5arh")
-target = NodePath("..")
-settings = SubResource("Resource_gd440")
-metadata/_custom_type_script = "uid://b2hdv0h572pc"
 
 [node name="Enemies" type="Node" parent="." index="2" unique_id=1802013414]
 unique_name_in_owner = true
@@ -106,3 +95,6 @@ metadata/_edit_lock_ = true
 
 [node name="ColorTransitionEditor" type="Node" parent="Transition" index="0" unique_id=1483188117]
 script = ExtResource("9_bne1m")
+
+[node name="TrailEffParticle" parent="." index="4" unique_id=1592143005]
+texture = SubResource("GradientTexture2D_gd440")

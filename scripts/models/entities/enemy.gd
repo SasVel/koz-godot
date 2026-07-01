@@ -1,6 +1,7 @@
 extends Entity
 class_name Enemy
 
+
 func _ready() -> void:
 	data.card_hand_size = stats.Tempo.maxValue
 	stats.Tempo.stat_changed.connect(\

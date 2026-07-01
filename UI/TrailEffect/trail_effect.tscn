@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c838ohp337ldw"]
+
+[ext_resource type="Script" uid="uid://bqstjhj17qmuv" path="res://UI/TrailEffect/trail_eff.gd" id="1_rjnqm"]
+[ext_resource type="PackedScene" uid="uid://dmy2jy36wob1y" path="res://UI/TrailEffect/trail_eff_particle.tscn" id="2_svr8m"]
+
+[sub_resource type="Curve2D" id="Curve2D_5d805"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, -1, -84, 1, 84, -1, 96, 101, 0, 0, 0, 0, 196, -2)
+}
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_j0jf5"]
+resource_local_to_scene = true
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.5985401, 0.6569343)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8wmi"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_j0jf5")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="trail_effect" type="Path2D" unique_id=219580851]
+curve = SubResource("Curve2D_5d805")
+script = ExtResource("1_rjnqm")
+
+[node name="PathFollow" type="PathFollow2D" parent="." unique_id=1185206959]
+unique_name_in_owner = true
+position = Vector2(-2, -1)
+rotation = 1.4357018
+
+[node name="Particle" parent="PathFollow" unique_id=1592143005 instance=ExtResource("2_svr8m")]
+unique_name_in_owner = true
+texture = SubResource("GradientTexture2D_n8wmi")

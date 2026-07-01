@@ -35,9 +35,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -458.0
-offset_top = -341.0
+offset_top = -338.5
 offset_right = 458.0
-offset_bottom = 161.0
+offset_bottom = 228.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -50,17 +50,14 @@ label_settings = ExtResource("1_oblhx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="HBoxContainer" unique_id=56221911]
+[node name="Panel" type="PanelContainer" parent="HBoxContainer" unique_id=513259547]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="LootContainer" type="HBoxContainer" parent="HBoxContainer/Panel" unique_id=986871094]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 400)
-layout_mode = 0
-offset_top = -404.0
-offset_right = 916.0
-offset_bottom = -4.0
+layout_mode = 2
 alignment = 1
 script = ExtResource("3_4kiy8")
 

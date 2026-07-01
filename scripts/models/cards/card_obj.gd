@@ -57,6 +57,7 @@ func config(data_ : CardData):
 	return self
 
 func _ready() -> void:
+	if focus_scale == null: focus_scale = 1.2
 	focus_card_pos_y = get_viewport_rect().size.y - (self.custom_minimum_size.y * focus_scale + 10)
 
 func _physics_process(_delta: float) -> void:
@@ -116,12 +117,14 @@ func move_on_focus(on_off : bool):
 	isFocusTweening = false
 
 func animate_pre_activation(drop_position):
+	# Setup
 	isAnimTweening = true
 	pre_activation_position = self.global_position
 	pre_activation_rot = self.rotation
 	pre_activation_scale = self.scale
-
 	self.z_index = 100
+
+	# Tween move to center and scale up
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "global_position", (get_viewport_rect().size / 2) - self.size / 2, 0.5).from(drop_position)
 	tween.parallel().tween_property(self, "rotation_degrees", 0, 0.5)
@@ -134,6 +137,10 @@ func animate_pre_activation(drop_position):
 
 	tween.tween_property(self, "scale", self.scale * 1.3, 0.1)
 	await tween.finished
+	# Inst and tween effect trails.
+	for comp in data.get_components():
+		await UIHelper.tween_eff_trails(self.global_position + (cardBack.size / 2), comp)
+	
 	await get_tree().create_timer(0.3).timeout
 
 func animate_post_activation():
@@ -150,6 +157,7 @@ func animate_post_activation():
 	await tween.finished
 	self.z_index = 0
 	isAnimTweening = false
+
 
 func activate(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
 	Game.event_queue.append(Callable(self, "activation_sequence").bindv([drop_position, deduct_tempo]))

@@ -39,12 +39,16 @@ func config_source(source_ : Entity):
 	source.status_effects_changed.connect(update_status_state)
 
 func activate(deduct_tempo : bool = true):
-	super()
 	if deduct_tempo:
 		source.stats.Tempo.value -= self.tempoCost
+	super()
 
 func get_generic_value():
 	return %Components.get_child(0).value
+
+func get_components() -> Array[EffectComponent]:
+	var components = %Components.get_children()
+	return components.map(func(x): return x as EffectComponent)
 
 func check_state():
 	isOn = can_activate()

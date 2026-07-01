@@ -28,30 +28,9 @@ func switch_transition(isOn : bool):
 	tween.tween_property(%Transition, "factor", 0 if isOn else 1, 2).from(1 if isOn else 0)
 	await tween.finished
 
-func set_theme_colors():
-	var btn_stylebox : StyleBoxTexture
-	# Normal stylebox edit
-	btn_stylebox = theme.get_stylebox("normal", "Button")
-	btn_stylebox.modulate_color = Const.BACKGROUND_LIGHTER_COLOR
-	theme.set_stylebox("normal", "Button", btn_stylebox)
-
-	# Pressed stylebox edit
-	btn_stylebox = theme.get_stylebox("pressed", "Button")
-	btn_stylebox.modulate_color = Const.BACKGROUND_LIGHTER_COLOR
-	theme.set_stylebox("pressed", "Button", btn_stylebox)
-
-	# Disabled stylebox edit
-	btn_stylebox = theme.get_stylebox("disabled", "Button")
-	btn_stylebox.modulate_color = Const.BACKGROUND_DARKER_COLOR
-	theme.set_stylebox("disabled", "Button", btn_stylebox)
-
-	# Panel container texture color
-	var panel_container_stylebox = theme.get_stylebox("panel", "PanelContainer")
-	panel_container_stylebox.modulate_color = Const.BACKGROUND_DARKER_COLOR
-	theme.set_stylebox("panel", "PanelContainer", panel_container_stylebox)
 
 func load_colors_from_palette():
-	set_theme_colors()
+	UIHelper.set_theme_colors(self)
 	%Birb.modulate = Const.ACCENT_COLOR
 	%Rock.modulate = Const.PRIMARY_COLOR
 	%HoleImage.material.set_shader_parameter("modulate_color", Const.BACKGROUND_LIGHTER_COLOR)

@@ -25,3 +25,8 @@ func update(num):
 	if data.isOffensive:
 		num = data.source.process_damage_outgoing(num)
 	super(num)
+
+func tween_activate(is_for_deletion : bool = true):
+	await super(is_for_deletion)
+	for comp in data.get_components():
+		await UIHelper.tween_eff_trails(self.global_position + self.size / 2, comp)

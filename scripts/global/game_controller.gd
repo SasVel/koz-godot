@@ -41,6 +41,7 @@ enum Phases {
 
 @onready var inputBlocker : Control
 @onready var popupsContainer : Control
+@onready var visualEffectsContainer : Control
 
 @onready var player_name : String = "Sasser"
 @onready var default_class : Const.PlayerClasses = Const.PlayerClasses.KNIGHT
@@ -48,12 +49,13 @@ enum Phases {
 @onready var is_input : bool = true
 @onready var is_object_dragged : bool = false
 
-signal on_start_turn_layer_1()
-signal on_start_turn_layer_2()
+signal on_start_turn_layer_1
+signal on_start_turn_layer_2
 
 signal on_end_turn()
 signal on_changed_phase(val : Phases)
 signal on_rooms_completed(val : int)
+signal on_new_room
 signal event_queue_empty
 
 func _init() -> void:
@@ -92,6 +94,7 @@ func init_references():
 	Obj.connect_signals({ player.stats.Health.no_stat_val: show_game_over_screen })
 	inputBlocker = main.get_node("UI/InputBlocker")
 	popupsContainer = main.get_node("UIOverEverything/PopupsContainer")
+	visualEffectsContainer = main.get_node("UIOverEverything/Effects")
 	end_turn_timer = main.get_node("EndTurnTimer")
 
 func init():
@@ -156,6 +159,7 @@ func set_room():
 
 	room.completed.connect(next_room)
 	await room.ready
+	on_new_room.emit()
 	add_event(curr_room.switch_transition.bind(true))
 	await event_queue_empty
 	start_turn()

@@ -1,7 +1,6 @@
 extends Entity
 class_name Player
 
-@export var player_bar : EntityBar
 var equipped_tools : Array[ToolData]
 
 signal tools_changed(tools)
@@ -13,7 +12,8 @@ func config(data_ : EntityData):
 
 func _ready() -> void:
 	config(ObjManager.player_classes_dict[Game.default_class].instantiate())
-	player_bar.config(stats.Health, stats.Block)
+	Game.on_new_room.connect(clear_status_effects)
+	entity_bar.config(stats.Health, stats.Block)
 	super()
 
 func on_changed_phase(val : Game.Phases):

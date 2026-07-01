@@ -487,9 +487,9 @@ offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" type="Node" parent="." unique_id=2028437162 node_paths=PackedStringArray("player_bar")]
+[node name="Player" type="Node" parent="." unique_id=2028437162 node_paths=PackedStringArray("entity_bar")]
 script = ExtResource("21_getpj")
-player_bar = NodePath("../UI/MainContainer/VBoxContainer/PlayerBar")
+entity_bar = NodePath("../UI/MainContainer/VBoxContainer/PlayerBar")
 
 [node name="CardDatas" type="Node" parent="Player" unique_id=1975752218]
 unique_name_in_owner = true
@@ -501,11 +501,20 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="UIOverEverything" type="Control" parent="." unique_id=950534204]
-z_index = 100
+z_index = 101
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 700.0
+mouse_filter = 2
+
+[node name="Effects" type="Control" parent="UIOverEverything" unique_id=512678406]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="PopupsContainer" type="Control" parent="UIOverEverything" unique_id=100367143]
