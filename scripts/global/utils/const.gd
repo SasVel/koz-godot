@@ -110,8 +110,8 @@ func _ready() -> void:
 func load_palettes():
 	var file
 	if !check_palette_existing():
-		DirAccess.make_dir_recursive_absolute(path_to_palette_user)
-		DirAccess.make_dir_recursive_absolute(path_to_palette)
+		#DirAccess.make_dir_recursive_absolute(path_to_palette_user)
+		#DirAccess.make_dir_recursive_absolute(path_to_palette)
 		var source_dir = DirAccess.open(path_to_palette)
 		file = source_dir.get_files().get(0)
 		source_dir.copy(path_to_palette + "/" + file,

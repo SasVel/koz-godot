@@ -10,7 +10,7 @@ func config(data_ : ClassData):
 	%DescLabel.text = data.desc
 	%HealthLabel.text = "Health: %.f" % data.default_stats.Health.maxValue
 	%TempoLabel.text = "Tempo: %.f" % data.default_stats.Tempo.maxValue
-	%HandSizeLabel.text = "Hand Size: %.f" % data.default_stats.HandSize.maxValue
+	%HandSizeLabel.text = "Hand Size: %.f" % data.card_hand_size
 	data.load_tools()
 	for tool in data.starting_tools:
 		var tool_obj : ToolDisplayCard = ObjManager.get_tool_display_obj(tool)

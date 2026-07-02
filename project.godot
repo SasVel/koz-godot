@@ -34,6 +34,10 @@ MusicAndSounds="*uid://dbgqywy2gukoi"
 window/size/viewport_height=700
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/movie_file="/home/sasi/GameProjects/koz-res/Movies/movie.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
@@ -62,6 +66,5 @@ continue={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
