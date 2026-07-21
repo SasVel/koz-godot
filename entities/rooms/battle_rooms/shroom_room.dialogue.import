@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bqdx3udd4fb2"
+path="res://.godot/imported/shroom_room.dialogue-2f875ecf206ca845e2a9d83216ccdefa.tres"
+
+[deps]
+
+source_file="res://entities/rooms/battle_rooms/shroom_room.dialogue"
+dest_files=["res://.godot/imported/shroom_room.dialogue-2f875ecf206ca845e2a9d83216ccdefa.tres"]
+
+[params]
+
+defaults=true

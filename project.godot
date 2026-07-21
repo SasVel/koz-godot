@@ -28,6 +28,11 @@ ObjManager="*uid://cj4ale0ilwpgn"
 Game="*uid://rswuroq5nufs"
 UI="*uid://ghamk5ll18fx"
 MusicAndSounds="*uid://dbgqywy2gukoi"
+DialogueManager="*uid://c3rodes2l3gxb"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://misc/balloon.tscn"
 
 [display]
 
@@ -40,7 +45,7 @@ movie_writer/movie_file="/home/sasi/GameProjects/koz-res/Movies/movie.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_vim/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [gui]
 
@@ -58,6 +63,10 @@ continue={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://entities/rooms/battle_rooms/skelly_room.dialogue", "res://entities/rooms/battle_rooms/shroom_room.dialogue", "res://entities/rooms/battle_rooms/goblin_room.dialogue", "res://entities/rooms/battle_rooms/treeant_room.dialogue", "res://entities/rooms/battle_rooms/slime_room.dialogue")
 
 [physics]
 

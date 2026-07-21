@@ -1,22 +1,36 @@
 [gd_resource type="Theme" format=3 uid="uid://duvxiys5msrmo"]
 
-[ext_resource type="Texture2D" uid="uid://cv4w5ey5urxsk" path="res://res/ButtonAssets/button_yellow_hover.png" id="1_kfyo1"]
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="1_yobfc"]
 [ext_resource type="Texture2D" uid="uid://c4picoit8vwvk" path="res://res/ButtonAssets/button_yellow_pressed.png" id="2_gwh2h"]
 [ext_resource type="Texture2D" uid="uid://cb73ic4mend0d" path="res://res/paper_panel_1057_x_1067.png" id="4_7pjvw"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f70oy"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfyo1"]
 texture = ExtResource("2_gwh2h")
+expand_margin_top = 6.0
+expand_margin_bottom = 3.0
 modulate_color = Color(0.7121294, 0.7121294, 0.71212935, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7pjvw"]
-texture = ExtResource("1_kfyo1")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gwh2h"]
 texture = ExtResource("1_yobfc")
+texture_margin_left = 15.0
+texture_margin_top = 12.0
+texture_margin_right = 15.0
+texture_margin_bottom = 12.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfyo1"]
-texture = ExtResource("2_gwh2h")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f70oy"]
+texture = ExtResource("1_yobfc")
+texture_margin_left = 15.0
+texture_margin_top = 12.0
+texture_margin_right = 15.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gwsko"]
+texture = ExtResource("1_yobfc")
+texture_margin_left = 15.0
+texture_margin_top = 12.0
+texture_margin_right = 15.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8055934, 0.8055934, 0.8055934, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j3pel"]
 texture = ExtResource("4_7pjvw")
@@ -36,11 +50,11 @@ Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/constants/h_separation = 8
 Button/constants/outline_size = 5
-Button/font_sizes/font_size = 28
-Button/styles/disabled = SubResource("StyleBoxTexture_f70oy")
+Button/font_sizes/font_size = 26
+Button/styles/disabled = SubResource("StyleBoxTexture_kfyo1")
 Button/styles/hover = SubResource("StyleBoxTexture_7pjvw")
-Button/styles/normal = SubResource("StyleBoxTexture_gwh2h")
-Button/styles/pressed = SubResource("StyleBoxTexture_kfyo1")
+Button/styles/normal = SubResource("StyleBoxTexture_f70oy")
+Button/styles/pressed = SubResource("StyleBoxTexture_gwsko")
 LineEdit/font_sizes/font_size = 22
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10

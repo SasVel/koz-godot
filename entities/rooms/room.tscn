@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://4fagkau3k6jc"]
 
 [ext_resource type="Script" uid="uid://bite5gmrnecl8" path="res://entities/rooms/room.gd" id="1_pl5rr"]
-[ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/background.jpg" id="1_wv86s"]
+[ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/rooms/battle_room_bg.jpg" id="1_wv86s"]
 [ext_resource type="Script" uid="uid://bin602jythxw7" path="res://background.gd" id="2_pl5rr"]
 [ext_resource type="PackedScene" uid="uid://dmy2jy36wob1y" path="res://UI/TrailEffect/trail_eff_particle.tscn" id="4_3rrti"]
 
-[sub_resource type="Gradient" id="Gradient_wv86s"]
+[sub_resource type="Gradient" id="Gradient_3rrti"]
 resource_local_to_scene = true
 interpolation_mode = 1
 offsets = PackedFloat32Array(0.40487805, 0.69756097)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pl5rr"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wv86s"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_wv86s")
+gradient = SubResource("Gradient_3rrti")
 width = 16
 height = 16
 fill = 1
@@ -44,4 +44,4 @@ metadata/_edit_lock_ = true
 
 [node name="TrailEffParticle" parent="." unique_id=1592143005 instance=ExtResource("4_3rrti")]
 position = Vector2(328, -155)
-texture = SubResource("GradientTexture2D_pl5rr")
+texture = SubResource("GradientTexture2D_wv86s")

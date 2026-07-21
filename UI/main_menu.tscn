@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://r3fmkobd610a" path="res://UI/main_menu.gd" id="1_cafmx"]
 [ext_resource type="Shader" uid="uid://crjtha6ikpwm5" path="res://shaders/VignetteShader.gdshader" id="1_p8ccj"]
 [ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_voib7"]
-[ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/background.jpg" id="2_2mudq"]
+[ext_resource type="Texture2D" uid="uid://bls108t1x0fce" path="res://res/rooms/battle_room_bg.jpg" id="2_2mudq"]
 [ext_resource type="PackedScene" uid="uid://dv21jyyfqh0lf" path="res://main.tscn" id="2_cafmx"]
 [ext_resource type="Shader" uid="uid://408xqo0ge2bc" path="res://shaders/polygon_mask.gdshader" id="3_2mudq"]
 [ext_resource type="Texture2D" uid="uid://bdkmv41fvlm4y" path="res://res/main_menu_assets/openclipart-vectors-crumpled-148834_640.png" id="3_cafmx"]

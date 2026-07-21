@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_mrheh"]
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_qbfld"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_qbfld"]
+[ext_resource type="Resource" uid="uid://dx5nlpmnhwt7t" path="res://entities/rooms/battle_rooms/goblin_room.dialogue" id="3_rv26j"]
 [ext_resource type="Script" uid="uid://djsv8apg3at3v" path="res://scripts/models/effect_components/timed_round_comp.gd" id="5_voa70"]
 
 [sub_resource type="Resource" id="Resource_t8hnu"]
@@ -43,11 +44,10 @@ metadata/_custom_type_script = "uid://mi75jnrupyfs"
 type = 3
 has_alt_sprite = false
 idle_anim_settings = SubResource("Resource_t8hnu")
+dialogue = ExtResource("3_rv26j")
 entity_name = "Gnoblin"
-desc = ""
 default_stats = SubResource("Resource_rv26j")
 card_deck_types = Array[int]([8, 9, 8])
-card_hand_size = 2
 
 [node name="TimedRoundComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(598381325) index="0" unique_id=1324821328]
 script = ExtResource("5_voa70")

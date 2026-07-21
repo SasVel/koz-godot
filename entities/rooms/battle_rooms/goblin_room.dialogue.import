@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dx5nlpmnhwt7t"
+path="res://.godot/imported/goblin_room.dialogue-976af393c83ecdecf72b2452b28eed5d.tres"
+
+[deps]
+
+source_file="res://entities/rooms/battle_rooms/goblin_room.dialogue"
+dest_files=["res://.godot/imported/goblin_room.dialogue-976af393c83ecdecf72b2452b28eed5d.tres"]
+
+[params]
+
+defaults=true

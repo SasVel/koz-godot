@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bqb5wjaasxv21"
+path="res://.godot/imported/slime_room.dialogue-bb0662a81175530510f994d093c3d8c5.tres"
+
+[deps]
+
+source_file="res://entities/rooms/battle_rooms/slime_room.dialogue"
+dest_files=["res://.godot/imported/slime_room.dialogue-bb0662a81175530510f994d093c3d8c5.tres"]
+
+[params]
+
+defaults=true

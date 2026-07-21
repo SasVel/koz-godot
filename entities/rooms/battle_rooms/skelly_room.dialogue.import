@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bdqfjxo8bsxr5"
+path="res://.godot/imported/skelly_room.dialogue-8c19c4102edc0528f7dd1af604996bdf.tres"
+
+[deps]
+
+source_file="res://entities/rooms/battle_rooms/skelly_room.dialogue"
+dest_files=["res://.godot/imported/skelly_room.dialogue-8c19c4102edc0528f7dd1af604996bdf.tres"]
+
+[params]
+
+defaults=true

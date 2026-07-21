@@ -84,6 +84,9 @@ enum StatTypes {
 
 enum RoomTypes {
 	Battle,
+	Quest,
+	EndGame,
+	Custom
 }
 
 

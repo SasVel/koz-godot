@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cyfm2ojr31les"]
+
+[ext_resource type="PackedScene" uid="uid://4fagkau3k6jc" path="res://entities/rooms/room.tscn" id="1_u8kbv"]
+
+[sub_resource type="Gradient" id="Gradient_u8kbv"]
+resource_local_to_scene = true
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.40487805, 0.69756097)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_knp7t"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_u8kbv")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="RealityChasmEndRoom" unique_id=1640835901 instance=ExtResource("1_u8kbv")]
+type = 2
+
+[node name="TrailEffParticle" parent="." index="2" unique_id=1592143005]
+texture = SubResource("GradientTexture2D_knp7t")

@@ -140,7 +140,7 @@ func animate_pre_activation(drop_position):
 	# Inst and tween effect trails.
 	for comp in data.get_components():
 		await UIHelper.tween_eff_trails(self.global_position + (cardBack.size / 2), comp)
-	
+
 	await get_tree().create_timer(0.3).timeout
 
 func animate_post_activation():

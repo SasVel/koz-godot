@@ -3,6 +3,7 @@ class_name BattleRoom
 
 @onready var enemiesFolder : Node = %Enemies
 @onready var enemyPositions : Array
+var currEnemies : Array[Enemy]
 
 func _ready() -> void:
 	super()
@@ -26,6 +27,7 @@ func add_enemy(enemy_obj : Enemy):
 		if pos.get_child_count() > 0:
 			continue
 		pos.add_child(enemy_obj)
+		currEnemies.append(enemy_obj)
 		enemy_obj.tree_exited.connect(try_complete_battle)
 		break
 
@@ -36,7 +38,6 @@ func try_complete_battle():
 		await loot_popup.finished
 		Game.next_room()
 
-
 func check_enemies_dead():
 	return get_enemies()\
 		.filter(func(x): return !x.is_queued_for_deletion())\
@@ -46,3 +47,13 @@ func clear_enemies():
 	for pos in enemyPositions:
 		if pos.get_child_count() <= 0: continue
 		pos.get_child(0).queue_free()
+
+func try_activate_dialogue():
+	var enemies_with_dialogue : Array[Enemy] = currEnemies.filter(func(x): return x.data.dialogue != null)
+	print(enemies_with_dialogue)
+	if enemies_with_dialogue.size() > 0:
+		for enemy in enemies_with_dialogue:
+			DialogueManager.show_dialogue_balloon(enemy.data.dialogue)
+			await DialogueManager.dialogue_ended
+	else:
+		super()

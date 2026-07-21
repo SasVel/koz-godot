@@ -153,7 +153,7 @@ func set_room():
 		await event_queue_empty
 		curr_room.queue_free()
 
-	var room = ObjManager.get_rand_room()
+	var room = ObjManager.get_room(Const.RoomTypes.Battle)
 	main.add_child.call_deferred(room)
 	curr_room = room
 

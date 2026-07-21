@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drfb0uihop40k" path="res://entities/enemies/enemy_data.tscn" id="1_6q56h"]
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_3tf00"]
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="3_1y4el"]
+[ext_resource type="Resource" uid="uid://c7n0fv5v1alu2" path="res://entities/rooms/battle_rooms/treeant_room.dialogue" id="3_ay5o3"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="4_w6y78"]
 [ext_resource type="PackedScene" uid="uid://cq50j0mcvs0g" path="res://scripts/models/effect_components/turn_activator_comp.tscn" id="5_kgjub"]
 [ext_resource type="PackedScene" uid="uid://dyds1hbigh4w3" path="res://entities/status_effects/constrict_eff_data.tscn" id="6_ay5o3"]
@@ -19,12 +20,6 @@ metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 script = ExtResource("3_1y4el")
 value = 0.0
 maxValue = 200
-metadata/_custom_type_script = "uid://yuler4bts5rw"
-
-[sub_resource type="Resource" id="Resource_gwr16"]
-script = ExtResource("3_1y4el")
-value = 2
-maxValue = 2
 metadata/_custom_type_script = "uid://yuler4bts5rw"
 
 [sub_resource type="Resource" id="Resource_ay5o3"]
@@ -45,7 +40,6 @@ script = ExtResource("4_w6y78")
 Health = SubResource("Resource_ay5o3")
 Block = SubResource("Resource_kgjub")
 Tempo = SubResource("Resource_etwwr")
-HandSize = SubResource("Resource_gwr16")
 metadata/_custom_type_script = "uid://mi75jnrupyfs"
 
 [node name="TreeantData" unique_id=2139519148 instance=ExtResource("1_6q56h")]
@@ -53,6 +47,7 @@ type = 4
 has_alt_sprite = false
 custom_scale_multi = 1.2
 idle_anim_settings = SubResource("Resource_upuk4")
+dialogue = ExtResource("3_ay5o3")
 entity_name = "Tree boy"
 default_stats = SubResource("Resource_f40cr")
 card_deck_types = Array[int]([9, 10, 8, 10, 4])

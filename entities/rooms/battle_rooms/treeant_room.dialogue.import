@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c7n0fv5v1alu2"
+path="res://.godot/imported/treeant_room.dialogue-98d87b57f72d3f2ac5304089bd6ff8ee.tres"
+
+[deps]
+
+source_file="res://entities/rooms/battle_rooms/treeant_room.dialogue"
+dest_files=["res://.godot/imported/treeant_room.dialogue-98d87b57f72d3f2ac5304089bd6ff8ee.tres"]
+
+[params]
+
+defaults=true

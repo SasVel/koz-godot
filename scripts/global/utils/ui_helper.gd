@@ -28,7 +28,7 @@ static func pascal_to_readable_text(text : String) -> String:
 	return res
 
 static func tween_eff_trails(source_center_pos : Vector2, eff_comp : EffectComponent):
-	if eff_comp is DamageComp: 
+	if eff_comp is DamageComp:
 		var dmg_comp = (eff_comp as DamageComp)
 		for target in dmg_comp.targets:
 			var trail : TrailEffect = ObjManager.trail_eff_scn.instantiate()
@@ -75,6 +75,12 @@ static func set_theme_colors(control : Control):
 	control.theme.set_stylebox("disabled", "Button", btn_stylebox)
 
 	# Panel container texture color
-	var panel_container_stylebox = control.theme.get_stylebox("panel", "PanelContainer")
-	panel_container_stylebox.modulate_color = Const.BACKGROUND_DARKER_COLOR
+	var panel_container_stylebox : StyleBox = control.theme.get_stylebox("panel", "PanelContainer")
+	if panel_container_stylebox is StyleBoxTexture and (panel_container_stylebox as StyleBoxTexture).texture is GradientTexture2D:
+		var panel_texture : GradientTexture2D = (panel_container_stylebox as StyleBoxTexture).texture
+		panel_texture.gradient.set_color(1, Const.BACKGROUND_DARKER_COLOR)
+		panel_texture.gradient.set_color(2, Const.BACKGROUND_DARKER_COLOR)
+		panel_container_stylebox.texture = panel_texture
+	else:
+		panel_container_stylebox.modulate_color = Const.BACKGROUND_DARKER_COLOR
 	control.theme.set_stylebox("panel", "PanelContainer", panel_container_stylebox)
