@@ -37,6 +37,9 @@ func add(stat : Stat):
 	self.value += stat.value
 	self.maxValue += stat.maxValue
 
+func add_percentage_to_value(percentage : float):
+	self.value += int(self.value * percentage)
+
 func sub(stat : Stat):
 	self.value -= stat.value
 	self.maxValue -= stat.maxValue

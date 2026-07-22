@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://dacbxaq8dgji0"]
+
+[ext_resource type="PackedScene" uid="uid://4fagkau3k6jc" path="res://entities/rooms/room.tscn" id="1_tv8cq"]
+[ext_resource type="Texture2D" uid="uid://bunr365pjtih3" path="res://res/rooms/healing_spring.jpg" id="2_3taqg"]
+[ext_resource type="Script" uid="uid://ckq4dnn46ooe8" path="res://entities/rooms/quest_rooms/healing_spring/healing_spring_room.gd" id="2_jvpfc"]
+[ext_resource type="Resource" uid="uid://bnwgfcnkgp1j2" path="res://entities/rooms/quest_rooms/healing_spring/healing_spring_room.dialogue" id="3_o6410"]
+
+[sub_resource type="Gradient" id="Gradient_2htnq"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.50311524, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5nw3"]
+gradient = SubResource("Gradient_2htnq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8959044, 0.11774744)
+
+[sub_resource type="Gradient" id="Gradient_o6410"]
+resource_local_to_scene = true
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.5985401, 0.6569343)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2htnq"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_o6410")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_h5nw3"]
+_data = [Vector2(0, 0.006711364), 0.0, 4.640519, 0, 0, Vector2(1, 0), -2.7013423, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1cti7"]
+curve = SubResource("Curve_h5nw3")
+
+[sub_resource type="Curve" id="Curve_8rrai"]
+_data = [Vector2(0, 0), 0.0, 4.640518, 0, 0, Vector2(1, 0), -2.6488569, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bo2ei"]
+curve = SubResource("Curve_8rrai")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ykepn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(180, 20, 1)
+gravity = Vector3(0, -98, 0)
+scale_curve = SubResource("CurveTexture_bo2ei")
+alpha_curve = SubResource("CurveTexture_1cti7")
+turbulence_enabled = true
+turbulence_noise_strength = 0.8
+
+[node name="HealingSpringRoom" unique_id=1640835901 instance=ExtResource("1_tv8cq")]
+script = ExtResource("2_jvpfc")
+type = 1
+is_combat = false
+dialogue = ExtResource("3_o6410")
+
+[node name="Background" parent="." index="0" unique_id=779102403]
+texture = ExtResource("2_3taqg")
+
+[node name="PoolCircle" type="TextureRect" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="0" unique_id=987684513]
+unique_name_in_owner = true
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = 61.0
+offset_right = 229.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_h5nw3")
+
+[node name="PoolCircle" type="TextureRect" parent="Decorations/PoolCircle" index="0" unique_id=484711182]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.5
+offset_top = -29.0
+offset_right = 212.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_h5nw3")
+
+[node name="PoolCircle2" type="TextureRect" parent="Decorations/PoolCircle" index="1" unique_id=1698323905]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.5
+offset_top = -43.0
+offset_right = -17.5
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_h5nw3")
+
+[node name="PoolParticles" type="GPUParticles2D" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="1" unique_id=1592143005]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(598, 450)
+amount = 16
+texture = SubResource("GradientTexture2D_2htnq")
+lifetime = 6.0
+explosiveness = 0.14
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ykepn")

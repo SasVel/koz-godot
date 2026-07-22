@@ -1,0 +1,7 @@
+~ start
+<You find a pool with a muddy substance, dripping from the ceiling of a cave. The air smells of sulfur.>
+<It feels warm and inviting.>
+- Enter? [#heal]
+	<The warm, rejuvinating substance makes your wounds itch. You heal 30% of HP.>
+- Continue to the next room. [#next_room]
+=> END

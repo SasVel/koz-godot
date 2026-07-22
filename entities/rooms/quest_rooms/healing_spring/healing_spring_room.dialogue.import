@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bnwgfcnkgp1j2"
+path="res://.godot/imported/healing_spring_room.dialogue-2b93ced086f33248b29e3cb3a09bd4a2.tres"
+
+[deps]
+
+source_file="res://entities/rooms/quest_rooms/healing_spring/healing_spring_room.dialogue"
+dest_files=["res://.godot/imported/healing_spring_room.dialogue-2b93ced086f33248b29e3cb3a09bd4a2.tres"]
+
+[params]
+
+defaults=true

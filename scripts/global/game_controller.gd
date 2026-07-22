@@ -157,7 +157,10 @@ func set_room():
 	if turn_counter >= 10:
 		room = ObjManager.get_room(Const.RoomTypes.EndGame)
 	else:
-		room = ObjManager.get_room(Const.RoomTypes.Battle)
+		if randf_range(0, 1) <= 0.3:
+			room = ObjManager.get_room(Const.RoomTypes.Quest)
+		else:
+			room = ObjManager.get_room(Const.RoomTypes.Battle)
 
 	main.add_child.call_deferred(room)
 	curr_room = room
