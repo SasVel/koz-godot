@@ -1,6 +1,6 @@
 ~ start
 <There is a crack in the wall, pulsing with glowing warm light.>
 <Ever changing, ever twisting, yet keeping shape, as if fighting with itself. The rythmic beats slowly draw you in.>
-- Enter?
-- Continue to the next room.
+- Enter? [#win_game]
+- Continue to the next room. [#next_room]
 => END

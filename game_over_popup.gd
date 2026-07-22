@@ -8,6 +8,13 @@ func _ready() -> void:
 	get_tree().paused = true
 	%ScoreLabel.text = "Room Score: %s" % Game.rooms_completed
 
+func config(is_win : bool):
+	if is_win:
+		%GameOverLabel.text = "You Won! :0"
+	else:
+		%GameOverLabel.text = "Game Over ;-;"
+	return self
+
 func _on_restart_btn_pressed() -> void:
 	Game.restart()
 

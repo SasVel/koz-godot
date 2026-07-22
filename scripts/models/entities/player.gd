@@ -14,6 +14,7 @@ func _ready() -> void:
 	config(ObjManager.player_classes_dict[Game.default_class].instantiate())
 	Game.on_new_room.connect(clear_status_effects)
 	entity_bar.config(stats.Health, stats.Block)
+	Obj.connect_signals({ stats.Health.no_stat_val: UI.show_game_over_screen.bind(false) })
 	super()
 
 func on_changed_phase(val : Game.Phases):

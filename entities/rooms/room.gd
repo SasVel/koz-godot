@@ -2,6 +2,7 @@ extends Node2D
 class_name Room
 
 @export var type : Const.RoomTypes
+@export var is_combat : bool = true
 @export var dialogue : DialogueResource
 
 signal completed
@@ -25,4 +26,3 @@ func try_activate_dialogue():
 	if dialogue == null: return
 	DialogueManager.show_dialogue_balloon(dialogue, "start")
 	await DialogueManager.dialogue_ended
-	DialogueManager.response

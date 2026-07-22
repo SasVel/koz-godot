@@ -50,7 +50,6 @@ func clear_enemies():
 
 func try_activate_dialogue():
 	var enemies_with_dialogue : Array[Enemy] = currEnemies.filter(func(x): return x.data.dialogue != null)
-	print(enemies_with_dialogue)
 	if enemies_with_dialogue.size() > 0:
 		for enemy in enemies_with_dialogue:
 			DialogueManager.show_dialogue_balloon(enemy.data.dialogue)

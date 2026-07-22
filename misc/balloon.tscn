@@ -181,6 +181,7 @@ scroll_active = false
 [node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1225160028 instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 text = "[font_size=22][outline_size=5][[Hi|Hello|Howdy]], this is some dialogue.[/outline_size][/font_size]
 "
 horizontal_alignment = 1

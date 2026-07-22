@@ -20,17 +20,27 @@ func _ready() -> void:
 	%DefendPhaseMarker.modulate = Const.COMPLIMENTARY_COLOR
 	Game.on_changed_phase.connect(tween_phase_change)
 	Game.on_rooms_completed.connect(update_rooms_label)
+	Game.on_new_room.connect(set_player_ui_state)
 	phases_container.progress_offset = attack_phase_offset
 
 	player.hand_changed.connect(update_hand)
 	player.drawn_hand.connect(draw_hand)
 	player.tools_changed.connect(update_tools)
 
-	update_hand(player.cards_hand, true)
-	update_tools(player.equipped_tools, true)
-	update_rooms_label(Game.rooms_completed)
-	update_turns_label(Game.turn_counter)
 	Game.on_start_turn_layer_1.connect(func(): update_turns_label(Game.turn_counter))
+
+func set_player_ui_state():
+	%ActionsContainer.visible = Game.curr_room.is_combat
+	%ToolsList.visible = Game.curr_room.is_combat
+	%EndTurnBtn.visible = Game.curr_room.is_combat
+	%PhasesContainer.visible = Game.curr_room.is_combat
+	%TempoDisplay.visible = Game.curr_room.is_combat
+
+	if Game.curr_room.is_combat:
+		update_hand(player.cards_hand, true)
+		update_tools(player.equipped_tools, true)
+		update_rooms_label(Game.rooms_completed)
+		update_turns_label(Game.turn_counter)
 
 func draw_hand(cards_hand):
 	await tween_hand_offset(false)

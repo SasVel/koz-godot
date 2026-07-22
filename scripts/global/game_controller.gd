@@ -75,7 +75,8 @@ func pop_play_event():
 		is_playing_event = false
 
 func add_event(event : Callable, is_unique : bool = false):
-	if is_unique and event_queue.any(func(x): x.get_object() == event.get_object()):
+	if is_unique and \
+	event_queue.any(func(x): return x.get_object() == event.get_object()):
 		return
 	event_queue.push_front(event)
 
@@ -91,7 +92,6 @@ func add_events(event_arr : Array[Callable]):
 func init_references():
 	main = get_tree().get_root().get_node("Main")
 	player = main.get_node("Player")
-	Obj.connect_signals({ player.stats.Health.no_stat_val: show_game_over_screen })
 	inputBlocker = main.get_node("UI/InputBlocker")
 	popupsContainer = main.get_node("UIOverEverything/PopupsContainer")
 	visualEffectsContainer = main.get_node("UIOverEverything/Effects")
@@ -153,7 +153,12 @@ func set_room():
 		await event_queue_empty
 		curr_room.queue_free()
 
-	var room = ObjManager.get_room(Const.RoomTypes.Battle)
+	var room : Room
+	if turn_counter >= 10:
+		room = ObjManager.get_room(Const.RoomTypes.EndGame)
+	else:
+		room = ObjManager.get_room(Const.RoomTypes.Battle)
+
 	main.add_child.call_deferred(room)
 	curr_room = room
 
@@ -162,7 +167,9 @@ func set_room():
 	on_new_room.emit()
 	add_event(curr_room.switch_transition.bind(true))
 	await event_queue_empty
-	start_turn()
+
+	if curr_room.is_combat:
+		start_turn()
 
 func next_room():
 	turn_counter = 0
@@ -185,9 +192,6 @@ func switch_input(isOn : bool):
 	is_input = isOn
 	inputBlocker.visible = !isOn
 
-func show_game_over_screen():
-	var screen = UI.get_popup_inst(UI.Popups.GAME_OVER)
-	popupsContainer.add_child(screen)
 
 func start_end_turn_timer(wait_time):
 	add_event(end_turn_timer.timer_start.bind(wait_time))

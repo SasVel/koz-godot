@@ -1,25 +1,32 @@
 [gd_scene format=3 uid="uid://cyfm2ojr31les"]
 
 [ext_resource type="PackedScene" uid="uid://4fagkau3k6jc" path="res://entities/rooms/room.tscn" id="1_u8kbv"]
-[ext_resource type="Resource" uid="uid://bansq0b6vdawi" path="res://entities/rooms/end_rooms/reality_chasm/reality_chasm_room.dialogue" id="2_2arah"]
+[ext_resource type="Script" uid="uid://bmcr4n0c7n2ic" path="res://entities/rooms/end_rooms/reality_chasm/reality_chasm_end_room.gd" id="2_2arah"]
+[ext_resource type="Resource" uid="uid://bansq0b6vdawi" path="res://entities/rooms/end_rooms/reality_chasm/reality_chasm_room.dialogue" id="3_47768"]
+[ext_resource type="Texture2D" uid="uid://bupxtvf5kpgre" path="res://res/rooms/reality_chasm_end_bg.jpg" id="4_v043h"]
 
-[sub_resource type="Gradient" id="Gradient_50rf8"]
+[sub_resource type="Gradient" id="Gradient_o1ujq"]
 resource_local_to_scene = true
 interpolation_mode = 1
 offsets = PackedFloat32Array(0.40487805, 0.69756097)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2arah"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s125a"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_50rf8")
+gradient = SubResource("Gradient_o1ujq")
 width = 16
 height = 16
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="RealityChasmEndRoom" unique_id=1640835901 instance=ExtResource("1_u8kbv")]
+script = ExtResource("2_2arah")
 type = 2
-dialogue = ExtResource("2_2arah")
+is_combat = false
+dialogue = ExtResource("3_47768")
+
+[node name="Background" parent="." index="0" unique_id=779102403]
+texture = ExtResource("4_v043h")
 
 [node name="TrailEffParticle" parent="." index="2" unique_id=1592143005]
-texture = SubResource("GradientTexture2D_2arah")
+texture = SubResource("GradientTexture2D_s125a")

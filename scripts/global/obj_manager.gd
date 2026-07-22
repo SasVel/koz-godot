@@ -16,7 +16,7 @@ extends Node
 @export var enemies_dict : Dictionary[Const.Enemies, PackedScene]
 
 @export_category("Rooms")
-@export var rooms_dict : Dictionary[Const.RoomTypes, PackedScene]
+@export var rooms_dict : Dictionary[Const.RoomTypes, Array]
 
 @export_category("Objects")
 @export var card_obj : PackedScene
@@ -106,9 +106,9 @@ func get_eff_mini_obj(data : StatusEffData) -> StatusEffDisplay:
 	return eff_mini_obj.instantiate().config(data)
 
 func get_room(type : Const.RoomTypes) -> Room:
-	return rooms_dict[type].instantiate()
+	return rooms_dict[type].pick_random().instantiate()
 
-func get_rand_room() -> Room:
+func get_rand_room(has_end_game_rooms : bool = false) -> Room:
 	return get_room(randi_range(0, Const.RoomTypes.size() - 1) as Const.RoomTypes)
 
 func get_rand_enemy_obj() -> Enemy:

@@ -30,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GameOverLabel" type="Label" parent="Contents" unique_id=1426824103]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Game Over ;-;"
 label_settings = ExtResource("2_yrhfm")

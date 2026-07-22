@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://dd1np0ll6q50b" path="res://entities/status_effects/poison_eff_data.tscn" id="29_4cd8w"]
 [ext_resource type="PackedScene" uid="uid://dd48xuglqpuk" path="res://entities/rooms/battle_rooms/battle_room/battle_room.tscn" id="29_4pinj"]
 [ext_resource type="PackedScene" uid="uid://bo1oesyb4aa4f" path="res://UI/status_eff_display.tscn" id="29_hw0uh"]
+[ext_resource type="PackedScene" uid="uid://cyfm2ojr31les" path="res://entities/rooms/end_rooms/reality_chasm/reality_chasm_end_room.tscn" id="35_25crl"]
 [ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="36_o6px0"]
 [ext_resource type="PackedScene" uid="uid://b73cc3b36w7b7" path="res://UI/tool_display_card.tscn" id="37_ahfjw"]
 
@@ -118,8 +119,9 @@ enemies_dict = Dictionary[int, PackedScene]({
 3: ExtResource("21_4nbcu"),
 4: ExtResource("25_lla61")
 })
-rooms_dict = Dictionary[int, PackedScene]({
-0: ExtResource("29_4pinj")
+rooms_dict = Dictionary[int, Array]({
+0: [ExtResource("29_4pinj")],
+2: [ExtResource("35_25crl")]
 })
 card_obj = ExtResource("4_gyyai")
 tool_obj = ExtResource("27_hw0uh")

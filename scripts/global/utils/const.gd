@@ -89,7 +89,6 @@ enum RoomTypes {
 	Custom
 }
 
-
 # Colors
 var PRIMARY_COLOR: Color
 var SECONDARY_COLOR: Color
