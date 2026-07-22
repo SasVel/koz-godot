@@ -25,3 +25,4 @@ func try_activate_dialogue():
 	if dialogue == null: return
 	DialogueManager.show_dialogue_balloon(dialogue, "start")
 	await DialogueManager.dialogue_ended
+	DialogueManager.response

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bansq0b6vdawi"
+path="res://.godot/imported/reality_chasm_room.dialogue-99a83cb408680fb02463b78fd98fa103.tres"
+
+[deps]
+
+source_file="res://entities/rooms/end_rooms/reality_chasm/reality_chasm_room.dialogue"
+dest_files=["res://.godot/imported/reality_chasm_room.dialogue-99a83cb408680fb02463b78fd98fa103.tres"]
+
+[params]
+
+defaults=true

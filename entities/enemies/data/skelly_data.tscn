@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://dl53p3t1sbh74" path="res://entities/idle_animator_settings.gd" id="2_0u81h"]
 [ext_resource type="Script" uid="uid://yuler4bts5rw" path="res://scripts/stat.gd" id="2_ycobc"]
 [ext_resource type="Script" uid="uid://mi75jnrupyfs" path="res://scripts/stat_block.gd" id="3_0u81h"]
-[ext_resource type="Resource" uid="uid://bdqfjxo8bsxr5" path="res://entities/rooms/battle_rooms/skelly_room.dialogue" id="3_djbgq"]
+[ext_resource type="Resource" uid="uid://c1nlhyyohcy2g" path="res://entities/rooms/battle_rooms/skelly_room.dialogue" id="3_djbgq"]
 [ext_resource type="PackedScene" uid="uid://cq50j0mcvs0g" path="res://scripts/models/effect_components/turn_activator_comp.tscn" id="5_n3r6n"]
 [ext_resource type="PackedScene" uid="uid://3l1tyi3w131j" path="res://entities/card_datas/actions/smash_action_data.tscn" id="5_v28r2"]
 [ext_resource type="PackedScene" uid="uid://bkohy4fxvhqdb" path="res://entities/status_effects/str_eff_data.tscn" id="6_djbgq"]
 [ext_resource type="PackedScene" uid="uid://bwqpiwxtaif83" path="res://entities/card_datas/actions/slash_action_data.tscn" id="6_xmbqe"]
 [ext_resource type="PackedScene" uid="uid://c7vwmfnhl3yd5" path="res://entities/card_datas/actions/defend_action_data.tscn" id="7_n3r6n"]
 
-[sub_resource type="Resource" id="Resource_i5fcu"]
+[sub_resource type="Resource" id="Resource_n3r6n"]
 resource_local_to_scene = true
 script = ExtResource("2_0u81h")
 scale_speed = 6
@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://mi75jnrupyfs"
 [node name="SkellyData" unique_id=2139519148 instance=ExtResource("1_k3i7q")]
 type = 1
 has_alt_sprite = false
-idle_anim_settings = SubResource("Resource_i5fcu")
+idle_anim_settings = SubResource("Resource_n3r6n")
 dialogue = ExtResource("3_djbgq")
 entity_name = "Skelly"
 default_stats = SubResource("Resource_0dmfe")

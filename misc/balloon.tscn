@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="2_tqhue"]
 [ext_resource type="Texture2D" uid="uid://c4picoit8vwvk" path="res://res/ButtonAssets/button_yellow_pressed.png" id="2_wi02x"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="Script" uid="uid://b1ai7tmvvg3ls" path="res://UI/dialogue_label_formatted.gd" id="5_wi02x"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="7_q0vp7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3uumy"]
@@ -184,6 +185,7 @@ text = "[font_size=22][outline_size=5][[Hi|Hello|Howdy]], this is some dialogue.
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_wi02x")
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1162966119]
 custom_minimum_size = Vector2(20, 10)

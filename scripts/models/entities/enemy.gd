@@ -53,8 +53,8 @@ func add_action_deck(action : CardData):
 func activate_actions_hand():
 	if cards_hand.is_empty(): return
 	for idx in range(cards_hand.size()):
+		if cards_hand.size() <= 0: return
 		var action = cards_hand.get(0)
-		if action == null: return
 
 		await %ActionsDisplay.tween_action(action)
 		action.activate()
