@@ -1,5 +1,11 @@
 extends DialogueRoom
 
+func _ready() -> void:
+	super()
+	%ChasmParticles.modulate = Const.ACCENT_COLOR
+	%ChasmCircle.modulate = Const.ACCENT_COLOR
+	%ChasmCircle.modulate.a = 0.4
+
 func _response_selected(response : DialogueResponse):
 	if response.tags.is_empty(): return
 	for tag in response.tags:

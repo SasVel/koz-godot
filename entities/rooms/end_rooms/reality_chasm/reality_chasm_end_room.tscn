@@ -2,10 +2,208 @@
 
 [ext_resource type="PackedScene" uid="uid://4fagkau3k6jc" path="res://entities/rooms/room.tscn" id="1_u8kbv"]
 [ext_resource type="Script" uid="uid://b5ltwcsr0mv3u" path="res://entities/rooms/end_rooms/reality_chasm/reality_chasm_end_room.gd" id="2_2arah"]
+[ext_resource type="Resource" uid="uid://bansq0b6vdawi" path="res://entities/rooms/end_rooms/reality_chasm/reality_chasm_room.dialogue" id="3_v043h"]
 [ext_resource type="Texture2D" uid="uid://bupxtvf5kpgre" path="res://res/rooms/reality_chasm_end_bg.jpg" id="4_v043h"]
+[ext_resource type="Shader" uid="uid://b5gbc8q44euwf" path="res://shaders/DistortionShader.gdshader" id="5_o1ujq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7kkhm"]
+seamless = true
+seamless_blend_skirt = 0.222
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s125a"]
+shader = ExtResource("5_o1ujq")
+shader_parameter/distortionTexture = SubResource("NoiseTexture2D_7kkhm")
+shader_parameter/strength = 0.03999999910592
+shader_parameter/time_scale = 0.5
+shader_parameter/distortStr = 0.10000000149012
+shader_parameter/rotate_speed = 0.5000000074506
+
+[sub_resource type="Gradient" id="Gradient_2htnq"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.50311524, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_47768"]
+gradient = SubResource("Gradient_2htnq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8959044, 0.11774744)
+
+[sub_resource type="Gradient" id="Gradient_47768"]
+resource_local_to_scene = true
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.5985401, 0.6569343)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v043h"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_47768")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_o1ujq"]
+_data = [Vector2(0, 0.006711364), 0.0, 4.640519, 0, 0, Vector2(1, 0), -2.7013423, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s125a"]
+curve = SubResource("Curve_o1ujq")
+
+[sub_resource type="Curve" id="Curve_383tk"]
+_data = [Vector2(0, 0), 0.0, 4.640518, 0, 0, Vector2(1, 0), -2.6488569, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s300g"]
+curve = SubResource("Curve_383tk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_myccq"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(70, 250, 1)
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 34.1
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 46.239998
+scale_curve = SubResource("CurveTexture_s300g")
+alpha_curve = SubResource("CurveTexture_s125a")
+turbulence_enabled = true
+turbulence_noise_strength = 0.8
 
 [node name="RealityChasmEndRoom" unique_id=1640835901 instance=ExtResource("1_u8kbv")]
 script = ExtResource("2_2arah")
+type = 2
+is_combat = false
+dialogue = ExtResource("3_v043h")
 
 [node name="Background" parent="." index="0" unique_id=779102403]
 texture = ExtResource("4_v043h")
+
+[node name="ColorRect" type="ColorRect" parent="Background" index="0" unique_id=1382582511]
+material = SubResource("ShaderMaterial_s125a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChasmCircle" type="TextureRect" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="0" unique_id=780119067]
+unique_name_in_owner = true
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -111.0
+offset_right = 99.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_47768")
+
+[node name="ChasmCircle" type="TextureRect" parent="Decorations/ChasmCircle" index="0" unique_id=349004562]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -6.0
+offset_right = 46.5
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_47768")
+
+[node name="ChasmCircle2" type="TextureRect" parent="Decorations/ChasmCircle" index="1" unique_id=1685385660]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -111.0
+offset_right = 93.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_47768")
+
+[node name="ChasmCircle3" type="TextureRect" parent="Decorations/ChasmCircle" index="2" unique_id=1732670982]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -327.0
+offset_right = 32.5
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_47768")
+
+[node name="ChasmCircle4" type="TextureRect" parent="Decorations/ChasmCircle" index="3" unique_id=1502137646]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -194.0
+offset_right = 42.5
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_47768")
+
+[node name="ChasmCircle5" type="TextureRect" parent="Decorations/ChasmCircle" index="4" unique_id=2130923489]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -289.0
+offset_right = 16.5
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_47768")
+
+[node name="ChasmParticles" type="GPUParticles2D" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="1" unique_id=39370746]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(598, 322)
+amount = 16
+texture = SubResource("GradientTexture2D_v043h")
+lifetime = 6.0
+explosiveness = 0.14
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_myccq")

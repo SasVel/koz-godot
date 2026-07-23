@@ -49,6 +49,7 @@ enum Phases {
 @onready var is_input : bool = true
 @onready var is_object_dragged : bool = false
 
+signal on_start_first_turn
 signal on_start_turn_layer_1
 signal on_start_turn_layer_2
 
@@ -126,6 +127,8 @@ func start_turn():
 	await play_player_eff_stack()
 
 func on_start_turn_emit():
+	if turn_counter == 1:
+		on_start_first_turn.emit()
 	on_start_turn_layer_1.emit()
 	on_start_turn_layer_2.emit()
 
@@ -154,10 +157,11 @@ func set_room():
 		curr_room.queue_free()
 
 	var room : Room
+	#room = ObjManager.get_room(Const.RoomTypes.EndGame)
 	if turn_counter >= 10:
 		room = ObjManager.get_room(Const.RoomTypes.EndGame)
 	else:
-		if randf_range(0, 1) <= 0.3:
+		if turn_counter > 3 and randf_range(0, 1) <= 0.3:
 			room = ObjManager.get_room(Const.RoomTypes.Quest)
 		else:
 			room = ObjManager.get_room(Const.RoomTypes.Battle)

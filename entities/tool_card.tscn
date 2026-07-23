@@ -27,16 +27,17 @@ shader_parameter/inset = 0.0
 
 [node name="ToolCard" unique_id=789441108 instance=ExtResource("1_g0q5f")]
 material = SubResource("ShaderMaterial_g0q5f")
+offset_transform_enabled = true
 script = ExtResource("3_nhk73")
 focus_scale = 1.2
 
 [node name="SubViewportContainer" parent="." index="0" unique_id=1491279813]
 material = SubResource("ShaderMaterial_670yt")
 
-[node name="TitleLabel" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(767831041) index="0" unique_id=1601413309]
+[node name="TitleLabel" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TitleContainer" parent_id_path=PackedInt32Array(767831041) index="0" unique_id=1601413309]
 text = "Halberd"
 
-[node name="DurabilityLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(767831041) index="1" unique_id=372696409]
+[node name="DurabilityLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TitleContainer" parent_id_path=PackedInt32Array(767831041) index="1" unique_id=372696409]
 unique_name_in_owner = true
 layout_mode = 2
 text = "|########|"

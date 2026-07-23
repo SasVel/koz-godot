@@ -565,6 +565,7 @@ mouse_filter = 2
 [connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard5" to="UI/MainContainer/ActionsContainer/ActionCard5" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/MainContainer/ActionsContainer/ActionCard6" to="UI/MainContainer/ActionsContainer/ActionCard6" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/ActionsContainer/ActionCard6" to="UI/MainContainer/ActionsContainer/ActionCard6" method="_on_mouse_exited"]
+[connection signal="child_entered_tree" from="UI/MainContainer/ToolsList" to="UI/MainContainer/ToolsList" method="_on_child_entered_tree"]
 [connection signal="sort_children" from="UI/MainContainer/ToolsList" to="UI/MainContainer/ToolsList" method="_on_sort_children"]
 [connection signal="mouse_entered" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/ToolsList/ToolCard" to="UI/MainContainer/ToolsList/ToolCard" method="_on_mouse_exited"]
