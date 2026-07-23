@@ -8,6 +8,7 @@
 type = 1
 isGeneric = false
 weaponType = 3
+value = 10
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=2023074785]
 script = ExtResource("2_ehr51")
@@ -15,4 +16,6 @@ value = 20
 metadata/_custom_type_script = "uid://rio4hms2vn51"
 
 [node name="PoisonEffData" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=1231074189 instance=ExtResource("3_mi8yn")]
-stacks = 2
+stacks = 0
+duration = 2
+sound = null

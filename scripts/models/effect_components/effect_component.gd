@@ -8,8 +8,11 @@ class_name EffectComponent
 @onready var source : Entity
 @onready var targets : Array[Entity]
 
+@export var sound : SFX.Sounds = SFX.Sounds.None
+
 signal activated
 signal deactivated
+
 
 func config(source_ : Entity, targets_ : Array[Entity]):
 	config_source(source_)
@@ -20,6 +23,8 @@ func config_source(source_ : Entity):
 	source = source_
 
 func activate():
+	if sound != null:
+		SFX.play(sound)
 	activated.emit()
 
 func deactivate():

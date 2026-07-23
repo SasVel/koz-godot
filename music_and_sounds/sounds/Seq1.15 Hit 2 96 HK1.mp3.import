@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1ctkuaoe0t8t"
+path="res://.godot/imported/Seq1.15 Hit 2 96 HK1.mp3-1157885a0c2dd7d5e2db2659ed0aa635.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/sounds/Seq1.15 Hit 2 96 HK1.mp3"
+dest_files=["res://.godot/imported/Seq1.15 Hit 2 96 HK1.mp3-1157885a0c2dd7d5e2db2659ed0aa635.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

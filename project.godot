@@ -27,7 +27,7 @@ Const="*uid://bbwts8yaxiq05"
 ObjManager="*uid://cj4ale0ilwpgn"
 Game="*uid://rswuroq5nufs"
 UI="*uid://ghamk5ll18fx"
-MusicAndSounds="*uid://dbgqywy2gukoi"
+SFX="*uid://dbgqywy2gukoi"
 DialogueManager="*uid://c3rodes2l3gxb"
 
 [dialogue_manager]
@@ -41,7 +41,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/movie_file="/home/sasi/GameProjects/koz-res/Movies/movie.avi"
+movie_writer/movie_file="/home/sasi/GameProjects/KozRes/movies/movie.avi"
 
 [editor_plugins]
 

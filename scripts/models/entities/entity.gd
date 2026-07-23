@@ -223,7 +223,7 @@ func process_damage_incoming(dmg : int) -> int:
 #endregion
 
 func try_config_action(action : CardData):
-	if action.source != null: return
+	if action.get_parent() != null: return
 	config_action(action)
 
 func config_action(action : CardData):

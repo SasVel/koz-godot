@@ -5,10 +5,12 @@
 
 [node name="BucklerToolData" unique_id=988386249 instance=ExtResource("1_yj6nw")]
 durability = 3
+isGeneric = false
 shieldType = 1
 isOffensive = false
 
 [node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1390095307]
 script = ExtResource("2_katsk")
 value = 20
+sound = 3
 metadata/_custom_type_script = "uid://cr0gxa7eamckf"

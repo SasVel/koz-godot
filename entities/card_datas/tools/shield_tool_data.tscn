@@ -5,8 +5,10 @@
 
 [node name="ShieldToolData" unique_id=988386249 instance=ExtResource("1_8c5yv")]
 durability = 6
+isGeneric = false
 
 [node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1010918803]
 script = ExtResource("2_vmdf0")
 value = 15
+sound = 3
 metadata/_custom_type_script = "uid://cr0gxa7eamckf"

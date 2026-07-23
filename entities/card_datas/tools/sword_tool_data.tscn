@@ -7,8 +7,10 @@
 type = 1
 isGeneric = false
 weaponType = 1
+value = 10
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1145210996]
 script = ExtResource("2_dd1wf")
 value = 25
+sound = 1
 metadata/_custom_type_script = "uid://rio4hms2vn51"

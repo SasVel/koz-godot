@@ -84,6 +84,7 @@ func _get_drag_data(at_position):
 func _on_focus_entered() -> void:
 	if Game.is_object_dragged: return
 	self.z_index = 1
+	SFX.play(SFX.Sounds.CardFlick)
 	scale_on_focus(true)
 	move_on_focus(true)
 

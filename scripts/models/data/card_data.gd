@@ -35,8 +35,10 @@ signal update_status()
 
 func config_source(source_ : Entity):
 	super(source_)
-	source.stats.Tempo.stat_changed.connect(func(_x, _y): check_state())
-	source.status_effects_changed.connect(update_status_state)
+	Obj.connect_signals({
+		source.stats.Tempo.stat_changed: func(_x, _y): check_state(),
+		source.status_effects_changed: update_status_state
+	})
 
 func activate(deduct_tempo : bool = true):
 	if deduct_tempo:

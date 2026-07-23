@@ -11,4 +11,5 @@ isOffensive = false
 script = ExtResource("2_aakgi")
 value = 12
 isOffensive = false
+sound = 3
 metadata/_custom_type_script = "uid://cr0gxa7eamckf"
