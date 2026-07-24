@@ -375,6 +375,7 @@ layout_mode = 2
 material = SubResource("ShaderMaterial_1u8w0")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
@@ -382,6 +383,7 @@ fauxShiftDeg = 15.0
 material = SubResource("ShaderMaterial_0odxb")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
@@ -389,6 +391,7 @@ fauxShiftDeg = 15.0
 material = SubResource("ShaderMaterial_lswn8")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
@@ -396,6 +399,7 @@ fauxShiftDeg = 15.0
 material = SubResource("ShaderMaterial_a6jrf")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
@@ -403,6 +407,7 @@ fauxShiftDeg = 15.0
 material = SubResource("ShaderMaterial_qsp4k")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 

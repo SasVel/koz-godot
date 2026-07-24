@@ -43,6 +43,7 @@ func remove_tool(tool : ToolData):
 	tools_changed.emit(equipped_tools)
 
 func replace_tool(tool_to_replace, tool_to_be_replaced):
+	if tool_to_replace is not Tool: return
 	remove_tool(tool_to_be_replaced)
 	add_tool(tool_to_replace)
 

@@ -8,7 +8,7 @@ class_name EffectComponent
 @onready var source : Entity
 @onready var targets : Array[Entity]
 
-@export var sound : SFX.Sounds = SFX.Sounds.None
+@export var sound : SFX.Sounds
 
 signal activated
 signal deactivated

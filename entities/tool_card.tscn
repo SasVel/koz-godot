@@ -27,7 +27,6 @@ shader_parameter/inset = 0.0
 
 [node name="ToolCard" unique_id=789441108 instance=ExtResource("1_g0q5f")]
 material = SubResource("ShaderMaterial_g0q5f")
-offset_transform_enabled = true
 script = ExtResource("3_nhk73")
 focus_scale = 1.2
 

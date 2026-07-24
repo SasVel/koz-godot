@@ -7,7 +7,9 @@
 durability = 3
 isGeneric = false
 shieldType = 1
+value = 10
 isOffensive = false
+sound = 3
 
 [node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1390095307]
 script = ExtResource("2_katsk")

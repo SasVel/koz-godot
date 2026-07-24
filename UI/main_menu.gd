@@ -29,7 +29,6 @@ func switch_transition(isOn : bool):
 	tween.tween_property(%Transition, "factor", 0 if isOn else 1, 2).from(1 if isOn else 0)
 	await tween.finished
 
-
 func load_colors_from_palette():
 	UIHelper.set_theme_colors(self)
 	%Birb.modulate = Const.ACCENT_COLOR

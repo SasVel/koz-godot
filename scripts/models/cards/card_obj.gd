@@ -12,7 +12,43 @@ class_name CardObj
 @onready var isOn : bool = true :
 	set(val):
 		cardBack.modulate = Color.WHITE if val else Color("b1b1b1")
+		if val and curr_tween_state != TweenState.None:
+			tween_idle(true)
+		else:
+			tween_idle(false)
+
 		isOn = val
+
+enum TweenState {
+	None, # Used for external animations.
+	Idle,
+	Focus,
+	Anim
+}
+
+@onready var curr_tween_state : TweenState = TweenState.None:
+	set(val):
+		match val:
+			TweenState.None:
+				isFocusTweening = false
+				isAnimTweening = false
+				tween_focus(false)
+				tween_idle(false)
+			TweenState.Idle:
+				isFocusTweening = false
+				isAnimTweening = false
+				tween_focus(false)
+				tween_idle(true)
+			TweenState.Focus:
+				isAnimTweening = false
+				tween_idle(false)
+				tween_focus(true)
+				isFocusTweening = true
+			TweenState.Anim:
+				isFocusTweening = false
+				isAnimTweening = true
+				tween_idle(false)
+		curr_tween_state = val
 
 @onready var isLoot : bool = false
 @onready var isFocusTweening : bool = false
@@ -57,15 +93,9 @@ func config(data_ : CardData):
 	return self
 
 func _ready() -> void:
+	curr_tween_state = TweenState.None
 	if focus_scale == null: focus_scale = 1.2
 	focus_card_pos_y = get_viewport_rect().size.y - (self.custom_minimum_size.y * focus_scale + 10)
-
-func _physics_process(_delta: float) -> void:
-	if !self.has_focus() and\
-	!isAnimTweening and\
-	self.position != self.default_pos\
-	and !isLoot:
-		_on_focus_exited()
 
 func set_generate_description():
 	%DescLabel.text = data.generate_desc()
@@ -85,13 +115,15 @@ func _on_focus_entered() -> void:
 	if Game.is_object_dragged: return
 	self.z_index = 1
 	SFX.play(SFX.Sounds.CardFlick)
-	scale_on_focus(true)
-	move_on_focus(true)
+	curr_tween_state = TweenState.Focus
 
 func _on_focus_exited() -> void:
 	self.z_index = 0
-	scale_on_focus(false)
-	move_on_focus(false)
+	curr_tween_state = TweenState.Idle
+
+func tween_focus(on_off : bool):
+	scale_on_focus(on_off)
+	move_on_focus(on_off)
 
 func scale_on_focus(on_off : bool):
 	if isFocusTweening: return
@@ -104,7 +136,6 @@ func scale_on_focus(on_off : bool):
 func move_on_focus(on_off : bool):
 	if isFocusTweening or isLoot: return
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-	isFocusTweening = true
 	if on_off:
 		tween.tween_property(self, "global_position:y", focus_card_pos_y,
 		 focus_tween_speed).from(self.global_position.y)
@@ -115,11 +146,40 @@ func move_on_focus(on_off : bool):
 		tween.parallel().tween_property(self, "rotation", default_rot,
 		 focus_tween_speed)
 	await tween.finished
-	isFocusTweening = false
+
+var idle_tween : Tween
+func tween_idle(on_off : bool):
+	if idle_tween != null:
+		if idle_tween.is_running() and on_off:
+			return
+
+		if !on_off:
+			idle_tween.stop()
+			idle_tween.kill()
+			self.offset_transform_position = Vector2.ZERO
+			self.offset_transform_rotation = deg_to_rad(0)
+			return
+
+	if !on_off: return
+
+	var rand_offset = randi_range(5, 10)
+	var rand_rotation = deg_to_rad(randi_range(1, 3))
+	var duration : float = randf_range(5, 8)
+	_create_idle_tween()
+
+	idle_tween.tween_property(self, "offset_transform_position:y", -rand_offset, duration / 2)
+	idle_tween.parallel().tween_property(self, "offset_transform_rotation", -rand_rotation, duration / 2)
+
+	idle_tween.tween_property(self, "offset_transform_position:y", rand_offset, duration / 2)
+	idle_tween.parallel().tween_property(self, "offset_transform_rotation", rand_rotation, duration / 2)
+
+func _create_idle_tween(is_looping : bool = true):
+	idle_tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+	if is_looping:
+		idle_tween.set_loops()
 
 func animate_pre_activation(drop_position):
 	# Setup
-	isAnimTweening = true
 	pre_activation_position = self.global_position
 	pre_activation_rot = self.rotation
 	pre_activation_scale = self.scale
@@ -157,16 +217,17 @@ func animate_post_activation():
 
 	await tween.finished
 	self.z_index = 0
-	isAnimTweening = false
 
 func activate(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
 	Game.event_queue.append(Callable(self, "activation_sequence").bindv([drop_position, deduct_tempo]))
 
 func activation_sequence(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
+	curr_tween_state = TweenState.Anim
 	await animate_pre_activation(drop_position)
 	data.activate(deduct_tempo)
 	if self.is_queued_for_deletion(): return
 	await animate_post_activation()
+	curr_tween_state = TweenState.Idle
 
 func _can_drop_data(_at_position: Vector2, drop_data: Variant) -> bool:
 	return drop_data["object"].isLoot

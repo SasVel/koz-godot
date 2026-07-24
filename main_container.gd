@@ -49,6 +49,8 @@ func draw_hand(cards_hand):
 	await tween_hand_offset(true)
 
 func tween_hand_offset(isOpen : bool):
+	%ActionsContainer.queue_sort()
+	await %ActionsContainer.sort_children
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	if isOpen:
 		tween.tween_property(%ActionsContainer, "progress_offset", 0.95, 0.8)
