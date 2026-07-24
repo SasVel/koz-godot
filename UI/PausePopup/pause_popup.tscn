@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dcrb68bfy5bkn"]
+
+[ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_x024t"]
+[ext_resource type="Script" uid="uid://b31nop5sg5tja" path="res://UI/PausePopup/pause_popup.gd" id="2_2ypn7"]
+[ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="2_y3ovl"]
+
+[node name="PausePopup" type="Control" unique_id=765099973]
+process_mode = 3
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_x024t")
+script = ExtResource("2_2ypn7")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1560996246]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.24313726, 0.24313726, 0.24313726, 0.4117647)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=423328685]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=538799567]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1735486440]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1525547247]
+layout_mode = 2
+text = "Paused"
+label_settings = ExtResource("2_y3ovl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=921697947]
+layout_mode = 2
+text = "Continue"
+
+[node name="GiveUpBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1750199339]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9648345, 0, 0.122437306, 1)
+text = "Give up"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/GiveUpBtn" to="." method="_on_give_up_btn_pressed"]
