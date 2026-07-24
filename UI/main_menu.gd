@@ -4,6 +4,7 @@ extends Control
 @export var credits_scn : PackedScene
 
 func _ready() -> void:
+	SFX.play_music(SFX.Music.Chill, true)
 	load_colors_from_palette()
 	Const.palette_changed.connect(load_colors_from_palette)
 	switch_transition(true)

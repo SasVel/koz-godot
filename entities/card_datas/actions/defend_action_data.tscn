@@ -6,6 +6,7 @@
 [node name="DefendActionData" unique_id=988386249 instance=ExtResource("1_v5xa4")]
 actionType = 9
 isOffensive = false
+sound = 3
 
 [node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1685757364]
 script = ExtResource("2_aakgi")

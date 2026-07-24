@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bi5mwndkauoua"
+path="res://.godot/imported/Small Loss.mp3-a2101e554f37e97ca358066829fd10c2.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/music/battle/HorrorPen/Small Loss.mp3"
+dest_files=["res://.godot/imported/Small Loss.mp3-a2101e554f37e97ca358066829fd10c2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

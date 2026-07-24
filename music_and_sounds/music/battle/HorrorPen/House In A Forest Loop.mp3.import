@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjcmulgvbhxna"
+path="res://.godot/imported/House In A Forest Loop.mp3-9476a4be616de19008eb9ab0d8b5b995.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/music/battle/HorrorPen/House In A Forest Loop.mp3"
+dest_files=["res://.godot/imported/House In A Forest Loop.mp3-9476a4be616de19008eb9ab0d8b5b995.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

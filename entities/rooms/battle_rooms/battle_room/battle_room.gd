@@ -6,6 +6,7 @@ class_name BattleRoom
 var currEnemies : Array[Enemy]
 
 func _ready() -> void:
+	SFX.play_music(SFX.Music.Battle)
 	super()
 	enemyPositions = [
 		enemiesFolder.get_child(0),

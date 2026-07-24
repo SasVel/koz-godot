@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cse410vd0w4tt"
+path="res://.godot/imported/Assasin's Assault.mp3-9b4aa8ce7064ee1015fb9c25cc0c23a0.mp3str"
+
+[deps]
+
+source_file="res://music_and_sounds/music/battle/HorrorPen/Assasin's Assault.mp3"
+dest_files=["res://.godot/imported/Assasin's Assault.mp3-9b4aa8ce7064ee1015fb9c25cc0c23a0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

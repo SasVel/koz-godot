@@ -67,7 +67,7 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2086147442]
 layout_mode = 2
-text = "Game Design, Development, etc."
+text = "Game Design, Development, Art Direction, etc."
 label_settings = ExtResource("3_0ccpq")
 
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=166595921]
@@ -83,8 +83,8 @@ label_settings = ExtResource("3_0ccpq")
 [node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1477484429]
 layout_mode = 2
 text = "    SasVel    
-    Limofeus on Itch.io
-    OpenClipart-Vectors from Pixabay"
+    Limofeus (Itch.io)
+    OpenClipart-Vectors (Pixabay)"
 label_settings = ExtResource("4_ehabf")
 
 [node name="Label5" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=335099003]
@@ -94,8 +94,8 @@ label_settings = ExtResource("3_0ccpq")
 
 [node name="Label6" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=561187178]
 layout_mode = 2
-text = "    Tottomori
-    "
+text = "    Tottomori (their website)
+    HorrorPen (OpenGameArt)"
 label_settings = ExtResource("4_ehabf")
 
 [node name="BackBtn" type="Button" parent="." unique_id=360919578]
