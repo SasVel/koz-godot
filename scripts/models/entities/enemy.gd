@@ -1,7 +1,6 @@
 extends Entity
 class_name Enemy
 
-
 func _ready() -> void:
 	data.card_hand_size = stats.Tempo.maxValue
 	stats.Tempo.stat_changed.connect(\
@@ -14,6 +13,8 @@ func _ready() -> void:
 func config(data_ : EntityData):
 	super(data_)
 	var enemy_data = data as EnemyData
+	if enemy_data.sprite2D_material != null:
+		%EnemySprite.material = enemy_data.sprite2D_material
 	%IdleAnimator.config(enemy_data.idle_anim_settings)
 	%NameLabel.text = data.entity_name
 	%EnemyBar.config(stats.Health, stats.Block)
@@ -93,3 +94,18 @@ func tween_death():
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(%EnemySprite, "rotation_degrees", 90, 0.5)
 	await tween.finished
+	var mat = ObjManager.burn_dissolve_shader_mat.duplicate()
+	mat.set_shader_parameter("dissolve_value", 1)
+	%EnemySprite.material = null
+	%EnemySprite.material = mat
+	var shader_tween : Tween = \
+		await Obj.tween_shader_parameter(%EnemySprite, "dissolve_value", 1.00, 0.00, 1.00, false, Tween.EaseType.EASE_OUT_IN, Tween.TransitionType.TRANS_CUBIC, false)
+	await shader_tween.finished
+
+func _on_data_dropper_mouse_entered() -> void:
+	if ObjManager.objPickedUp:
+		ObjManager.focus_rect.focus_control(%DataDropper)
+
+func _on_data_dropper_mouse_exited() -> void:
+	if ObjManager.objPickedUp:
+		ObjManager.focus_rect.unfocus()

@@ -12,8 +12,8 @@ static func disconnect_signals(sig_dict : Dictionary[Signal, Callable]):
 			sig.disconnect(sig_dict[sig])
 
 static func tween_shader_parameter(\
-		obj : Node, param_name : String, from : Variant, to : Variant, duration : float, \
-		isLooping : bool = false, ease_type = Tween.EASE_IN_OUT, transition_type = Tween.TRANS_CUBIC):
+		obj : Node, param_name : String, from : float, to : float, duration : float, \
+		isLooping : bool = false, ease_type = Tween.EASE_IN_OUT, transition_type = Tween.TRANS_CUBIC, is_awaiting : bool = true):
 	var tween = obj.create_tween().set_loops(!isLooping)
 	tween.tween_method(\
 		func(val):\
@@ -28,4 +28,7 @@ static func tween_shader_parameter(\
 				.set_trans(transition_type)\
 				.set_ease(ease_type)
 
-	await tween.finished
+	if is_awaiting:
+		await tween.finished
+	else:
+		return tween

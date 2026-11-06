@@ -4,12 +4,28 @@
 [ext_resource type="PackedScene" uid="uid://denor2og15qye" path="res://Decorations/fire_rect.tscn" id="2_d564k"]
 [ext_resource type="Script" uid="uid://bll6s507vx1ol" path="res://entities/rooms/battle_rooms/battle_room/battle_room.gd" id="2_p5arh"]
 [ext_resource type="Resource" uid="uid://c1nlhyyohcy2g" path="res://entities/rooms/battle_rooms/skelly_room.dialogue" id="3_8ughf"]
+[ext_resource type="Shader" uid="uid://dgi1lmqdghiqg" path="res://shaders/JitterDraw.gdshader" id="5_800jd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6nig"]
+shader = ExtResource("5_800jd")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 3.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10ray"]
+shader = ExtResource("5_800jd")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 2.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 1.0
 
 [node name="BattleRoom" unique_id=1640835901 instance=ExtResource("1_q5ix2")]
 script = ExtResource("2_p5arh")
 dialogue = ExtResource("3_8ughf")
 
 [node name="FireRect" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="0" unique_id=1524273013 instance=ExtResource("2_d564k")]
+material = SubResource("ShaderMaterial_k6nig")
 offset_left = 147.00002
 offset_top = 133.10551
 offset_right = 275.0
@@ -17,6 +33,7 @@ offset_bottom = 261.10565
 metadata/_edit_use_anchors_ = true
 
 [node name="FireRect2" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="1" unique_id=1857025563 instance=ExtResource("2_d564k")]
+material = SubResource("ShaderMaterial_10ray")
 offset_left = 875.99994
 offset_top = 141.0
 offset_right = 1003.99994

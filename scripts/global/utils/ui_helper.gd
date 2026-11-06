@@ -30,7 +30,7 @@ static func pascal_to_readable_text(text : String) -> String:
 static func tween_eff_trails(source_center_pos : Vector2, eff_comp : EffectComponent):
 	if eff_comp is DamageComp:
 		var dmg_comp = (eff_comp as DamageComp)
-		for target in dmg_comp.targets:
+		for target in dmg_comp.targets.filter(func(x): return x != null):
 			var trail : TrailEffect = ObjManager.trail_eff_scn.instantiate()
 			trail.config(Const.ACCENT_COLOR,\
 			source_center_pos,\

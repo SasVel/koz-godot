@@ -10,7 +10,11 @@ class_name DragObject
 @export var fauxTweenSpeed : float = 0.1
 @export var container : Control
 
-var isPickedUp : bool = false
+var isPickedUp : bool = false : 
+	set(val):
+		isPickedUp = val
+		ObjManager.objPickedUp = val
+
 var isEquipped : bool = false
 
 var dragObject : Control

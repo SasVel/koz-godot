@@ -10,7 +10,6 @@ metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 
 [node name="EnemyData" type="Node" unique_id=2139519148]
 script = ExtResource("1_8uo78")
-has_alt_sprite = null
 idle_anim_settings = SubResource("Resource_2w0nu")
 
 [node name="Components" type="Node" parent="." unique_id=598381325]

@@ -32,8 +32,13 @@ extends Node
 @export var sprites_256_atlas : AtlasTexture
 @export var sprites_512_atlas : AtlasTexture
 
+@export_category("Shader Materials")
+@export var burn_dissolve_shader_mat : ShaderMaterial
+
 @onready var hit_eff_scn = preload("res://UI/HitEffect/hit_effect.tscn")
 @onready var trail_eff_scn = preload("res://UI/TrailEffect/trail_effect.tscn")
+@onready var focus_rect : FocusRect
+@onready var objPickedUp : bool = false
 
 func get_rand_action_data(dict = actions_dict) -> CardData:
 	return dict[randi_range(0, Const.Actions.size() - 1) as Const.Actions].instantiate()
@@ -113,6 +118,9 @@ func get_rand_room(has_end_game_rooms : bool = false) -> Room:
 
 func get_rand_enemy_obj() -> Enemy:
 	return get_enemy_obj(get_rand_enemy_data())
+
+func get_enemy_obj_by_type(type : Const.Enemies):
+	return get_enemy_obj(enemies_dict[type].instantiate())
 
 func get_action_sprite(type : Const.Actions) -> AtlasTexture:
 	var image = sprites_256_atlas.duplicate()

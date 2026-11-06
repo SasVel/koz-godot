@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://dacbxaq8dgji0" path="res://entities/rooms/quest_rooms/healing_spring/healing_spring_room.tscn" id="36_kf0be"]
 [ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="36_o6px0"]
 [ext_resource type="PackedScene" uid="uid://b73cc3b36w7b7" path="res://UI/tool_display_card.tscn" id="37_ahfjw"]
+[ext_resource type="Material" uid="uid://4xdxesa3ufwo" path="res://shaders/BurnDissolveShaderMat.tres" id="47_k3lr5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amtf5"]
 atlas = ExtResource("36_o6px0")
@@ -135,3 +136,4 @@ sprites_64_atlas = SubResource("AtlasTexture_amtf5")
 sprites_128_atlas = SubResource("AtlasTexture_s34ir")
 sprites_256_atlas = SubResource("AtlasTexture_et42b")
 sprites_512_atlas = SubResource("AtlasTexture_j1slq")
+burn_dissolve_shader_mat = ExtResource("47_k3lr5")

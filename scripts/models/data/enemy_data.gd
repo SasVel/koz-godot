@@ -5,6 +5,7 @@ class_name EnemyData
 @export var has_alt_sprite : bool = false
 @export var custom_scale_multi : float = 1.0
 @export var idle_anim_settings : IdleAnimSettings
+@export var sprite2D_material : ShaderMaterial
 
 ## TODO: To be refactored.
 @export var dialogue : DialogueResource
