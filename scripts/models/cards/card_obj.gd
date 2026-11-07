@@ -50,7 +50,7 @@ enum TweenState {
 				tween_idle(false)
 		curr_tween_state = val
 
-@onready var isLoot : bool = false
+var isLoot : bool = false
 @onready var isFocusTweening : bool = false
 @onready var isAnimTweening : bool = false
 
@@ -123,7 +123,8 @@ func _on_focus_exited() -> void:
 
 func tween_focus(on_off : bool):
 	scale_on_focus(on_off)
-	move_on_focus(on_off)
+	if not isFocusTweening and not isLoot:
+		move_on_focus(on_off)
 
 func scale_on_focus(on_off : bool):
 	if isFocusTweening: return
@@ -134,7 +135,6 @@ func scale_on_focus(on_off : bool):
 		tween.tween_property(self, "scale", Vector2(1, 1), focus_tween_speed)
 
 func move_on_focus(on_off : bool):
-	if isFocusTweening or isLoot: return
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	if on_off:
 		tween.tween_property(self, "global_position:y", focus_card_pos_y,

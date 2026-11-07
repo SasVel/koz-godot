@@ -86,6 +86,20 @@ func get_rand_action_objects(num) -> Array[CardObj]:
 		objects.append(get_rand_action_obj())
 	return objects
 
+func get_rand_rewards(num) -> Array[CardObj]:
+	var objects = get_rand_action_objects(num)
+	if randi_range(0, 3) == 3:
+		if randi_range(0, 1):
+			objects.append(ObjManager.get_rand_weapon_obj())
+		else:
+			objects.append(ObjManager.get_rand_shield_obj())
+
+	for obj in objects:
+		obj.isLoot = true
+		obj.focus_card_pos_y = 0
+
+	return objects
+
 func get_rand_weapon_obj() -> CardObj:
 	return card_obj.instantiate().config(get_rand_weapon_data())
 
