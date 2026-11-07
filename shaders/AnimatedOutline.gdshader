@@ -33,5 +33,5 @@ void fragment() {
 	vec4 edge = m3 * edge_color;
 	vec4 inner = m * inner_color; 
 	//Blend both, reduce distortion intensity by *0.1
-	COLOR = mix(edge, inner, inner.a);
+	COLOR = mix(edge, inner, inner.a) * COLOR.a;
 }

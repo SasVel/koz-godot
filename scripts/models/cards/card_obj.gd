@@ -220,6 +220,8 @@ func animate_post_activation():
 
 func activate(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
 	Game.event_queue.append(Callable(self, "activation_sequence").bindv([drop_position, deduct_tempo]))
+	if ObjManager.objPickedUp:
+		ObjManager.focus_rect.unfocus()
 
 func activation_sequence(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
 	curr_tween_state = TweenState.Anim
