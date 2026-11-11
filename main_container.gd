@@ -2,6 +2,13 @@ extends Control
 
 @export var player : Player
 @onready var actions_container : Control = %ActionsContainer
+@onready var actions_container_default_pos
+@onready var tools_list_default_pos
+
+## Offset of card containers on card pickup.
+@export var pickup_offset = 80
+@export var pickup_offset_duration = 0.15
+
 @export var phases_container : RadialContainer
 @onready var placeholder_scn = preload("res://UI/placeholder.tscn")
 
@@ -28,6 +35,9 @@ func _ready() -> void:
 	player.tools_changed.connect(update_tools)
 
 	Game.on_start_turn_layer_1.connect(func(): update_turns_label(Game.turn_counter))
+
+	actions_container_default_pos = actions_container.position
+	tools_list_default_pos = %ToolsList.position
 
 func set_player_ui_state():
 	%ActionsContainer.visible = Game.curr_room.is_combat
@@ -71,6 +81,8 @@ func update_hand(data : Array, clear : bool = false):
 		if card_objects.any(func(x): return x.data == info): continue
 		else:
 			var card_inst = ObjManager.get_card_obj(info)
+			card_inst.drag_started.connect(on_card_pickup)
+			card_inst.drag_ended.connect(on_card_drop)
 			%ActionsContainer.add_child(card_inst)
 	card_objects = _get_card_objects()
 	for card in card_objects:
@@ -103,6 +115,8 @@ func update_tools(data : Array, clear : bool = true):
 
 	for info in data:
 		var card_inst = ObjManager.get_tool_obj(info)
+		card_inst.drag_started.connect(on_card_pickup)
+		card_inst.drag_ended.connect(on_card_drop)
 		%ToolsList.add_child(card_inst)
 
 func update_rooms_label(val : int):
@@ -148,3 +162,13 @@ func _on_player_card_activated(card_data: CardData) -> void:
 
 func _on_player_configured() -> void:
 	%PlayerNameLabel.text = "%s %s" % [Game.player_name, player.data.entity_name]
+
+func on_card_pickup(_card):
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(actions_container, "position:y", actions_container_default_pos.y + pickup_offset, pickup_offset_duration)
+	tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y + pickup_offset, pickup_offset_duration)
+
+func on_card_drop(_card):
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(actions_container, "position:y", actions_container_default_pos.y, pickup_offset_duration)
+	tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y, pickup_offset_duration)

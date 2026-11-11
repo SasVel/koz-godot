@@ -2,6 +2,7 @@ extends DragObject
 class_name CardObj
 
 @export var focus_tween_speed = 0.2
+@export var fade_tween_speed = 0.5
 @export var focus_scale = 1.2
 @export var cardBack : TextureRect
 @onready var default_pos = self.position
@@ -191,10 +192,10 @@ func animate_pre_activation(drop_position):
 	tween.parallel().tween_property(self, "rotation_degrees", 0, 0.5)
 	tween.parallel().tween_property(self, "scale", self.scale * 1.1, 0.5)
 
-	tween.parallel().tween_property(cardBack, "self_modulate:a", 0, 0.5)
-	tween.parallel().tween_property(%TitleContainer, "modulate:a", 0, 0.5)
-	tween.parallel().tween_property(%TempoDisplay, "modulate:a", 0, 0.5)
-	tween.parallel().tween_property(%DescLabel, "self_modulate:a", 0, 0.5)
+	tween.parallel().tween_property(cardBack, "self_modulate:a", 0, fade_tween_speed)
+	tween.parallel().tween_property(%TitleContainer, "modulate:a", 0, fade_tween_speed)
+	tween.parallel().tween_property(%TempoDisplay, "modulate:a", 0, fade_tween_speed)
+	tween.parallel().tween_property(%DescLabel, "self_modulate:a", 0, fade_tween_speed)
 
 	tween.tween_property(self, "scale", self.scale * 1.3, 0.1)
 	await tween.finished
@@ -210,10 +211,10 @@ func animate_post_activation():
 	tween.parallel().tween_property(self, "rotation", pre_activation_rot, 0.5)
 	tween.parallel().tween_property(self, "scale", pre_activation_scale, 0.5)
 
-	tween.parallel().tween_property(cardBack, "self_modulate:a", 1, 0.5)
-	tween.parallel().tween_property(%TitleContainer, "modulate:a", 1, 0.5)
-	tween.parallel().tween_property(%TempoDisplay, "modulate:a", 1, 0.5)
-	tween.parallel().tween_property(%DescLabel, "self_modulate:a", 1, 0.5)
+	tween.parallel().tween_property(cardBack, "self_modulate:a", 1, fade_tween_speed)
+	tween.parallel().tween_property(%TitleContainer, "modulate:a", 1, fade_tween_speed)
+	tween.parallel().tween_property(%TempoDisplay, "modulate:a", 1, fade_tween_speed)
+	tween.parallel().tween_property(%DescLabel, "self_modulate:a", 1, fade_tween_speed)
 
 	await tween.finished
 	self.z_index = 0
