@@ -2,6 +2,7 @@ extends EntityData
 class_name ClassData
 
 @export var player_class : Const.PlayerClasses
+@export var suit : Const.SuitTypes
 
 @export_category("Pick tool type from the first array. Then choose starting
 tools. One of each category up to 2 will be picked randomly.")

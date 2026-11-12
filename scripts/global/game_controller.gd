@@ -6,6 +6,7 @@ enum Phases {
 	ATTACK,
 	DEFEND
 }
+
 @onready var turn_counter : int = 0
 @onready var rooms_completed : int = 0 :
 	set(val):
@@ -175,6 +176,7 @@ func set_room():
 	room.completed.connect(next_room)
 	await room.ready
 	on_new_room.emit()
+	await SceneSwitcher.fake_switch(0.1)
 	add_event(curr_room.switch_transition.bind(true))
 	await event_queue_empty
 

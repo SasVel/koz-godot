@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://bjfofuvh3c3vi" path="res://end_turn_btn.gd" id="18_htxhm"]
 [ext_resource type="Script" uid="uid://tw10yiuclb40" path="res://entities/status_effects_display.gd" id="18_jq2sk"]
 [ext_resource type="Script" uid="uid://30k2gbj6kiml" path="res://scripts/models/entities/player.gd" id="21_getpj"]
+[ext_resource type="Script" uid="uid://hsneqp3wyurx" path="res://koz_container.gd" id="24_a6jrf"]
 [ext_resource type="Shader" uid="uid://n2crwwih4y2b" path="res://shaders/AnimatedOutline.gdshader" id="24_lswn8"]
 [ext_resource type="Script" uid="uid://baraqeaue84k4" path="res://card_activate_field.gd" id="24_xuqvo"]
 [ext_resource type="Script" uid="uid://bqwyouuho4fye" path="res://focus_rect.gd" id="25_a6jrf"]
@@ -133,6 +134,10 @@ shader_parameter/fov = 90.0
 shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k2k6"]
+atlas = ExtResource("25_xuqvo")
+region = Rect2(256, 384, 128, 128)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ok6jj"]
 
@@ -500,6 +505,31 @@ label_settings = ExtResource("15_1u8w0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="KozContainer" type="HBoxContainer" parent="UI/MainContainer" unique_id=2138142902]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 14.5
+offset_top = 18.0
+offset_right = 175.5
+offset_bottom = 91.0
+grow_horizontal = 2
+script = ExtResource("24_a6jrf")
+
+[node name="Label" type="Label" parent="UI/MainContainer/KozContainer" unique_id=978676835]
+layout_mode = 2
+text = "Koz: "
+label_settings = ExtResource("15_1u8w0")
+
+[node name="KozIconRect" type="TextureRect" parent="UI/MainContainer/KozContainer" unique_id=213915366]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_4k2k6")
+expand_mode = 3
+stretch_mode = 5
+
 [node name="InputBlocker" type="Control" parent="UI" unique_id=1360269162]
 unique_name_in_owner = true
 layout_mode = 1
@@ -564,6 +594,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="EndTurnTimer" to="EndTurnTimer" method="_on_timeout"]
 [connection signal="pressed" from="UI/MainContainer/EndTurnBtn" to="UI/MainContainer/EndTurnBtn" method="_on_pressed"]

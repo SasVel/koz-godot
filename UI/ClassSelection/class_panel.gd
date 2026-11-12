@@ -7,6 +7,9 @@ signal finished
 func config(data_ : ClassData):
 	data = data_
 	%TitleLabel.text = data.entity_name.capitalize()
+	%SuitIconRect.texture = ObjManager.get_suit_sprite(data.suit)
+	%SuitIconRect.self_modulate = ObjManager.get_suit_color(data.suit)
+
 	%DescLabel.text = data.desc
 	%HealthLabel.text = "Health: %.f" % data.default_stats.Health.maxValue
 	%TempoLabel.text = "Tempo: %.f" % data.default_stats.Tempo.maxValue
