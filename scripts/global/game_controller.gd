@@ -110,6 +110,9 @@ func restart():
 	await get_tree().scene_changed
 	init()
 
+func change_scene():
+	pass
+
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_input: return
 

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://babmasp4y7jj8"]
+
+[ext_resource type="Script" uid="uid://bs0eugl8d1oq" path="res://scripts/global/scene_switcher.gd" id="1_t88p8"]
+[ext_resource type="PackedScene" uid="uid://udq3k5kt871x" path="res://shaders/transitions/transitions/t_cells.tscn" id="2_cim2s"]
+[ext_resource type="Script" uid="uid://cmp5ysigxtlro" path="res://UI/color_transition_editor.gd" id="3_g7sj7"]
+
+[node name="SceneSwitcher" type="Control" unique_id=564068174]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t88p8")
+
+[node name="Transition" parent="." unique_id=1479469501 instance=ExtResource("2_cim2s")]
+unique_name_in_owner = true
+z_index = 100
+layout_mode = 1
+mouse_filter = 2
+factor = 0.0
+width = 0.5
+
+[node name="ColorTransitionEditor" type="Node" parent="Transition" unique_id=1721957716]
+script = ExtResource("3_g7sj7")
