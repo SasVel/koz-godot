@@ -45,7 +45,7 @@ func on_changed_phase(val : Game.Phases):
 func _on_data_dropper_data_dropped(at_position: Vector2, drop_data: Variant):
 	var card_obj : CardObj = drop_data["object"]
 	card_obj.data.add_target(self)
-	await card_obj.activate(at_position)
+	await card_obj.activate()
 
 func add_action_deck(action : CardData):
 	action.config(self, [Game.player])

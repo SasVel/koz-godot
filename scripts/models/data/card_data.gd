@@ -1,6 +1,7 @@
 extends ComponentsData
 class_name CardData
 
+@export var suit : Const.SuitTypes
 @export var type : Const.CardTypes = Const.CardTypes.ACTION
 @export var isGeneric : bool = false
 

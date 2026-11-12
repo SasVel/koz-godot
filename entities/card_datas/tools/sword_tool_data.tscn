@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_dd1wf"]
 
 [node name="SwordToolData" unique_id=988386249 instance=ExtResource("1_1h116")]
+suit = 2
 type = 1
 isGeneric = false
 weaponType = 1

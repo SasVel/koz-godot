@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cr0gxa7eamckf" path="res://scripts/models/effect_components/block_comp.gd" id="2_b24gp"]
 
 [node name="ParryActionData" unique_id=988386249 instance=ExtResource("1_ian02")]
+suit = 1
 actionType = 5
 isOffensive = false
 

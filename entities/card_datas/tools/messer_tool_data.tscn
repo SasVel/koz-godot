@@ -6,6 +6,7 @@
 
 [node name="MesserToolData" unique_id=988386249 node_paths=PackedStringArray("durability_processor") instance=ExtResource("1_04ulj")]
 durability_processor = NodePath("Components/DurabilityProcessorComp")
+suit = 1
 type = 1
 isGeneric = false
 weaponType = 2

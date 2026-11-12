@@ -23,11 +23,28 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_118ut"]
+atlas = ExtResource("7_7b0cb")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcnyk"]
+shader = ExtResource("8_118ut")
+shader_parameter/shadow_offset = Vector2(2, 2)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcnyk"]
+atlas = ExtResource("7_7b0cb")
+region = Rect2(0, 384, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iubg"]
 atlas = ExtResource("7_7b0cb")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcnyk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l52sb"]
+atlas = ExtResource("4_nlkk3")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l52sb"]
 shader = ExtResource("8_118ut")
 shader_parameter/shadow_offset = Vector2(2, 2)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
@@ -35,11 +52,6 @@ shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3ehx"]
 atlas = ExtResource("4_nlkk3")
 region = Rect2(1792, 256, 237, 256)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l52sb"]
-shader = ExtResource("8_118ut")
-shader_parameter/shadow_offset = Vector2(2, 2)
-shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [node name="CardObj" type="Control" unique_id=87810923 node_paths=PackedStringArray("cardBack", "container")]
 custom_minimum_size = Vector2(226, 300)
@@ -109,16 +121,42 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer" unique_id=264211312]
 layout_mode = 2
 theme_override_constants/separation = 0
+alignment = 1
+
+[node name="SuitIconRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2132020183]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_118ut")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="SuitShadow" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/SuitIconRect" unique_id=1341900029]
+unique_name_in_owner = true
+show_behind_parent = true
+material = SubResource("ShaderMaterial_lcnyk")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_lcnyk")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="TitleContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=767831041]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 0
 alignment = 1
 
 [node name="TitleLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TitleContainer" unique_id=1601413309]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "END THEM RIGHTLY"
@@ -129,17 +167,19 @@ autowrap_mode = 3
 
 [node name="TempoDisplay" type="Control" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1230546215]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 script = ExtResource("6_ls7t3")
-is_colored_outline = false
 
 [node name="IconRect" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay" unique_id=1894493893]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 0
-offset_right = 60.0
-offset_bottom = 60.0
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("AtlasTexture_6iubg")
 expand_mode = 5
 stretch_mode = 5
@@ -147,11 +187,13 @@ stretch_mode = 5
 [node name="IconShadow" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TempoDisplay/IconRect" unique_id=1398163549]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_lcnyk")
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_6iubg")
@@ -164,8 +206,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 3.0
-offset_bottom = 3.0
+offset_top = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "1"
@@ -177,7 +219,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-texture = SubResource("AtlasTexture_h3ehx")
+texture = SubResource("AtlasTexture_l52sb")
 expand_mode = 3
 stretch_mode = 5
 

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cmrq5u7y2j8ck" path="res://scripts/models/effect_components/tempo_comp.gd" id="3_kevjg"]
 
 [node name="FeintActionData" unique_id=988386249 instance=ExtResource("1_n5dg3")]
+suit = 2
 actionType = 3
 
 [node name="BlockComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=771110746]

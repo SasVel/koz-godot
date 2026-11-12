@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cjn7jamaae674" path="res://entities/status_effects/stun_eff_data.tscn" id="3_wx3bm"]
 
 [node name="SmashActionData" unique_id=988386249 instance=ExtResource("1_274ni")]
+suit = 1
 actionType = 10
 tempoCost = 2
 

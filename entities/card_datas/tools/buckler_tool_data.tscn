@@ -5,6 +5,7 @@
 
 [node name="BucklerToolData" unique_id=988386249 instance=ExtResource("1_yj6nw")]
 durability = 3
+suit = 1
 isGeneric = false
 shieldType = 1
 value = 10

@@ -6,7 +6,9 @@
 
 [node name="HalberdToolData" unique_id=988386249 instance=ExtResource("1_skvfg")]
 durability = 6
+suit = 2
 type = 1
+isGeneric = false
 tempoCost = 2
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1160532620]

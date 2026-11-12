@@ -7,6 +7,13 @@ var themes : Dictionary[String, Dictionary]
 var selected_theme : Array
 
 ## Enums
+enum SuitTypes {
+	Spades,
+	Clubs,
+	Diamonds,
+	Hearts
+}
+
 enum CardTypes {
 	ACTION,
 	WEAPON,
@@ -102,6 +109,8 @@ var BACKGROUND_LIGHTER_COLOR : Color
 var BACKGROUND_DARKER_COLOR : Color
 var PRIMARY_HUE_SHIFT_UP_COLOR : Color
 var PRIMARY_HUE_SHIFT_DOWN_COLOR : Color
+var PRIMARY_COMPLIMENTARY_MIX : Color
+var PRIMARY_ACCENT_MIX : Color
 
 signal palette_changed
 
@@ -154,6 +163,9 @@ func map_colors():
 	var primary_hue_shift_down = rgb_to_hsv(PRIMARY_COLOR)
 	primary_hue_shift_down[0] -= 0.01
 	PRIMARY_HUE_SHIFT_DOWN_COLOR = Color.from_hsv(primary_hue_shift_down[0], primary_hue_shift_down[1], primary_hue_shift_down[2])
+
+	PRIMARY_COMPLIMENTARY_MIX = PRIMARY_COLOR.lerp(COMPLIMENTARY_COLOR, 0.5)
+	PRIMARY_ACCENT_MIX = COMPLIMENTARY_COLOR.lerp(ACCENT_COLOR, 0.5)
 
 func check_palette_existing() -> bool:
 	return FileAccess.file_exists("usr://data/palette_default.json")

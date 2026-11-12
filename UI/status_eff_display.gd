@@ -10,9 +10,9 @@ func config(eff_data : StatusEffData):
 	self.texture = ObjManager.get_effect_sprite(data.type)
 	%ShadowRect.texture = ObjManager.get_effect_sprite(data.type)
 	self.self_modulate = color
-	if is_colored_outline:
-		%NumLabel.label_settings.outline_color = color
-		%StacksLabel.label_settings.outline_color = color
+#	if is_colored_outline:
+#		%NumLabel.label_settings.outline_color = color
+#		%StacksLabel.label_settings.outline_color = color
 
 	update(eff_data.duration)
 	data.duration_changed.connect(update)

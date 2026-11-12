@@ -10,7 +10,8 @@ func activate():
 		turn_iterator += 1
 		if turn_iterator == turns_to_activate:
 			for component in %Components.get_children():
-				await UIHelper.tween_eff_trails(source.global_position, component)
+				if source != null:
+					await UIHelper.tween_eff_trails(source.global_position, component)
 				component.activate()
 			activated.emit()
 			turn_iterator = 0

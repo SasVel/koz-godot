@@ -89,6 +89,7 @@ func config(data_ : CardData):
 	data.update_status.connect(set_generate_description)
 	%CardIconRect.texture = image
 	%CardIconShadow.texture = image
+	suit_icon_config()
 	%TempoDisplay.config(Const.ACCENT_COLOR, data.tempoCost, data.tempo_changed)
 	data.tempo_changed.connect(func(_x, y): %TempoDisplay.update(y))
 	return self
@@ -97,6 +98,12 @@ func _ready() -> void:
 	curr_tween_state = TweenState.None
 	if focus_scale == null: focus_scale = 1.2
 	focus_card_pos_y = get_viewport_rect().size.y - (self.custom_minimum_size.y * focus_scale + 10)
+
+func suit_icon_config():
+	var sprite = ObjManager.get_suit_sprite(data.suit)
+	%SuitIconRect.texture = sprite
+	%SuitShadow.texture = sprite
+	%SuitIconRect.self_modulate = ObjManager.get_suit_color(data.suit)
 
 func set_generate_description():
 	%DescLabel.text = data.generate_desc()
@@ -179,7 +186,7 @@ func _create_idle_tween(is_looping : bool = true):
 	if is_looping:
 		idle_tween.set_loops()
 
-func animate_pre_activation(drop_position):
+func animate_pre_activation():
 	# Setup
 	pre_activation_position = self.global_position
 	pre_activation_rot = self.rotation
@@ -188,7 +195,8 @@ func animate_pre_activation(drop_position):
 
 	# Tween move to center and scale up
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "global_position", (get_viewport_rect().size / 2) - self.size / 2, 0.5).from(drop_position)
+	tween.tween_property(self, "global_position", (get_viewport_rect().size / 2) - self.size / 2, 0.5)\
+		.from(get_global_mouse_position())
 	tween.parallel().tween_property(self, "rotation_degrees", 0, 0.5)
 	tween.parallel().tween_property(self, "scale", self.scale * 1.1, 0.5)
 
@@ -196,6 +204,7 @@ func animate_pre_activation(drop_position):
 	tween.parallel().tween_property(%TitleContainer, "modulate:a", 0, fade_tween_speed)
 	tween.parallel().tween_property(%TempoDisplay, "modulate:a", 0, fade_tween_speed)
 	tween.parallel().tween_property(%DescLabel, "self_modulate:a", 0, fade_tween_speed)
+	tween.parallel().tween_property(%SuitIconRect, "modulate:a", 0, fade_tween_speed)
 
 	tween.tween_property(self, "scale", self.scale * 1.3, 0.1)
 	await tween.finished
@@ -215,18 +224,19 @@ func animate_post_activation():
 	tween.parallel().tween_property(%TitleContainer, "modulate:a", 1, fade_tween_speed)
 	tween.parallel().tween_property(%TempoDisplay, "modulate:a", 1, fade_tween_speed)
 	tween.parallel().tween_property(%DescLabel, "self_modulate:a", 1, fade_tween_speed)
+	tween.parallel().tween_property(%SuitIconRect, "modulate:a", 1, fade_tween_speed)
 
 	await tween.finished
 	self.z_index = 0
 
-func activate(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
-	Game.event_queue.append(Callable(self, "activation_sequence").bindv([drop_position, deduct_tempo]))
+func activate(deduct_tempo : bool = true):
+	Game.event_queue.append(Callable(self, "activation_sequence").bind(deduct_tempo))
 	if ObjManager.objPickedUp:
 		ObjManager.focus_rect.unfocus()
 
-func activation_sequence(drop_position : Vector2 = self.global_position, deduct_tempo : bool = true):
+func activation_sequence(deduct_tempo : bool = true):
 	curr_tween_state = TweenState.Anim
-	await animate_pre_activation(drop_position)
+	await animate_pre_activation()
 	data.activate(deduct_tempo)
 	if self.is_queued_for_deletion(): return
 	await animate_post_activation()

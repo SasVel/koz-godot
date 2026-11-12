@@ -240,6 +240,34 @@ func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
 			image = atlas.get_image()
 	return ImageTexture.create_from_image(image)
 
+func get_suit_sprite(type : Const.SuitTypes):
+	var atlas = sprites_128_atlas.duplicate()
+	var image : Image
+	match type:
+		Const.SuitTypes.Spades:
+			atlas.region = Rect2(0,384,128,128)
+		Const.SuitTypes.Clubs:
+			atlas.region = Rect2(128,384,128,128)
+		Const.SuitTypes.Diamonds:
+			atlas.region = Rect2(256,384,128,128)
+		Const.SuitTypes.Hearts:
+			atlas.region = Rect2(384,384,128,128)
+	image = atlas.get_image()
+	return ImageTexture.create_from_image(image)
+
+func get_suit_color(type : Const.SuitTypes):
+	var color : Color
+	match type:
+		Const.SuitTypes.Spades:
+			color = Const.PRIMARY_COMPLIMENTARY_MIX
+		Const.SuitTypes.Clubs:
+			color = Const.PRIMARY_COMPLIMENTARY_MIX
+		Const.SuitTypes.Diamonds:
+			color = Const.PRIMARY_ACCENT_MIX
+		Const.SuitTypes.Hearts:
+			color = Const.PRIMARY_ACCENT_MIX
+	return color
+
 func get_effect_color(type : Const.StatusEffects) -> Color:
 	var color : Color
 	match type:

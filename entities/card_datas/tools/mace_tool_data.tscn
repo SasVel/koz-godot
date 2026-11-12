@@ -6,6 +6,7 @@
 
 [node name="MaceToolData" unique_id=988386249 instance=ExtResource("1_yy7ab")]
 durability = 5
+suit = 1
 type = 1
 isGeneric = false
 weaponType = 5
