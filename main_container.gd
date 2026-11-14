@@ -221,11 +221,7 @@ func on_end_player_turn():
 	curr_card_display_mode = CardDisplayModes.Hidden
 
 func on_is_playing_event(isOn : bool):
-	if isOn:
-		curr_card_display_mode = CardDisplayModes.Inactive
-	else:
-		curr_card_display_mode = CardDisplayModes.Active
-		player.check_state_card_datas()
+	curr_card_display_mode = CardDisplayModes.Inactive if isOn else CardDisplayModes.Active
 
 func switch_cards(isOn : bool):
 	for card in player.cards_hand: _switch_card(card, isOn)

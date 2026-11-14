@@ -82,7 +82,8 @@ func tween_action():
 	%IdleAnimator.play()
 
 func on_death():
-	await tween_death()
+	Game.add_event(tween_death)
+	await Game.event_queue_empty
 	queue_free()
 
 func _exit_tree() -> void:
@@ -93,14 +94,24 @@ func tween_death():
 	%IdleAnimator.stop()
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(%EnemySprite, "rotation_degrees", 90, 0.5)
+	tween.parallel().tween_property(%EnemySprite, "position:y", %EnemySprite.texture.get_height() / 2, 0.5)
 	await tween.finished
+	await get_tree().create_timer(0.5).timeout
+
 	var mat = ObjManager.burn_dissolve_shader_mat.duplicate()
 	mat.set_shader_parameter("dissolve_value", 1)
+
 	%EnemySprite.material = null
+	%SpriteShadow.material = null
 	%EnemySprite.material = mat
+	%SpriteShadow.material = mat
+
 	var shader_tween : Tween = \
-		await Obj.tween_shader_parameter(%EnemySprite, "dissolve_value", 1.00, 0.00, 1.00, false, Tween.EaseType.EASE_OUT_IN, Tween.TransitionType.TRANS_CUBIC, false)
+		await Obj.tween_shader_parameter(%EnemySprite, "dissolve_value", 1.00, 0.00, 1.00, false, Tween.EaseType.EASE_OUT, Tween.TransitionType.TRANS_CUBIC, false)
+	await Obj.tween_shader_parameter(%SpriteShadow, "dissolve_value", 1.00, 0.00, 1.00, false, Tween.EaseType.EASE_OUT, Tween.TransitionType.TRANS_CUBIC, false)
+
 	await shader_tween.finished
+	await get_tree().create_timer(1).timeout
 
 func _on_data_dropper_mouse_entered() -> void:
 	if ObjManager.objPickedUp:
