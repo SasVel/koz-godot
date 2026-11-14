@@ -25,7 +25,7 @@ func tween_tools_offset(isOpen : bool):
 	self.queue_sort()
 	await self.sort_children
 	var children = %ToolsList.get_children()
-	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC).set_parallel()
 	for child in children:
 		if isOpen:
 			tween.tween_property(child, "offset_transform_position:y", 0, 0.8).from(200)

@@ -84,7 +84,6 @@ func _physics_process(_delta: float) -> void:
 func pop_play_event() -> void:
 	var event = event_queue.pop_back()
 	if event.get_object() != null:
-		print(str(event) + ": " + str(event.get_bound_arguments()))
 		await event.call()
 
 func add_event(event : Callable, is_unique : bool = false):

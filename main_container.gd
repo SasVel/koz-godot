@@ -8,12 +8,35 @@ extends Control
 ## Offset of card containers on card pickup.
 @export var pickup_offset = 80
 @export var pickup_offset_duration = 0.15
+@export var hidden_offset = 280
+@export var hidden_offset_duration = 0.45
 
 @export var phases_container : RadialContainer
 @onready var placeholder_scn = preload("res://UI/placeholder.tscn")
 
 @export var attack_phase_offset = 0.14
 @export var defend_phase_offset = 0.63
+
+enum CardDisplayModes {
+	Active,
+	Inactive,
+	Hidden
+}
+@onready var curr_card_display_mode : CardDisplayModes :
+	set(val):
+		if curr_card_display_mode == val: return
+		match val:
+			CardDisplayModes.Active:
+				switch_cards(true)
+				player.check_state_card_datas()
+			CardDisplayModes.Inactive:
+				switch_cards(false)
+			CardDisplayModes.Hidden:
+				tween_hand_offset(false)
+				switch_cards(false)
+		tween_card_containers(val)
+
+		curr_card_display_mode = val
 
 func _ready() -> void:
 	await player.ready
@@ -27,6 +50,7 @@ func _ready() -> void:
 	%DefendPhaseMarker.modulate = Const.COMPLIMENTARY_COLOR
 	Game.on_changed_phase.connect(tween_phase_change)
 	Game.on_rooms_completed.connect(update_rooms_label)
+	Game.on_rooms_completed.connect(func(_x): curr_card_display_mode = CardDisplayModes.Hidden)
 	Game.on_new_room.connect(set_player_ui_state)
 	phases_container.progress_offset = attack_phase_offset
 
@@ -152,14 +176,18 @@ func get_phases_text(phase : Game.Phases) -> String:
 func _on_player_configured() -> void:
 	%PlayerNameLabel.text = "%s %s" % [Game.player_name, player.data.entity_name]
 
-func switch_open_card_containers(isOn : bool):
+func tween_card_containers(card_display_mode : CardDisplayModes):
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	if !isOn:
-		tween.tween_property(actions_container, "position:y", actions_container_default_pos.y + pickup_offset, pickup_offset_duration)
-		tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y + pickup_offset, pickup_offset_duration)
-	else:
-		tween.tween_property(actions_container, "position:y", actions_container_default_pos.y, pickup_offset_duration)
-		tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y, pickup_offset_duration)
+	match card_display_mode:
+		CardDisplayModes.Active:
+			tween.tween_property(actions_container, "position:y", actions_container_default_pos.y, pickup_offset_duration)
+			tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y, pickup_offset_duration)
+		CardDisplayModes.Inactive:
+			tween.tween_property(actions_container, "position:y", actions_container_default_pos.y + pickup_offset, pickup_offset_duration)
+			tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y + pickup_offset, pickup_offset_duration)
+		CardDisplayModes.Hidden:
+			tween.tween_property(actions_container, "position:y", actions_container_default_pos.y + hidden_offset, hidden_offset_duration)
+			tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y + hidden_offset, hidden_offset_duration)
 
 #region Signal Callables
 func _on_player_card_activated(card_data: CardData) -> void:
@@ -178,30 +206,28 @@ func _on_player_card_activated(card_data: CardData) -> void:
 			return
 
 func on_card_pickup(_card):
-	switch_cards(false)
+	curr_card_display_mode = CardDisplayModes.Inactive
 
 func on_card_drop(_card):
-	switch_cards(true)
-	player.check_state_card_datas()
+	curr_card_display_mode = CardDisplayModes.Active
 
 func on_start_turn_layer_1():
 	update_turns_label(Game.turn_counter)
 
 func on_start_turn_layer_2():
-	switch_open_card_containers(true)
+	curr_card_display_mode = CardDisplayModes.Active
 
 func on_end_player_turn():
-	switch_cards(false)
+	curr_card_display_mode = CardDisplayModes.Hidden
 
 func on_is_playing_event(isOn : bool):
 	if isOn:
-		switch_cards(false)
+		curr_card_display_mode = CardDisplayModes.Inactive
 	else:
-		switch_cards(true)
+		curr_card_display_mode = CardDisplayModes.Active
 		player.check_state_card_datas()
 
 func switch_cards(isOn : bool):
-	switch_open_card_containers(isOn)
 	for card in player.cards_hand: _switch_card(card, isOn)
 	for tool in player.equipped_tools: _switch_card(tool, isOn)
 
