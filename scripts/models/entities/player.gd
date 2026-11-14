@@ -23,6 +23,10 @@ func on_changed_phase(val : Game.Phases):
 	elif val == Game.Phases.DEFEND:
 		apply_defend_phase_modifiers()
 
+func check_state_card_datas():
+	for card in cards_hand: card.check_state()
+	for tool in equipped_tools: tool.check_state()
+
 #region Tools
 func add_tool(tool : ToolData):
 	self.equipped_tools.append(tool)

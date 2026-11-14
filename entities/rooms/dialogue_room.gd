@@ -13,5 +13,5 @@ func try_activate_dialogue():
 
 	await DialogueManager.dialogue_ended
 
-func _response_selected(response : DialogueResponse):
+func _response_selected(_response : DialogueResponse):
 	pass

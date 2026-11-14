@@ -51,6 +51,7 @@ layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Write your name"
 max_length = 50
+caret_blink = true
 
 [node name="DoneBtn" type="Button" parent="VBoxContainer" unique_id=68797958]
 unique_name_in_owner = true

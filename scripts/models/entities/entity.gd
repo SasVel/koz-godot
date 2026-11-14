@@ -34,7 +34,7 @@ func start_turn():
 	stats.Tempo.reset()
 	draw_hand()
 
-func on_changed_phase(val : Game.Phases):
+func on_changed_phase(_val : Game.Phases):
 	pass
 
 func apply_attack_phase_modifiers():

@@ -23,6 +23,7 @@ enum Phases {
 @onready var player : Player
 @onready var curr_room : Room
 
+@onready var time_between_events : float = 0.3
 @onready var event_queue : Array[Callable]
 @onready var is_playing_event : bool = false :
 	set(val):
@@ -30,6 +31,7 @@ enum Phases {
 			return
 
 		is_playing_event = val
+		on_is_playing_event.emit(is_playing_event)
 		end_turn_timer.paused = is_playing_event
 		switch_input(!is_playing_event)
 		if !is_playing_event and event_queue.size() <= 0:
@@ -40,39 +42,48 @@ enum Phases {
 @onready var enemy_status_eff_actions : Array[Callable]
 @onready var end_turn_timer : EndTurnTimer
 
-@onready var inputBlocker : Control
-@onready var popupsContainer : Control
-@onready var visualEffectsContainer : Control
+@onready var ui_over_everything : Control = %UIOverEverything
+@onready var popupsContainer : Control = %PopupsContainer
+@onready var visualEffectsContainer : Control = %Effects
 
 @onready var player_name : String = "Sasser"
 @onready var default_class : Const.PlayerClasses = Const.PlayerClasses.KNIGHT
 
-@onready var is_input : bool = true
+@onready var in_game : bool = false
+@onready var is_gui_input : bool = true :
+	set(val):
+		get_tree().get_root().gui_disable_input = !val
+		is_gui_input = val
+
 @onready var is_object_dragged : bool = false
 
 signal on_start_first_turn
 signal on_start_turn_layer_1
 signal on_start_turn_layer_2
 
-signal on_end_turn()
+signal on_end_player_turn
+signal on_end_turn
 signal on_changed_phase(val : Phases)
 signal on_rooms_completed(val : int)
 signal on_new_room
 signal event_queue_empty
+signal on_is_playing_event(val : bool)
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _physics_process(_delta: float) -> void:
 	if event_queue.size() > 0 and !is_playing_event:
-		is_playing_event = true
 		await pop_play_event()
+		await get_tree().create_timer(time_between_events).timeout
 		if event_queue.size() <= 0:
 			is_playing_event = false
 
 func pop_play_event():
 	var event = event_queue.pop_back()
 	if event.get_object() != null:
+		is_playing_event = true
+		print(str(event) + ": " + str(event.get_bound_arguments()))
 		await event.call()
 		is_playing_event = false
 
@@ -94,9 +105,6 @@ func add_events(event_arr : Array[Callable]):
 func init_references():
 	main = get_tree().get_root().get_node("Main")
 	player = main.get_node("Player")
-	inputBlocker = main.get_node("UI/InputBlocker")
-	popupsContainer = main.get_node("UIOverEverything/PopupsContainer")
-	visualEffectsContainer = main.get_node("UIOverEverything/Effects")
 	end_turn_timer = main.get_node("EndTurnTimer")
 
 func init():
@@ -106,28 +114,25 @@ func init():
 	switch_input(true)
 
 func restart():
-	get_tree().current_scene.queue_free()
+	SceneSwitcher.switch_to_scene(main_scn)
 	get_tree().change_scene_to_packed(main_scn)
 	await get_tree().scene_changed
 	init()
 
-func change_scene():
-	pass
-
 func _unhandled_input(event: InputEvent) -> void:
-	if !is_input: return
+	if !is_gui_input: return
 
 	if event.is_action_pressed("end_turn"):
 		end_turn()
 
 func start_game():
-	curr_phase = Phases.DEFEND
+	in_game = true
 	set_room()
 
 func start_turn():
 	swap_phase()
 	turn_counter += 1
-	on_start_turn_emit()
+	add_event(on_start_turn_emit)
 	await play_player_eff_stack()
 
 func on_start_turn_emit():
@@ -137,6 +142,7 @@ func on_start_turn_emit():
 	on_start_turn_layer_2.emit()
 
 func end_turn():
+	on_end_player_turn.emit()
 	await play_enemy_anim_stack()
 	on_end_turn.emit()
 	refresh_end_turn_timer()
@@ -156,12 +162,11 @@ func swap_phase():
 
 func set_room():
 	if curr_room != null:
-		add_event(curr_room.switch_transition.bind(false))
+		add_event(SceneSwitcher.switch_transition.bind(false))
 		await event_queue_empty
 		curr_room.queue_free()
 
 	var room : Room
-	#room = ObjManager.get_room(Const.RoomTypes.EndGame)
 	if turn_counter >= 10:
 		room = ObjManager.get_room(Const.RoomTypes.EndGame)
 	else:
@@ -176,12 +181,12 @@ func set_room():
 	room.completed.connect(next_room)
 	await room.ready
 	on_new_room.emit()
-	await SceneSwitcher.fake_switch(0.1)
-	add_event(curr_room.switch_transition.bind(true))
+	add_event(SceneSwitcher.switch_transition.bind(true))
 	await event_queue_empty
 
 	if curr_room.is_combat:
-		start_turn()
+		curr_phase = Phases.DEFEND
+		await start_turn()
 
 func next_room():
 	turn_counter = 0
@@ -201,9 +206,7 @@ func remove_status_eff_action(action : Callable, is_for_player):
 		enemy_status_eff_actions.erase(action)
 
 func switch_input(isOn : bool):
-	is_input = isOn
-	inputBlocker.visible = !isOn
-
+	is_gui_input = isOn
 
 func start_end_turn_timer(wait_time):
 	add_event(end_turn_timer.timer_start.bind(wait_time))

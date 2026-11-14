@@ -12,7 +12,7 @@ enum Popups {
 }
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") and !is_paused:
+	if event.is_action_pressed("ui_cancel") and !is_paused and Game.in_game:
 		is_paused = true
 		show_screen(Popups.PAUSE)
 	else:

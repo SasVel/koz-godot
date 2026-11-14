@@ -65,16 +65,6 @@ item_radius_factor = 0.875
 color = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lswn8"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6jrf"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
@@ -126,6 +116,16 @@ shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jq2sk"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k2k6"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -353,7 +353,6 @@ tooltip_text = "Ends the round after the timer runs out."
 
 [node name="ActionsContainer" type="Container" parent="UI/MainContainer" unique_id=100635735]
 unique_name_in_owner = true
-z_index = 50
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -396,14 +395,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_lswn8")
-custom_minimum_size = Vector2(0, 0)
-layout_mode = 2
-offset_transform_enabled = false
-focus_mode = 1
-fauxShiftDeg = 15.0
-
-[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_a6jrf")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -411,7 +402,7 @@ offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_qsp4k")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -419,7 +410,7 @@ offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_kq58d")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -427,8 +418,16 @@ offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard5" parent="UI/MainContainer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_seu75")
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+offset_transform_enabled = false
+focus_mode = 1
+fauxShiftDeg = 15.0
+
+[node name="ActionCard6" parent="UI/MainContainer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_htxhm")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 offset_transform_enabled = false
@@ -437,7 +436,6 @@ fauxShiftDeg = 15.0
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer" unique_id=1790732093]
 unique_name_in_owner = true
-z_index = 50
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -452,13 +450,13 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_htxhm")
+material = SubResource("ShaderMaterial_jq2sk")
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
 [node name="ToolCard2" parent="UI/MainContainer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_jq2sk")
+material = SubResource("ShaderMaterial_4k2k6")
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
@@ -515,6 +513,7 @@ offset_top = 18.0
 offset_right = 175.5
 offset_bottom = 91.0
 grow_horizontal = 2
+tooltip_text = "The room's Koz."
 script = ExtResource("24_a6jrf")
 
 [node name="Label" type="Label" parent="UI/MainContainer/KozContainer" unique_id=978676835]
@@ -529,19 +528,6 @@ size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_4k2k6")
 expand_mode = 3
 stretch_mode = 5
-
-[node name="InputBlocker" type="Control" parent="UI" unique_id=1360269162]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.0
-offset_top = -9.0
-offset_right = -8.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="FocusRect" type="ColorRect" parent="UI" unique_id=2129793767]
 material = SubResource("ShaderMaterial_facbu")
@@ -566,35 +552,6 @@ unique_name_in_owner = true
 
 [node name="EffectDatas" type="Node" parent="Player" unique_id=398733229]
 unique_name_in_owner = true
-
-[node name="UIOverEverything" type="Control" parent="." unique_id=950534204]
-z_index = 101
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 700.0
-mouse_filter = 2
-
-[node name="Effects" type="Control" parent="UIOverEverything" unique_id=512678406]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PopupsContainer" type="Control" parent="UIOverEverything" unique_id=100367143]
-unique_name_in_owner = true
-top_level = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="EndTurnTimer" to="EndTurnTimer" method="_on_timeout"]
 [connection signal="pressed" from="UI/MainContainer/EndTurnBtn" to="UI/MainContainer/EndTurnBtn" method="_on_pressed"]

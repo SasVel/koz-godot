@@ -4,7 +4,7 @@ var anim_speed : float = 3
 
 func _ready() -> void:
 	Game.on_start_turn_layer_1.connect(func(): \
-	Game.add_event(play_turn_announcement, true)
+		Game.add_event(play_turn_announcement, true)
 	)
 	self.visible = true
 	%TurnRect.scale.y = 0

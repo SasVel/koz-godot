@@ -128,7 +128,11 @@ func get_room(type : Const.RoomTypes) -> Room:
 	return rooms_dict[type].pick_random().instantiate()
 
 func get_rand_room(has_end_game_rooms : bool = false) -> Room:
-	return get_room(randi_range(0, Const.RoomTypes.size() - 1) as Const.RoomTypes)
+	var type = randi_range(0, Const.RoomTypes.size() - 1) as Const.RoomTypes
+	if has_end_game_rooms == false:
+		while type == Const.RoomTypes.EndGame:
+			type = randi_range(0, Const.RoomTypes.size() - 1) as Const.RoomTypes
+	return get_room(type)
 
 func get_rand_enemy_obj() -> Enemy:
 	return get_enemy_obj(get_rand_enemy_data())

@@ -24,8 +24,8 @@ buses/default_bus_layout="uid://cuq1ymrql0s53"
 [autoload]
 
 Const="*uid://bbwts8yaxiq05"
+Game="*uid://j261m4qrby1w"
 ObjManager="*uid://cj4ale0ilwpgn"
-Game="*uid://rswuroq5nufs"
 UI="*uid://ghamk5ll18fx"
 SFX="*uid://dbgqywy2gukoi"
 DialogueManager="*uid://c3rodes2l3gxb"

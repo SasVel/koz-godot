@@ -3,6 +3,9 @@ extends Control
 signal finished
 signal cancelled
 
+func _ready() -> void:
+	%LineEdit.grab_focus()
+
 func _on_line_edit_text_changed(new_text: String) -> void:
 	%DoneBtn.disabled = new_text.length() <= 0
 

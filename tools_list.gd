@@ -34,6 +34,7 @@ func tween_tools_offset(isOpen : bool):
 
 	await tween.finished
 	for child in children:
+		if child == null: continue
 		if isOpen:
 			child.curr_tween_state = CardObj.TweenState.Idle
 		else:

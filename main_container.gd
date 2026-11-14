@@ -34,7 +34,10 @@ func _ready() -> void:
 	player.drawn_hand.connect(draw_hand)
 	player.tools_changed.connect(update_tools)
 
-	Game.on_start_turn_layer_1.connect(func(): update_turns_label(Game.turn_counter))
+	Game.on_start_turn_layer_1.connect(on_start_turn_layer_1)
+	Game.on_start_turn_layer_2.connect(on_start_turn_layer_2)
+	Game.on_end_player_turn.connect(on_end_player_turn)
+	Game.on_is_playing_event.connect(on_is_playing_event)
 
 	actions_container_default_pos = actions_container.position
 	tools_list_default_pos = %ToolsList.position
@@ -145,6 +148,20 @@ func get_phases_text(phase : Game.Phases) -> String:
 	else:
 		return "This turn: %s\nNext turn: %s" % [defend_text, attack_text]
 
+
+func _on_player_configured() -> void:
+	%PlayerNameLabel.text = "%s %s" % [Game.player_name, player.data.entity_name]
+
+func switch_open_card_containers(isOn : bool):
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	if !isOn:
+		tween.tween_property(actions_container, "position:y", actions_container_default_pos.y + pickup_offset, pickup_offset_duration)
+		tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y + pickup_offset, pickup_offset_duration)
+	else:
+		tween.tween_property(actions_container, "position:y", actions_container_default_pos.y, pickup_offset_duration)
+		tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y, pickup_offset_duration)
+
+#region Signal Callables
 func _on_player_card_activated(card_data: CardData) -> void:
 	var children = actions_container.get_children()
 	var control_removed : bool = false
@@ -160,15 +177,36 @@ func _on_player_card_activated(card_data: CardData) -> void:
 			child.queue_free()
 			return
 
-func _on_player_configured() -> void:
-	%PlayerNameLabel.text = "%s %s" % [Game.player_name, player.data.entity_name]
-
 func on_card_pickup(_card):
-	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(actions_container, "position:y", actions_container_default_pos.y + pickup_offset, pickup_offset_duration)
-	tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y + pickup_offset, pickup_offset_duration)
+	switch_cards(false)
 
 func on_card_drop(_card):
-	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(actions_container, "position:y", actions_container_default_pos.y, pickup_offset_duration)
-	tween.parallel().tween_property(%ToolsList, "position:y", tools_list_default_pos.y, pickup_offset_duration)
+	switch_cards(true)
+	player.check_state_card_datas()
+
+func on_start_turn_layer_1():
+	update_turns_label(Game.turn_counter)
+
+func on_start_turn_layer_2():
+	switch_open_card_containers(true)
+
+func on_end_player_turn():
+	switch_cards(false)
+
+func on_is_playing_event(isOn : bool):
+	if isOn:
+		switch_cards(false)
+	else:
+		switch_cards(true)
+		player.check_state_card_datas()
+
+func switch_cards(isOn : bool):
+	switch_open_card_containers(isOn)
+	for card in player.cards_hand: _switch_card(card, isOn)
+	for tool in player.equipped_tools: _switch_card(tool, isOn)
+
+func _switch_card(card, isOn : bool):
+	card.isOn = isOn
+	return card
+
+#endregion

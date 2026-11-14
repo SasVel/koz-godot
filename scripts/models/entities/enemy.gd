@@ -42,7 +42,7 @@ func on_changed_phase(val : Game.Phases):
 	elif val == Game.Phases.DEFEND:
 		apply_attack_phase_modifiers()
 
-func _on_data_dropper_data_dropped(at_position: Vector2, drop_data: Variant):
+func _on_data_dropper_data_dropped(_at_position: Vector2, drop_data: Variant):
 	var card_obj : CardObj = drop_data["object"]
 	card_obj.data.add_target(self)
 	await card_obj.activate()
