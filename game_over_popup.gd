@@ -4,7 +4,6 @@ class_name GameOverPopup
 @onready var main_menu_scn : PackedScene = load("res://UI/main_menu.tscn")
 
 func _ready() -> void:
-	Game.switch_input(false)
 	get_tree().paused = true
 	%ScoreLabel.text = "Room Score: %s" % Game.rooms_completed
 

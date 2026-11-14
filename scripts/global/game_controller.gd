@@ -74,18 +74,18 @@ func _init() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if event_queue.size() > 0 and !is_playing_event:
-		await pop_play_event()
-		await get_tree().create_timer(time_between_events).timeout
-		if event_queue.size() <= 0:
-			is_playing_event = false
+		is_playing_event = true
+		while event_queue.size() > 0:
+			await pop_play_event()
+			if event_queue.size() > 0:
+				await get_tree().create_timer(time_between_events).timeout
+		is_playing_event = false
 
-func pop_play_event():
+func pop_play_event() -> void:
 	var event = event_queue.pop_back()
 	if event.get_object() != null:
-		is_playing_event = true
 		print(str(event) + ": " + str(event.get_bound_arguments()))
 		await event.call()
-		is_playing_event = false
 
 func add_event(event : Callable, is_unique : bool = false):
 	if is_unique and \
@@ -120,7 +120,7 @@ func restart():
 	init()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if !is_gui_input: return
+	if !is_gui_input or get_tree().paused: return
 
 	if event.is_action_pressed("end_turn"):
 		end_turn()

@@ -7,8 +7,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("continue") or event.is_action_pressed("ui_cancel"):
 		delete()
-	else:
-		get_viewport().set_input_as_handled()
 
 func _on_continue_btn_pressed() -> void:
 	delete()

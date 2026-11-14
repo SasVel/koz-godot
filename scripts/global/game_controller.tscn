@@ -31,9 +31,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PopupsContainer" type="Control" parent="UIOverEverything" unique_id=251082256]
+[node name="PopupsLayer" type="CanvasLayer" parent="UIOverEverything" unique_id=990000001]
+layer = 10
+
+[node name="PopupsContainer" type="Control" parent="UIOverEverything/PopupsLayer" unique_id=251082256]
 unique_name_in_owner = true
-top_level = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
