@@ -3,7 +3,6 @@ class_name Tool
 
 func _ready() -> void:
 	super()
-	curr_tween_state = TweenState.None
 
 func config(data_ : CardData):
 	super(data_)

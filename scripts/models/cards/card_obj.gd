@@ -7,6 +7,7 @@ class_name CardObj
 @export var cardBack : TextureRect
 @onready var default_pos = self.position
 @onready var default_rot = self.rotation
+var is_defaults_set := false
 
 @onready var data : CardData
 
@@ -95,7 +96,6 @@ func config(data_ : CardData):
 	return self
 
 func _ready() -> void:
-	curr_tween_state = TweenState.None
 	if focus_scale == null: focus_scale = 1.2
 	focus_card_pos_y = get_viewport_rect().size.y - (self.custom_minimum_size.y * focus_scale + 10)
 
@@ -114,6 +114,7 @@ func change_opacity(val : float):
 func set_defaults():
 	default_pos = self.position
 	default_rot = self.rotation
+	is_defaults_set = true
 
 func _get_drag_data(at_position):
 	if !isOn: return
@@ -143,6 +144,7 @@ func scale_on_focus(on_off : bool):
 		tween.tween_property(self, "scale", Vector2(1, 1), focus_tween_speed)
 
 func move_on_focus(on_off : bool):
+	if not on_off and not is_defaults_set: return
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	if on_off:
 		tween.tween_property(self, "global_position:y", focus_card_pos_y,
