@@ -111,6 +111,8 @@ func update_hand(data : Array, clear : bool = false):
 			card_inst.drag_started.connect(on_card_pickup)
 			card_inst.drag_ended.connect(on_card_drop)
 			%ActionsContainer.add_child(card_inst)
+			%ActionsContainer.move_child(
+				card_inst, _get_placeholders().size() + data.find(info))
 	card_objects = _get_card_objects()
 	for card in card_objects:
 		if data.all(func(x): return x != card.data):
