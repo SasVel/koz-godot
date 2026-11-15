@@ -138,6 +138,7 @@ func reset_run_state():
 func restart():
 	get_tree().paused = false
 	SceneSwitcher.switch_to_scene(main_scn)
+	reset_run_state()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_gui_input or get_tree().paused: return
