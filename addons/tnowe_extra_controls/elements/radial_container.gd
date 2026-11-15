@@ -356,8 +356,10 @@ func _draw_outline(
 		null,
 	)
 
-
 func _on_radial_theme_changed():
+	refresh()
+
+func refresh():
 	queue_redraw()
 	queue_sort()
 

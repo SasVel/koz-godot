@@ -69,6 +69,11 @@ signal on_new_room
 signal event_queue_empty
 signal on_is_playing_event(val : bool)
 
+## koz suit variable is held in each room. 
+## This signal is here for easy access from other scripts.
+@warning_ignore("unused_signal")
+signal koz_suit_changed(suit : Const.SuitTypes)
+
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 

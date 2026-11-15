@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c7vwmfnhl3yd5" path="res://entities/card_datas/actions/defend_action_data.tscn" id="11_qn5vk"]
 [ext_resource type="PackedScene" uid="uid://fw7ogr0tlcqd" path="res://entities/card_datas/tools/sword_tool_data.tscn" id="11_wbjmf"]
 [ext_resource type="PackedScene" uid="uid://bc007jbb88ktv" path="res://entities/card_datas/tools/messer_tool_data.tscn" id="12_lx7ma"]
+[ext_resource type="PackedScene" uid="uid://dkoxik2vfmkar" path="res://entities/card_datas/actions/shifting_fate_action_data.tscn" id="13_654br"]
 [ext_resource type="PackedScene" uid="uid://b3xrt8nigaxgt" path="res://entities/card_datas/tools/bastard_sword_tool_data.tscn" id="13_b02df"]
 [ext_resource type="PackedScene" uid="uid://bsnk7ydwa70l7" path="res://entities/card_datas/tools/dagger_tool_data.tscn" id="14_me7ne"]
 [ext_resource type="PackedScene" uid="uid://61gf4wvwm603" path="res://entities/card_datas/tools/mace_tool_data.tscn" id="15_yq7du"]
@@ -77,7 +78,8 @@ actions_dict = Dictionary[int, PackedScene]({
 7: ExtResource("9_knlgn"),
 8: ExtResource("10_th0i0"),
 9: ExtResource("11_qn5vk"),
-10: ExtResource("11_4pinj")
+10: ExtResource("11_4pinj"),
+11: ExtResource("13_654br")
 })
 weapons_dict = Dictionary[int, PackedScene]({
 0: ExtResource("10_ol8vm"),

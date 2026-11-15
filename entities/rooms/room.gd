@@ -4,11 +4,15 @@ class_name Room
 @export var type : Const.RoomTypes
 
 @onready var koz_suit : Const.SuitTypes = \
-	randi_range(0, Const.SuitTypes.size() - 1) as Const.SuitTypes
+	randi_range(0, Const.SuitTypes.size() - 1) as Const.SuitTypes :
+	set(val):
+		Game.koz_suit_changed.emit(val)
+		koz_suit = val
 
 @export var is_combat : bool = true
 @export var dialogue : DialogueResource
 
+@warning_ignore("unused_signal")
 signal completed
 
 func _ready() -> void:

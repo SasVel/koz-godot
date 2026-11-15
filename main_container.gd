@@ -129,6 +129,8 @@ func update_hand(data : Array, clear : bool = false):
 		for i in range(placeholders.size() - placeholder_needed_count):
 			placeholders.pop_back().queue_free()
 
+	%ActionsContainer.refresh()
+
 func _get_card_objects():
 	return %ActionsContainer.get_children().filter(func(x): return x is CardObj)
 

@@ -13,7 +13,6 @@ class_name EffectComponent
 signal activated
 signal deactivated
 
-
 func config(source_ : Entity, targets_ : Array[Entity]):
 	config_source(source_)
 	add_targets(targets_)

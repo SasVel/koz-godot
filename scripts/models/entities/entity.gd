@@ -60,8 +60,6 @@ func add_action_hand(action : CardData, at_idx : int = -1, isNew : bool = false)
 
 func add_actions_hand(actions : Array, is_sig_played : bool = true):
 	for action in actions:
-		if self.cards_hand.size() >= data.card_hand_size:
-			break
 		self.cards_hand.append(action)
 	if is_sig_played: hand_changed.emit(cards_hand)
 

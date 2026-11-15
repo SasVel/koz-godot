@@ -32,6 +32,7 @@ enum Actions {
 	SLASH = 8,
 	DEFEND = 9,
 	SMASH = 10,
+	SHIFTING_FATE = 11,
 }
 
 enum Weapons {
@@ -184,9 +185,9 @@ func load_color(color_info) -> Color:
 
 	return color
 
+# Input: Color with r,g,b in 0..1
+# Output: Vector3(h_degrees, s, v) where h in 0..360, s and v in 0..1
 func rgb_to_hsv(c: Color) -> Vector3:
-	# Input: Color with r,g,b in 0..1
-	# Output: Vector3(h_degrees, s, v) where h in 0..360, s and v in 0..1
 	var r = c.r
 	var g = c.g
 	var b = c.b
