@@ -10,6 +10,7 @@ enum Phases {
 @onready var turn_counter : int = 0
 @onready var rooms_completed : int = 0 :
 	set(val):
+		if rooms_completed == val: return
 		rooms_completed = val
 		on_rooms_completed.emit(val)
 @onready var curr_phase = Phases.ATTACK :
@@ -116,14 +117,27 @@ func init_references():
 func init():
 	get_tree().paused = false
 	init_references()
+	reset_run_state()
 	start_game()
 	switch_input(true)
 
+func reset_run_state():
+	event_queue.clear()
+	enemy_actions.clear()
+	player_status_eff_actions.clear()
+	enemy_status_eff_actions.clear()
+	curr_room = null
+	turn_counter = 0
+	rooms_completed = 0
+	curr_phase = Phases.ATTACK
+	is_playing_event = false
+	is_object_dragged = false
+	ObjManager.objPickedUp = false
+	in_game = false
+
 func restart():
+	get_tree().paused = false
 	SceneSwitcher.switch_to_scene(main_scn)
-	get_tree().change_scene_to_packed(main_scn)
-	await get_tree().scene_changed
-	init()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !is_gui_input or get_tree().paused: return
