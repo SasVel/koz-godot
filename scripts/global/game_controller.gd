@@ -76,6 +76,7 @@ signal on_is_playing_event(val : bool)
 @warning_ignore("unused_signal")
 signal koz_suit_changed(suit : Const.SuitTypes)
 
+#region Lifecycle
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -88,32 +89,13 @@ func _physics_process(_delta: float) -> void:
 				await get_tree().create_timer(time_between_events).timeout
 		is_playing_event = false
 
-func pop_play_event() -> void:
-	var event = event_queue.pop_back()
-	if event.get_object() != null:
-		await event.call()
+func _unhandled_input(event: InputEvent) -> void:
+	if !is_gui_input or get_tree().paused: return
 
-func add_event(event : Callable, is_unique : bool = false):
-	if is_unique and \
-	event_queue.any(func(x): return x.get_object() == event.get_object()):
-		return
-	event_queue.push_front(event)
+	if event.is_action_pressed("end_turn"):
+		end_turn()
 
-func add_events(event_arr : Array[Callable]):
-	if event_queue.size() <= 0:
-		event_queue.append_array(event_arr)
-		return
-	var queue_copy = event_queue.duplicate()
-	event_queue.clear()
-	event_queue.append_array(event_arr)
-	event_queue.append_array(queue_copy)
-
-func init_references():
-	main = get_tree().get_root().get_node("Main")
-	cards_layer = main.get_node("%CardsLayer")
-	player = main.get_node("Player")
-	end_turn_timer = main.get_node("EndTurnTimer")
-
+# Unpauses the game, caches references, starts the game and enables input.
 func init():
 	get_tree().paused = false
 	init_references()
@@ -135,52 +117,28 @@ func reset_run_state():
 	ObjManager.objPickedUp = false
 	in_game = false
 
+# Caches main scene nodes used by the controller.
+func init_references():
+	main = get_tree().get_root().get_node("Main")
+	cards_layer = main.get_node("%CardsLayer")
+	player = main.get_node("Player")
+	end_turn_timer = main.get_node("EndTurnTimer")
+
+# Reloads the main scene and initialises the game again.
 func restart():
 	get_tree().paused = false
 	SceneSwitcher.switch_to_scene(main_scn)
 	reset_run_state()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if !is_gui_input or get_tree().paused: return
+#endregion
 
-	if event.is_action_pressed("end_turn"):
-		end_turn()
-
+#region Game Flow
+# Flags the game as running and loads the first room.
 func start_game():
 	in_game = true
 	set_room()
 
-func start_turn():
-	swap_phase()
-	turn_counter += 1
-	add_event(on_start_turn_emit)
-	await play_player_eff_stack()
-
-func on_start_turn_emit():
-	if turn_counter == 1:
-		on_start_first_turn.emit()
-	on_start_turn_layer_1.emit()
-	on_start_turn_layer_2.emit()
-
-func end_turn():
-	on_end_player_turn.emit()
-	await play_enemy_anim_stack()
-	on_end_turn.emit()
-	refresh_end_turn_timer()
-	start_turn()
-
-func play_player_eff_stack():
-	add_events(player_status_eff_actions)
-	await event_queue_empty
-
-func play_enemy_anim_stack():
-	add_events(enemy_status_eff_actions)
-	add_events(enemy_actions)
-	await event_queue_empty
-
-func swap_phase():
-	curr_phase = Phases.ATTACK if curr_phase == Phases.DEFEND else Phases.DEFEND
-
+# Picks the next room type and swaps it in with a transition.
 func set_room():
 	if curr_room != null:
 		add_event(SceneSwitcher.switch_transition.bind(false))
@@ -209,34 +167,110 @@ func set_room():
 		curr_phase = Phases.DEFEND
 		await start_turn()
 
+# Completes the current room and loads the next one.
 func next_room():
 	turn_counter = 0
 	rooms_completed += 1
 	set_room()
 
+# Swaps phase, increments the turn and plays player effects.
+func start_turn():
+	swap_phase()
+	turn_counter += 1
+	add_event(on_start_turn_emit)
+	await play_player_eff_stack()
+
+# Emits the start-of-turn signals.
+func on_start_turn_emit():
+	if turn_counter == 1:
+		on_start_first_turn.emit()
+	on_start_turn_layer_1.emit()
+	on_start_turn_layer_2.emit()
+
+# Ends the player turn, plays enemy actions and starts the next turn.
+func end_turn():
+	on_end_player_turn.emit()
+	await play_enemy_anim_stack()
+	on_end_turn.emit()
+	refresh_end_turn_timer()
+	start_turn()
+
+# Toggles between attack and defend phases.
+func swap_phase():
+	curr_phase = Phases.ATTACK if curr_phase == Phases.DEFEND else Phases.DEFEND
+
+#endregion
+
+#region Event Queue
+# Adds one event to the front of the queue, optionally skipping duplicates.
+func add_event(event : Callable, is_unique : bool = false):
+	if is_unique and \
+	event_queue.any(func(x): return x.get_object() == event.get_object()):
+		return
+	event_queue.push_front(event)
+
+# Inserts a batch of events ahead of the existing queue.
+func add_events(event_arr : Array[Callable]):
+	if event_queue.size() <= 0:
+		event_queue.append_array(event_arr)
+		return
+	var queue_copy = event_queue.duplicate()
+	event_queue.clear()
+	event_queue.append_array(event_arr)
+	event_queue.append_array(queue_copy)
+
+# Pops and awaits the next valid event.
+func pop_play_event() -> void:
+	var event = event_queue.pop_back()
+	if event.get_object() != null:
+		print(str(event) + ": " + str(event.get_bound_arguments()))
+		await event.call()
+
+# Queues player status effects and waits for them.
+func play_player_eff_stack():
+	add_events(player_status_eff_actions)
+	await event_queue_empty
+
+# Queues enemy status effects and actions, then waits.
+func play_enemy_anim_stack():
+	add_events(enemy_status_eff_actions)
+	add_events(enemy_actions)
+	await event_queue_empty
+
+#endregion
+
+#region Misc
+# Registers a status effect callable for the player or enemies.
 func add_status_eff_action(action : Callable, is_for_player):
 	if is_for_player:
 		player_status_eff_actions.append(action)
 	else:
 		enemy_status_eff_actions.append(action)
 
+# Unregisters a status effect callable.
 func remove_status_eff_action(action : Callable, is_for_player):
 	if is_for_player:
 		player_status_eff_actions.erase(action)
 	else:
 		enemy_status_eff_actions.erase(action)
 
+# Enables or disables input on the root viewport.
 func switch_input(isOn : bool):
 	is_gui_input = isOn
 
+# Queues the end-turn timer start.
 func start_end_turn_timer(wait_time):
 	add_event(end_turn_timer.timer_start.bind(wait_time))
 
+# Restarts the end-turn timer if it is running.
 func refresh_end_turn_timer():
 	if end_turn_timer.is_stopped():
 		return
 	end_turn_timer.stop()
 	end_turn_timer.start()
 
+# Stops the end-turn timer.
 func stop_end_turn_timer():
 	end_turn_timer.stop()
+
+#endregion

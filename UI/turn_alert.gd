@@ -1,6 +1,6 @@
 extends Control
 
-var anim_speed : float = 3
+@export var anim_speed : float = 6
 
 func _ready() -> void:
 	Game.on_start_turn_layer_1.connect(func(): \
