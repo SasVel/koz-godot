@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	await node.ready
+	if node is not Tool: return
 	if isOn:
 		node.curr_tween_state = CardObj.TweenState.Idle
 		node.offset_transform_position.y = 0

@@ -22,6 +22,7 @@ enum Phases {
 @onready var main : Node2D
 @onready var player : Player
 @onready var curr_room : Room
+@onready var cards_layer : CanvasLayer
 
 @onready var time_between_events : float = 0.3
 @onready var event_queue : Array[Callable]
@@ -108,6 +109,7 @@ func add_events(event_arr : Array[Callable]):
 
 func init_references():
 	main = get_tree().get_root().get_node("Main")
+	cards_layer = main.get_node("%CardsLayer")
 	player = main.get_node("Player")
 	end_turn_timer = main.get_node("EndTurnTimer")
 

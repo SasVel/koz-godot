@@ -35,4 +35,4 @@ starting_shields = Array[int]([0, 1])
 entity_name = "the Knight"
 desc = "Well rounded and resilient."
 default_stats = SubResource("Resource_oqual")
-card_deck_types = Array[int]([8, 8, 8, 9, 9, 9, 0, 4, 3, 7, 11])
+card_deck_types = Array[int]([8, 8, 8, 9, 9, 9, 0, 4, 3, 7])
