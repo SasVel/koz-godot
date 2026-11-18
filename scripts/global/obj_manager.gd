@@ -288,5 +288,17 @@ func get_effect_color(type : Const.StatusEffects) -> Color:
 			color = Const.COMPLIMENTARY_COLOR
 	return color
 
+func get_class_icon(type : Const.PlayerClasses):
+	var atlas = sprites_256_512_atlas.duplicate()
+	atlas.region = Rect2(int(type) * 256, 0, 256, 512)
+	var icon = atlas.get_image()
+	return icon
+
+func get_class_hand(type : Const.PlayerClasses):
+	var atlas = sprites_256_512_atlas.duplicate()
+	atlas.region = Rect2(int(type) * 256, 512, 256, 512)
+	var icon = atlas.get_image()
+	return icon
+
 func get_effect_description(type : Const.StatusEffects):
 	return status_eff_desc_dict[type]

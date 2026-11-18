@@ -1,6 +1,8 @@
 extends PanelContainer
 
 @onready var data : ClassData
+@export var left_hand_container : HBoxContainer
+@export var right_hand_container : HBoxContainer
 
 signal finished
 
@@ -16,16 +18,23 @@ func config(data_ : ClassData):
 	%HealthLabel.text = "Health: %.f" % data.default_stats.Health.maxValue
 	%TempoLabel.text = "Tempo: %.f" % data.default_stats.Tempo.maxValue
 	%HandSizeLabel.text = "Hand Size: %.f" % data.card_hand_size
-	data.load_tools(true)
 
-	for tool in data.starting_tools:
-		var tool_obj : ToolDisplayCard = ObjManager.get_tool_display_obj(tool)
-		tool_obj.scale = Vector2(0.2, 0.2)
-		%ToolsContainer.add_child(tool_obj)
+	for tool in data.get_possible_tools_for_hand(0):
+		_tool_data_to_container(tool, left_hand_container)
+
+	for tool in data.get_possible_tools_for_hand(1):
+		_tool_data_to_container(tool, right_hand_container)
 	return self
 
+func _tool_data_to_container(tool_data : ToolData, container : Control):
+		var tool_obj : ToolDisplayCard = ObjManager.get_tool_display_obj(tool_data)
+		tool_obj.scale = Vector2(0.2, 0.2)
+		container.add_child(tool_obj)
+
 func cleanup():
-	for child in %ToolsContainer.get_children():
+	for child in left_hand_container.get_children():
+		child.queue_free()
+	for child in right_hand_container.get_children():
 		child.queue_free()
 
 func _on_choose_btn_pressed() -> void:
