@@ -90,7 +90,7 @@ func tween_hand_offset(isOpen : bool):
 	await %ActionsContainer.sort_children
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	if isOpen:
-		tween.tween_property(%ActionsContainer, "progress_offset", 0.95, 0.8)
+		tween.tween_property(%ActionsContainer, "progress_offset", 1.00, 0.8)
 	else:
 		tween.tween_property(%ActionsContainer, "progress_offset", 0.45, 0.8)
 	await tween.finished
@@ -121,15 +121,17 @@ func update_hand(data : Array, clear : bool = false):
 	card_objects = _get_card_objects()
 	var placeholders = _get_placeholders()
 	var placeholder_needed_count = data.size() + 2
-	if placeholders.size() == placeholder_needed_count: return
-	if placeholders.size() < placeholder_needed_count:
-		for i in range(placeholder_needed_count):
+	var placeholder_diff = placeholder_needed_count - placeholders.size()
+	if placeholder_diff > 0:
+		for i in range(placeholder_diff):
 			var placeholder_inst = placeholder_scn.instantiate()
 			%ActionsContainer.add_child(placeholder_inst)
 			%ActionsContainer.move_child(placeholder_inst, 0)
-	elif placeholders.size() > placeholder_needed_count:
-		for i in range(placeholders.size() - placeholder_needed_count):
-			placeholders.pop_back().queue_free()
+	elif placeholder_diff < 0:
+		for i in range(-placeholder_diff):
+			var placeholder_inst = placeholders.pop_back()
+			%ActionsContainer.remove_child(placeholder_inst)
+			placeholder_inst.queue_free()
 
 	%ActionsContainer.refresh()
 
