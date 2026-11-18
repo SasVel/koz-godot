@@ -172,9 +172,9 @@ func tween_idle(on_off : bool):
 
 	if !on_off: return
 
-	var rand_offset = randi_range(3, 8)
+	var rand_offset = randi_range(3, 6)
 	var rand_rotation = deg_to_rad(randi_range(1, 3))
-	var duration : float = randf_range(5, 8)
+	var duration : float = randf_range(7, 10)
 	_create_idle_tween()
 
 	idle_tween.tween_property(self, "offset_transform_position:y", -rand_offset, duration / 2)

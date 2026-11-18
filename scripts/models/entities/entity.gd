@@ -87,8 +87,8 @@ func draw_hand(is_clear_hand : bool = true):
 	add_actions_hand(pop_rand_actions_deck(data.card_hand_size), false)
 	drawn_hand.emit(cards_hand)
 
-func draw_actions(num):
-	add_actions_hand(pop_rand_actions_deck(num))
+func draw_actions(num, allowed_suits : Array = []):
+	add_actions_hand(pop_rand_actions_deck(num, allowed_suits as Array[Const.SuitTypes]))
 
 func replace_action_hand(action_to_replace, action_to_be_replaced, isNew : bool = false):
 	var cardIdx = self.cards_hand.find(action_to_be_replaced)
@@ -145,20 +145,26 @@ func get_rand_actions_deck(num):
 		cards.append(drawn_card)
 	return cards
 
-func pop_rand_action_deck() -> CardData:
+# Empty allowed_suits means all suits are allowed.
+func pop_rand_action_deck(allowed_suits : Array = []) -> CardData:
 	if self.cards_deck.size() <= 0: return null
-
-	var drawn_card = self.cards_deck.pick_random()
+	var filtered_deck
+	if allowed_suits.size() > 0:
+		filtered_deck = self.cards_deck.filter(func(x): return allowed_suits.has(x.suit))
+	else:
+		filtered_deck = self.cards_deck
+	var drawn_card = filtered_deck.pick_random()
 	if drawn_card == null:
 		return null
 	self.cards_deck.erase(drawn_card)
 	return drawn_card
 
-func pop_rand_actions_deck(num):
+# Empty allowed_suits means all suits are allowed.
+func pop_rand_actions_deck(num, allowed_suits : Array = []):
 	if self.cards_deck.size() <= 0: return []
 	var cards = []
 	for i in range(num):
-		var drawn_card = pop_rand_action_deck()
+		var drawn_card = pop_rand_action_deck(allowed_suits)
 		if drawn_card == null:
 			return cards
 		cards.append(drawn_card)
