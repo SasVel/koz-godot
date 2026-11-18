@@ -203,7 +203,7 @@ func animate_pre_activation():
 	tween.parallel().tween_property(self, "scale", self.scale * 1.1, 0.5)
 
 	tween.parallel().tween_property(cardBack, "self_modulate:a", 0, fade_tween_speed)
-	tween.parallel().tween_property(%TitleContainer, "modulate:a", 0, fade_tween_speed)
+	tween.parallel().tween_property(%TitleContainer, "selfmodulate:a", 0, fade_tween_speed)
 	tween.parallel().tween_property(%TempoDisplay, "modulate:a", 0, fade_tween_speed)
 	tween.parallel().tween_property(%DescLabel, "self_modulate:a", 0, fade_tween_speed)
 	tween.parallel().tween_property(%SuitIconRect, "modulate:a", 0, fade_tween_speed)

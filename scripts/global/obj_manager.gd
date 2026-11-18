@@ -30,6 +30,7 @@ extends Node
 @export var sprites_64_atlas : AtlasTexture
 @export var sprites_128_atlas : AtlasTexture
 @export var sprites_256_atlas : AtlasTexture
+@export var sprites_256_512_atlas : AtlasTexture
 @export var sprites_512_atlas : AtlasTexture
 
 @export_category("Shader Materials")

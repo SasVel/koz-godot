@@ -3,10 +3,17 @@
 [ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_ro40j"]
 [ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="2_7uw1u"]
 [ext_resource type="Script" uid="uid://1ubypw3lwyy7" path="res://UI/ClassSelection/class_panel.gd" id="2_kbbr3"]
+[ext_resource type="Texture2D" uid="uid://eyiyjpxmpnfi" path="res://res/sprites_256_512.png" id="3_jaiwi"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="3_x8uyh"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="5_6kwiq"]
 [ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_jaiwi"]
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="6_r3m8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iglhl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0wvk"]
+atlas = ExtResource("3_jaiwi")
+region = Rect2(0, 0, 256, 512)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jaiwi"]
 shader = ExtResource("5_6kwiq")
@@ -14,31 +21,48 @@ shader_parameter/shadow_offset = Vector2(6, 6)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [node name="ClassPanel" type="PanelContainer" unique_id=1955146153]
-offset_right = 353.0
-offset_bottom = 491.0
+offset_right = 629.0
+offset_bottom = 578.0
 size_flags_horizontal = 3
 theme = ExtResource("1_ro40j")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iglhl")
 script = ExtResource("2_kbbr3")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=569172774]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=473305119]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1278909421]
 layout_mode = 2
+
+[node name="ClassIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1696188861]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_w0wvk")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=456960364]
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=473305119]
+layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="TopRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=93866129]
+[node name="TopRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=93866129]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="SuitIconRect" type="TextureRect" parent="MarginContainer/VBoxContainer/TopRow" unique_id=186482909]
+[node name="SuitIconRect" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/TopRow" unique_id=186482909]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 expand_mode = 3
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TopRow" unique_id=451070352]
+[node name="TitleLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/TopRow" unique_id=451070352]
 unique_name_in_owner = true
 layout_mode = 2
 text = "awdawd"
@@ -46,18 +70,18 @@ label_settings = ExtResource("2_7uw1u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RowsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1019101775]
+[node name="RowsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1019101775]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="TopRowContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/RowsContainer" unique_id=801723646]
+[node name="TopRowContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer" unique_id=801723646]
 layout_mode = 2
 
-[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer" unique_id=1960159825]
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer/TopRowContainer" unique_id=1960159825]
 layout_mode = 2
 
-[node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1955702915]
+[node name="HealthLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1955702915]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -66,7 +90,7 @@ text = "Health: "
 label_settings = ExtResource("3_x8uyh")
 vertical_alignment = 1
 
-[node name="TempoLabel" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1325496925]
+[node name="TempoLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1325496925]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -75,7 +99,7 @@ text = "Tempo: "
 label_settings = ExtResource("3_x8uyh")
 vertical_alignment = 1
 
-[node name="HandSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1907641669]
+[node name="HandSizeLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer/TopRowContainer/StatsContainer" unique_id=1907641669]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -84,7 +108,7 @@ text = "Hand Size: "
 label_settings = ExtResource("3_x8uyh")
 vertical_alignment = 1
 
-[node name="DescLabel" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer/TopRowContainer" unique_id=182177868]
+[node name="DescLabel" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer/TopRowContainer" unique_id=182177868]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -95,22 +119,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/RowsContainer" unique_id=1157093350]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer" unique_id=1157093350]
 layout_mode = 2
 text = "Starting Tools: "
 label_settings = ExtResource("5_jaiwi")
 
-[node name="ToolsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/RowsContainer" unique_id=1078747496]
+[node name="ToolsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer" unique_id=1078747496]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ChooseBtn" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2086735342]
+[node name="ChooseBtn" type="Button" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=2086735342]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 text = "Choose"
 
-[node name="BtnShadow" type="TextureRect" parent="MarginContainer/VBoxContainer/ChooseBtn" unique_id=66928649]
+[node name="BtnShadow" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/ChooseBtn" unique_id=66928649]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_jaiwi")
 layout_mode = 1
@@ -123,4 +147,4 @@ mouse_filter = 2
 texture = ExtResource("6_r3m8k")
 expand_mode = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ChooseBtn" to="." method="_on_choose_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/ChooseBtn" to="." method="_on_choose_btn_pressed"]

@@ -5,6 +5,8 @@ extends PanelContainer
 signal finished
 
 func config(data_ : ClassData):
+	cleanup()
+
 	data = data_
 	%TitleLabel.text = data.entity_name.capitalize()
 	%SuitIconRect.texture = ObjManager.get_suit_sprite(data.suit)
@@ -14,12 +16,17 @@ func config(data_ : ClassData):
 	%HealthLabel.text = "Health: %.f" % data.default_stats.Health.maxValue
 	%TempoLabel.text = "Tempo: %.f" % data.default_stats.Tempo.maxValue
 	%HandSizeLabel.text = "Hand Size: %.f" % data.card_hand_size
-	data.load_tools()
+	data.load_tools(true)
+
 	for tool in data.starting_tools:
 		var tool_obj : ToolDisplayCard = ObjManager.get_tool_display_obj(tool)
 		tool_obj.scale = Vector2(0.2, 0.2)
 		%ToolsContainer.add_child(tool_obj)
 	return self
+
+func cleanup():
+	for child in %ToolsContainer.get_children():
+		child.queue_free()
 
 func _on_choose_btn_pressed() -> void:
 	Game.default_class = data.player_class

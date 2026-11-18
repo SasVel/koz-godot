@@ -19,10 +19,13 @@ func config(data : ToolData):
 			%CardIconRect.self_modulate = Const.COMPLIMENTARY_COLOR
 
 	%TitleLabel.text = UIHelper.pascal_to_readable_text(title_text)
+	%DescriptionLabel.text = data.generate_desc()
 	self.tooltip_text = data.generate_desc()
 	%CardIconRect.texture = image
 	%CardIconShadow.texture = image
 	%TempoDisplay.config(Const.ACCENT_COLOR, data.tempoCost, data.tempo_changed)
+	%SuitIcon.texture = ObjManager.get_suit_sprite(data.suit)
+	%SuitIcon.modulate = ObjManager.get_suit_color(data.suit)
 	update_durability(data.durability)
 	return self
 

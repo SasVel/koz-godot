@@ -31,9 +31,15 @@ shader = ExtResource("7_8p347")
 shader_parameter/shadow_offset = Vector2(2, 2)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca783"]
+atlas = ExtResource("6_xuc75")
+region = Rect2(256, 384, 128, 128)
+
 [node name="ToolDisplayCard" type="PanelContainer" unique_id=672961235]
 offset_right = 285.0
 offset_bottom = 120.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("1_menrt")
 script = ExtResource("2_o23ov")
 
@@ -42,10 +48,11 @@ layout_mode = 2
 
 [node name="CardIconRect" type="TextureRect" parent="HBoxContainer" unique_id=130559325]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = SubResource("AtlasTexture_polf8")
 expand_mode = 5
+stretch_mode = 5
 
 [node name="CardIconShadow" type="TextureRect" parent="HBoxContainer/CardIconRect" unique_id=1127647270]
 unique_name_in_owner = true
@@ -63,9 +70,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_polf8")
 expand_mode = 5
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1871380714]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="TitleLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=264285988]
 unique_name_in_owner = true
@@ -81,15 +90,25 @@ layout_mode = 2
 text = "|####|"
 label_settings = ExtResource("4_d4udx")
 
-[node name="TempoDisplay" type="Control" parent="HBoxContainer" unique_id=1416053155]
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1001123171]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "BlaBlaBla wdahawdaw asdawdas wad"
+label_settings = ExtResource("4_d4udx")
+autowrap_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=683281637]
+layout_mode = 2
+
+[node name="TempoDisplay" type="Control" parent="HBoxContainer/VBoxContainer2" unique_id=1416053155]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 4
 script = ExtResource("5_6o5qs")
-is_colored_outline = false
 
-[node name="IconRect" type="TextureRect" parent="HBoxContainer/TempoDisplay" unique_id=1088498023]
+[node name="IconRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2/TempoDisplay" unique_id=1088498023]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
@@ -99,7 +118,7 @@ texture = SubResource("AtlasTexture_lwyrv")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="IconShadow" type="TextureRect" parent="HBoxContainer/TempoDisplay/IconRect" unique_id=1531634998]
+[node name="IconShadow" type="TextureRect" parent="HBoxContainer/VBoxContainer2/TempoDisplay/IconRect" unique_id=1531634998]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_n4776")
 custom_minimum_size = Vector2(60, 60)
@@ -113,7 +132,7 @@ texture = SubResource("AtlasTexture_lwyrv")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="NumLabel" type="Label" parent="HBoxContainer/TempoDisplay" unique_id=160918775]
+[node name="NumLabel" type="Label" parent="HBoxContainer/VBoxContainer2/TempoDisplay" unique_id=160918775]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -127,3 +146,11 @@ text = "1"
 label_settings = ExtResource("8_77jgm")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SuitIcon" type="TextureRect" parent="HBoxContainer/VBoxContainer2" unique_id=1138847436]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ca783")
+expand_mode = 4
+stretch_mode = 5

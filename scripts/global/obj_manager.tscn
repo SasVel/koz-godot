@@ -47,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://dacbxaq8dgji0" path="res://entities/rooms/quest_rooms/healing_spring/healing_spring_room.tscn" id="36_kf0be"]
 [ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="36_o6px0"]
 [ext_resource type="PackedScene" uid="uid://b73cc3b36w7b7" path="res://UI/tool_display_card.tscn" id="37_ahfjw"]
+[ext_resource type="Texture2D" uid="uid://eyiyjpxmpnfi" path="res://res/sprites_256_512.png" id="47_07ar6"]
 [ext_resource type="Material" uid="uid://4xdxesa3ufwo" path="res://shaders/BurnDissolveShaderMat.tres" id="47_k3lr5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amtf5"]
@@ -60,6 +61,10 @@ region = Rect2(256, 384, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_et42b"]
 atlas = ExtResource("5_easby")
 region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_654br"]
+atlas = ExtResource("47_07ar6")
+region = Rect2(0, 0, 256, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1slq"]
 atlas = ExtResource("24_yq7du")
@@ -137,5 +142,6 @@ eff_mini_obj = ExtResource("29_hw0uh")
 sprites_64_atlas = SubResource("AtlasTexture_amtf5")
 sprites_128_atlas = SubResource("AtlasTexture_s34ir")
 sprites_256_atlas = SubResource("AtlasTexture_et42b")
+sprites_256_512_atlas = SubResource("AtlasTexture_654br")
 sprites_512_atlas = SubResource("AtlasTexture_j1slq")
 burn_dissolve_shader_mat = ExtResource("47_k3lr5")
