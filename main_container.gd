@@ -144,11 +144,18 @@ func update_tools(data : Array, clear : bool = true):
 		for child in %ToolsList.get_children():
 			child.queue_free()
 
-	for info in data:
-		var card_inst = ObjManager.get_tool_obj(info)
-		card_inst.drag_started.connect(on_card_pickup)
-		card_inst.drag_ended.connect(on_card_drop)
-		%ToolsList.add_child(card_inst)
+	_setup_tool(0, data[0])
+	_setup_tool(1, data[1])
+
+func _setup_tool(idx, tool):
+	var card_inst = ObjManager.get_tool_obj(tool)
+	if idx == 0:
+		card_inst.size_flags_horizontal = SizeFlags.SIZE_EXPAND + SizeFlags.SIZE_SHRINK_BEGIN
+	else:
+		card_inst.size_flags_horizontal = SizeFlags.SIZE_EXPAND + SizeFlags.SIZE_SHRINK_END
+	card_inst.drag_started.connect(on_card_pickup)
+	card_inst.drag_ended.connect(on_card_drop)
+	%ToolsList.add_child(card_inst)
 
 func update_rooms_label(val : int):
 	%RoomsLabel.text = "Rooms Completed: %s" % str(val)

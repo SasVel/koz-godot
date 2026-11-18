@@ -36,7 +36,7 @@ anchor_bottom = 0.5
 offset_left = -458.0
 offset_top = -338.5
 offset_right = 458.0
-offset_bottom = 228.5
+offset_bottom = 229.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -49,22 +49,27 @@ label_settings = ExtResource("1_oblhx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="PanelContainer" parent="HBoxContainer" unique_id=513259547]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=3395892]
 layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="HBoxContainer/HBoxContainer" unique_id=513259547]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LootContainer" type="HBoxContainer" parent="HBoxContainer/Panel" unique_id=986871094]
+[node name="LootContainer" type="HBoxContainer" parent="HBoxContainer/HBoxContainer/Panel" unique_id=986871094]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 alignment = 1
 script = ExtResource("3_4kiy8")
 
-[node name="ContinueBtn" type="Button" parent="HBoxContainer" unique_id=62376413]
+[node name="ContinueBtn" type="Button" parent="HBoxContainer/HBoxContainer" unique_id=62376413]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Continue"
 
-[connection signal="sort_children" from="HBoxContainer/Panel/LootContainer" to="HBoxContainer/Panel/LootContainer" method="_on_sort_children"]
-[connection signal="pressed" from="HBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="sort_children" from="HBoxContainer/HBoxContainer/Panel/LootContainer" to="HBoxContainer/HBoxContainer/Panel/LootContainer" method="_on_sort_children"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]

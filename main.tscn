@@ -59,6 +59,26 @@ shader = ExtResource("15_0odxb")
 shader_parameter/shadow_offset = Vector2(6, 6)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok6jj"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
 [sub_resource type="Resource" id="Resource_w48qg"]
 script = ExtResource("9_efxa6")
 radius_factor_outer = 1.585
@@ -108,26 +128,6 @@ shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0rl1p"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok6jj"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1qrp"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -360,6 +360,34 @@ tooltip_text = "Ends the round after the timer runs out."
 [node name="CardsLayer" type="CanvasLayer" parent="UI/MainContainer" unique_id=1422387079]
 unique_name_in_owner = true
 
+[node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer/CardsLayer" unique_id=1790732093]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -168.0
+offset_right = 1132.0
+offset_bottom = 132.0
+grow_vertical = 0
+theme_override_constants/separation = 5
+alignment = 1
+script = ExtResource("17_lswn8")
+
+[node name="ToolCard" parent="UI/MainContainer/CardsLayer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
+material = SubResource("ShaderMaterial_ok6jj")
+layout_mode = 2
+size_flags_horizontal = 2
+focus_mode = 1
+fauxShiftDeg = 15.0
+
+[node name="ToolCard2" parent="UI/MainContainer/CardsLayer/ToolsList" unique_id=579367417 instance=ExtResource("4_7mycd")]
+material = SubResource("ShaderMaterial_qsp4k")
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 1
+fauxShiftDeg = 15.0
+
 [node name="ActionsContainer" type="Container" parent="UI/MainContainer/CardsLayer" unique_id=100635735]
 unique_name_in_owner = true
 anchors_preset = 7
@@ -368,9 +396,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -393.00006
-offset_top = -34.0
 offset_right = 393.00006
-offset_bottom = 236.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -439,32 +466,6 @@ material = SubResource("ShaderMaterial_0rl1p")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 offset_transform_enabled = false
-focus_mode = 1
-fauxShiftDeg = 15.0
-
-[node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer/CardsLayer" unique_id=1790732093]
-unique_name_in_owner = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -168.0
-offset_right = 462.0
-offset_bottom = 132.0
-grow_vertical = 0
-theme_override_constants/separation = 5
-alignment = 1
-script = ExtResource("17_lswn8")
-
-[node name="ToolCard" parent="UI/MainContainer/CardsLayer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_ok6jj")
-layout_mode = 2
-focus_mode = 1
-fauxShiftDeg = 15.0
-
-[node name="ToolCard2" parent="UI/MainContainer/CardsLayer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_b1qrp")
-layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
@@ -542,7 +543,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -275.0
+offset_top = -239.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -558,10 +560,12 @@ grow_vertical = 2
 rotation = 1.0471976
 scale = Vector2(0.8, 0.8)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_enabled = true
 texture = SubResource("AtlasTexture_facbu")
 stretch_mode = 5
 flip_h = true
 script = ExtResource("26_kq58d")
+is_left = true
 
 [node name="RightHandRect" type="TextureRect" parent="UI/MainContainer/HBoxContainer" unique_id=782241757]
 layout_mode = 1
@@ -578,6 +582,7 @@ grow_vertical = 2
 rotation = -1.0471976
 scale = Vector2(0.8, 0.8)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_enabled = true
 texture = SubResource("AtlasTexture_facbu")
 stretch_mode = 5
 script = ExtResource("26_kq58d")
@@ -608,6 +613,12 @@ unique_name_in_owner = true
 
 [connection signal="timeout" from="EndTurnTimer" to="EndTurnTimer" method="_on_timeout"]
 [connection signal="pressed" from="UI/MainContainer/EndTurnBtn" to="UI/MainContainer/EndTurnBtn" method="_on_pressed"]
+[connection signal="child_entered_tree" from="UI/MainContainer/CardsLayer/ToolsList" to="UI/MainContainer/CardsLayer/ToolsList" method="_on_child_entered_tree"]
+[connection signal="sort_children" from="UI/MainContainer/CardsLayer/ToolsList" to="UI/MainContainer/CardsLayer/ToolsList" method="_on_sort_children"]
+[connection signal="mouse_entered" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" method="_on_mouse_exited"]
 [connection signal="sort_children" from="UI/MainContainer/CardsLayer/ActionsContainer" to="UI/MainContainer/CardsLayer/ActionsContainer" method="_on_sort_children"]
 [connection signal="mouse_entered" from="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard2" to="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard2" to="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard2" method="_on_mouse_exited"]
@@ -619,12 +630,6 @@ unique_name_in_owner = true
 [connection signal="mouse_exited" from="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard5" to="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard5" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard6" to="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard6" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard6" to="UI/MainContainer/CardsLayer/ActionsContainer/ActionCard6" method="_on_mouse_exited"]
-[connection signal="child_entered_tree" from="UI/MainContainer/CardsLayer/ToolsList" to="UI/MainContainer/CardsLayer/ToolsList" method="_on_child_entered_tree"]
-[connection signal="sort_children" from="UI/MainContainer/CardsLayer/ToolsList" to="UI/MainContainer/CardsLayer/ToolsList" method="_on_sort_children"]
-[connection signal="mouse_entered" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" method="_on_mouse_exited"]
 [connection signal="card_activated" from="Player" to="UI/MainContainer" method="_on_player_card_activated"]
 [connection signal="configured" from="Player" to="UI/MainContainer" method="_on_player_configured"]
 [connection signal="configured" from="Player" to="UI/MainContainer/HBoxContainer/LeftHandRect" method="_on_player_configured"]
