@@ -177,11 +177,11 @@ func get_phases_text(phase : Game.Phases) -> String:
 		return "This turn: %s\nNext turn: %s" % [defend_text, attack_text]
 
 
-func _on_player_configured() -> void:
+func _on_player_configured(_entity) -> void:
 	%PlayerNameLabel.text = "%s %s" % [Game.player_name, player.data.entity_name]
 
 func tween_card_containers(card_display_mode : CardDisplayModes):
-	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	match card_display_mode:
 		CardDisplayModes.Active:
 			tween.tween_property(actions_container, "position:y", actions_container_default_pos.y, pickup_offset_duration)
@@ -225,6 +225,7 @@ func on_end_player_turn():
 	curr_card_display_mode = CardDisplayModes.Hidden
 
 func on_is_playing_event(isOn : bool):
+	if curr_card_display_mode == CardDisplayModes.Hidden: return
 	curr_card_display_mode = CardDisplayModes.Inactive if isOn else CardDisplayModes.Active
 
 func switch_cards(isOn : bool):

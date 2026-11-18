@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://bqwyouuho4fye" path="res://focus_rect.gd" id="25_a6jrf"]
 [ext_resource type="Texture2D" uid="uid://eyiyjpxmpnfi" path="res://res/sprites_256_512.png" id="25_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="25_xuqvo"]
+[ext_resource type="Script" uid="uid://dgknpfx6d27au" path="res://hand_rect.gd" id="26_kq58d"]
 [ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="26_qsp4k"]
 [ext_resource type="Script" uid="uid://dk75ppnjir5lr" path="res://UI/turn_alert.gd" id="27_qsp4k"]
 
@@ -65,16 +66,6 @@ radius_factor_inner = 0.0
 item_radius_factor = 0.875
 color = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kq58d"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
 resource_local_to_scene = true
@@ -127,6 +118,16 @@ shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ok6jj"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1qrp"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -402,14 +403,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_kq58d")
-custom_minimum_size = Vector2(0, 0)
-layout_mode = 2
-offset_transform_enabled = false
-focus_mode = 1
-fauxShiftDeg = 15.0
-
-[node name="ActionCard3" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_seu75")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -417,7 +410,7 @@ offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard4" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_htxhm")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -425,7 +418,7 @@ offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard5" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_jq2sk")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -433,8 +426,16 @@ offset_transform_enabled = false
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard6" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard5" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_4k2k6")
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+offset_transform_enabled = false
+focus_mode = 1
+fauxShiftDeg = 15.0
+
+[node name="ActionCard6" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_0rl1p")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 offset_transform_enabled = false
@@ -456,13 +457,13 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/CardsLayer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_0rl1p")
+material = SubResource("ShaderMaterial_ok6jj")
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
 
 [node name="ToolCard2" parent="UI/MainContainer/CardsLayer/ToolsList" unique_id=708885942 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_ok6jj")
+material = SubResource("ShaderMaterial_b1qrp")
 layout_mode = 2
 focus_mode = 1
 fauxShiftDeg = 15.0
@@ -560,6 +561,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_facbu")
 stretch_mode = 5
 flip_h = true
+script = ExtResource("26_kq58d")
 
 [node name="RightHandRect" type="TextureRect" parent="UI/MainContainer/HBoxContainer" unique_id=782241757]
 layout_mode = 1
@@ -578,6 +580,7 @@ scale = Vector2(0.8, 0.8)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_facbu")
 stretch_mode = 5
+script = ExtResource("26_kq58d")
 
 [node name="FocusRect" type="ColorRect" parent="UI" unique_id=2129793767]
 material = SubResource("ShaderMaterial_facbu")
@@ -624,6 +627,8 @@ unique_name_in_owner = true
 [connection signal="mouse_exited" from="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" to="UI/MainContainer/CardsLayer/ToolsList/ToolCard2" method="_on_mouse_exited"]
 [connection signal="card_activated" from="Player" to="UI/MainContainer" method="_on_player_card_activated"]
 [connection signal="configured" from="Player" to="UI/MainContainer" method="_on_player_configured"]
+[connection signal="configured" from="Player" to="UI/MainContainer/HBoxContainer/LeftHandRect" method="_on_player_configured"]
+[connection signal="configured" from="Player" to="UI/MainContainer/HBoxContainer/RightHandRect" method="_on_player_configured"]
 [connection signal="status_effects_changed" from="Player" to="UI/MainContainer/VBoxContainer/StatusEffectsContainer" method="_on_player_status_effects_changed"]
 
 [editable path="UI/MainContainer/VBoxContainer/PlayerBar"]

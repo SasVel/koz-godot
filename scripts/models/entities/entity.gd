@@ -15,7 +15,7 @@ signal hand_changed(cards_hand : Array[CardData])
 signal drawn_hand(cards_hand : Array[CardData])
 signal card_activated(card_data : CardData)
 signal status_effects_changed(eff_data : Array[StatusEffData])
-signal configured
+signal configured(entity)
 
 func config(data_ : EntityData):
 	data = data_
@@ -24,7 +24,7 @@ func config(data_ : EntityData):
 	stats.reset()
 	stats.Health.no_stat_val.connect(on_death)
 	add_actions_deck(data.card_deck)
-	configured.emit()
+	configured.emit(self)
 
 func _ready() -> void:
 	Game.on_start_turn_layer_2.connect(start_turn)

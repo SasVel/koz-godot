@@ -28,7 +28,7 @@ func config(data_ : ClassData):
 
 func _tool_data_to_container(tool_data : ToolData, container : Control):
 		var tool_obj : ToolDisplayCard = ObjManager.get_tool_display_obj(tool_data)
-		tool_obj.scale = Vector2(0.2, 0.2)
+		tool_obj.scale = Vector2(0.1, 0.1)
 		container.add_child(tool_obj)
 
 func cleanup():

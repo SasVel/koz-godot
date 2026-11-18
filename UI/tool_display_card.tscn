@@ -22,6 +22,12 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 6
 shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.654902)
 
+[sub_resource type="LabelSettings" id="LabelSettings_drtwe"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.3529412)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwyrv"]
 atlas = ExtResource("6_xuc75")
 region = Rect2(256, 0, 128, 128)
@@ -48,7 +54,7 @@ layout_mode = 2
 
 [node name="CardIconRect" type="TextureRect" parent="HBoxContainer" unique_id=130559325]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = SubResource("AtlasTexture_polf8")
 expand_mode = 5
@@ -73,6 +79,8 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1871380714]
+custom_minimum_size = Vector2(150, 0)
+custom_maximum_size = Vector2(150, 600)
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -93,9 +101,11 @@ label_settings = ExtResource("4_d4udx")
 [node name="DescriptionLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1001123171]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
+custom_maximum_size = Vector2(150, 300)
 layout_mode = 2
+size_flags_vertical = 3
 text = "BlaBlaBla wdahawdaw asdawdas wad"
-label_settings = ExtResource("4_d4udx")
+label_settings = SubResource("LabelSettings_drtwe")
 autowrap_mode = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=683281637]
