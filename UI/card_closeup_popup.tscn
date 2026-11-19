@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://cu3tlsgpnivyy"]
 
 [ext_resource type="Script" uid="uid://2f2a201wqv0h" path="res://UI/card_closeup_popup.gd" id="1_c5y27"]
+[ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="2_ujt3a"]
+[ext_resource type="Script" uid="uid://cronnm7yromde" path="res://UI/close_button.gd" id="3_wforl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8o2h"]
+atlas = ExtResource("2_ujt3a")
+region = Rect2(0, 0, 64, 64)
 
 [node name="CardCloseupPopup" type="Control" unique_id=609076914]
 layout_mode = 3
@@ -29,3 +35,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CloseButton" type="TextureButton" parent="." unique_id=1969596392]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 14.0
+offset_right = 81.0
+offset_bottom = 78.0
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_x8o2h")
+script = ExtResource("3_wforl")
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

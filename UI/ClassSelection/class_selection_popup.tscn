@@ -24,28 +24,36 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.24313726, 0.24313726, 0.24313726, 0.4117647)
 
-[node name="ClassPanel" parent="." unique_id=1955146153 instance=ExtResource("2_an6xy")]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1323788181]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_right = 450.0
-grow_horizontal = 2
-
-[node name="ClassSelectionContainer" type="HBoxContainer" parent="." unique_id=830118692]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -80.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1792881773]
+layout_mode = 2
+
+[node name="ClassPanel" parent="MarginContainer/VBoxContainer" unique_id=1955146153 instance=ExtResource("2_an6xy")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DescriptionLabel" parent="MarginContainer/VBoxContainer/ClassPanel/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer/ToolsContainer/LeftHandContainer/ToolDisplayCard/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1955146153, 672961235, 1871380714) index="2" unique_id=1556016847]
+_current_font_size = 14
+_last_size_state = 2
+_size_just_modified_by_autosizer = false
+
+[node name="ClassSelectionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=830118692]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 15
 alignment = 1
 
-[editable path="ClassPanel"]
-[editable path="ClassPanel/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer/ToolsContainer/LeftHandContainer/ToolDisplayCard"]
+[editable path="MarginContainer/VBoxContainer/ClassPanel"]
+[editable path="MarginContainer/VBoxContainer/ClassPanel/MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/RowsContainer/ToolsContainer/LeftHandContainer/ToolDisplayCard"]

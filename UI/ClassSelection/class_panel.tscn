@@ -22,8 +22,9 @@ shader_parameter/shadow_offset = Vector2(6, 6)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
 [node name="ClassPanel" type="PanelContainer" unique_id=1955146153 node_paths=PackedStringArray("left_hand_container", "right_hand_container")]
-offset_right = 766.0
-offset_bottom = 433.0
+offset_right = 827.0
+offset_bottom = 445.0
+scale = Vector2(0.9, 0.9)
 size_flags_horizontal = 3
 theme = ExtResource("1_ro40j")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_iglhl")

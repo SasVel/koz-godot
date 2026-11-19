@@ -16,3 +16,7 @@ func config():
 		var card = ObjManager.get_card_obj(data)
 		card.curr_card_state = card.CardState.Display
 		%DeckGrid.add_child(card)
+
+
+func _on_close_button_pressed() -> void:
+	close()

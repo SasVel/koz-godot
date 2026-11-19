@@ -20,3 +20,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		cancelled.emit()
 		self.queue_free()
+
+
+func _on_close_button_pressed() -> void:
+	cancelled.emit()
+	self.queue_free()
