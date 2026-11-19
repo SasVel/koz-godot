@@ -14,6 +14,7 @@ func config(data_ : ClassData):
 	%SuitIconRect.texture = ObjManager.get_suit_sprite(data.suit)
 	var suit_color = ObjManager.get_suit_color(data.suit)
 	%SuitIconRect.self_modulate = suit_color
+	%ClassIcon.texture = ObjManager.get_class_icon(data.player_class)
 	%ClassIcon.modulate = suit_color
 
 	%DescLabel.text = data.desc

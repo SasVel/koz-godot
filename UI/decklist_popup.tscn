@@ -60,6 +60,7 @@ offset_right = 81.0
 offset_bottom = 78.0
 rotation = 0.7853982
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_ge248")
 script = ExtResource("3_ge248")
 

@@ -265,6 +265,7 @@ func activate(deduct_tempo : bool = true):
 func activation_sequence(deduct_tempo : bool = true):
 	if curr_card_state == CardState.Display: return
 	curr_tween_state = TweenState.Anim
+	isOn = true
 	await animate_pre_activation()
 	data.activate(deduct_tempo)
 	if self.is_queued_for_deletion(): return
