@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://d3xb0g0bgn6tk" path="res://res/card_back.png" id="2_obpk5"]
 [ext_resource type="Script" uid="uid://ccp1kor2ynh8w" path="res://scripts/models/cards/card_obj.gd" id="3_oy8i5"]
 [ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="4_nlkk3"]
-[ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="5_h3ehx"]
 [ext_resource type="Script" uid="uid://btelx0bototx5" path="res://UI/num_display.gd" id="6_ls7t3"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="7_5t304"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="7_7b0cb"]
+[ext_resource type="Script" uid="uid://bttgnk3bb2a8i" path="res://addons/font_auto_size_labels/auto_size_label.gd" id="7_118ut"]
 [ext_resource type="LabelSettings" uid="uid://brmy2s0k6mu8k" path="res://misc/number_label_settings.tres" id="8_7b0cb"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="8_118ut"]
 [ext_resource type="Script" uid="uid://dlkhjqhrjlocs" path="res://entities/interact_zone.gd" id="8_f26x7"]
@@ -36,6 +36,14 @@ shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 atlas = ExtResource("7_7b0cb")
 region = Rect2(0, 384, 128, 128)
 
+[sub_resource type="LabelSettings" id="LabelSettings_lcnyk"]
+resource_local_to_scene = true
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.654902)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iubg"]
 atlas = ExtResource("7_7b0cb")
 region = Rect2(256, 0, 128, 128)
@@ -54,14 +62,17 @@ atlas = ExtResource("4_nlkk3")
 region = Rect2(1792, 256, 237, 256)
 
 [node name="CardObj" type="Control" unique_id=87810923 node_paths=PackedStringArray("cardBack", "container")]
-custom_minimum_size = Vector2(226, 300)
+custom_minimum_size = Vector2(181, 240)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 226.0
-offset_bottom = 300.0
+offset_left = 11.25
+offset_top = 45.0
+offset_right = 192.25
+offset_bottom = 285.0
 scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 offset_transform_enabled = true
+offset_transform_scale = Vector2(0.8, 0.8)
 focus_mode = 2
 mouse_filter = 1
 theme = ExtResource("2_nlkk3")
@@ -154,16 +165,24 @@ layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TitleContainer" unique_id=1601413309]
+[node name="TitleLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TitleContainer" unique_id=1857146027]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-text = "END THEM RIGHTLY"
-label_settings = ExtResource("5_h3ehx")
+size_flags_vertical = 3
+theme_override_constants/outline_size = 3
+text = "DEFEND"
+label_settings = SubResource("LabelSettings_lcnyk")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+clip_text = true
+script = ExtResource("7_118ut")
+_max_size = 24
+_min_size = 8
+_current_font_size = 24
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 
 [node name="TempoDisplay" type="Control" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1230546215]
 unique_name_in_owner = true

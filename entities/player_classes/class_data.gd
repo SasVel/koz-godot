@@ -22,18 +22,21 @@ func load_tools(all_tools : bool = false):
 		match type:
 			Const.CardTypes.WEAPON:
 				if !all_tools:
-					starting_tools.append(\
-						ObjManager.weapons_dict[starting_weapons.pick_random()].instantiate())
+					_add_to_starting_tools(ObjManager.weapons_dict, starting_weapons)
 				else:
 					for tool in starting_weapons:
 						starting_tools.append(ObjManager.weapons_dict[tool].instantiate())
 			Const.CardTypes.SHIELD:
 				if !all_tools:
-					starting_tools.append(\
-						ObjManager.shields_dict[starting_shields.pick_random()].instantiate())
+					_add_to_starting_tools(ObjManager.shields_dict, starting_shields)
 				else:
 					for tool in starting_shields:
 						starting_tools.append(ObjManager.shields_dict[tool].instantiate())
+
+func _add_to_starting_tools(obj_dict_arr, starting_type_arr):
+	var tool : ToolData = obj_dict_arr[starting_type_arr.pick_random()].instantiate()
+	tool.is_left = starting_tools.size() < 1
+	starting_tools.append(tool)
 
 func get_tools(type : Const.CardTypes) -> Array[ToolData]:
 	var tools_datas : Array[ToolData]

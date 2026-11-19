@@ -143,10 +143,9 @@ func get_enemy_obj_by_type(type : Const.Enemies):
 
 func get_action_sprite(type : Const.Actions) -> AtlasTexture:
 	var image = sprites_256_atlas.duplicate()
-	if int(type) <= 5:
-		image.region = Rect2(256 * type, 512, 256, 256)
-	else:
-		image.region = Rect2(256 * (type - 6), 768, 256, 256)
+	var idx = int(type)
+	@warning_ignore("integer_division")
+	image.region = Rect2(256 * (idx % 6), 512 + 256 * (idx / 6), 256, 256)
 	return image
 
 func get_weapon_sprite(type : Const.Weapons) -> AtlasTexture:

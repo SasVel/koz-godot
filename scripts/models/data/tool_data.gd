@@ -9,6 +9,7 @@ class_name ToolData
 		durability_changed.emit(val)
 
 @export var durability_processor : DurabilityProcessorComp
+@onready var is_left
 
 signal durability_changed(val)
 

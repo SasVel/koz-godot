@@ -8,7 +8,8 @@ enum Popups {
 	GAME_OVER,
 	CLASS_SELECTION,
 	NAME,
-	PAUSE
+	PAUSE,
+	DECKLIST
 }
 
 func _input(event: InputEvent) -> void:

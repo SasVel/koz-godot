@@ -32,7 +32,8 @@ enum Actions {
 	SLASH = 8,
 	DEFEND = 9,
 	SMASH = 10,
-	SHIFTING_FATE = 11,
+	FORETOLD_CONCLUSION = 11,
+	SHIFTING_FATE = 12,
 }
 
 enum Weapons {

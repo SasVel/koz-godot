@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d3a620iori5c"]
+
+[ext_resource type="Script" uid="uid://0e2h18ayotfp" path="res://UI/decklist_popup.gd" id="1_qjvb8"]
+
+[node name="DecklistPopup" type="Control" unique_id=912064763]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qjvb8")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1508114229]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24313726, 0.24313726, 0.24313726, 0.4117647)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1507720414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 95
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 95
+theme_override_constants/margin_bottom = 40
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=2132512306]
+layout_mode = 2
+
+[node name="DeckGrid" type="GridContainer" parent="MarginContainer/ScrollContainer" unique_id=1538537589]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 5

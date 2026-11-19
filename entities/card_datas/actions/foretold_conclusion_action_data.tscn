@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://02ohoae6ycpp"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_khibc"]
+[ext_resource type="Script" uid="uid://dlyn7nbwqyu5u" path="res://scripts/models/effect_components/draw_comp.gd" id="2_ldq77"]
+
+[node name="ForetoldConclusionActionData" unique_id=988386249 instance=ExtResource("1_khibc")]
+suit = 2
+actionType = 11
+tempoCost = 2
+isOffensive = false
+
+[node name="DrawComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1533077015]
+script = ExtResource("2_ldq77")
+count = 2
+is_suit = true
+is_suit_koz = true
+metadata/_custom_type_script = "uid://dlyn7nbwqyu5u"
