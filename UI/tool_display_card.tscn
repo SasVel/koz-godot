@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_menrt"]
 [ext_resource type="Script" uid="uid://cvwcykwjrcxx3" path="res://UI/tool_display_card.gd" id="2_o23ov"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="4_d4udx"]
+[ext_resource type="Script" uid="uid://bttgnk3bb2a8i" path="res://addons/font_auto_size_labels/auto_size_label.gd" id="4_drtwe"]
 [ext_resource type="Script" uid="uid://btelx0bototx5" path="res://UI/num_display.gd" id="5_6o5qs"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="6_xuc75"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="7_8p347"]
@@ -23,7 +24,8 @@ shadow_size = 6
 shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.654902)
 
 [sub_resource type="LabelSettings" id="LabelSettings_drtwe"]
-outline_size = 4
+font_size = 14
+outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.3529412)
@@ -42,8 +44,8 @@ atlas = ExtResource("6_xuc75")
 region = Rect2(256, 384, 128, 128)
 
 [node name="ToolDisplayCard" type="PanelContainer" unique_id=672961235]
-offset_right = 285.0
-offset_bottom = 120.0
+offset_right = 348.0
+offset_bottom = 176.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_menrt")
@@ -98,15 +100,22 @@ layout_mode = 2
 text = "|####|"
 label_settings = ExtResource("4_d4udx")
 
-[node name="DescriptionLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1001123171]
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1556016847]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
-custom_maximum_size = Vector2(150, 300)
+custom_minimum_size = Vector2(150, 80)
+custom_maximum_size = Vector2(150, 80)
 layout_mode = 2
 size_flags_vertical = 3
-text = "BlaBlaBla wdahawdaw asdawdas wad"
+text = "awdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 label_settings = SubResource("LabelSettings_drtwe")
 autowrap_mode = 3
+clip_text = true
+script = ExtResource("4_drtwe")
+_max_size = 16
+_current_font_size = 14
+_size_just_modified_by_autosizer = true
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=683281637]
 layout_mode = 2
