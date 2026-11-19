@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3a620iori5c" path="res://UI/decklist_popup.tscn" id="7_48rrx"]
 
 [node name="UIManager" type="Node" unique_id=451270226]
+process_mode = 3
 script = ExtResource("1_genkr")
 popup_scenes = Dictionary[int, PackedScene]({
 0: ExtResource("2_48sb8"),

@@ -19,6 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0eb6w")
 script = ExtResource("2_gkdrj")
+is_closeable = true
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=478908044]
 layout_mode = 1

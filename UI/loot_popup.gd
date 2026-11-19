@@ -1,7 +1,5 @@
-extends Control
+extends GamePopup
 class_name LootPopup
-
-signal finished
 
 func _ready() -> void:
 	UIHelper.set_theme_colors(self)
@@ -22,5 +20,5 @@ func _on_continue_btn_pressed() -> void:
 
 func close():
 	Game.cards_layer.layer = 1
-	finished.emit()
+	super.close()
 	self.queue_free()

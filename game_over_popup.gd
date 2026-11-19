@@ -1,4 +1,4 @@
-extends Control
+extends GamePopup
 class_name GameOverPopup
 
 @onready var main_menu_scn : PackedScene = load("res://UI/main_menu.tscn")

@@ -1,10 +1,7 @@
 extends TextureButton
 
 func _ready() -> void:
-	get_tree().paused = true
-
-func _exit_tree() -> void:
-	get_tree().paused = false
+	self.modulate = Const.COMPLIMENTARY_COLOR
 
 func _on_pressed() -> void:
 	UI.show_screen(UI.Popups.DECKLIST)

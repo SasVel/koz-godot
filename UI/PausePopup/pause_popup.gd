@@ -1,4 +1,4 @@
-extends Control
+extends GamePopup 
 
 func _ready() -> void:
 	UIHelper.set_theme_colors(self)
@@ -6,16 +6,17 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("continue") or event.is_action_pressed("ui_cancel"):
-		delete()
+		close()
 
 func _on_continue_btn_pressed() -> void:
-	delete()
+	close()
 
 func _on_give_up_btn_pressed() -> void:
-	delete()
+	close()
 	Game.in_game = false
 	SceneSwitcher.switch_to_file("res://UI/main_menu.tscn")
 
-func delete():
+func close():
 	get_tree().paused = false
+	super.close()
 	self.queue_free()
