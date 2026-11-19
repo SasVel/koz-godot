@@ -150,12 +150,16 @@ func get_action_sprite(type : Const.Actions) -> AtlasTexture:
 
 func get_weapon_sprite(type : Const.Weapons) -> AtlasTexture:
 	var image = sprites_256_atlas.duplicate()
-	image.region = Rect2(256 * type, 0, 256, 256)
+	var idx = int(type)
+	@warning_ignore("integer_division")
+	image.region = Rect2(256 * (idx % 6), 256 * (idx / 6), 256, 256)
 	return image
 
 func get_shield_sprite(type : Const.Shields) -> AtlasTexture:
 	var image = sprites_256_atlas.duplicate()
-	image.region = Rect2(256 * type, 256, 256, 256)
+	var idx = int(type)
+	@warning_ignore("integer_division")
+	image.region = Rect2(256 * (idx % 6), 256 + 256 * (idx / 6), 256, 256)
 	return image
 
 func get_enemy_sprite(type : Const.Enemies, has_alt = false) -> AtlasTexture:
@@ -246,18 +250,8 @@ func get_effect_sprite(type : Const.StatusEffects) -> Texture2D:
 
 func get_suit_sprite(type : Const.SuitTypes):
 	var atlas = sprites_128_atlas.duplicate()
-	var image : Image
-	match type:
-		Const.SuitTypes.Spades:
-			atlas.region = Rect2(0,384,128,128)
-		Const.SuitTypes.Clubs:
-			atlas.region = Rect2(128,384,128,128)
-		Const.SuitTypes.Diamonds:
-			atlas.region = Rect2(256,384,128,128)
-		Const.SuitTypes.Hearts:
-			atlas.region = Rect2(384,384,128,128)
-	image = atlas.get_image()
-	return ImageTexture.create_from_image(image)
+	atlas.region = Rect2(128 * int(type), 384, 128, 128)
+	return ImageTexture.create_from_image(atlas.get_image())
 
 func get_suit_color(type : Const.SuitTypes):
 	var color : Color

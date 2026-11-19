@@ -90,7 +90,7 @@ func tween_hand_offset(isOpen : bool):
 	await %ActionsContainer.sort_children
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	if isOpen:
-		tween.tween_property(%ActionsContainer, "progress_offset", 1.00, 0.8)
+		tween.tween_property(%ActionsContainer, "progress_offset", 0.95, 0.8)
 	else:
 		tween.tween_property(%ActionsContainer, "progress_offset", 0.45, 0.8)
 	await tween.finished
