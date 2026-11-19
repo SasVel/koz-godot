@@ -116,6 +116,13 @@ func _ready() -> void:
 	if focus_scale == null: focus_scale = 1.2
 	focus_card_pos_y = get_viewport_rect().size.y - (self.custom_minimum_size.y * focus_scale + 10)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inspect") and self.has_focus():
+		var popup = UI.show_screen(UI.Popups.CARD_CLOSEUP)
+		var card = self.duplicate()
+		card.curr_card_state = card.CardState.Display
+		popup.display(card)
+
 func suit_icon_config():
 	var sprite = ObjManager.get_suit_sprite(data.suit)
 	%SuitIconRect.texture = sprite

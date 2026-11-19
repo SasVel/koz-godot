@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgsj2yrymleua" path="res://UI/name_popup.tscn" id="5_2o6ry"]
 [ext_resource type="PackedScene" uid="uid://dcrb68bfy5bkn" path="res://UI/PausePopup/pause_popup.tscn" id="6_y65vw"]
 [ext_resource type="PackedScene" uid="uid://d3a620iori5c" path="res://UI/decklist_popup.tscn" id="7_48rrx"]
+[ext_resource type="PackedScene" uid="uid://cu3tlsgpnivyy" path="res://UI/card_closeup_popup.tscn" id="8_kcfdq"]
 
 [node name="UIManager" type="Node" unique_id=451270226]
 process_mode = 3
@@ -17,5 +18,6 @@ popup_scenes = Dictionary[int, PackedScene]({
 2: ExtResource("4_nd7hd"),
 3: ExtResource("5_2o6ry"),
 4: ExtResource("6_y65vw"),
-5: ExtResource("7_48rrx")
+5: ExtResource("7_48rrx"),
+6: ExtResource("8_kcfdq")
 })

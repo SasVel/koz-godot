@@ -9,7 +9,8 @@ enum Popups {
 	CLASS_SELECTION,
 	NAME,
 	PAUSE,
-	DECKLIST
+	DECKLIST,
+	CARD_CLOSEUP
 }
 
 func _input(event: InputEvent) -> void:

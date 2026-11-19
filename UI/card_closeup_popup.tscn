@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cu3tlsgpnivyy"]
+
+[ext_resource type="Script" uid="uid://2f2a201wqv0h" path="res://UI/card_closeup_popup.gd" id="1_c5y27"]
+
+[node name="CardCloseupPopup" type="Control" unique_id=609076914]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c5y27")
+is_closeable = true
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1438206097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24313726, 0.24313726, 0.24313726, 0.4117647)
+
+[node name="CardContainer" type="CenterContainer" parent="." unique_id=776104421]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
