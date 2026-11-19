@@ -96,7 +96,7 @@ func get_rand_rewards(num) -> Array[CardObj]:
 			objects.append(ObjManager.get_rand_shield_obj())
 
 	for obj in objects:
-		obj.isLoot = true
+		obj.curr_card_state = CardObj.CardState.Loot
 		obj.focus_card_pos_y = 0
 
 	return objects

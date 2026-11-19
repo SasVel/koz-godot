@@ -14,5 +14,5 @@ func config():
 	card_datas.append_array(Game.player.cards_hand)
 	for data in card_datas:
 		var card = ObjManager.get_card_obj(data)
-		card.isLoot = true
+		card.curr_card_state = card.CardState.Display
 		%DeckGrid.add_child(card)

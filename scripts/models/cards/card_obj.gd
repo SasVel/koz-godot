@@ -52,7 +52,24 @@ enum TweenState {
 				tween_idle(false)
 		curr_tween_state = val
 
-var isLoot : bool = false
+enum CardState {
+	Normal,
+	Loot,
+	Display
+}
+
+var curr_card_state : CardState = CardState.Normal:
+	set(val):
+		if curr_card_state == val: return
+		match val:
+			CardState.Normal:
+				pass
+			CardState.Loot:
+				pass
+			CardState.Display:
+				tween_idle(false)
+		curr_card_state = val
+
 @onready var isFocusTweening : bool = false
 @onready var isAnimTweening : bool = false
 
@@ -117,7 +134,7 @@ func set_defaults():
 	is_defaults_set = true
 
 func _get_drag_data(at_position):
-	if !isOn: return
+	if !isOn or curr_card_state == CardState.Display: return
 	return super(at_position)
 
 func _on_focus_entered() -> void:
@@ -132,7 +149,7 @@ func _on_focus_exited() -> void:
 
 func tween_focus(on_off : bool):
 	scale_on_focus(on_off)
-	if not isFocusTweening and not isLoot:
+	if not isFocusTweening and curr_card_state == CardState.Normal:
 		move_on_focus(on_off)
 
 func scale_on_focus(on_off : bool):
@@ -159,6 +176,7 @@ func move_on_focus(on_off : bool):
 
 var idle_tween : Tween
 func tween_idle(on_off : bool):
+	if on_off and curr_card_state == CardState.Display: return
 	if idle_tween != null:
 		if idle_tween.is_running() and on_off:
 			return
@@ -232,11 +250,13 @@ func animate_post_activation():
 	self.z_index = 0
 
 func activate(deduct_tempo : bool = true):
+	if curr_card_state == CardState.Display: return
 	Game.event_queue.append(Callable(self, "activation_sequence").bind(deduct_tempo))
 	if ObjManager.objPickedUp:
 		ObjManager.focus_rect.unfocus()
 
 func activation_sequence(deduct_tempo : bool = true):
+	if curr_card_state == CardState.Display: return
 	curr_tween_state = TweenState.Anim
 	await animate_pre_activation()
 	data.activate(deduct_tempo)
@@ -245,9 +265,11 @@ func activation_sequence(deduct_tempo : bool = true):
 	curr_tween_state = TweenState.Idle
 
 func _can_drop_data(_at_position: Vector2, drop_data: Variant) -> bool:
-	return drop_data["object"].isLoot
+	if curr_card_state == CardState.Display: return false
+	return drop_data["object"].curr_card_state == CardState.Loot
 
 func _drop_data(_at_position: Vector2, drop_data: Variant) -> void:
+	if curr_card_state == CardState.Display: return
 	if data.source == null: return
 	data.source.replace_action_hand(drop_data["object"].data.duplicate(), self.data, true)
 	drop_data["object"].queue_free()
