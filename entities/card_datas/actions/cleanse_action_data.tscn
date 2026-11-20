@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bj3ysoml3bbdu"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_ry0ag"]
+[ext_resource type="Script" uid="uid://cgs3lbnl8habi" path="res://scripts/models/effect_components/remove_status_eff_comp.gd" id="2_c874g"]
+
+[node name="CleanseActionData" unique_id=988386249 instance=ExtResource("1_ry0ag")]
+suit = 2
+actionType = 13
+tempoCost = 2
+
+[node name="RemoveStatusEffComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1086086800]
+script = ExtResource("2_c874g")
+is_fully_cleared = true
+isOffensive = false
+metadata/_custom_type_script = "uid://cgs3lbnl8habi"

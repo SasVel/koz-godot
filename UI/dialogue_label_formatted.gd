@@ -8,8 +8,8 @@ func _update_text() -> void:
 	else:
 		text = ""
 
-func _format_str(str : String) -> String:
-	str = str\
+func _format_str(input_str : String) -> String:
+	input_str = input_str\
 		.replace("<", "[font_size=22][outline_size=5]")\
 		.replace(">", "[/outline_size][/font_size]")
-	return str
+	return input_str

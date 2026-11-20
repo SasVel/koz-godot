@@ -1,6 +1,13 @@
 extends Node
 class_name UIHelper
 
+static func concat_arr_to_str(input_str : String, arr : Array, delimeter : String = ", "):
+	for i in range(arr):
+		input_str += str(arr[i])
+		if i != 0 or i != arr.size() - 1:
+			input_str += delimeter
+	return input_str
+
 ## Converts PascalCase text to readable format with spaces and proper capitalization
 ## Example: "ThisIsText" -> "This is text"
 static func pascal_to_readable_text(text : String) -> String:

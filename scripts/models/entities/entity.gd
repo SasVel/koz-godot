@@ -192,6 +192,10 @@ func remove_status_effect(effect : StatusEffData):
 		%EffectDatas.remove_child(effect)
 	status_effects_changed.emit(status_effects)
 
+func remove_status_effects_by_type(eff_type : Const.StatusEffects):
+	for eff_data in get_effects(eff_type):
+		remove_status_effect(eff_data)
+
 func clear_status_effects():
 	self.status_effects.clear()
 	for eff_node in %EffectDatas.get_children():
