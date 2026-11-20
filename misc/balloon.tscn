@@ -123,8 +123,8 @@ shader = ExtResource("7_q0vp7")
 shader_parameter/shadow_offset = Vector2(6, 6)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
-[node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
-layer = 100
+[node name="DialogueBalloon" type="CanvasLayer" unique_id=1434168376]
+layer = 10
 script = ExtResource("1_36de5")
 
 [node name="Balloon" type="Control" parent="." unique_id=359403728]

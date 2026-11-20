@@ -17,13 +17,10 @@ signal completed
 
 func _ready() -> void:
 	get_parent().move_child.call_deferred(self, 3)
+	Game.on_new_room.connect(func(): Game.add_event(try_activate_dialogue))
 
 func check_completed():
 	pass
-
-func switch_transition(isOn : bool):
-	if isOn:
-		await try_activate_dialogue()
 
 func try_activate_dialogue():
 	if dialogue == null: return

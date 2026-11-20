@@ -54,7 +54,9 @@ enum Phases {
 @onready var in_game : bool = false
 @onready var is_gui_input : bool = true :
 	set(val):
-		get_tree().get_root().gui_disable_input = !val
+		#get_tree().get_root().gui_disable_input = !val
+		if main != null:
+			main.set_process_input(val)
 		is_gui_input = val
 
 @onready var is_object_dragged : bool = false
@@ -146,10 +148,10 @@ func set_room():
 		curr_room.queue_free()
 
 	var room : Room
-	if turn_counter >= 10:
+	if rooms_completed >= 10:
 		room = ObjManager.get_room(Const.RoomTypes.EndGame)
 	else:
-		if turn_counter > 3 and randf_range(0, 1) <= 0.3:
+		if rooms_completed > 3 and randf_range(0, 1) <= 0.3:
 			room = ObjManager.get_room(Const.RoomTypes.Quest)
 		else:
 			room = ObjManager.get_room(Const.RoomTypes.Battle)
@@ -159,8 +161,9 @@ func set_room():
 
 	room.completed.connect(next_room)
 	await room.ready
+	if rooms_completed > 0:
+		add_event(SceneSwitcher.switch_transition.bind(true))
 	on_new_room.emit()
-	add_event(SceneSwitcher.switch_transition.bind(true))
 	await event_queue_empty
 
 	if curr_room.is_combat:
