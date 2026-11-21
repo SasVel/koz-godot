@@ -37,7 +37,8 @@ runtime/balloon_path="res://misc/balloon.tscn"
 
 [display]
 
-window/size/viewport_height=700
+window/size/viewport_width=1366
+window/size/viewport_height=768
 window/stretch/mode="canvas_items"
 
 [editor]

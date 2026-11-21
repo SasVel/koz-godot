@@ -26,28 +26,28 @@ dialogue = ExtResource("3_8ughf")
 
 [node name="FireRect" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="0" unique_id=1524273013 instance=ExtResource("2_d564k")]
 material = SubResource("ShaderMaterial_k6nig")
-offset_left = 147.00002
-offset_top = 133.10551
-offset_right = 275.0
-offset_bottom = 261.10565
+offset_left = 189.00002
+offset_top = 163.10551
+offset_right = 317.0
+offset_bottom = 291.10565
 metadata/_edit_use_anchors_ = true
 
 [node name="FireRect2" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="1" unique_id=1857025563 instance=ExtResource("2_d564k")]
 material = SubResource("ShaderMaterial_10ray")
-offset_left = 875.99994
-offset_top = 141.0
-offset_right = 1003.99994
-offset_bottom = 269.0
+offset_left = 1042.9998
+offset_top = 159.99998
+offset_right = 1170.9998
+offset_bottom = 288.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Enemies" type="Node" parent="." index="2" unique_id=1802013414]
 unique_name_in_owner = true
 
 [node name="EnemyPos_1" type="Node2D" parent="Enemies" index="0" unique_id=470433538]
-position = Vector2(555, 394)
+position = Vector2(661, 418)
 
 [node name="EnemyPos_2" type="Node2D" parent="Enemies" index="1" unique_id=1653820162]
-position = Vector2(785, 376)
+position = Vector2(931, 400)
 
 [node name="EnemyPos_3" type="Node2D" parent="Enemies" index="2" unique_id=1056772927]
-position = Vector2(250, 376)
+position = Vector2(315, 400)

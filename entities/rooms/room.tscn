@@ -12,18 +12,18 @@ script = ExtResource("1_pl5rr")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -49.000126
-offset_top = -52.000065
-offset_right = 3090.9998
-offset_bottom = 1890.4999
+offset_left = -887.0
+offset_top = -586.0
+offset_right = 2253.0
+offset_bottom = 1356.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.47, 0.47)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("1_wv86s")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("2_pl5rr")
-metadata/_edit_lock_ = true
 
 [node name="Decorations" type="Node" parent="." unique_id=1492867646]

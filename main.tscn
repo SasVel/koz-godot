@@ -176,14 +176,14 @@ script = ExtResource("1_ryguw")
 display = NodePath("../UI/MainContainer/EndTurnTimeDisplay")
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1773490858]
-position = Vector2(576, 350)
+position = Vector2(683, 384)
 
 [node name="UI" type="Control" parent="." unique_id=1036917726]
 z_index = 5
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 700.0
+offset_right = 1366.0
+offset_bottom = 768.0
 mouse_filter = 1
 theme = ExtResource("1_getpj")
 
@@ -291,9 +291,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -199.0
-offset_top = -187.0
+offset_top = -217.0
 offset_right = -57.0
-offset_bottom = -27.0
+offset_bottom = -57.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -324,11 +324,18 @@ expand_mode = 3
 [node name="EndTurnBtn" type="Button" parent="UI/MainContainer" unique_id=304399245]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(125, 40)
-layout_mode = 0
-offset_left = 944.0
-offset_top = 342.0
-offset_right = 1100.0
-offset_bottom = 382.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -211.80005
+offset_top = -20.299988
+offset_right = -55.80005
+offset_bottom = 28.700012
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_vertical = 4
 tooltip_text = "Ends the turn.
 Shortcut: ENTER"
@@ -353,11 +360,18 @@ texture = ExtResource("16_a6jrf")
 expand_mode = 1
 
 [node name="EndTurnTimeDisplay" parent="UI/MainContainer" unique_id=1143788982 instance=ExtResource("14_ryguw")]
-layout_mode = 0
-offset_left = 823.0001
-offset_top = 308.00003
-offset_right = 951.0001
-offset_bottom = 436.00006
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -344.80017
+offset_top = -59.80002
+offset_right = -216.80017
+offset_bottom = 68.20004
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "Ends the round after the timer runs out."
@@ -367,13 +381,15 @@ unique_name_in_owner = true
 
 [node name="ToolsList" type="HBoxContainer" parent="UI/MainContainer/CardsLayer" unique_id=1790732093]
 unique_name_in_owner = true
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -168.0
-offset_right = 1132.0
-offset_bottom = 132.0
+offset_left = 24.0
+offset_top = -193.0
+offset_right = -24.0
+offset_bottom = 107.0
+grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 5
 alignment = 1
