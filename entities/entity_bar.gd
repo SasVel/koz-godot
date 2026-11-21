@@ -1,16 +1,13 @@
-extends ProgressBar
+extends TextureProgressBar
 class_name EntityBar
-
-@export var healthBarStyleBox : StyleBoxFlat
-@export var blockBarStyleBox : StyleBoxFlat
 
 var default_position
 var default_scale
 
 func config(healthStat : Stat, blockStat : Stat):
-	healthBarStyleBox.bg_color = Const.SECONDARY_COLOR
+	self.self_modulate = Const.SECONDARY_COLOR
 	%HealthLabel.label_settings.font_color = Const.SECONDARY_COLOR
-	blockBarStyleBox.bg_color = Const.COMPLIMENTARY_COLOR
+	%BlockBar.self_modulate = Const.COMPLIMENTARY_COLOR
 	%BlockLabel.label_settings.font_color = Const.COMPLIMENTARY_COLOR
 
 	healthStat.max_stat_changed.connect(\
