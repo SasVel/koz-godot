@@ -54,7 +54,6 @@ enum Phases {
 @onready var in_game : bool = false
 @onready var is_gui_input : bool = true :
 	set(val):
-		#get_tree().get_root().gui_disable_input = !val
 		if main != null:
 			main.set_process_input(val)
 		is_gui_input = val

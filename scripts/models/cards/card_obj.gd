@@ -13,7 +13,10 @@ var is_defaults_set := false
 
 @onready var isOn : bool = true :
 	set(val):
-		cardBack.modulate = Color.WHITE if val else Color("b1b1b1")
+		cardBack.modulate = Color.WHITE \
+			if (val or curr_card_state == CardState.Display) \
+			else Color("b1b1b1")
+
 		if val and curr_tween_state != TweenState.None:
 			tween_idle(true)
 		else:
@@ -61,6 +64,7 @@ enum CardState {
 var curr_card_state : CardState = CardState.Normal:
 	set(val):
 		if curr_card_state == val: return
+		curr_card_state = val
 		match val:
 			CardState.Normal:
 				pass
@@ -68,7 +72,7 @@ var curr_card_state : CardState = CardState.Normal:
 				pass
 			CardState.Display:
 				tween_idle(false)
-		curr_card_state = val
+				isOn = true
 
 @onready var isFocusTweening : bool = false
 @onready var isAnimTweening : bool = false
@@ -264,13 +268,17 @@ func activate(deduct_tempo : bool = true):
 
 func activation_sequence(deduct_tempo : bool = true):
 	if curr_card_state == CardState.Display: return
+	get_tree().get_root().gui_disable_input = true
 	curr_tween_state = TweenState.Anim
 	isOn = true
 	await animate_pre_activation()
 	data.activate(deduct_tempo)
-	if self.is_queued_for_deletion(): return
+	if self.is_queued_for_deletion(): 
+		get_tree().get_root().gui_disable_input = false
+		return
 	await animate_post_activation()
 	curr_tween_state = TweenState.Idle
+	get_tree().get_root().gui_disable_input = false
 
 func _can_drop_data(_at_position: Vector2, drop_data: Variant) -> bool:
 	if curr_card_state == CardState.Display: return false
