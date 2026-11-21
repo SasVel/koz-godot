@@ -5,8 +5,9 @@
 
 [node name="CleanseActionData" unique_id=988386249 instance=ExtResource("1_ry0ag")]
 suit = 2
-actionType = 13
+actionType = 14
 tempoCost = 2
+isOffensive = false
 
 [node name="RemoveStatusEffComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1086086800]
 script = ExtResource("2_c874g")

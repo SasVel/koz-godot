@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cnij0674jl6km"]
+
+[ext_resource type="PackedScene" uid="uid://oy2aak60lvbt" path="res://entities/card_datas/card_data.tscn" id="1_8f3dp"]
+[ext_resource type="Script" uid="uid://cgs3lbnl8habi" path="res://scripts/models/effect_components/remove_status_eff_comp.gd" id="2_eyw65"]
+
+[node name="PurifyActionData" unique_id=988386249 instance=ExtResource("1_8f3dp")]
+suit = 2
+actionType = 13
+tempoCost = 0
+isOffensive = false
+
+[node name="RemoveStatusEffComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1495880939]
+script = ExtResource("2_eyw65")
+value = 2
+isOffensive = false
+metadata/_custom_type_script = "uid://cgs3lbnl8habi"

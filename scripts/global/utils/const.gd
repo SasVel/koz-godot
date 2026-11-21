@@ -34,7 +34,8 @@ enum Actions {
 	SMASH = 10,
 	FORETOLD_CONCLUSION = 11,
 	SHIFTING_FATE = 12,
-	CLEANSE = 13,
+	PURIFY = 13,
+	CLEANSE = 14,
 }
 
 enum Weapons {
