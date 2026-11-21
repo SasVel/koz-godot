@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://2yxw4oqstdl7"]
+
+[ext_resource type="Script" uid="uid://bisa58pg83lrs" path="res://tests/globals/stubs/player_stub.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://cn4y2tplu5p8m" path="res://tests/globals/stubs/timer_stub.gd" id="2_timer"]
+
+[node name="Main" type="Node2D" unique_id=1826125247]
+
+[node name="CardsLayer" type="CanvasLayer" parent="." unique_id=104700903]
+unique_name_in_owner = true
+
+[node name="Player" type="Node" parent="." unique_id=1310985121]
+script = ExtResource("1_player")
+
+[node name="EndTurnTimer" type="Timer" parent="." unique_id=345940106]
+script = ExtResource("2_timer")

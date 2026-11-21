@@ -7,6 +7,9 @@ enum Phases {
 	DEFEND
 }
 
+@onready var rooms_for_end_room : int = 10
+@onready var rooms_for_quest_room : int = 3
+
 @onready var turn_counter : int = 0
 @onready var rooms_completed : int = 0 :
 	set(val):
@@ -134,12 +137,10 @@ func restart():
 #endregion
 
 #region Game Flow
-# Flags the game as running and loads the first room.
 func start_game():
 	in_game = true
 	set_room()
 
-# Picks the next room type and swaps it in with a transition.
 func set_room():
 	if curr_room != null:
 		add_event(SceneSwitcher.switch_transition.bind(false))
@@ -147,10 +148,10 @@ func set_room():
 		curr_room.queue_free()
 
 	var room : Room
-	if rooms_completed >= 10:
+	if rooms_completed >= rooms_for_end_room:
 		room = ObjManager.get_room(Const.RoomTypes.EndGame)
 	else:
-		if rooms_completed > 3 and randf_range(0, 1) <= 0.3:
+		if rooms_completed > rooms_for_quest_room and randf_range(0, 1) <= 0.3:
 			room = ObjManager.get_room(Const.RoomTypes.Quest)
 		else:
 			room = ObjManager.get_room(Const.RoomTypes.Battle)
@@ -169,27 +170,23 @@ func set_room():
 		curr_phase = Phases.DEFEND
 		await start_turn()
 
-# Completes the current room and loads the next one.
 func next_room():
 	turn_counter = 0
 	rooms_completed += 1
 	set_room()
 
-# Swaps phase, increments the turn and plays player effects.
 func start_turn():
 	swap_phase()
 	turn_counter += 1
 	add_event(on_start_turn_emit)
 	await play_player_eff_stack()
 
-# Emits the start-of-turn signals.
 func on_start_turn_emit():
 	if turn_counter == 1:
 		on_start_first_turn.emit()
 	on_start_turn_layer_1.emit()
 	on_start_turn_layer_2.emit()
 
-# Ends the player turn, plays enemy actions and starts the next turn.
 func end_turn():
 	on_end_player_turn.emit()
 	await play_enemy_anim_stack()
@@ -197,7 +194,6 @@ func end_turn():
 	refresh_end_turn_timer()
 	start_turn()
 
-# Toggles between attack and defend phases.
 func swap_phase():
 	curr_phase = Phases.ATTACK if curr_phase == Phases.DEFEND else Phases.DEFEND
 
