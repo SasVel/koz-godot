@@ -62,18 +62,6 @@ func after_each() -> void:
 
 
 #region Helpers
-func _noop_a() -> void:
-	pass
-
-
-func _noop_b() -> void:
-	pass
-
-
-func _noop_c() -> void:
-	pass
-
-
 func _spawn_room(scene: PackedScene) -> Room:
 	var room: Room = scene.instantiate()
 	_main.add_child(room)
