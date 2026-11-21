@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
-uniform vec4 base_color : source_color;
+uniform vec4 base_color : source_color = vec4(1.0);
+uniform sampler2D base_texture;
 uniform vec2 node_resolution;
 
 uniform float factor : hint_range(0.0, 1.0, 0.01) = 0.54;
@@ -52,6 +53,6 @@ void fragment() {
 	shape_value = mix(shape_feathering * 0.5, 1.0 - shape_feathering * 0.5, shape_value);
 	float shaped_gradient = smoothstep(value - (shape_feathering * 0.5), value + (shape_feathering * 0.5), shape_treshold - shape_value);
 
-	COLOR.rgb = base_color.rgb;
+	COLOR.rgb = texture(base_texture, UV).rgb * base_color.rgb;
 	COLOR.a = shaped_gradient;
 }

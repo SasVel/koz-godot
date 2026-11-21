@@ -1,11 +1,18 @@
 @tool
-extends ColorRect
+extends TextureRect
 class_name TransitionRect
 
-@export var base_color : Color:
+@export var base_color : Color = Color(1, 1, 1, 1):
 	set(value):
 		base_color = value
 		material.set_shader_parameter("base_color", base_color)
+@export var base_texture : Texture2D:
+	set(value):
+		base_texture = value
+		# TextureRect skips drawing entirely when its own texture is null,
+		# so keep it in sync with the shader's base texture.
+		texture = base_texture
+		material.set_shader_parameter("base_texture", base_texture)
 @export_range(0.0,1.0,0.01) var factor : float = 0.5:
 	set(value):
 		factor = value
