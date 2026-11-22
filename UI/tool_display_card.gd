@@ -21,6 +21,7 @@ func config(data : ToolData):
 	%TitleLabel.text = UIHelper.pascal_to_readable_text(title_text)
 	%DescriptionLabel.text = data.generate_desc()
 	self.tooltip_text = data.generate_desc()
+	self.self_modulate = Const.BACKGROUND_DARKER_COLOR
 	%CardIconRect.texture = image
 	%CardIconShadow.texture = image
 	%TempoDisplay.config(Const.ACCENT_COLOR, data.tempoCost, data.tempo_changed)

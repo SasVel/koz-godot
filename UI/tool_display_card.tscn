@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b73cc3b36w7b7"]
 
 [ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_menrt"]
+[ext_resource type="Texture2D" uid="uid://1rpqexdg8r72" path="res://res/button_back.png" id="2_d4udx"]
 [ext_resource type="Script" uid="uid://cvwcykwjrcxx3" path="res://UI/tool_display_card.gd" id="2_o23ov"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="4_d4udx"]
 [ext_resource type="Script" uid="uid://bttgnk3bb2a8i" path="res://addons/font_auto_size_labels/auto_size_label.gd" id="4_drtwe"]
@@ -8,6 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="6_xuc75"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="7_8p347"]
 [ext_resource type="LabelSettings" uid="uid://brmy2s0k6mu8k" path="res://misc/number_label_settings.tres" id="8_77jgm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6o5qs"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+texture = ExtResource("2_d4udx")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3lnqk"]
 load_path = "res://.godot/imported/sprites_256.png-52613440007506de9c13a2fc03872083.ctex"
@@ -45,10 +55,11 @@ region = Rect2(256, 384, 128, 128)
 
 [node name="ToolDisplayCard" type="PanelContainer" unique_id=672961235]
 offset_right = 348.0
-offset_bottom = 176.0
+offset_bottom = 186.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_menrt")
+theme_override_styles/panel = SubResource("StyleBoxTexture_6o5qs")
 script = ExtResource("2_o23ov")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1240267112]
@@ -119,6 +130,7 @@ metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=683281637]
 layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="TempoDisplay" type="Control" parent="HBoxContainer/VBoxContainer2" unique_id=1416053155]
 unique_name_in_owner = true
