@@ -117,9 +117,9 @@ metadata/_edit_lock_ = true
 
 [node name="Images" type="Control" parent="HoleImage" unique_id=1806871135]
 anchors_preset = 0
-offset_left = 521.0
+offset_left = 697.0
 offset_top = 389.0
-offset_right = 1416.0
+offset_right = 1592.0
 offset_bottom = 979.0
 size_flags_horizontal = 3
 
