@@ -1,10 +1,10 @@
 extends Control
 
-@export var anim_speed : float = 3
+@export var anim_speed : float = 6
 
 func _ready() -> void:
 	Game.on_start_turn_layer_1.connect(func(): \
-		Game.add_event(play_turn_announcement, true)
+		play_turn_announcement()
 	)
 	self.visible = true
 	%TurnRect.scale.y = 0

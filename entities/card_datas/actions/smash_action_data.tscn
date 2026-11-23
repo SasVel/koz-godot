@@ -11,7 +11,7 @@ tempoCost = 2
 
 [node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1184072026]
 script = ExtResource("2_y0gvp")
-value = 30
+value = 16
 metadata/_custom_type_script = "uid://rio4hms2vn51"
 
 [node name="StunEffData" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=1231074189 instance=ExtResource("3_wx3bm")]
