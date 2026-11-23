@@ -1,6 +1,8 @@
 extends Node
 
 @export var popup_scenes : Dictionary[Popups, PackedScene]
+@export var damage_indicator_obj : PackedScene
+
 var is_paused : bool = false
 
 enum Popups {
@@ -37,3 +39,9 @@ func show_screen(type : Popups) -> Control:
 	var screen = get_popup_inst(type)
 	Game.popupsContainer.add_child(screen)
 	return screen
+
+func show_damage_indicator(num : int, pos : Vector2, color : Color):
+	var inst : NumberIndicator = damage_indicator_obj.instantiate()
+	inst.config(num, pos, color)
+	Game.popupsContainer.add_child(inst)
+	return inst

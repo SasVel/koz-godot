@@ -10,5 +10,13 @@ func activate():
 		unit.take_damage(source.process_damage_outgoing(value))
 	super()
 
+func get_processed_dmg():
+	var resVal = self.value
+	if source != null:
+		resVal = source.process_damage_outgoing(resVal)
+	if targets[0] != null:
+		resVal = targets[0].process_damage_incoming(resVal)
+	return resVal
+
 func generate_desc() -> String:
 	return "Deal %.f DMG." % (source.process_damage_outgoing(value) if source != null else value)

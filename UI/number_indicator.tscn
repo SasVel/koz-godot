@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cang81udd15ps"]
+
+[ext_resource type="Script" uid="uid://cupbwbj8mkx3t" path="res://UI/number_indicator.gd" id="2_48lng"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pajv6"]
+font_size = 42
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.654902)
+shadow_offset = Vector2(2, 2)
+
+[node name="NumberIndicator" type="Label" unique_id=1833301170]
+offset_right = 57.0
+offset_bottom = 33.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "20"
+label_settings = SubResource("LabelSettings_pajv6")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_48lng")
+tween_fade_time = 0.8
+tween_rot_deg = 25

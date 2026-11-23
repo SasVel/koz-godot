@@ -28,7 +28,7 @@ enum Phases {
 @onready var curr_room : Room
 @onready var cards_layer : CanvasLayer
 
-@onready var time_between_events : float = 0.3
+@onready var time_between_events : float = 0.2
 @onready var event_queue : Array[Callable]
 @onready var is_playing_event : bool = false :
 	set(val):

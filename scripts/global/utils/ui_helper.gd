@@ -38,21 +38,24 @@ static func tween_eff_trails(source_center_pos : Vector2, eff_comp : EffectCompo
 	if eff_comp is DamageComp:
 		var dmg_comp = (eff_comp as DamageComp)
 		for target in dmg_comp.targets.filter(func(x): return x != null):
+			var dest = target.entity_bar.global_position + target.entity_bar.size / 2
 			var trail : TrailEffect = ObjManager.trail_eff_scn.instantiate()
 			trail.config(Const.ACCENT_COLOR,\
-			source_center_pos,\
-			target.entity_bar.global_position + target.entity_bar.size / 2)
+			source_center_pos, dest)
 			Game.visualEffectsContainer.add_child(trail)
-			await trail.play()
+			trail.play()
+			await trail.dest_reached
+			UI.show_damage_indicator(dmg_comp.get_processed_dmg(), dest, Const.ACCENT_COLOR)
 	elif eff_comp is BlockComp:
 		var block_comp = (eff_comp as BlockComp)
 		var target = block_comp.source
+		var dest = target.entity_bar.global_position + target.entity_bar.size / 2
 		var trail : TrailEffect = ObjManager.trail_eff_scn.instantiate()
 		trail.config(Const.COMPLIMENTARY_COLOR,\
-		source_center_pos,\
-		target.entity_bar.global_position + target.entity_bar.size / 2)
+		source_center_pos, dest)
 		Game.visualEffectsContainer.add_child(trail)
 		await trail.play()
+		UI.show_damage_indicator(block_comp.value, dest, Const.COMPLIMENTARY_COLOR)
 	elif eff_comp is StatusEffData:
 		var comp = (eff_comp as StatusEffData)
 		var targets = comp.get_affected_units()
