@@ -46,11 +46,11 @@ func on_koz_suit_changed(_suit = null):
 func is_koz_match() -> bool:
 	return Game.curr_room != null and suit == Game.curr_room.koz_suit
 
-func get_suit_bonus() -> int:
-	return Game.koz_suit_value_bonus if is_koz_match() else 0
+func get_suit_bonus() -> float:
+	return Game.koz_suit_multi_bonus if is_koz_match() else 0.0
 
 func process_value(value_ : int) -> int:
-	return value_ + get_suit_bonus()
+	return value_ + int(value * get_suit_bonus())
 
 func config_source(source_ : Entity):
 	super(source_)

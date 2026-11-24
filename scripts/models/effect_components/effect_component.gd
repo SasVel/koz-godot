@@ -41,9 +41,9 @@ func process_value(value_ : int) -> int:
 func get_processed_value() -> int:
 	return process_value(value)
 
-func get_suit_bonus() -> int:
+func get_suit_bonus() -> float:
 	set_card_owner()
-	return _card_owner.get_suit_bonus() if _card_owner != null else 0
+	return _card_owner.get_suit_bonus() if _card_owner != null else 0.0
 
 func activate():
 	if sound != null:

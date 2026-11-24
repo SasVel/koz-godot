@@ -29,11 +29,12 @@ enum Phases {
 @onready var cards_layer : CanvasLayer
 
 @onready var time_between_events : float = 0.2
-@export var koz_suit_value_bonus : int = 5 :
+@export var koz_suit_multi_bonus : float = 0.3 :
 	set(val):
-		koz_suit_value_bonus = val
+		koz_suit_multi_bonus = val
 		if curr_room != null:
 			koz_suit_changed.emit(curr_room.koz_suit)
+
 @onready var event_queue : Array[Callable]
 @onready var is_playing_event : bool = false :
 	set(val):
