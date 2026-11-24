@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d3xb0g0bgn6tk" path="res://res/card_back.png" id="2_obpk5"]
 [ext_resource type="Script" uid="uid://ccp1kor2ynh8w" path="res://scripts/models/cards/card_obj.gd" id="3_oy8i5"]
 [ext_resource type="Texture2D" uid="uid://c1qme1s7s0j7h" path="res://res/sprites_256.png" id="4_nlkk3"]
+[ext_resource type="Shader" uid="uid://dtn3xn7oaitth" path="res://shaders/SolidColor.gdshader" id="6_lcnyk"]
 [ext_resource type="Script" uid="uid://btelx0bototx5" path="res://UI/num_display.gd" id="6_ls7t3"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="7_5t304"]
 [ext_resource type="Texture2D" uid="uid://dc7ao6l843ui1" path="res://res/sprites_128.png" id="7_7b0cb"]
@@ -26,6 +27,10 @@ shader_parameter/inset = 0.0
 [sub_resource type="AtlasTexture" id="AtlasTexture_118ut"]
 atlas = ExtResource("7_7b0cb")
 region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t3kdi"]
+shader = ExtResource("6_lcnyk")
+shader_parameter/custom_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lcnyk"]
 shader = ExtResource("8_118ut")
@@ -142,6 +147,20 @@ texture = SubResource("AtlasTexture_118ut")
 expand_mode = 5
 stretch_mode = 5
 
+[node name="SuitOutline" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/SuitIconRect" unique_id=1822841964]
+unique_name_in_owner = true
+show_behind_parent = true
+material = SubResource("ShaderMaterial_t3kdi")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+scale = Vector2(1.2, 1.2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_118ut")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="SuitShadow" type="TextureRect" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/SuitIconRect" unique_id=1341900029]
 unique_name_in_owner = true
 show_behind_parent = true
@@ -181,7 +200,6 @@ script = ExtResource("7_118ut")
 _max_size = 24
 _min_size = 8
 _current_font_size = 24
-_size_just_modified_by_autosizer = true
 _editor_defaults_set = true
 metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 

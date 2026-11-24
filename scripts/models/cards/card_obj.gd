@@ -114,6 +114,7 @@ func config(data_ : CardData):
 	suit_icon_config()
 	%TempoDisplay.config(Const.ACCENT_COLOR, data.tempoCost, data.tempo_changed)
 	data.tempo_changed.connect(func(_x, y): %TempoDisplay.update(y))
+	Game.koz_suit_changed.connect(set_suit_outline)
 	return self
 
 func _ready() -> void:
@@ -136,6 +137,16 @@ func suit_icon_config():
 	%SuitIconRect.texture = sprite
 	%SuitShadow.texture = sprite
 	%SuitIconRect.self_modulate = ObjManager.get_suit_color(data.suit)
+	set_suit_outline()
+
+func set_suit_outline():
+	var color = Const.ACCENT_COLOR
+	%SuitOutline.visible = data.is_koz_match()
+	color.a = 0.6
+	%SuitOutline.material.set_shader_parameter("custom_color", color)
+	if !data.is_koz_match(): return
+	var sprite = ObjManager.get_suit_sprite(data.suit)
+	%SuitOutline.texture = sprite
 
 func set_generate_description():
 	%DescLabel.text = data.generate_desc()
