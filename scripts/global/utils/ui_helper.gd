@@ -55,7 +55,7 @@ static func tween_eff_trails(source_center_pos : Vector2, eff_comp : EffectCompo
 		source_center_pos, dest)
 		Game.visualEffectsContainer.add_child(trail)
 		await trail.play()
-		UI.show_damage_indicator(block_comp.value, dest, Const.COMPLIMENTARY_COLOR)
+		UI.show_damage_indicator(block_comp.process_value(block_comp.value), dest, Const.COMPLIMENTARY_COLOR)
 	elif eff_comp is StatusEffData:
 		var comp = (eff_comp as StatusEffData)
 		var targets = comp.get_affected_units()

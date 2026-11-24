@@ -21,6 +21,30 @@ func config(source_ : Entity, targets_ : Array[Entity]):
 func config_source(source_ : Entity):
 	source = source_
 
+var _card_owner : CardData
+var card_owner_set : bool = false
+
+func set_card_owner():
+	if card_owner_set: return
+	var node := get_parent()
+	while node != null:
+		if node is CardData:
+			_card_owner = node
+			break
+		node = node.get_parent()
+	card_owner_set = true
+
+func process_value(value_ : int) -> int:
+	set_card_owner()
+	return _card_owner.process_value(value_) if _card_owner != null else value_
+
+func get_processed_value() -> int:
+	return process_value(value)
+
+func get_suit_bonus() -> int:
+	set_card_owner()
+	return _card_owner.get_suit_bonus() if _card_owner != null else 0
+
 func activate():
 	if sound != null:
 		SFX.play(sound)

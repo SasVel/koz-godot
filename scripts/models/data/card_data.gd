@@ -34,6 +34,24 @@ signal changed_state(val)
 signal tempo_changed(oldVal : int, val : int)
 signal update_status()
 
+func _ready() -> void:
+	Obj.connect_signals({
+		Game.koz_suit_changed: on_koz_suit_changed,
+		Game.on_new_room: on_koz_suit_changed
+	})
+
+func on_koz_suit_changed(_suit = null):
+	update_status.emit()
+
+func is_koz_match() -> bool:
+	return Game.curr_room != null and suit == Game.curr_room.koz_suit
+
+func get_suit_bonus() -> int:
+	return Game.koz_suit_value_bonus if is_koz_match() else 0
+
+func process_value(value_ : int) -> int:
+	return value_ + get_suit_bonus()
+
 func config_source(source_ : Entity):
 	super(source_)
 	Obj.connect_signals({
@@ -47,7 +65,7 @@ func activate(deduct_tempo : bool = true):
 	super()
 
 func get_generic_value():
-	return %Components.get_child(0).value
+	return process_value(%Components.get_child(0).value)
 
 func get_components() -> Array[EffectComponent]:
 	var components = %Components.get_children()

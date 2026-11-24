@@ -16,6 +16,7 @@ func config(data_ : CardData):
 		%NumLabel.label_settings.outline_color = color
 	data.source.status_effects_changed.connect(\
 		func(_x): update(data.get_generic_value()))
+	data.update_status.connect(func(): update(data.get_generic_value()))
 
 	update(data.get_generic_value())
 	return self

@@ -126,6 +126,10 @@ func _input(event: InputEvent) -> void:
 		var card = self.duplicate()
 		card.curr_card_state = card.CardState.Display
 		popup.display(card)
+		data.update_status.connect(card.set_generate_description)
+		popup.finished.connect(func():
+			if data.update_status.is_connected(card.set_generate_description):
+				data.update_status.disconnect(card.set_generate_description))
 
 func suit_icon_config():
 	var sprite = ObjManager.get_suit_sprite(data.suit)

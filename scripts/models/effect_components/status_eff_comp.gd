@@ -16,7 +16,7 @@ func _init() -> void:
 	value = data.value
 
 func get_full_value() -> int:
-	return data.value + data.bonus_value
+	return process_value(data.value)
 
 func config_source(source_ : Entity):
 	super(source_)
@@ -30,13 +30,23 @@ func add_targets(targets_ : Array[Entity]):
 	super(targets_)
 	data.add_targets(targets_)
 
-func activate():
+func _activate_data():
+	var bonus := get_suit_bonus()
+	var prev_stacks := data.stacks
+	var prev_value := data.value
+	data.stacks += bonus
+	data.value += bonus
 	data.activate()
+	data.stacks = prev_stacks
+	data.value = prev_value
+
+func activate():
+	_activate_data()
 
 func deactivate():
-	data.activate()
+	_activate_data()
 
 func generate_desc() -> String:
 	return "Add %s %s." %\
-	[str(stacks),
+	[str(process_value(stacks)),
 	Const.StatusEffects.keys()[data.type]]
