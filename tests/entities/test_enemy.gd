@@ -223,7 +223,7 @@ func test_reduce_hand_is_noop_within_limit() -> void:
 
 
 func test_activate_actions_hand_plays_all_cards() -> void:
-	_enemy.add_actions_hand(_enemy.pop_rand_actions_deck(2), false)
+	_enemy.add_actions_hand(_enemy.pop_actions_deck(2), false)
 	assert_eq(_enemy.cards_hand.size(), 2)
 	assert_eq(_enemy.cards_deck.size(), 1)
 

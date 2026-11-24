@@ -5,6 +5,8 @@ class_name EntityData
 @export_multiline var desc : String
 @export var default_stats : StatBlock
 
+@export var draw_controller : DrawController = DrawController.new()
+
 @export var card_deck_types : Array[Const.Actions]
 @onready var card_deck : Array[CardData]
 @export var card_hand_size : int = 2

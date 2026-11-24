@@ -4,7 +4,7 @@ class_name PlayActionsComp
 ## Value is the count of cards played on activaton.
 
 func activate():
-	source.play_rand_actions_hand(process_value(value), false, [owner])
+	source.play_actions_hand(process_value(value), false, [owner])
 	super()
 
 func generate_desc() -> String:
