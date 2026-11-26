@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="1_yobfc"]
 [ext_resource type="Texture2D" uid="uid://c4picoit8vwvk" path="res://res/ButtonAssets/button_yellow_pressed.png" id="2_gwh2h"]
 [ext_resource type="Texture2D" uid="uid://bfoy8rmg8hc7m" path="res://res/NinePatchPanel.png" id="3_7pjvw"]
+[ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="3_gwsko"]
+[ext_resource type="Texture2D" uid="uid://cdgonusv85jhb" path="res://res/HashTextureBarSmallerFlipped.png" id="4_kpe3a"]
+[ext_resource type="Texture2D" uid="uid://cwgd6ssnvxqev" path="res://res/HashTextureTile_512.png" id="5_egg6x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfyo1"]
 texture = ExtResource("2_gwh2h")
@@ -32,12 +35,50 @@ texture_margin_right = 15.0
 texture_margin_bottom = 12.0
 modulate_color = Color(0.8055934, 0.8055934, 0.8055934, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohff4"]
+atlas = ExtResource("3_gwsko")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vklxx"]
+atlas = SubResource("AtlasTexture_ohff4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyk3"]
+atlas = ExtResource("3_gwsko")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8slf3"]
+atlas = SubResource("AtlasTexture_tuyk3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc13c"]
+atlas = ExtResource("3_gwsko")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odrs6"]
+atlas = SubResource("AtlasTexture_dc13c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7kkhm"]
+texture = ExtResource("4_kpe3a")
+modulate_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vckw3"]
+texture = ExtResource("4_kpe3a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u716c"]
+texture = ExtResource("5_egg6x")
+texture_margin_left = 5.0
+texture_margin_top = 15.0
+texture_margin_right = 5.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.6955032, 0.6955031, 0.6955031, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kpe3a"]
 texture = ExtResource("3_7pjvw")
-texture_margin_left = 43.0
-texture_margin_top = 43.0
-texture_margin_right = 43.0
-texture_margin_bottom = 43.0
+texture_margin_left = 45.0
+texture_margin_top = 45.0
+texture_margin_right = 45.0
+texture_margin_bottom = 45.0
 expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
@@ -59,6 +100,13 @@ Button/styles/disabled = SubResource("StyleBoxTexture_kfyo1")
 Button/styles/hover = SubResource("StyleBoxTexture_7pjvw")
 Button/styles/normal = SubResource("StyleBoxTexture_f70oy")
 Button/styles/pressed = SubResource("StyleBoxTexture_gwsko")
+HSlider/constants/center_grabber = 1
+HSlider/icons/grabber = SubResource("AtlasTexture_vklxx")
+HSlider/icons/grabber_disabled = SubResource("AtlasTexture_8slf3")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_odrs6")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_7kkhm")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_vckw3")
+HSlider/styles/slider = SubResource("StyleBoxTexture_u716c")
 LineEdit/constants/caret_width = 3
 LineEdit/font_sizes/font_size = 22
 MarginContainer/constants/margin_bottom = 10

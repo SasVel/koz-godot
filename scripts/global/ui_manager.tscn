@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3a620iori5c" path="res://UI/decklist_popup.tscn" id="7_48rrx"]
 [ext_resource type="PackedScene" uid="uid://cu3tlsgpnivyy" path="res://UI/card_closeup_popup.tscn" id="8_kcfdq"]
 [ext_resource type="PackedScene" uid="uid://cang81udd15ps" path="res://UI/number_indicator.tscn" id="9_avl0e"]
+[ext_resource type="PackedScene" uid="uid://bbp7h2fdknbpo" path="res://UI/SettingsPopup/settings_popup.tscn" id="9_k5a5y"]
 
 [node name="UIManager" type="Node" unique_id=451270226]
 process_mode = 3
@@ -20,6 +21,7 @@ popup_scenes = Dictionary[int, PackedScene]({
 3: ExtResource("5_2o6ry"),
 4: ExtResource("6_y65vw"),
 5: ExtResource("7_48rrx"),
-6: ExtResource("8_kcfdq")
+6: ExtResource("8_kcfdq"),
+7: ExtResource("9_k5a5y")
 })
 damage_indicator_obj = ExtResource("9_avl0e")

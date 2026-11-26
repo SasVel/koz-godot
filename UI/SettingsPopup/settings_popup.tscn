@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://bbp7h2fdknbpo"]
+
+[ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_rvggk"]
+[ext_resource type="Script" uid="uid://b8cmwnrev71ku" path="res://UI/SettingsPopup/settings_popup.gd" id="2_p0qno"]
+[ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="3_ueg8l"]
+[ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="4_fwm3n"]
+[ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="5_fwm3n"]
+[ext_resource type="Script" uid="uid://cronnm7yromde" path="res://UI/close_button.gd" id="6_37h4a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpslf"]
+atlas = ExtResource("5_fwm3n")
+region = Rect2(0, 0, 64, 64)
+
+[node name="SettingsPopup" type="Control" unique_id=1584300394]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rvggk")
+script = ExtResource("2_p0qno")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=443124414]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -287.0
+offset_right = 448.0
+offset_bottom = 287.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1688187278]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=927649461]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AudioLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1863575661]
+layout_mode = 2
+text = "Audio"
+label_settings = ExtResource("3_ueg8l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1773499946]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Master" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1952503441]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="MasterLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Master" unique_id=1901608824]
+layout_mode = 2
+text = "Main Volume"
+label_settings = ExtResource("4_fwm3n")
+
+[node name="MasterSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Master" unique_id=1463913910]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Music" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=358562552]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="MusicLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Music" unique_id=596616001]
+layout_mode = 2
+text = "Music Volume"
+label_settings = ExtResource("4_fwm3n")
+
+[node name="MusicSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Music" unique_id=97664879]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFX" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=472287273]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="SFXLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SFX" unique_id=1645534019]
+layout_mode = 2
+text = "Sound Effects Volume"
+label_settings = ExtResource("4_fwm3n")
+
+[node name="SFXSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SFX" unique_id=752723676]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="CloseButton" type="TextureButton" parent="." unique_id=1537070134]
+layout_mode = 1
+offset_left = 167.0
+offset_top = 98.0
+offset_right = 231.0
+offset_bottom = 162.00002
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_hpslf")
+script = ExtResource("6_37h4a")
+
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Master/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Music/MusicSlider" to="." method="_on_music_s_lider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SFX/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

@@ -243,6 +243,10 @@ mouse_filter = 2
 texture = ExtResource("17_c2iqt")
 expand_mode = 1
 
+[node name="SettingsBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer" unique_id=1200208437]
+layout_mode = 2
+text = "Settings"
+
 [node name="CreditsBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer" unique_id=882466474]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
@@ -267,5 +271,6 @@ layout_mode = 2
 script = ExtResource("18_c2iqt")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/CreditsBtn" to="." method="_on_credits_btn_pressed"]
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/ThemeSelect" to="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/ThemeSelect" method="_on_item_selected"]

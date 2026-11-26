@@ -12,7 +12,8 @@ enum Popups {
 	NAME,
 	PAUSE,
 	DECKLIST,
-	CARD_CLOSEUP
+	CARD_CLOSEUP,
+	SETTINGS
 }
 
 func _input(event: InputEvent) -> void:

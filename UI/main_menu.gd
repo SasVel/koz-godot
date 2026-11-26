@@ -19,6 +19,9 @@ func _on_new_game_btn_pressed() -> void:
 	await class_selection_popup.finished
 	SceneSwitcher.switch_to_scene(main_scn)
 
+func _on_settings_btn_pressed() -> void:
+	UI.show_screen(UI.Popups.SETTINGS)
+
 func _on_credits_btn_pressed() -> void:
 	SceneSwitcher.switch_to_scene(credits_scn)
 
