@@ -9,15 +9,15 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_j0jf5"]
+[sub_resource type="Gradient" id="Gradient_rjnqm"]
 resource_local_to_scene = true
 interpolation_mode = 2
-offsets = PackedFloat32Array(0.5985401, 0.6569343)
+offsets = PackedFloat32Array(0.5627907, 0.6883721)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n8wmi"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_svr8m"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_j0jf5")
+gradient = SubResource("Gradient_rjnqm")
 width = 16
 height = 16
 fill = 1
@@ -34,4 +34,4 @@ rotation = 1.4357018
 
 [node name="Particle" parent="PathFollow" unique_id=1592143005 instance=ExtResource("2_svr8m")]
 unique_name_in_owner = true
-texture = SubResource("GradientTexture2D_n8wmi")
+texture = SubResource("GradientTexture2D_svr8m")

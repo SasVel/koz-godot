@@ -19,7 +19,6 @@
 [ext_resource type="FontFile" uid="uid://4hbr5o6pseb4" path="res://res/font/Colorfiction - Messy.otf" id="16_c2iqt"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="16_cwv5u"]
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="17_c2iqt"]
-[ext_resource type="Script" uid="uid://bdhhumly55g2x" path="res://UI/menu_button.gd" id="18_27vi8"]
 [ext_resource type="Script" uid="uid://co3c6lwimv2ic" path="res://UI/theme_select.gd" id="18_c2iqt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cwv5u"]
@@ -232,7 +231,6 @@ custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 tooltip_text = "Starts a new adventure!"
 text = "New Game"
-script = ExtResource("18_27vi8")
 
 [node name="BtnShadow" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/NewGameBtn" unique_id=1733139276]
 show_behind_parent = true
@@ -257,7 +255,6 @@ custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 tooltip_text = "Who made this??"
 text = "Credits"
-script = ExtResource("18_27vi8")
 
 [node name="BtnShadow" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftCol/PanelContainer/MarginContainer/VBoxContainer/CreditsBtn" unique_id=168938323]
 show_behind_parent = true

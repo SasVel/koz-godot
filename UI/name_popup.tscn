@@ -4,17 +4,12 @@
 [ext_resource type="Script" uid="uid://dpv1piwo6kiy0" path="res://name_popup.gd" id="2_gkdrj"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="3_wbeip"]
 [ext_resource type="Texture2D" uid="uid://sdqy8ml41qpr" path="res://res/ButtonAssets/button_yellow_idle.png" id="4_ryjw7"]
-[ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="5_5dti8"]
-[ext_resource type="Script" uid="uid://cronnm7yromde" path="res://UI/close_button.gd" id="6_gedeg"]
+[ext_resource type="PackedScene" uid="uid://dd6tfp74bvmpo" path="res://UI/close_button.tscn" id="5_ryjw7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5dti8"]
 shader = ExtResource("3_wbeip")
 shader_parameter/shadow_offset = Vector2(6, 6)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qdens"]
-atlas = ExtResource("5_5dti8")
-region = Rect2(0, 0, 64, 64)
 
 [node name="NamePopup" type="Control" unique_id=949640972]
 layout_mode = 3
@@ -81,24 +76,19 @@ mouse_filter = 2
 texture = ExtResource("4_ryjw7")
 expand_mode = 1
 
-[node name="CloseButton" type="TextureButton" parent="." unique_id=846308869]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -227.99997
-offset_top = -106.000015
-offset_right = -163.99997
-offset_bottom = -42.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.7853982
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_default_cursor_shape = 2
-texture_normal = SubResource("AtlasTexture_qdens")
-script = ExtResource("6_gedeg")
+[node name="CloseButton" parent="." unique_id=1494216837 instance=ExtResource("5_ryjw7")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 455.0
+offset_top = 276.0
+offset_right = 519.0
+offset_bottom = 340.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
 [connection signal="text_submitted" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

@@ -10,6 +10,8 @@ func _ready() -> void:
 	for reward in card_rewards:
 		%LootContainer.add_child(reward)
 
+	super()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("continue"):
 		get_viewport().set_input_as_handled()
@@ -22,3 +24,6 @@ func close():
 	Game.cards_layer.layer = 1
 	super.close()
 	self.queue_free()
+
+func set_focus():
+	%LootContainer.get_children()[0].grab_focus()

@@ -3,6 +3,7 @@ extends GamePopup
 func _ready() -> void:
 	UIHelper.set_theme_colors(self)
 	get_tree().paused = true
+	super()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("continue") or event.is_action_pressed("ui_cancel"):
@@ -26,3 +27,6 @@ func close():
 	get_tree().paused = false
 	super.close()
 	self.queue_free()
+
+func set_focus():
+	%ContinueBtn.grab_focus()

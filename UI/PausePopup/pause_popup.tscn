@@ -51,12 +51,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ContinueBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=921697947]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Continue"
 
 [node name="SettingsBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2038189416]
 layout_mode = 2
-text = "Continue"
+text = "Settings"
 
 [node name="GiveUpBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1750199339]
 layout_mode = 2

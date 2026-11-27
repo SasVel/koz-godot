@@ -25,3 +25,6 @@ func _on_main_menu_btn_pressed() -> void:
 func close():
 	super()
 	self.queue_free()
+
+func set_focus():
+	%RestartBtn.grab_focus()

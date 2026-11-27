@@ -68,6 +68,7 @@ alignment = 1
 script = ExtResource("3_4kiy8")
 
 [node name="ContinueBtn" type="Button" parent="LootLayer/HBoxContainer/HBoxContainer" unique_id=62376413]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
