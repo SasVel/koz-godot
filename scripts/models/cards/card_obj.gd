@@ -168,10 +168,12 @@ func _on_focus_entered() -> void:
 	self.z_index = 1
 	SFX.play(SFX.Sounds.CardFlick)
 	curr_tween_state = TweenState.Focus
+	%FocusRect.tween_focus()
 
 func _on_focus_exited() -> void:
 	self.z_index = 0
 	curr_tween_state = TweenState.Idle
+	%FocusRect.unfocus()
 
 func tween_focus(on_off : bool):
 	scale_on_focus(on_off)
@@ -302,5 +304,7 @@ func _can_drop_data(_at_position: Vector2, drop_data: Variant) -> bool:
 func _drop_data(_at_position: Vector2, drop_data: Variant) -> void:
 	if curr_card_state == CardState.Display: return
 	if data.source == null: return
-	data.source.replace_action_hand(drop_data["object"].data.duplicate(), self.data, true)
+	var dropped_data = drop_data["object"].data.duplicate()
+	if dropped_data is not CardData: return
+	data.source.replace_action_hand(dropped_data, self.data, true)
 	drop_data["object"].queue_free()

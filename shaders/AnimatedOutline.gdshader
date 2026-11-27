@@ -5,6 +5,8 @@ uniform float width: hint_range(0.0, 0.5, 0.01) = 0.0;//Rectangle width
 uniform float radius: hint_range(0.0, 0.5, 0.01) = 0.0;//Rectangle corner radius
 uniform float speed: hint_range(0.0, 1.0, 0.01) = 0.0;//Distortion speed
 uniform float edge_source: hint_range(0.0, 1.0, 0.01) = 0.0;//Distortion strength
+uniform float edge_width: hint_range(0.0, 5.0, 0.01) = 1.0;
+uniform float noise_str: hint_range(0.0, 1.0, 0.01) = 1.0;
 uniform vec4 edge_color : source_color;//Edge color
 uniform vec4 inner_color : source_color;//Inner color
 
@@ -21,9 +23,9 @@ float sd_round_rect(vec2 p, vec2 s, float r)
 
 void fragment() {
 	vec2 uv = UV;
-	float noise_r = texture(noise, fract(TIME * speed + uv)).r;
+	float noise_r = texture(noise, fract(TIME * speed + uv)).r * noise_str;
 	//Animate noise texture over time
-	float d = sd_round_rect(uv - 0.5, vec2(width, height) ,radius); 
+	float d = sd_round_rect(uv - 0.5, vec2(width, height) ,radius) * edge_width;
 
 	//Get SDF UV map of the rectangle
 	float m = step(d - noise_r * 0.1, 0.0);

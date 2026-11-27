@@ -6,8 +6,8 @@ class_name FocusRect
 var tween : Tween
 
 func _ready() -> void:
-	ObjManager.focus_rect = self
 	self.material.set_shader_parameter("edge_color", Const.ACCENT_COLOR)
+	self.visible = false
 	unfocus()
 
 func focus_control(control : Control):

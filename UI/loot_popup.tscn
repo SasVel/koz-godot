@@ -26,50 +26,53 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.24313726, 0.24313726, 0.24313726, 0.4117647)
 
-[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=338306845]
-layout_mode = 1
+[node name="LootLayer" type="CanvasLayer" parent="." unique_id=1262338852]
+layer = 11
+
+[node name="HBoxContainer" type="VBoxContainer" parent="LootLayer" unique_id=338306845]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -458.0
-offset_top = -338.5
+offset_top = -374.5
 offset_right = 458.0
-offset_bottom = 229.5
+offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="LootLabel" type="Label" parent="HBoxContainer" unique_id=1128324165]
+[node name="LootLabel" type="Label" parent="LootLayer/HBoxContainer" unique_id=1128324165]
 layout_mode = 2
-text = "Loot!
-Replace actions/tools in hand."
+text = "Replace actions/tools in hand."
 label_settings = ExtResource("1_oblhx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=3395892]
+[node name="HBoxContainer" type="HBoxContainer" parent="LootLayer/HBoxContainer" unique_id=3395892]
 layout_mode = 2
+theme = ExtResource("1_tywks")
+theme_override_constants/separation = 20
 
-[node name="Panel" type="PanelContainer" parent="HBoxContainer/HBoxContainer" unique_id=513259547]
+[node name="Panel" type="PanelContainer" parent="LootLayer/HBoxContainer/HBoxContainer" unique_id=513259547]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LootContainer" type="HBoxContainer" parent="HBoxContainer/HBoxContainer/Panel" unique_id=986871094]
+[node name="LootContainer" type="HBoxContainer" parent="LootLayer/HBoxContainer/HBoxContainer/Panel" unique_id=1651123018]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 alignment = 1
 script = ExtResource("3_4kiy8")
 
-[node name="ContinueBtn" type="Button" parent="HBoxContainer/HBoxContainer" unique_id=62376413]
+[node name="ContinueBtn" type="Button" parent="LootLayer/HBoxContainer/HBoxContainer" unique_id=62376413]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Continue"
 
-[connection signal="sort_children" from="HBoxContainer/HBoxContainer/Panel/LootContainer" to="HBoxContainer/HBoxContainer/Panel/LootContainer" method="_on_sort_children"]
-[connection signal="pressed" from="HBoxContainer/HBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="sort_children" from="LootLayer/HBoxContainer/HBoxContainer/Panel/LootContainer" to="LootLayer/HBoxContainer/HBoxContainer/Panel/LootContainer" method="_on_sort_children"]
+[connection signal="pressed" from="LootLayer/HBoxContainer/HBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]

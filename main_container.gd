@@ -65,6 +65,7 @@ func _ready() -> void:
 
 	actions_container_default_pos = actions_container.position
 	tools_list_default_pos = %ToolsList.position
+	ObjManager.focus_rect = %FocusRect
 
 func set_player_ui_state():
 	%ActionsContainer.visible = Game.curr_room.is_combat

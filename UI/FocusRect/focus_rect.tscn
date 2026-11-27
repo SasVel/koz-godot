@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cix7au3cdy7x4"]
+
+[ext_resource type="Shader" uid="uid://n2crwwih4y2b" path="res://shaders/AnimatedOutline.gdshader" id="1_aekjb"]
+[ext_resource type="Script" uid="uid://bqwyouuho4fye" path="res://UI/FocusRect/focus_rect.gd" id="2_mkgc2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ok6jj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7kkhm"]
+noise = SubResource("FastNoiseLite_ok6jj")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_facbu"]
+resource_local_to_scene = true
+shader = ExtResource("1_aekjb")
+shader_parameter/height = 0.2999999932944
+shader_parameter/width = 0.32999999262384
+shader_parameter/radius = 0.0
+shader_parameter/speed = 0.0999999977648
+shader_parameter/edge_source = 0.0
+shader_parameter/edge_width = 1.0
+shader_parameter/noise_str = 1.0
+shader_parameter/edge_color = Color(0.8745098, 0.29803923, 0, 0.7019608)
+shader_parameter/inner_color = Color(0, 0, 0, 0)
+shader_parameter/noise = SubResource("NoiseTexture2D_7kkhm")
+
+[node name="FocusRect" type="ColorRect" unique_id=700069318]
+material = SubResource("ShaderMaterial_facbu")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -202.68817
+offset_right = 182.0
+offset_bottom = 202.68817
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("2_mkgc2")

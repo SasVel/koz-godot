@@ -13,6 +13,8 @@
 [ext_resource type="LabelSettings" uid="uid://brmy2s0k6mu8k" path="res://misc/number_label_settings.tres" id="8_7b0cb"]
 [ext_resource type="Shader" uid="uid://cxqghq06blt1q" path="res://shaders/ShadowShader.gdshader" id="8_118ut"]
 [ext_resource type="Script" uid="uid://dlkhjqhrjlocs" path="res://entities/interact_zone.gd" id="8_f26x7"]
+[ext_resource type="PackedScene" uid="uid://cix7au3cdy7x4" path="res://UI/FocusRect/focus_rect.tscn" id="13_t3kdi"]
+[ext_resource type="Shader" uid="uid://n2crwwih4y2b" path="res://shaders/AnimatedOutline.gdshader" id="14_nxcxv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkk3"]
 resource_local_to_scene = true
@@ -65,6 +67,27 @@ shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3ehx"]
 atlas = ExtResource("4_nlkk3")
 region = Rect2(1792, 256, 237, 256)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t3kdi"]
+noise_type = 2
+frequency = 0.002
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nxcxv"]
+noise = SubResource("FastNoiseLite_t3kdi")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0udv"]
+shader = ExtResource("14_nxcxv")
+shader_parameter/height = 0.32999999262384
+shader_parameter/width = 0.36999999172976
+shader_parameter/radius = 0.0
+shader_parameter/speed = 0.0999999977648
+shader_parameter/edge_source = 0.0
+shader_parameter/edge_width = 2.22999995015504
+shader_parameter/noise_str = 0.65999998524768
+shader_parameter/edge_color = Color(0.8745098, 0.29803923, 0, 0.7019608)
+shader_parameter/inner_color = Color(0, 0, 0, 0)
+shader_parameter/noise = SubResource("NoiseTexture2D_nxcxv")
 
 [node name="CardObj" type="Control" unique_id=87810923 node_paths=PackedStringArray("cardBack", "container")]
 custom_minimum_size = Vector2(181, 240)
@@ -200,6 +223,7 @@ script = ExtResource("7_118ut")
 _max_size = 24
 _min_size = 8
 _current_font_size = 24
+_size_just_modified_by_autosizer = true
 _editor_defaults_set = true
 metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 
@@ -286,6 +310,15 @@ label_settings = ExtResource("7_5t304")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="FocusRect" parent="." unique_id=700069318 instance=ExtResource("13_t3kdi")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_f0udv")
+layout_mode = 1
+offset_left = -136.5
+offset_top = -202.0
+offset_right = 136.5
+offset_bottom = 202.0
 
 [node name="InteractZone" type="Control" parent="." unique_id=115790250]
 unique_name_in_owner = true
