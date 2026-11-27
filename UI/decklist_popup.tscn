@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://d3a620iori5c"]
 
 [ext_resource type="Script" uid="uid://0e2h18ayotfp" path="res://UI/decklist_popup.gd" id="1_qjvb8"]
-[ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="2_qjvb8"]
-[ext_resource type="Script" uid="uid://cronnm7yromde" path="res://UI/close_button.gd" id="3_ge248"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ge248"]
-atlas = ExtResource("2_qjvb8")
-region = Rect2(0, 0, 64, 64)
+[ext_resource type="PackedScene" uid="uid://dd6tfp74bvmpo" path="res://UI/close_button.tscn" id="2_close"]
 
 [node name="DecklistPopup" type="Control" unique_id=912064763]
 process_mode = 3
@@ -52,17 +47,19 @@ theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 columns = 6
 
-[node name="CloseButton" type="TextureButton" parent="." unique_id=1226588240]
+[node name="CloseButton" parent="." unique_id=1226588240 instance=ExtResource("2_close")]
 unique_name_in_owner = true
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 17.0
 offset_top = 14.0
 offset_right = 81.0
 offset_bottom = 78.0
-rotation = 0.7853982
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_default_cursor_shape = 2
-texture_normal = SubResource("AtlasTexture_ge248")
-script = ExtResource("3_ge248")
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

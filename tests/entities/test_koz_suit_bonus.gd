@@ -8,12 +8,12 @@ const FIXTURES := preload("res://tests/entities/helpers/fixtures.gd")
 var _room: Room
 var _card: CardData
 var _source: Entity
-var _orig_bonus: int
+var _orig_bonus: float
 
 
 func before_each() -> void:
-	_orig_bonus = Game.koz_suit_value_bonus
-	Game.koz_suit_value_bonus = 5
+	_orig_bonus = Game.koz_suit_multi_bonus
+	Game.koz_suit_multi_bonus = 0.3
 	Game.curr_room = null
 
 	_room = ROOM_STUB.new()
@@ -33,7 +33,7 @@ func before_each() -> void:
 
 func after_each() -> void:
 	Game.curr_room = null
-	Game.koz_suit_value_bonus = _orig_bonus
+	Game.koz_suit_multi_bonus = _orig_bonus
 
 
 func _add_block_comp(value: int) -> BlockComp:
@@ -45,14 +45,15 @@ func _add_block_comp(value: int) -> BlockComp:
 
 
 func test_process_value_adds_bonus_when_suits_match() -> void:
-	assert_eq(_card.process_value(10), 15)
-	assert_eq(_card.get_suit_bonus(), 5)
+	## A koz match adds 30% of the base value: 10 + int(10 * 0.3) = 13.
+	assert_eq(_card.process_value(10), 13)
+	assert_almost_eq(_card.get_suit_bonus(), 0.3, 0.0001)
 
 
 func test_process_value_ignores_non_matching_suit() -> void:
 	_card.suit = Const.SuitTypes.Hearts
 	assert_eq(_card.process_value(10), 10)
-	assert_eq(_card.get_suit_bonus(), 0)
+	assert_almost_eq(_card.get_suit_bonus(), 0.0, 0.0001)
 
 
 func test_process_value_ignores_missing_room() -> void:
@@ -62,14 +63,14 @@ func test_process_value_ignores_missing_room() -> void:
 
 func test_component_inherits_card_bonus() -> void:
 	var comp := _add_block_comp(10)
-	assert_eq(comp.process_value(10), 15)
-	assert_eq(comp.get_processed_value(), 15)
-	assert_eq(comp.generate_desc(), "Gain 15 BLOCK.")
+	assert_eq(comp.process_value(10), 13)
+	assert_eq(comp.get_processed_value(), 13)
+	assert_eq(comp.generate_desc(), "Gain 13 BLOCK.")
 
 
 func test_generic_value_uses_bonus() -> void:
 	_add_block_comp(10)
-	assert_eq(_card.get_generic_value(), 15)
+	assert_eq(_card.get_generic_value(), 13)
 
 
 func test_activation_applies_bonus() -> void:
@@ -77,7 +78,7 @@ func test_activation_applies_bonus() -> void:
 	_source.stats.Block.maxValue = 100
 	_source.stats.Block.value = 0
 	comp.activate()
-	assert_eq(_source.stats.Block.value, 15)
+	assert_eq(_source.stats.Block.value, 13)
 
 
 func test_koz_suit_change_emits_update_status() -> void:
@@ -88,6 +89,6 @@ func test_koz_suit_change_emits_update_status() -> void:
 
 func test_description_tracks_current_suit() -> void:
 	var comp := _add_block_comp(10)
-	assert_eq(comp.generate_desc(), "Gain 15 BLOCK.")
+	assert_eq(comp.generate_desc(), "Gain 13 BLOCK.")
 	_room.koz_suit = Const.SuitTypes.Hearts
 	assert_eq(comp.generate_desc(), "Gain 10 BLOCK.")

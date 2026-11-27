@@ -4,12 +4,7 @@
 [ext_resource type="Script" uid="uid://b8cmwnrev71ku" path="res://UI/SettingsPopup/settings_popup.gd" id="2_p0qno"]
 [ext_resource type="LabelSettings" uid="uid://cicp4i23rac45" path="res://misc/big_title_label_settings.tres" id="3_ueg8l"]
 [ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="4_fwm3n"]
-[ext_resource type="Texture2D" uid="uid://c4i0he022dpq3" path="res://res/sprites_64.png" id="5_fwm3n"]
-[ext_resource type="Script" uid="uid://cronnm7yromde" path="res://UI/close_button.gd" id="6_37h4a"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hpslf"]
-atlas = ExtResource("5_fwm3n")
-region = Rect2(0, 0, 64, 64)
+[ext_resource type="PackedScene" uid="uid://dd6tfp74bvmpo" path="res://UI/close_button.tscn" id="5_ueg8l"]
 
 [node name="SettingsPopup" type="Control" unique_id=1584300394]
 layout_mode = 3
@@ -100,17 +95,12 @@ layout_mode = 2
 max_value = 1.0
 step = 0.01
 
-[node name="CloseButton" type="TextureButton" parent="." unique_id=1537070134]
+[node name="CloseButton" parent="." unique_id=1494216837 instance=ExtResource("5_ueg8l")]
 layout_mode = 1
-offset_left = 167.0
-offset_top = 98.0
-offset_right = 231.0
-offset_bottom = 162.00002
-rotation = 0.7853982
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_default_cursor_shape = 2
-texture_normal = SubResource("AtlasTexture_hpslf")
-script = ExtResource("6_37h4a")
+offset_left = -503.99994
+offset_top = -334.99997
+offset_right = -439.99994
+offset_bottom = -270.99997
 
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Master/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Music/MusicSlider" to="." method="_on_music_s_lider_value_changed"]
