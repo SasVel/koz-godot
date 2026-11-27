@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://bffbq4lhwinma"]
 
 [ext_resource type="Shader" uid="uid://crjtha6ikpwm5" path="res://shaders/VignetteShader.gdshader" id="1_2g780"]
+[ext_resource type="Theme" uid="uid://duvxiys5msrmo" path="res://misc/theme.tres" id="1_ehabf"]
 [ext_resource type="Script" uid="uid://dky2se11iggr5" path="res://UI/credits.gd" id="1_ftffn"]
+[ext_resource type="Texture2D" uid="uid://cwgd6ssnvxqev" path="res://res/HashTextureTile_512.png" id="2_0ccpq"]
 [ext_resource type="LabelSettings" uid="uid://c6c0xikx30vc5" path="res://misc/bigass_title_label_settings.tres" id="2_ftffn"]
 [ext_resource type="LabelSettings" uid="uid://cg13ifyxvq3du" path="res://misc/title_label_settings.tres" id="3_0ccpq"]
 [ext_resource type="LabelSettings" uid="uid://caj8s0kcqoc8" path="res://misc/text_label_settings.tres" id="4_ehabf"]
+[ext_resource type="Script" uid="uid://bdhhumly55g2x" path="res://UI/menu_button.gd" id="8_8sla6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8sla6"]
 shader = ExtResource("1_2g780")
@@ -19,7 +22,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ehabf")
 script = ExtResource("1_ftffn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1302056686]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0ccpq")
+stretch_mode = 1
 
 [node name="Shaders" type="Control" parent="." unique_id=1463613438]
 layout_mode = 1
@@ -99,6 +114,7 @@ text = "    Tottomori (their website)
 label_settings = ExtResource("4_ehabf")
 
 [node name="BackBtn" type="Button" parent="." unique_id=360919578]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -112,5 +128,6 @@ offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Back"
+script = ExtResource("8_8sla6")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

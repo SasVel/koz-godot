@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://tw10yiuclb40" path="res://entities/status_effects_display.gd" id="18_jq2sk"]
 [ext_resource type="Script" uid="uid://30k2gbj6kiml" path="res://scripts/models/entities/player.gd" id="21_getpj"]
 [ext_resource type="Script" uid="uid://hsneqp3wyurx" path="res://koz_container.gd" id="24_a6jrf"]
+[ext_resource type="Shader" uid="uid://n2crwwih4y2b" path="res://shaders/AnimatedOutline.gdshader" id="24_lswn8"]
 [ext_resource type="Script" uid="uid://baraqeaue84k4" path="res://card_activate_field.gd" id="24_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://eyiyjpxmpnfi" path="res://res/sprites_256_512.png" id="25_qsp4k"]
 [ext_resource type="Shader" uid="uid://dtn3xn7oaitth" path="res://shaders/SolidColor.gdshader" id="25_seu75"]
@@ -60,7 +61,7 @@ shader = ExtResource("15_0odxb")
 shader_parameter/shadow_offset = Vector2(6, 6)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kq58d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -70,7 +71,7 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htxhm"]
 resource_local_to_scene = true
 shader = ExtResource("5_lquwl")
 shader_parameter/cull_backface = true
@@ -87,16 +88,6 @@ radius_factor_inner = 0.0
 item_radius_factor = 0.875
 color = Color(1, 1, 1, 0)
 metadata/_custom_type_script = "uid://c3wh10qjm5gsy"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_htxhm"]
-resource_local_to_scene = true
-shader = ExtResource("5_lquwl")
-shader_parameter/cull_backface = true
-shader_parameter/use_front = true
-shader_parameter/fov = 90.0
-shader_parameter/rot_y_deg = 0.0
-shader_parameter/rot_x_deg = 0.0
-shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jq2sk"]
 resource_local_to_scene = true
@@ -138,6 +129,16 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_facbu"]
+resource_local_to_scene = true
+shader = ExtResource("5_lquwl")
+shader_parameter/cull_backface = true
+shader_parameter/use_front = true
+shader_parameter/fov = 90.0
+shader_parameter/rot_y_deg = 0.0
+shader_parameter/rot_x_deg = 0.0
+shader_parameter/inset = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4k2k6"]
 atlas = ExtResource("25_xuqvo")
 region = Rect2(256, 384, 128, 128)
@@ -153,6 +154,26 @@ region = Rect2(0, 512, 256, 512)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ok6jj"]
 atlas = ExtResource("25_xuqvo")
 region = Rect2(512, 384, 128, 128)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ok6jj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7kkhm"]
+noise = SubResource("FastNoiseLite_ok6jj")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_come4"]
+resource_local_to_scene = true
+shader = ExtResource("24_lswn8")
+shader_parameter/height = 0.2999999932944
+shader_parameter/width = 0.32999999262384
+shader_parameter/radius = 0.0
+shader_parameter/speed = 0.0999999977648
+shader_parameter/edge_source = 0.0
+shader_parameter/edge_width = 1.0
+shader_parameter/noise_str = 1.0
+shader_parameter/edge_color = Color(0.8745098, 0.29803923, 0, 0.7019608)
+shader_parameter/inner_color = Color(0, 0, 0, 0)
+shader_parameter/noise = SubResource("NoiseTexture2D_7kkhm")
 
 [node name="Main" type="Node2D" unique_id=895458731]
 
@@ -383,7 +404,7 @@ alignment = 1
 script = ExtResource("17_lswn8")
 
 [node name="ToolCard" parent="UI/MainContainer/CardsLayer/ToolsList" unique_id=789441108 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_kq58d")
+material = SubResource("ShaderMaterial_seu75")
 custom_minimum_size = Vector2(226, 300)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -392,7 +413,7 @@ focus_mode = 1
 fauxShiftDeg = 15.0
 
 [node name="ToolCard2" parent="UI/MainContainer/CardsLayer/ToolsList" unique_id=579367417 instance=ExtResource("4_7mycd")]
-material = SubResource("ShaderMaterial_seu75")
+material = SubResource("ShaderMaterial_htxhm")
 custom_minimum_size = Vector2(226, 300)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -443,15 +464,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCard2" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=2112204199 instance=ExtResource("6_7mycd")]
-material = SubResource("ShaderMaterial_htxhm")
-custom_minimum_size = Vector2(0, 0)
-layout_mode = 2
-offset_transform_enabled = false
-offset_transform_scale = Vector2(1, 1)
-focus_mode = 1
-fauxShiftDeg = 15.0
-
-[node name="ActionCard3" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_jq2sk")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -460,7 +472,7 @@ offset_transform_scale = Vector2(1, 1)
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard4" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
+[node name="ActionCard3" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=1321650088 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_4k2k6")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -469,7 +481,7 @@ offset_transform_scale = Vector2(1, 1)
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard5" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
+[node name="ActionCard4" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=1307624022 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_0rl1p")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -478,8 +490,17 @@ offset_transform_scale = Vector2(1, 1)
 focus_mode = 1
 fauxShiftDeg = 15.0
 
-[node name="ActionCard6" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+[node name="ActionCard5" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=2067727786 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_ok6jj")
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+offset_transform_enabled = false
+offset_transform_scale = Vector2(1, 1)
+focus_mode = 1
+fauxShiftDeg = 15.0
+
+[node name="ActionCard6" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
+material = SubResource("ShaderMaterial_facbu")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 offset_transform_enabled = false
@@ -640,6 +661,7 @@ script = ExtResource("27_kq58d")
 
 [node name="FocusRect" parent="UI" unique_id=700069318 instance=ExtResource("29_kq58d")]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_come4")
 layout_mode = 1
 offset_top = -261.68817
 offset_bottom = 143.68817

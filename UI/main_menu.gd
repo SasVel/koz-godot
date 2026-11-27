@@ -1,4 +1,4 @@
-extends Control
+extends MenuUI
 
 @export var main_scn : PackedScene
 @export var credits_scn : PackedScene
@@ -31,3 +31,6 @@ func load_colors_from_palette():
 	%Rock.modulate = Const.PRIMARY_COLOR
 	%HoleImage.material.set_shader_parameter("modulate_color", Const.BACKGROUND_LIGHTER_COLOR)
 	%Background.self_modulate = Const.BACKGROUND_COLOR
+
+func set_focus():
+	%NewGameBtn.grab_focus()

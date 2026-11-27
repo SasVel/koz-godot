@@ -1,0 +1,13 @@
+extends Control
+class_name MenuUI
+
+## UI component scene, holding smaller components.
+
+func _input(event: InputEvent) -> void:
+	if (event is InputEventJoypadButton or event is InputEventJoypadMotion)\
+			and get_viewport().gui_get_focus_owner() == null:
+		set_focus()
+
+## To be overriden
+func set_focus():
+	pass

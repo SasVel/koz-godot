@@ -191,10 +191,12 @@ func scale_on_focus(on_off : bool):
 func move_on_focus(on_off : bool):
 	if not on_off and not is_defaults_set: return
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	var is_moving_to_mouse = UI.input_type == UI.InputType.MouseKB
 	if on_off:
 		tween.tween_property(self, "global_position:y", focus_card_pos_y,
 		 focus_tween_speed).from(self.global_position.y)
-		tween.parallel().tween_property(self, "global_position:x", get_global_mouse_position().x - (self.size.x / 2), focus_tween_speed)
+		if is_moving_to_mouse:
+			tween.parallel().tween_property(self, "global_position:x", get_global_mouse_position().x - (self.size.x / 2), focus_tween_speed)
 		tween.parallel().tween_property(self, "rotation_degrees", 0, focus_tween_speed)
 	else:
 		tween.tween_property(self, "position", default_pos, focus_tween_speed)

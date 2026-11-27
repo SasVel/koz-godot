@@ -5,6 +5,17 @@ extends Node
 
 var is_paused : bool = false
 
+@onready var input_type : InputType = InputType.MouseKB :
+	set(val):
+		if input_type == val: return
+		input_type = val
+		input_type_changed.emit(val)
+
+enum InputType {
+	MouseKB,
+	Joycon
+}
+
 enum Popups {
 	LOOT,
 	GAME_OVER,
@@ -16,7 +27,10 @@ enum Popups {
 	SETTINGS
 }
 
+signal input_type_changed(type : InputType)
+
 func _input(event: InputEvent) -> void:
+	_set_input_type(event)
 	if event.is_action_pressed("ui_cancel") and !is_paused and Game.in_game:
 		var active_popups = Game.popupsContainer.get_children()
 		if active_popups.any(func(x): return x.is_closeable):
@@ -28,6 +42,19 @@ func _input(event: InputEvent) -> void:
 			show_screen(Popups.PAUSE)
 	else:
 		is_paused = false
+
+	if (input_type == InputType.Joycon)\
+			and get_viewport().gui_get_focus_owner() == null\
+			and Game.main != null:
+		var actions = Game.main.get_node("%ActionsContainer").get_children()
+		if actions.size() <= 0: return
+		actions.filter(func(x): return x is CardObj)[0].grab_focus()
+
+func _set_input_type(event : InputEvent):
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		input_type = InputType.Joycon
+	else:
+		input_type = InputType.MouseKB
 
 func get_popup_inst(type : Popups):
 	return popup_scenes[type].instantiate()
