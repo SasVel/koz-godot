@@ -4,6 +4,7 @@ func _ready() -> void:
 	super()
 	%PoolParticles.modulate = Const.ACCENT_COLOR
 	%PoolCircle.modulate = Const.ACCENT_COLOR
+	%Light.modulate = Const.ACCENT_COLOR
 	%PoolCircle.modulate.a = 0.8
 
 func _response_selected(response : DialogueResponse):

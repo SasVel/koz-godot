@@ -71,6 +71,16 @@ alpha_curve = SubResource("CurveTexture_s125a")
 turbulence_enabled = true
 turbulence_noise_strength = 0.8
 
+[sub_resource type="Gradient" id="Gradient_o1ujq"]
+offsets = PackedFloat32Array(0.11627907, 0.67906976)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s125a"]
+gradient = SubResource("Gradient_o1ujq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.021367522)
+
 [node name="RealityChasmEndRoom" unique_id=1640835901 instance=ExtResource("1_u8kbv")]
 script = ExtResource("2_2arah")
 type = 2
@@ -207,3 +217,9 @@ lifetime = 6.0
 explosiveness = 0.14
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_myccq")
+
+[node name="Light" type="PointLight2D" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="2" unique_id=2141186736]
+unique_name_in_owner = true
+position = Vector2(695, 361.65665)
+scale = Vector2(6.3749995, 10.020518)
+texture = SubResource("GradientTexture2D_s125a")

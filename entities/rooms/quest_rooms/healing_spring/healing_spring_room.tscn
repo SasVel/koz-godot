@@ -54,6 +54,24 @@ alpha_curve = SubResource("CurveTexture_1cti7")
 turbulence_enabled = true
 turbulence_noise_strength = 0.8
 
+[sub_resource type="Gradient" id="Gradient_h5nw3"]
+offsets = PackedFloat32Array(0.11627907, 0.67906976)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1cti7"]
+gradient = SubResource("Gradient_h5nw3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.021367522)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o6410"]
+resource_local_to_scene = true
+polygon = PackedVector2Array(719, 400, 714, 437, 730, 457, 830, 451, 886, 454, 909, 448, 947, 458, 984, 483, 982, 424, 982, 371, 1010, 265, 692, 217, 684, 279)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7kkhm"]
+resource_local_to_scene = true
+polygon = PackedVector2Array(631, 433, 695, 393, 691, 341, 670, 311, 640, 257, 602, 226, 558, 252, 552, 359, 553, 396, 571, 428)
+
 [node name="HealingSpringRoom" unique_id=1640835901 instance=ExtResource("1_tv8cq")]
 script = ExtResource("2_jvpfc")
 type = 1
@@ -72,9 +90,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -182.0
-offset_top = 61.0
+offset_top = 87.0
 offset_right = 229.0
-offset_bottom = 143.0
+offset_bottom = 169.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -120,10 +138,23 @@ texture = SubResource("GradientTexture2D_h5nw3")
 [node name="PoolParticles" type="GPUParticles2D" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="1" unique_id=1592143005]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(598, 450)
+position = Vector2(668, 518)
 amount = 16
 texture = SubResource("GradientTexture2D_2htnq")
 lifetime = 6.0
 explosiveness = 0.14
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ykepn")
+
+[node name="Light" type="PointLight2D" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="2" unique_id=896684539]
+unique_name_in_owner = true
+position = Vector2(701, 522)
+scale = Vector2(11.562502, 3.9993598)
+energy = 2.2
+texture = SubResource("GradientTexture2D_1cti7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="3" unique_id=805913528]
+occluder = SubResource("OccluderPolygon2D_o6410")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="4" unique_id=192659433]
+occluder = SubResource("OccluderPolygon2D_7kkhm")

@@ -77,6 +77,15 @@ has_skew = false
 skew_deg = 6
 metadata/_custom_type_script = "uid://dl53p3t1sbh74"
 
+[sub_resource type="Gradient" id="Gradient_jmded"]
+offsets = PackedFloat32Array(0.22325581, 0.67906976)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7kkhm"]
+gradient = SubResource("Gradient_jmded")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="FireRect" type="TextureRect" unique_id=1524273013]
 offset_left = 146.0
 offset_top = 155.0
@@ -159,3 +168,12 @@ script = ExtResource("3_16cjn")
 target = NodePath("../InnerCircle")
 settings = SubResource("Resource_2nyo6")
 metadata/_custom_type_script = "uid://b2hdv0h572pc"
+
+[node name="Light" type="PointLight2D" parent="." unique_id=2046307555]
+unique_name_in_owner = true
+position = Vector2(67.750015, 65.24997)
+scale = Vector2(7.109375, 7.109375)
+color = Color(0.7798542, 0.3922594, 1.92523e-07, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_7kkhm")

@@ -7,4 +7,5 @@ func _ready() -> void:
 	%InnerCircle.modulate = transparent_fire_color
 	%OuterCircle.modulate = transparent_fire_color.darkened(0.2)
 	%FireParticles.modulate = Const.ACCENT_COLOR
+	%Light.color = transparent_fire_color
 	self.texture = ObjManager.get_fire_sprite()

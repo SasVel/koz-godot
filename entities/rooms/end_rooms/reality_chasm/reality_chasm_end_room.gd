@@ -5,6 +5,7 @@ func _ready() -> void:
 	%ChasmParticles.modulate = Const.ACCENT_COLOR
 	%ChasmCircle.modulate = Const.ACCENT_COLOR
 	%ChasmCircle.modulate.a = 0.4
+	%Light.modulate = Const.ACCENT_COLOR
 
 func _response_selected(response : DialogueResponse):
 	if response.tags.is_empty(): return

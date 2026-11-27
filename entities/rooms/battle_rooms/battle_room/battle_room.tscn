@@ -20,6 +20,9 @@ shader_parameter/amplitude = 2.0
 shader_parameter/noise_scale = 20.0
 shader_parameter/noise_speed = 1.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7kkhm"]
+polygon = PackedVector2Array(130, 154, 34, 263, -130, 264, -113, 647, 1354, 642, 1345, 93, 1214, 123, 1150, 186, 1078, 147, 957, 195, 801, 153, 309, 155, 220, 204)
+
 [node name="BattleRoom" unique_id=1640835901 instance=ExtResource("1_q5ix2")]
 script = ExtResource("2_p5arh")
 dialogue = ExtResource("3_8ughf")
@@ -39,6 +42,10 @@ offset_top = 159.99998
 offset_right = 1170.9998
 offset_bottom = 288.0
 metadata/_edit_use_anchors_ = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Decorations" parent_id_path=PackedInt32Array(1492867646) index="2" unique_id=475192392]
+position = Vector2(66, 233)
+occluder = SubResource("OccluderPolygon2D_7kkhm")
 
 [node name="Enemies" type="Node" parent="." index="2" unique_id=1802013414]
 unique_name_in_owner = true
