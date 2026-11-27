@@ -1,7 +1,7 @@
 extends Node
 
-var path_to_palette : String = "res://data"
-var path_to_palette_user : String = "user://data"
+var path_to_palette : String = "res://data"
+var path_to_palette_user : String = "user://data"
 var palette_name = "palette.json"
 var themes : Dictionary[String, Dictionary]
 var selected_theme : Array
@@ -125,8 +125,7 @@ func _ready() -> void:
 func load_palettes():
 	var file
 	if !check_palette_existing():
-		#DirAccess.make_dir_recursive_absolute(path_to_palette_user)
-		DirAccess.make_dir_recursive_absolute(path_to_palette)
+		DirAccess.make_dir_recursive_absolute(path_to_palette_user)
 		var source_dir = DirAccess.open(path_to_palette)
 		file = source_dir.get_files().get(0)
 		source_dir.copy(path_to_palette + "/" + file,
@@ -172,7 +171,7 @@ func map_colors():
 	PRIMARY_ACCENT_MIX = COMPLIMENTARY_COLOR.lerp(ACCENT_COLOR, 0.5)
 
 func check_palette_existing() -> bool:
-	return FileAccess.file_exists("usr://data/palette_default.json")
+	return FileAccess.file_exists(path_to_palette_user + "/palette_default.json")
 
 func load_color(color_info) -> Color:
 	var color : Color
