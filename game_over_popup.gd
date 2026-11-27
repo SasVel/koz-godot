@@ -16,6 +16,12 @@ func config(is_win : bool):
 
 func _on_restart_btn_pressed() -> void:
 	Game.restart()
+	close()
 
 func _on_main_menu_btn_pressed() -> void:
-	get_tree().change_scene_to_packed(main_menu_scn)
+	SceneSwitcher.switch_to_scene(main_menu_scn)
+	close()
+
+func close():
+	super()
+	self.queue_free()

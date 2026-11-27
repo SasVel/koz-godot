@@ -11,6 +11,12 @@ func _input(event: InputEvent) -> void:
 func _on_continue_btn_pressed() -> void:
 	close()
 
+func _on_settings_btn_pressed() -> void:
+	var popup : GamePopup = UI.show_screen(UI.Popups.SETTINGS)
+	self.visible = false
+	await popup.finished
+	self.visible = true
+
 func _on_give_up_btn_pressed() -> void:
 	close()
 	Game.in_game = false

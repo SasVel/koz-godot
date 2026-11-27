@@ -158,9 +158,13 @@ func pop_actions_deck(num, allowed_suits : Array = []):
 func add_status_effect(effect : StatusEffData):
 	var stacked : bool = false
 	for eff in self.status_effects:
-		stacked = eff.try_stack_effect(effect)
+		if eff.try_stack_effect(effect):
+			stacked = true
+			break
 
-	if !stacked:
+	if stacked:
+		effect.free()
+	else:
 		effect.config_source(self)
 		self.status_effects.append(effect)
 		%EffectDatas.add_child(effect)

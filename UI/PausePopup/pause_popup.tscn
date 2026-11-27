@@ -54,10 +54,15 @@ vertical_alignment = 1
 layout_mode = 2
 text = "Continue"
 
+[node name="SettingsBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2038189416]
+layout_mode = 2
+text = "Continue"
+
 [node name="GiveUpBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1750199339]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9648345, 0, 0.122437306, 1)
 text = "Give up"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/GiveUpBtn" to="." method="_on_give_up_btn_pressed"]

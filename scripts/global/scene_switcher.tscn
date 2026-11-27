@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cmp5ysigxtlro" path="res://UI/color_transition_editor.gd" id="3_g7sj7"]
 
 [node name="SceneSwitcher" type="Control" unique_id=564068174]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

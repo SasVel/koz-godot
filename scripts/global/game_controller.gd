@@ -1,11 +1,10 @@
 extends Node
 
-@onready var main_scn = load("res://main.tscn")
-
-enum Phases {
-	ATTACK,
-	DEFEND
-}
+@export var koz_suit_multi_bonus : float = 0.3 :
+	set(val):
+		koz_suit_multi_bonus = val
+		if curr_room != null:
+			koz_suit_changed.emit(curr_room.koz_suit)
 
 @onready var rooms_for_end_room : int = 10
 @onready var rooms_for_quest_room : int = 3
@@ -16,24 +15,14 @@ enum Phases {
 		if rooms_completed == val: return
 		rooms_completed = val
 		on_rooms_completed.emit(val)
-@onready var curr_phase = Phases.ATTACK :
-	set(val):
-		if curr_phase == val: return
 
-		curr_phase = val
-		on_changed_phase.emit(val)
-
+@onready var main_scn = load("res://main.tscn")
 @onready var main : Node2D
 @onready var player : Player
 @onready var curr_room : Room
 @onready var cards_layer : CanvasLayer
 
 @onready var time_between_events : float = 0.2
-@export var koz_suit_multi_bonus : float = 0.3 :
-	set(val):
-		koz_suit_multi_bonus = val
-		if curr_room != null:
-			koz_suit_changed.emit(curr_room.koz_suit)
 
 @onready var event_queue : Array[Callable]
 @onready var is_playing_event : bool = false :
@@ -68,6 +57,18 @@ enum Phases {
 		is_gui_input = val
 
 @onready var is_object_dragged : bool = false
+
+enum Phases {
+	ATTACK,
+	DEFEND
+}
+
+@onready var curr_phase = Phases.ATTACK :
+	set(val):
+		if curr_phase == val: return
+
+		curr_phase = val
+		on_changed_phase.emit(val)
 
 signal on_start_first_turn
 signal on_start_turn_layer_1
@@ -258,15 +259,12 @@ func remove_status_eff_action(action : Callable, is_for_player):
 	else:
 		enemy_status_eff_actions.erase(action)
 
-# Enables or disables input on the root viewport.
 func switch_input(isOn : bool):
 	is_gui_input = isOn
 
-# Queues the end-turn timer start.
 func start_end_turn_timer(wait_time):
 	add_event(end_turn_timer.timer_start.bind(wait_time))
 
-# Restarts the end-turn timer if it is running.
 func refresh_end_turn_timer():
 	if end_turn_timer.is_stopped():
 		return
