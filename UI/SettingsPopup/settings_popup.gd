@@ -11,6 +11,9 @@ func _ready() -> void:
 	sfxBusIndex = AudioServer.get_bus_index("SFX")
 	config_vol_sliders()
 
+func set_focus() -> void:
+	%MasterSlider.grab_focus()
+
 func config_vol_sliders():
 	%MasterSlider.value = db_to_linear(AudioServer.get_bus_volume_db(mainBusIndex))
 	%MusicSlider.value = db_to_linear(AudioServer.get_bus_volume_db(musicBusIndex))

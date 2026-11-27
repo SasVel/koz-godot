@@ -53,6 +53,7 @@ theme_override_constants/v_separation = 12
 columns = 6
 
 [node name="CloseButton" type="TextureButton" parent="." unique_id=1226588240]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 17.0
 offset_top = 14.0

@@ -45,7 +45,8 @@ func _input(event: InputEvent) -> void:
 
 	if (input_type == InputType.Joycon)\
 			and get_viewport().gui_get_focus_owner() == null\
-			and Game.main != null:
+			and Game.main != null\
+			and !GamePopup.has_active_popup():
 		var actions = Game.main.get_node("%ActionsContainer").get_children()
 		if actions.size() <= 0: return
 		actions.filter(func(x): return x is CardObj)[0].grab_focus()

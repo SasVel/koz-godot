@@ -5,6 +5,7 @@ class_name CardObj
 @export var fade_tween_speed = 0.5
 @export var focus_scale = 1.2
 @export var cardBack : TextureRect
+@export var focus_rect : FocusRect
 @onready var default_pos = self.position
 @onready var default_rot = self.rotation
 var is_defaults_set := false
@@ -168,12 +169,12 @@ func _on_focus_entered() -> void:
 	self.z_index = 1
 	SFX.play(SFX.Sounds.CardFlick)
 	curr_tween_state = TweenState.Focus
-	%FocusRect.tween_focus()
+	focus_rect.tween_focus()
 
 func _on_focus_exited() -> void:
 	self.z_index = 0
 	curr_tween_state = TweenState.Idle
-	%FocusRect.unfocus()
+	focus_rect.unfocus()
 
 func tween_focus(on_off : bool):
 	scale_on_focus(on_off)

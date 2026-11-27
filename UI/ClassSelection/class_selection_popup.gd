@@ -1,4 +1,4 @@
-extends Control
+extends GamePopup
 class_name ClassSelectionPopup
 
 @onready var class_panel = %ClassPanel
@@ -10,7 +10,6 @@ class_name ClassSelectionPopup
 		button.offset_transform_scale = Vector2(1.2,1.2)
 		selected_button = button
 
-signal finished
 signal cancelled
 
 func _ready() -> void:
@@ -24,6 +23,11 @@ func _ready() -> void:
 
 	_on_button_press(%ClassSelectionContainer.get_child(0), 0)
 	class_panel.finished.connect(func(): finished.emit())
+
+func set_focus() -> void:
+	var container : HBoxContainer = %ClassSelectionContainer
+	if container.get_child_count() > 0:
+		container.get_child(0).grab_focus()
 
 func _on_button_press(button, key):
 	selected_button = button

@@ -89,7 +89,7 @@ shader_parameter/edge_color = Color(0.8745098, 0.29803923, 0, 0.7019608)
 shader_parameter/inner_color = Color(0, 0, 0, 0)
 shader_parameter/noise = SubResource("NoiseTexture2D_nxcxv")
 
-[node name="CardObj" type="Control" unique_id=87810923 node_paths=PackedStringArray("cardBack", "container")]
+[node name="CardObj" type="Control" unique_id=87810923 node_paths=PackedStringArray("cardBack", "focus_rect", "container")]
 custom_minimum_size = Vector2(181, 240)
 layout_mode = 3
 anchors_preset = 0
@@ -108,6 +108,7 @@ script = ExtResource("3_oy8i5")
 focus_tween_speed = 0.1
 focus_scale = 1.1
 cardBack = NodePath("SubViewportContainer/SubViewport/CardBack")
+focus_rect = NodePath("FocusRect")
 fauxShifted = true
 fauxShiftDeg = 7.0
 container = NodePath("SubViewportContainer")
@@ -223,7 +224,6 @@ script = ExtResource("7_118ut")
 _max_size = 24
 _min_size = 8
 _current_font_size = 24
-_size_just_modified_by_autosizer = true
 _editor_defaults_set = true
 metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 

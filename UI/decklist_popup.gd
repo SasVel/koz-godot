@@ -9,6 +9,9 @@ func close():
 	super.close()
 	self.queue_free()
 
+func set_focus() -> void:
+	%CloseButton.grab_focus()
+
 func config():
 	var card_datas = Game.player.cards_deck.duplicate()
 	card_datas.append_array(Game.player.cards_hand)

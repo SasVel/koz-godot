@@ -2,7 +2,7 @@ extends GamePopup
 
 signal cancelled
 
-func _ready() -> void:
+func set_focus() -> void:
 	%LineEdit.grab_focus()
 
 func _on_line_edit_text_changed(new_text: String) -> void:
