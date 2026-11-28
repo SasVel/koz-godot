@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://p71xer514quc"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_sb2dq"]
+[ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_mj2hg"]
+[ext_resource type="Script" uid="uid://dlyn7nbwqyu5u" path="res://scripts/models/effect_components/draw_comp.gd" id="3_mj2hg"]
+
+[node name="RapierToolData" unique_id=988386249 instance=ExtResource("1_sb2dq")]
+durability = 5
+type = 1
+isGeneric = false
+weaponType = 7
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=1568823841]
+script = ExtResource("2_mj2hg")
+damage_type = 1
+value = 12
+metadata/_custom_type_script = "uid://rio4hms2vn51"
+
+[node name="DrawComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=447208186]
+script = ExtResource("3_mj2hg")
+count = 1
+metadata/_custom_type_script = "uid://dlyn7nbwqyu5u"

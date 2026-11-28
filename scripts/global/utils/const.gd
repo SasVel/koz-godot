@@ -14,6 +14,11 @@ enum SuitTypes {
 	Hearts
 }
 
+enum DamageTypes {
+	NORMAL,
+	TRUE
+}
+
 enum CardTypes {
 	ACTION,
 	WEAPON,
@@ -45,6 +50,8 @@ enum Weapons {
 	BASTARD_SWORD,
 	DAGGER,
 	MACE,
+	GREATAXE,
+	RAPIER,
 }
 
 enum Shields {
@@ -53,15 +60,15 @@ enum Shields {
 }
 
 enum StatusEffects {
-	STRENGTH,
-	RESILIENCE,
-	CHANGE_PHASE_ATK,
-	CHANGE_PHASE_DEF,
-	STUN,
-	WEAKNESS,
-	FRAIL,
-	POISON,
-	CONSTRICT
+	STRENGTH, ## Increases dealt damage. Opposite is WEAKNESS.
+	RESILIENCE, ## Reduces incoming damage. Opposite is FRAIL.
+	CHANGE_PHASE_ATK, ## Changes phase to ATTACK.
+	CHANGE_PHASE_DEF, ## Changes pahase to DEFEND.
+	STUN, ## Removes tempo on turn start and exhausts.
+	WEAKNESS, ## Reduces dealt damage. Opposite is STRENGTH.
+	FRAIL, ## Increases incoming damage. Opposite is RESILIENCE.
+	POISON, ## Deals damage on turn start.
+	CONSTRICT ## Increases tool cost.
 }
 
 enum Enemies {

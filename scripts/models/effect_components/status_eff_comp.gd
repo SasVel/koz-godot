@@ -3,17 +3,22 @@ class_name StatusEffComp
 
 @export var type : Const.StatusEffects
 @export var stacks : int = 1
-@onready var data : StatusEffData
+
+var _data : StatusEffData
+
+## Lazily created so the scene-assigned type and stacks are applied first.
+var data : StatusEffData:
+	get:
+		if _data == null:
+			_data = ObjManager.status_effects_dict[type].instantiate()
+			_data.stacks = stacks
+			value = _data.value
+		return _data
 
 func config(source_ : Entity, targets_ : Array[Entity]):
 	super(source_, targets_)
 	data.config(source_, targets_)
 	return self
-
-func _init() -> void:
-	data = ObjManager.status_effects_dict[type].instantiate()
-	data.stacks = stacks
-	value = data.value
 
 func get_full_value() -> int:
 	return process_value(data.value)

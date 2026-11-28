@@ -31,8 +31,10 @@
 [ext_resource type="PackedScene" uid="uid://br82hugstqwle" path="res://entities/enemies/data/shroom_data.tscn" id="20_j1slq"]
 [ext_resource type="PackedScene" uid="uid://cyj0008dxd0ok" path="res://entities/enemies/data/goblin_data.tscn" id="21_4nbcu"]
 [ext_resource type="PackedScene" uid="uid://8lbab1y7lfpv" path="res://entities/player_classes/knight_class_data.tscn" id="22_4nbcu"]
+[ext_resource type="PackedScene" uid="uid://baqe5nbro4jaf" path="res://entities/card_datas/tools/greataxe_tool_data.tscn" id="23_72b3k"]
 [ext_resource type="PackedScene" uid="uid://c8fv4r2jxpgw5" path="res://entities/enemy.tscn" id="23_j1slq"]
 [ext_resource type="PackedScene" uid="uid://bkohy4fxvhqdb" path="res://entities/status_effects/str_eff_data.tscn" id="24_jfqbm"]
+[ext_resource type="PackedScene" uid="uid://p71xer514quc" path="res://entities/card_datas/tools/rapier_tool_data.tscn" id="24_xcvff"]
 [ext_resource type="Texture2D" uid="uid://dht1ilt7obrvh" path="res://res/sprites_512.png" id="24_yq7du"]
 [ext_resource type="PackedScene" uid="uid://cjn7jamaae674" path="res://entities/status_effects/stun_eff_data.tscn" id="25_5fmjw"]
 [ext_resource type="PackedScene" uid="uid://6pcvp2y6mjnd" path="res://entities/enemies/data/treeant_data.tscn" id="25_lla61"]
@@ -98,7 +100,9 @@ weapons_dict = Dictionary[int, PackedScene]({
 2: ExtResource("12_lx7ma"),
 3: ExtResource("13_b02df"),
 4: ExtResource("14_me7ne"),
-5: ExtResource("15_yq7du")
+5: ExtResource("15_yq7du"),
+6: ExtResource("23_72b3k"),
+7: ExtResource("24_xcvff")
 })
 shields_dict = Dictionary[int, PackedScene]({
 0: ExtResource("16_j1slq"),

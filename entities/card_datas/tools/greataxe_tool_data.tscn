@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://baqe5nbro4jaf"]
+
+[ext_resource type="PackedScene" uid="uid://csaqvu2fldwys" path="res://entities/card_datas/tool_data.tscn" id="1_30hkg"]
+[ext_resource type="Script" uid="uid://rio4hms2vn51" path="res://scripts/models/effect_components/damage_comp.gd" id="2_r7pwa"]
+[ext_resource type="PackedScene" uid="uid://chp0dlk5ri2df" path="res://scripts/models/effect_components/chance_component.tscn" id="3_53ema"]
+[ext_resource type="Script" uid="uid://bux6moi2u64xw" path="res://scripts/models/effect_components/status_eff_comp.gd" id="4_0rxro"]
+
+[node name="GreataxeToolData" unique_id=988386249 instance=ExtResource("1_30hkg")]
+durability = 7
+type = 1
+isGeneric = false
+weaponType = 6
+tempoCost = 2
+
+[node name="DamageComp" type="Node" parent="Components" parent_id_path=PackedInt32Array(571709105) index="0" unique_id=597855150]
+script = ExtResource("2_r7pwa")
+value = 30
+metadata/_custom_type_script = "uid://rio4hms2vn51"
+
+[node name="ChanceComponent" parent="Components" parent_id_path=PackedInt32Array(571709105) index="1" unique_id=131828786 instance=ExtResource("3_53ema")]
+chance = 1.0
+
+[node name="StatusEffComp" type="Node" parent="Components/ChanceComponent/Components" parent_id_path=PackedInt32Array(131828786, 2098243238) index="0" unique_id=901976156]
+script = ExtResource("4_0rxro")
+type = 6
+metadata/_custom_type_script = "uid://bux6moi2u64xw"
+
+[editable path="Components/ChanceComponent"]
