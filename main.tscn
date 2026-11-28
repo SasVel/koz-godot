@@ -501,6 +501,7 @@ fauxShiftDeg = 15.0
 
 [node name="ActionCard6" parent="UI/MainContainer/CardsLayer/ActionsContainer" unique_id=435763506 instance=ExtResource("6_7mycd")]
 material = SubResource("ShaderMaterial_facbu")
+material = SubResource("ShaderMaterial_come4")
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 offset_transform_enabled = false

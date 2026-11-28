@@ -13,8 +13,11 @@ func config(data_ : CardData):
 
 func update_durability(val):
 	%DurabilityLabel.text = "|"
-	for i in range(val):
-		%DurabilityLabel.text += "#"
+	if val <= 6:
+		for i in range(val):
+			%DurabilityLabel.text += "#"
+	else:
+		%DurabilityLabel.text += str(val) + " DUR"
 	%DurabilityLabel.text += "|"
 
 func _can_drop_data(at_position: Vector2, drop_data: Variant) -> bool:

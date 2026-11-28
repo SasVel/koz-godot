@@ -34,12 +34,14 @@ draw_mode = 1
 metadata/_custom_type_script = "uid://dcxo51dukodjq"
 
 [node name="KnightClassData" unique_id=780192406 instance=ExtResource("1_f2fh6")]
-draw_controller = SubResource("Resource_drawctl")
 suit = 1
 tool_types = Array[int]([2, 1])
 starting_weapons = Array[int]([1])
 starting_shields = Array[int]([0, 1])
 entity_name = "the Knight"
-desc = "Well rounded and resilient."
+desc = "Well rounded and resilient.
+
+Drawing cards sequentially each turn."
 default_stats = SubResource("Resource_oqual")
-card_deck_types = Array[int]([8, 8, 8, 9, 9, 9, 0, 4, 3, 13])
+draw_controller = SubResource("Resource_drawctl")
+card_deck_types = Array[int]([8, 9, 4, 8, 9, 3, 7, 0, 9, 13])

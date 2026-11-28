@@ -25,6 +25,14 @@ shader_parameter/rot_y_deg = 0.0
 shader_parameter/rot_x_deg = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_nhk73"]
+resource_local_to_scene = true
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0.1254902, 0.1254902, 0.1254902, 0.654902)
+
 [node name="ToolCard" unique_id=789441108 instance=ExtResource("1_g0q5f")]
 material = SubResource("ShaderMaterial_g0q5f")
 script = ExtResource("3_nhk73")
@@ -33,8 +41,10 @@ focus_scale = 1.2
 [node name="SubViewportContainer" parent="." index="0" unique_id=1491279813]
 material = SubResource("ShaderMaterial_670yt")
 
-[node name="TitleLabel" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TitleContainer" parent_id_path=PackedInt32Array(767831041) index="0" unique_id=1601413309]
+[node name="TitleLabel" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TitleContainer" parent_id_path=PackedInt32Array(767831041) index="0" unique_id=1857146027]
 text = "Halberd"
+label_settings = SubResource("LabelSettings_nhk73")
+_size_just_modified_by_autosizer = true
 
 [node name="DurabilityLabel" type="Label" parent="SubViewportContainer/SubViewport/CardBack/MarginContainer/VBoxContainer/HBoxContainer/TitleContainer" parent_id_path=PackedInt32Array(767831041) index="1" unique_id=372696409]
 unique_name_in_owner = true
